@@ -2,10 +2,10 @@ backend:
   name: github
   repo: bkarthikey/Capstone-Project-G-8
   branch: main
-  # Add the approved OAuth proxy settings after the Decap CMS proof of concept.
+  # Production authentication requires an approved OAuth proxy.
 
 local_backend: true
-publish_mode: editorial_workflow
+
 media_folder: public/uploads
 public_folder: /uploads
 
@@ -17,6 +17,11 @@ collections:
     extension: md
     format: frontmatter
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    preview_path: blog/{{slug}}
+    sortable_fields:
+      - publishedAt
+      - title
+      - category
     fields:
       - { label: Title, name: title, widget: string }
       - { label: Summary, name: excerpt, widget: text }
