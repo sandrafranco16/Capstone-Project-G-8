@@ -1,0 +1,34 @@
+backend:
+  name: github
+  repo: bkarthikey/Capstone-Project-G-8
+  branch: main
+  # Add the approved OAuth proxy settings after the Decap CMS proof of concept.
+
+local_backend: true
+publish_mode: editorial_workflow
+media_folder: public/uploads
+public_folder: /uploads
+
+collections:
+  - name: blog
+    label: Blog
+    folder: src/content/blog
+    create: true
+    extension: md
+    format: frontmatter
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: Title, name: title, widget: string }
+      - { label: Summary, name: excerpt, widget: text }
+      - label: Category
+        name: category
+        widget: select
+        options:
+          - Career Development
+          - AI and Automation
+          - AI Governance
+          - Executive and Board
+          - AI Risk
+      - { label: Publish Date, name: publishedAt, widget: datetime }
+      - { label: YouTube URL, name: youtubeUrl, widget: string, required: false }
+      - { label: Body, name: body, widget: markdown }

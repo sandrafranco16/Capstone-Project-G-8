@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Services — AI Career, Training, Governance &amp; Crisis Simulation | BITDOT</title>
+<meta name="description" content="BITDOT's four service areas in depth: AI career coaching, applied AI &amp; automation training, AI governance for executives and boards, and AI crisis simulation.">
+<link rel="canonical" href="https://www.bitdot.com.au/services">
+<link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72 72"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="%230E6BFF"/><stop offset=".55" stop-color="%237A5BFF"/><stop offset="1" stop-color="%2300BFB3"/></linearGradient></defs><rect x="4" y="4" width="30" height="30" rx="9" fill="%230B1526"/><rect x="38" y="4" width="30" height="30" rx="9" fill="%230B1526"/><rect x="4" y="38" width="30" height="30" rx="9" fill="%230B1526"/><circle cx="53" cy="53" r="15" fill="url(%23g)"/></svg>'>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Who is BITDOT's career coaching for?","acceptedAnswer":{"@type":"Answer","text":"Students, recent graduates and working professionals — including people transitioning into AI roles and AI engineers planning their next step. Coaching covers resumes, LinkedIn, interview preparation, mentoring and a personalised AI engineer roadmap."}},
+{"@type":"Question","name":"Do you work with individuals or organisations?","acceptedAnswer":{"@type":"Answer","text":"Both. Individuals typically start with career coaching or the free assessment; organisations engage us for team training, governance advisory, board education and crisis simulations."}},
+{"@type":"Question","name":"Can you provide AI training for whole teams?","acceptedAnswer":{"@type":"Answer","text":"Yes. Our applied workshops cover Microsoft Copilot, Claude, prompt engineering, productivity systems and workflow automation, delivered in person or online in half-day formats."}},
+{"@type":"Question","name":"Do you work with boards?","acceptedAnswer":{"@type":"Answer","text":"Yes — our board AI competency series is delivered in your boardroom and aligned to the AICD Directors' Guide to AI Governance, with tailored editions for NFP and SMB boards."}},
+{"@type":"Question","name":"What does an AI governance engagement involve?","acceptedAnswer":{"@type":"Answer","text":"Typically a governance framework, policy design, executive education and clear accountability structures — sized to your organisation and aligned to Australia's evolving AI guardrails."}},
+{"@type":"Question","name":"How does the AI readiness assessment work?","acceptedAnswer":{"@type":"Answer","text":"Six questions, about three minutes. You get your readiness level and matched recommendations immediately; a personalised emailed report is optional."}}
+]}
+</script>
+<style>
+:root{
+  --ink:#0B1526;--ink-soft:#152238;--paper:#F9FAFC;--mist:#EFF3FA;--line:#E2E8F3;--slate:#51607A;
+  --azure:#0E6BFF;--violet:#7A5BFF;--teal:#00BFB3;--amber:#F59E0B;
+  --grad:linear-gradient(120deg,#0E6BFF 0%,#7A5BFF 55%,#00BFB3 100%);
+  --display:'Space Grotesk',system-ui,sans-serif;--body:'Instrument Sans',system-ui,sans-serif;--mono:'IBM Plex Mono',ui-monospace,monospace;
+  --r:18px;
+  --shadow:0 1px 2px rgba(11,21,38,.04),0 8px 24px rgba(11,21,38,.06);
+  --shadow-lift:0 2px 4px rgba(11,21,38,.05),0 18px 44px rgba(11,21,38,.12);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:92px}
+body{font-family:var(--body);color:var(--ink);background:var(--paper);line-height:1.6;font-size:16.5px;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button{font-family:var(--body)}
+:focus-visible{outline:3px solid var(--azure);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1180px;margin:0 auto;padding:0 28px}
+h1,h2,h3{font-family:var(--display);letter-spacing:-.015em;line-height:1.12;font-weight:600}
+.lead{color:var(--slate);font-size:1.08rem;max-width:58ch}
+.eyebrow{font-family:var(--mono);font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--slate);display:flex;align-items:center;gap:10px;margin-bottom:18px}
+.eyebrow::before{content:"";width:10px;height:10px;border-radius:50%;background:var(--sc,var(--azure));flex:none}
+#prog{position:fixed;top:0;left:0;right:0;height:3px;background:var(--grad);transform:scaleX(0);transform-origin:0 50%;z-index:60}
+.skip{position:fixed;top:-64px;left:16px;z-index:80;background:var(--ink);color:#fff;padding:11px 20px;border-radius:12px;font-weight:600;font-size:.9rem;transition:top .2s}
+.skip:focus{top:12px}
+.btn{display:inline-flex;align-items:center;gap:10px;font-weight:600;font-size:.95rem;padding:14px 26px;border-radius:999px;border:1px solid transparent;cursor:pointer;transition:transform .18s ease,box-shadow .18s ease}
+.btn-primary{background:var(--ink);color:#fff;position:relative;overflow:hidden}
+.btn-primary::after{content:"";position:absolute;inset:0;background:var(--grad);opacity:0;transition:opacity .25s ease}
+.btn-primary span{position:relative;z-index:1}
+.btn-primary:hover::after{opacity:1}
+.btn-primary:hover{box-shadow:var(--shadow-lift)}
+.btn-ghost{background:#fff;border-color:var(--line);color:var(--ink)}
+.btn-ghost:hover{border-color:var(--slate);box-shadow:var(--shadow)}
+header{position:sticky;top:0;z-index:50;background:rgba(249,250,252,.78);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(226,232,243,.7)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:72px}
+.logo{display:flex;align-items:center;color:var(--ink)}
+.logo svg{height:27px;width:auto;display:block}
+.nav-links{display:flex;align-items:center;gap:34px;list-style:none}
+.nav-links a{font-size:.93rem;font-weight:500;color:var(--ink-soft);transition:color .15s;position:relative}
+.nav-links a::after{content:"";position:absolute;left:0;right:100%;bottom:-6px;height:2px;background:var(--grad);transition:right .25s ease}
+.nav-links a:hover::after,.nav-links a.on::after{right:0}
+.nav-links a:hover,.nav-links a.on{color:var(--azure)}
+.pill-soon{font-family:var(--mono);font-size:.58rem;letter-spacing:.1em;background:linear-gradient(120deg,rgba(14,107,255,.12),rgba(122,91,255,.12));color:var(--violet);border:1px solid rgba(122,91,255,.3);padding:2px 7px;border-radius:999px;margin-left:7px;vertical-align:2px;text-transform:uppercase}
+.nav .btn{padding:10px 20px;font-size:.88rem}
+.burger{display:none;background:none;border:none;cursor:pointer;padding:8px}
+.m-menu{display:none}
+.crumb{padding:26px 0 0;font-family:var(--mono);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--slate)}
+.crumb a{border-bottom:1px solid var(--line)}
+.crumb a:hover{color:var(--azure)}
+.page-head{padding:44px 0 72px}
+.page-head h1{font-size:clamp(2.1rem,4.6vw,3.2rem);letter-spacing:-.025em;margin-bottom:16px}
+.svc{padding:88px 0;--sc:var(--azure)}
+.bg-mist{background:var(--mist)}
+.svc h2{font-size:clamp(1.6rem,3.2vw,2.3rem);max-width:22ch;margin-bottom:34px}
+.svc-grid{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:start}
+.svc .lab{font-family:var(--mono);font-size:.64rem;letter-spacing:.18em;text-transform:uppercase;color:var(--slate);display:flex;align-items:center;gap:9px;margin-bottom:14px}
+.svc .lab::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--sc)}
+.svc .prob{color:var(--ink-soft);max-width:52ch}
+.svc ul{list-style:none;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:10px 22px;box-shadow:var(--shadow)}
+.bg-mist .svc-card,.svc ul{background:#fff}
+.svc li{padding:11px 0 11px 26px;position:relative;color:var(--ink-soft);font-size:.96rem;border-bottom:1px solid var(--line)}
+.svc li:last-child{border-bottom:none}
+.svc li::before{content:"";position:absolute;left:0;top:19px;width:8px;height:8px;border-radius:50%;background:var(--sc)}
+.outcome{margin-top:40px;display:flex;gap:16px;align-items:baseline;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:26px}
+.outcome b{font-family:var(--mono);font-size:.64rem;letter-spacing:.18em;text-transform:uppercase;color:var(--sc);flex:none}
+.outcome span{font-family:var(--display);font-weight:600;font-size:1.12rem;max-width:46ch}
+.svc-cta{margin-top:30px;display:flex;gap:12px;flex-wrap:wrap}
+/* crisis timeline */
+.sim{list-style:none;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:30px 30px 30px 34px;box-shadow:var(--shadow);position:relative}
+.sim::before{content:"";position:absolute;left:39px;top:40px;bottom:96px;width:2px;background:linear-gradient(var(--amber),rgba(245,158,11,.15))}
+.sim li{padding:0 0 24px 34px;position:relative}
+.sim li::before{content:"";position:absolute;left:-2px;top:5px;width:14px;height:14px;border-radius:50%;background:var(--amber);box-shadow:0 0 0 4px rgba(245,158,11,.18)}
+.sim b{font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;color:var(--amber);display:block;margin-bottom:3px}
+.sim li span{color:var(--ink-soft);font-size:.95rem}
+.sim .simq{margin:6px 0 0 0;padding:18px 20px;background:rgba(245,158,11,.09);border:1px dashed rgba(245,158,11,.5);border-radius:12px;font-family:var(--display);font-weight:600;font-size:1.05rem}
+/* faq */
+.faq{padding:88px 0}
+.faq h2{font-size:clamp(1.6rem,3.2vw,2.3rem);margin-bottom:34px}
+.faq details{background:#fff;border:1px solid var(--line);border-radius:14px;margin-bottom:12px;overflow:hidden}
+.faq summary{cursor:pointer;list-style:none;padding:18px 22px;font-family:var(--display);font-weight:600;font-size:1.02rem;display:flex;justify-content:space-between;align-items:center;gap:16px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-family:var(--mono);font-size:1.2rem;color:var(--slate);transition:transform .25s;flex:none}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details p{padding:0 22px 20px;color:var(--slate);max-width:70ch}
+/* cta band */
+.cta-band{background:var(--ink);color:#fff;border-radius:28px;padding:60px 56px;position:relative;overflow:hidden}
+.cta-band .glow{position:absolute;bottom:-260px;right:-160px;width:600px;height:600px;filter:blur(60px);opacity:.55;background:radial-gradient(circle at 40% 40%,rgba(14,107,255,.7),transparent 55%),radial-gradient(circle at 62% 60%,rgba(0,191,179,.55),transparent 55%);pointer-events:none}
+.cta-band h2{color:#fff;font-size:clamp(1.5rem,3vw,2.1rem)}
+.cta-band p{color:rgba(255,255,255,.7);margin:12px 0 26px;max-width:52ch}
+.cta-band .row{display:flex;gap:12px;flex-wrap:wrap;position:relative}
+.btn-light{background:#fff;color:var(--ink)}
+.btn-light:hover{box-shadow:0 18px 44px rgba(0,0,0,.28)}
+.cta-band .btn-ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.3)}
+footer{background:var(--ink);color:rgba(255,255,255,.72);margin-top:96px;overflow:hidden}
+.foot-top{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:44px;padding:72px 0 56px}
+.foot-brand svg{height:26px;width:auto;color:#fff}
+.foot-brand p{margin-top:18px;font-size:.9rem;max-width:34ch;color:rgba(255,255,255,.6)}
+.foot-col h4{font-family:var(--mono);font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:18px}
+.foot-col ul{list-style:none}
+.foot-col li{margin-bottom:11px}
+.foot-col a{font-size:.92rem;color:rgba(255,255,255,.75);transition:color .15s}
+.foot-col a:hover{color:#fff}
+.foot-legal{border-top:1px solid rgba(255,255,255,.1);padding:24px 0 30px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:.8rem;color:rgba(255,255,255,.45)}
+.rv{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+@media(max-width:1020px){.svc-grid{grid-template-columns:1fr;gap:34px}.foot-top{grid-template-columns:1fr 1fr}}
+@media(max-width:720px){
+  .nav-links,.nav .btn-primary{display:none}
+  .burger{display:block}
+  .m-menu.open{display:block;position:fixed;inset:72px 0 auto 0;background:#fff;border-bottom:1px solid var(--line);box-shadow:var(--shadow-lift);padding:14px 28px 26px;z-index:49}
+  .m-menu ul{list-style:none}
+  .m-menu li{border-bottom:1px solid var(--line)}
+  .m-menu a{display:block;padding:15px 2px;font-weight:600}
+  .m-menu .btn{margin-top:16px;width:100%;justify-content:center}
+  .svc,.faq{padding:64px 0}
+  .cta-band{padding:44px 26px}
+  .foot-top{grid-template-columns:1fr;gap:34px}
+}
+</style>
+</head>
+<body>
+
+<div id="prog" aria-hidden="true"></div>
+<a class="skip" href="#main">Skip to content</a>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="bgrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0E6BFF"/><stop offset=".55" stop-color="#7A5BFF"/><stop offset="1" stop-color="#00BFB3"/>
+    </linearGradient>
+  </defs>
+  <symbol id="logo-lockup" viewBox="0 0 424 72">
+    <rect x="4" y="4" width="30" height="30" rx="9" fill="currentColor"/>
+    <rect x="38" y="4" width="30" height="30" rx="9" fill="currentColor"/>
+    <rect x="4" y="38" width="30" height="30" rx="9" fill="currentColor"/>
+    <circle cx="53" cy="53" r="15" fill="url(#bgrad)"/>
+    <g transform="translate(92,0)" fill="none" stroke="currentColor" stroke-width="12" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M6 8 V64 M6 8 H22 A14 14 0 0 1 22 36 H6 M6 36 H25 A14 14 0 0 1 25 64 H6"/>
+      <path d="M60 8 V64"/>
+      <path d="M82 8 H122 M102 8 V64"/>
+      <path d="M146 8 V64 M146 8 H156 A28 28 0 0 1 156 64 H146"/>
+      <path d="M278 8 H318 M298 8 V64"/>
+    </g>
+    <circle cx="326" cy="36" r="28" fill="url(#bgrad)"/>
+  </symbol>
+</svg>
+
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="index.html" aria-label="BITDOT home">
+      <svg role="img" aria-label="BITDOT"><use href="#logo-lockup"/></svg>
+    </a>
+    <ul class="nav-links">
+      <li><a class="on" href="services.html" aria-current="page">Services</a></li>
+      <li><a href="index.html#assess">Assessment</a></li>
+      <li><a href="index.html#lab">Automation Lab<span class="pill-soon">Soon</span></a></li>
+      <li><a href="index.html#insights">Insights</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+    <a class="btn btn-primary" href="index.html#contact"><span>Book a session</span></a>
+    <button class="burger" aria-label="Open menu" aria-expanded="false" onclick="toggleMenu(this)">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#0B1526" stroke-width="2.2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+  </div>
+  <nav class="m-menu" id="mmenu">
+    <ul>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="index.html#assess">Assessment</a></li>
+      <li><a href="index.html#lab">Automation Lab <span class="pill-soon">Soon</span></a></li>
+      <li><a href="index.html#insights">Insights</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+    <a class="btn btn-primary" href="index.html#contact"><span>Book a session</span></a>
+  </nav>
+</header>
+
+<main id="main">
+
+<div class="wrap crumb" aria-label="Breadcrumb"><a href="index.html">Home</a> &nbsp;→&nbsp; Services</div>
+
+<div class="wrap page-head">
+  <p class="eyebrow rv" style="--sc:var(--azure)">Services</p>
+  <h1 class="rv">What we actually do.</h1>
+  <p class="lead rv">Four service areas, one operating idea: technology, governed, ending at a human making a better decision. Every engagement below follows the same shape — the problem, what we do about it, the outcome.</p>
+</div>
+
+<!-- CAREER -->
+<section class="svc bg-mist" id="career" style="--sc:var(--azure)">
+  <div class="wrap">
+    <p class="eyebrow rv" style="--sc:var(--azure)">Launch my AI career · Students, graduates &amp; professionals</p>
+    <h2 class="rv">AI career services</h2>
+    <div class="svc-grid">
+      <div class="rv">
+        <p class="lab">The problem</p>
+        <p class="prob">The AI job market rewards people who can show applied skill, not just list a degree. Most candidates have the ability — what they lack is positioning: a resume that reads like the role, interview answers grounded in real projects, and a roadmap that sequences the right skills in the right order.</p>
+        <div class="outcome"><b>Outcome</b><span>A candidate who interviews like a practitioner — with a plan that survives contact with the market.</span></div>
+      </div>
+      <div class="rv">
+        <p class="lab">We help with</p>
+        <ul>
+          <li>1:1 career coaching &amp; ongoing mentoring</li>
+          <li>Resume &amp; LinkedIn reviews that reposition you for AI roles</li>
+          <li>Interview preparation with realistic practice</li>
+          <li>AI engineer career roadmap — skills, projects, sequencing</li>
+          <li>Guidance for career-changers moving into AI</li>
+        </ul>
+      </div>
+    </div>
+    <div class="svc-cta rv">
+      <a class="btn btn-primary" href="index.html?type=Career%20coaching#contact"><span>Book career coaching</span></a>
+      <a class="btn btn-ghost" href="index.html#assess">Check my readiness first</a>
+    </div>
+  </div>
+</section>
+
+<!-- TRAINING -->
+<section class="svc" id="training" style="--sc:var(--teal)">
+  <div class="wrap">
+    <p class="eyebrow rv" style="--sc:var(--teal)">Learn AI &amp; automation · Professionals, teams &amp; small business</p>
+    <h2 class="rv">Applied AI &amp; automation training</h2>
+    <div class="svc-grid">
+      <div class="rv">
+        <p class="lab">The problem</p>
+        <p class="prob">Most people have tried AI tools; far fewer have made them a habit that reliably saves time. The gap isn't access — it's method: knowing which workflows to automate, how to prompt for dependable results, and how to build systems instead of one-off tricks.</p>
+        <div class="outcome"><b>Outcome</b><span>AI as a daily working habit — measured in hours back, not demos watched.</span></div>
+      </div>
+      <div class="rv">
+        <p class="lab">We help with</p>
+        <ul>
+          <li>Microsoft Copilot — hands-on, in your real workflows</li>
+          <li>Claude — practical use for writing, analysis and automation</li>
+          <li>Prompt engineering that produces repeatable results</li>
+          <li>Productivity systems built around AI</li>
+          <li>Workflow automation, end to end</li>
+          <li>AI for small business — automate without a tech team</li>
+        </ul>
+      </div>
+    </div>
+    <div class="svc-cta rv">
+      <a class="btn btn-primary" href="index.html?type=Training%20discussion#contact"><span>Discuss team training</span></a>
+      <a class="btn btn-ghost" href="index.html#lab">Preview the Automation Lab</a>
+    </div>
+  </div>
+</section>
+
+<!-- GOVERNANCE -->
+<section class="svc bg-mist" id="governance" style="--sc:var(--violet)">
+  <div class="wrap">
+    <p class="eyebrow rv" style="--sc:var(--violet)">Govern AI responsibly · Executives &amp; boards</p>
+    <h2 class="rv">AI governance &amp; executive education</h2>
+    <div class="svc-grid">
+      <div class="rv">
+        <p class="lab">The problem</p>
+        <p class="prob">Organisations are adopting AI faster than their governance can keep up. Directors carry oversight duties for systems they haven't been trained to question, and policy written for yesterday's technology quietly stops applying. Regulation — including Australia's proposed AI guardrails — is moving whether you are or not.</p>
+        <div class="outcome"><b>Outcome</b><span>Confident, responsible AI adoption — with accountabilities a regulator would recognise.</span></div>
+      </div>
+      <div class="rv">
+        <p class="lab">We help with</p>
+        <ul>
+          <li>AI governance frameworks sized to your organisation</li>
+          <li>AI policy design and accountability structures</li>
+          <li>Executive education and leadership briefings</li>
+          <li>Board services aligned to the AICD Directors' Guide to AI Governance</li>
+          <li>AI strategy development, from ambition to roadmap</li>
+        </ul>
+      </div>
+    </div>
+    <div class="svc-cta rv">
+      <a class="btn btn-primary" href="index.html?type=Executive%20consultation#contact"><span>Talk to an advisor</span></a>
+      <a class="btn btn-ghost" href="index.html#programs">See governance programs</a>
+    </div>
+  </div>
+</section>
+
+<!-- CRISIS -->
+<section class="svc" id="crisis" style="--sc:var(--amber)">
+  <div class="wrap">
+    <p class="eyebrow rv" style="--sc:var(--amber)">Prepare for AI risks · Boards &amp; risk leaders</p>
+    <h2 class="rv">AI crisis simulation &amp; risk readiness</h2>
+    <div class="svc-grid">
+      <div class="rv">
+        <p class="lab">The problem</p>
+        <p class="prob">AI incidents don't schedule themselves for business hours. The first time your leadership team debates who owns an AI failure shouldn't be while one is trending. Here's how a morning like that unfolds:</p>
+        <ol class="sim" aria-label="Example AI incident timeline">
+          <li><b>08:42</b><span>An AI system has generated incorrect customer advice.</span></li>
+          <li><b>09:15</b><span>Social media escalation detected — screenshots are circulating.</span></li>
+          <li><b>09:37</b><span>Executive team notified. Nobody is sure who owns the response.</span></li>
+          <li><b>10:05</b><span>A journalist calls. A regulator's questions arrive by email.</span></li>
+          <li class="simq">What would your organisation do next?</li>
+        </ol>
+      </div>
+      <div class="rv">
+        <p class="lab">We help with</p>
+        <ul>
+          <li>AI crisis simulations — rehearse the incident before it's real</li>
+          <li>Risk workshops that map your actual exposure</li>
+          <li>Governance advisory for high-risk AI use</li>
+          <li>Regulatory readiness as Australia's guardrails take shape</li>
+        </ul>
+        <div class="outcome"><b>Outcome</b><span>A leadership team that has already made the hard calls once — calmly, in a rehearsal.</span></div>
+        <div class="svc-cta">
+          <a class="btn btn-primary" href="index.html?type=Workshop%20enquiry#contact"><span>Run a simulation</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq bg-mist" id="faq">
+  <div class="wrap">
+    <p class="eyebrow rv" style="--sc:var(--azure)">Common questions</p>
+    <h2 class="rv">Frequently asked questions</h2>
+    <div class="rv">
+      <details><summary>Who is BITDOT's career coaching for?</summary><p>Students, recent graduates and working professionals — including people transitioning into AI roles and AI engineers planning their next step. Coaching covers resumes, LinkedIn, interview preparation, mentoring and a personalised AI engineer roadmap.</p></details>
+      <details><summary>Do you work with individuals or organisations?</summary><p>Both. Individuals typically start with career coaching or the free readiness assessment; organisations engage us for team training, governance advisory, board education and crisis simulations.</p></details>
+      <details><summary>Can you provide AI training for whole teams?</summary><p>Yes. Our applied workshops cover Microsoft Copilot, Claude, prompt engineering, productivity systems and workflow automation — delivered in person or online, in half-day formats, in your real workflows rather than generic examples.</p></details>
+      <details><summary>Do you work with boards?</summary><p>Yes — our board AI competency series is delivered in your boardroom and aligned to the AICD Directors' Guide to AI Governance, with tailored editions for NFP and SMB boards.</p></details>
+      <details><summary>What does an AI governance engagement involve?</summary><p>Typically a governance framework, policy design, executive education and clear accountability structures — sized to your organisation rather than a template, and aligned to Australia's evolving AI guardrails.</p></details>
+      <details><summary>How does the AI readiness assessment work?</summary><p>Six questions, about three minutes. You get your readiness level and matched recommendations immediately, free and ungated. A personalised emailed report is optional — leave your details only if you want it.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section style="padding:88px 0 0">
+  <div class="wrap">
+    <div class="cta-band rv">
+      <div class="glow" aria-hidden="true"></div>
+      <h2>Not sure which door is yours?</h2>
+      <p>Take the three-minute assessment and we'll point you at the right one — or skip straight to a discovery call.</p>
+      <div class="row">
+        <a class="btn btn-light" href="index.html#assess">Take the AI assessment</a>
+        <a class="btn btn-ghost" href="index.html?type=Discovery%20call#contact">Book a discovery call</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap foot-top">
+    <div class="foot-brand">
+      <svg role="img" aria-label="BITDOT"><use href="#logo-lockup"/></svg>
+      <p>Helping individuals advance their AI careers, professionals become more productive, and leaders govern AI confidently.</p>
+    </div>
+    <div class="foot-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#career">AI career</a></li>
+        <li><a href="#training">AI training &amp; automation</a></li>
+        <li><a href="#governance">AI governance</a></li>
+        <li><a href="#crisis">Crisis simulation</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h4>Explore</h4>
+      <ul>
+        <li><a href="index.html#assess">AI assessment</a></li>
+        <li><a href="index.html#lab">Automation Lab</a></li>
+        <li><a href="index.html#insights">Insights</a></li>
+        <li><a href="about.html">About us</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="mailto:info@bitdot.com.au">info@bitdot.com.au</a></li>
+        <li><a href="https://www.linkedin.com/in/meet-vaibhav-agrawal/" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="index.html#contact">Book a session</a></li>
+        <li><a href="https://www.bitdot.com.au" target="_blank" rel="noopener">bitdot.com.au</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap foot-legal">
+    <span>© <span id="yr">2026</span> BITDOT Consulting Services Pty Ltd. All rights reserved.</span>
+    <span><a href="legal.html#privacy">Privacy Policy</a> · <a href="legal.html#terms">Terms of Use</a> · <a href="legal.html#disclaimer">Disclaimer</a> · <a href="legal.html#accessibility">Accessibility</a></span>
+  </div>
+</footer>
+
+<script>
+document.getElementById('yr').textContent=new Date().getFullYear();
+function toggleMenu(btn){const m=document.getElementById('mmenu');const o=m.classList.toggle('open');btn.setAttribute('aria-expanded',o);}
+function closeMenu(){document.getElementById('mmenu').classList.remove('open');}
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeMenu();const bg=document.querySelector('.burger');if(bg)bg.setAttribute('aria-expanded','false');}});
+const bar=document.getElementById('prog');
+addEventListener('scroll',()=>{const h=document.documentElement,max=h.scrollHeight-h.clientHeight;bar.style.transform=`scaleX(${max?h.scrollTop/max:0})`;},{passive:true});
+const io=new IntersectionObserver(es=>{es.forEach(en=>{if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}})},{threshold:.12});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

@@ -66,3 +66,31 @@ Client Representative: **Vibs Agrawal**
 ## Academic Context
 
 This project is being completed as part of **CITS5206 – Information Technology Capstone Project, Semester 2, 2026** at The University of Western Australia.
+
+## Local Development
+
+Requirements: Node.js 20.9 or later and pnpm.
+
+```bash
+pnpm install
+cp .env.example .env.local
+pnpm dev
+```
+
+Quality checks:
+
+```bash
+pnpm lint
+pnpm typecheck
+pnpm build
+```
+
+## Application Structure
+
+The Next.js application lives at the repository root and uses the App Router. Shared UI is under `src/components`, feature-specific rules are under `src/features`, routes and server endpoints are under `src/app`, and Decap-managed Markdown content is under `src/content/blog`.
+
+The approved static pages are retained in `demo/` as the source of truth for the
+initial high-fidelity migration. The Next.js routes render those local assets through
+an isolated compatibility layer while new MVP features continue to use the modular
+`src/features` structure. See [`docs/architecture/README.md`](docs/architecture/README.md)
+for module boundaries, integration points and deferred decisions.
