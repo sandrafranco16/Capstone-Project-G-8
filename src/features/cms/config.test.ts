@@ -19,6 +19,7 @@ describe("getCmsConfig", () => {
       branch: "cms-preview",
       baseUrl: "https://preview.example.com",
       localBackend: false,
+      editorialWorkflow: true,
     });
   });
 
@@ -42,6 +43,7 @@ describe("renderCmsConfig", () => {
       branch: "cms-preview",
       baseUrl: "http://localhost:3000",
       localBackend: true,
+      editorialWorkflow: false,
     });
 
     expect(yaml).toContain('repo: "bitdot/site"');
@@ -49,5 +51,19 @@ describe("renderCmsConfig", () => {
     expect(yaml).toContain('base_url: "http://localhost:3000"');
     expect(yaml).toContain("auth_endpoint: /api/cms/auth");
     expect(yaml).toContain("local_backend: true");
+    expect(yaml).not.toContain("publish_mode: editorial_workflow");
+  });
+
+  it("enables review before publication online", () => {
+    const yaml = renderCmsConfig({
+      repository: "bitdot/site",
+      branch: "main",
+      baseUrl: "https://cms.example.com",
+      localBackend: false,
+      editorialWorkflow: true,
+    });
+
+    expect(yaml).toContain("publish_mode: editorial_workflow");
+    expect(yaml).not.toContain("local_backend: true");
   });
 });

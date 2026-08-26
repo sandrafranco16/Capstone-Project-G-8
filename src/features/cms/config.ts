@@ -13,6 +13,7 @@ export type CmsConfig = {
   branch: string;
   baseUrl: string;
   localBackend: boolean;
+  editorialWorkflow: boolean;
 };
 
 function validateRepository(value: string) {
@@ -57,6 +58,7 @@ export function getCmsConfig(
     branch,
     baseUrl,
     localBackend: environment.NODE_ENV !== "production",
+    editorialWorkflow: environment.NODE_ENV === "production",
   };
 }
 
@@ -66,6 +68,9 @@ function quoteYaml(value: string) {
 
 export function renderCmsConfig(config: CmsConfig) {
   const localBackend = config.localBackend ? "\nlocal_backend: true\n" : "\n";
+  const publishMode = config.editorialWorkflow
+    ? "publish_mode: editorial_workflow\n\n"
+    : "";
 
   return `backend:
   name: github
@@ -74,6 +79,7 @@ export function renderCmsConfig(config: CmsConfig) {
   base_url: ${quoteYaml(config.baseUrl)}
   auth_endpoint: /api/cms/auth
 ${localBackend}
+${publishMode}
 media_folder: public/uploads
 public_folder: /uploads
 
