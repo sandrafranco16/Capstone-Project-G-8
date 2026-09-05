@@ -19,7 +19,7 @@ export default function BookingPage() {
           <h2>Appointment types</h2>
           <ul>
             {bookingConfig.appointmentTypes.map((type) => (
-              <li key={type}>{type}</li>
+              <li key={type.id}>{type.title}</li>
             ))}
           </ul>
           {bookingConfig.url ? (
