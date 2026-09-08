@@ -105,6 +105,7 @@ export function CalEmbed({
         }}
         onLoad={() => setIsLoading(false)}
         loading="lazy"
+        sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
         allow="camera; microphone; autoplay; clipboard-write; encrypted-media"
       />
 

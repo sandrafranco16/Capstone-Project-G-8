@@ -47,7 +47,7 @@ export default async function BookingPage({ searchParams }: BookingPageProps) {
 
       <section className="section" style={{ padding: "3rem 0" }}>
         <Container>
-          {params.email || params.notes ? (
+          {params.email || params.name || params.notes ? (
             <div
               style={{
                 marginBottom: "2rem",

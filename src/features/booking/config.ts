@@ -2,10 +2,9 @@ import type { BookingConfig } from "./types";
 
 const defaultBaseUrl = process.env.NEXT_PUBLIC_CALCOM_URL || "https://cal.com/bitdot";
 
-export const bookingConfig: BookingConfig & { url: string } = {
+export const bookingConfig: BookingConfig = {
   provider: "Cal.com Hosted Booking",
   baseUrl: defaultBaseUrl,
-  url: defaultBaseUrl,
   defaultSlug: "discovery-call",
   appointmentTypes: [
     {

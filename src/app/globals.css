@@ -369,8 +369,18 @@ h3 {
   }
 }
 
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+
+  .cal-embed-wrapper * {
+    animation: none !important;
   }
 }

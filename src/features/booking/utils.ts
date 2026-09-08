@@ -23,7 +23,10 @@ export function validateCalComUrl(rawUrl?: string): string {
 
   try {
     const parsed = new URL(trimmed);
-    if (parsed.protocol === "http:" || parsed.protocol === "https:") {
+    const isSecure = parsed.protocol === "https:";
+    const isDevHttp =
+      parsed.protocol === "http:" && process.env.NODE_ENV !== "production";
+    if (isSecure || isDevHttp) {
       return trimmed;
     }
   } catch {
