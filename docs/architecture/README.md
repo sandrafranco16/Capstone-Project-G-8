@@ -34,7 +34,7 @@ logic into typed React components. Remote scripts are not executed by this layer
 - `services`: career, AI and automation, governance, executive/board and risk services.
 - `blog`: Markdown article metadata and the future Decap publishing pipeline.
 - `assessment`: client-approved questions, scoring and service recommendations.
-- `booking`: Cal.com configuration and appointment links.
+- `booking`: Cal.com configuration and appointment links (see [`docs/features/booking-integration.md`](../features/booking-integration.md)).
 - `contact`: validation and the future server-side email delivery adapter.
 - `analytics`: agreed event names for Google Analytics and Microsoft Clarity.
 
