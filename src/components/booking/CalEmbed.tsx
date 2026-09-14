@@ -67,47 +67,57 @@ export function CalEmbed({
         </div>
       )}
 
-      {isLoading && (
-        <div
-          style={{
-            height: typeof height === "number" ? `${height}px` : height,
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
-            backgroundColor: "#f9fafb",
-            color: "#6b7280",
-            gap: "0.75rem",
-          }}
-        >
+      <div
+        style={{
+          position: "relative",
+          width: "100%",
+          height: typeof height === "number" ? `${height}px` : height,
+          backgroundColor: "#f9fafb",
+        }}
+      >
+        {isLoading && (
           <div
             style={{
-              width: "2rem",
-              height: "2rem",
-              border: "3px solid #e5e7eb",
-              borderTopColor: "#2563eb",
-              borderRadius: "50%",
-              animation: "spin 1s linear infinite",
+              position: "absolute",
+              inset: 0,
+              zIndex: 10,
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+              backgroundColor: "#f9fafb",
+              color: "#6b7280",
+              gap: "0.75rem",
             }}
-          />
-          <p style={{ fontSize: "0.875rem" }}>Loading booking calendar...</p>
-        </div>
-      )}
+          >
+            <div
+              style={{
+                width: "2rem",
+                height: "2rem",
+                border: "3px solid #e5e7eb",
+                borderTopColor: "#2563eb",
+                borderRadius: "50%",
+                animation: "spin 1s linear infinite",
+              }}
+            />
+            <p style={{ fontSize: "0.875rem" }}>Loading booking calendar...</p>
+          </div>
+        )}
 
-      <iframe
-        src={safeUrl}
-        title={title}
-        width="100%"
-        height={typeof height === "number" ? `${height}px` : height}
-        style={{
-          border: "none",
-          display: isLoading ? "none" : "block",
-        }}
-        onLoad={() => setIsLoading(false)}
-        loading="lazy"
-        sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
-        allow="camera; microphone; autoplay; clipboard-write; encrypted-media"
-      />
+        <iframe
+          src={safeUrl}
+          title={title}
+          width="100%"
+          height="100%"
+          style={{
+            border: "none",
+            display: "block",
+          }}
+          onLoad={() => setIsLoading(false)}
+          sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
+          allow="camera; microphone; autoplay; clipboard-write; encrypted-media"
+        />
+      </div>
 
       <div
         style={{
