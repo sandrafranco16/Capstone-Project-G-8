@@ -3,20 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Services — Board Training, AI Governance, Training &amp; Career Coaching | BITDOT</title>
-<meta name="description" content="AI governance board training, applied AI and automation workshops, career coaching and risk readiness from BITDOT Consulting Services, Western Australia.">
+<title>Resources — AI Governance Frameworks, Deadlines &amp; Reading | BITDOT</title>
+<meta name="description" content="A working reference for Australian leaders: the AI compliance dates that are already fixed, the frameworks that matter, and reading worth your time.">
 <meta name="theme-color" content="#FCFAF5">
-<link rel="canonical" href="https://www.bitdot.com.au/services.html">
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
-{"@type":"Question","name":"Who is BITDOT's board training for?","acceptedAnswer":{"@type":"Answer","text":"Board members, non-executive directors, executive leadership teams and senior management involved in strategy and risk. The program assumes no technical background."}},
-{"@type":"Question","name":"How long is the Mastering AI Governance program?","acceptedAnswer":{"@type":"Answer","text":"Four hours of immersive training. In person we split it across three sessions for engagement and retention; online we run it as staggered sessions to suit your team's schedule and location."}},
-{"@type":"Question","name":"Do you work with individuals or organisations?","acceptedAnswer":{"@type":"Answer","text":"Both. Individuals usually start with career coaching or the free readiness assessment. Organisations engage us for board training, team workshops, governance advisory and AI strategy."}},
-{"@type":"Question","name":"Can you train a whole team on the AI tools?","acceptedAnswer":{"@type":"Answer","text":"Yes. Our hands-on workshops cover Microsoft Copilot, Claude, ChatGPT and Gemini, plus prompt engineering and workflow automation, delivered in your real workflows rather than generic examples."}},
-{"@type":"Question","name":"What happens after the training?","acceptedAnswer":{"@type":"Answer","text":"We stay involved. Custom strategy development, tool selection, hands-on workshops, vendor introductions, integration planning and fit-for-purpose customisation are all available as continued partnership."}},
-{"@type":"Question","name":"How does the AI readiness assessment work?","acceptedAnswer":{"@type":"Answer","text":"You choose your pathway first, then answer five questions, about three minutes. Your level and matched recommendations appear immediately, free and ungated, and nothing is stored."}}
-]}
-</script>
+<link rel="canonical" href="https://www.bitdot.com.au/resources.html">
 <link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs><linearGradient id="g" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="%230057B8"/><stop offset="1" stop-color="%232E96FF"/></linearGradient></defs><circle cx="30" cy="36" r="19" fill="none" stroke="url(%23g)" stroke-width="9"/><circle cx="48" cy="14" r="9" fill="%232E96FF"/></svg>'>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -351,30 +341,93 @@ footer::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;back
 </style>
 <style>
 .p-hero{position:relative;padding:76px 0 64px;overflow:hidden}
-.p-hero .wrap{position:relative;z-index:1}
-.p-hero h1{max-width:15ch;overflow-wrap:break-word}
+.p-hero .wrap{position:relative;z-index:1;max-width:1200px}
+.p-hero .inner{max-width:780px}
+.p-hero h1{max-width:14ch;overflow-wrap:break-word}
 .p-hero .lead{margin-top:20px;font-size:1.13rem}
-.jump{margin-top:30px;display:flex;gap:10px;flex-wrap:wrap}
+.stamp{margin-top:26px;display:inline-flex;align-items:center;gap:11px;font-size:.87rem;font-weight:560;color:var(--ink-2);
+  background:var(--paper);padding:10px 19px;border-radius:999px;box-shadow:var(--sh)}
+.stamp i{width:8px;height:8px;border-radius:50%;background:#0B7A56;flex:none}
+.jump{margin-top:28px;display:flex;gap:10px;flex-wrap:wrap}
+.jump a{font-size:.88rem;font-weight:580;padding:10px 19px;border-radius:999px;background:var(--paper);color:var(--ink-2);
+  box-shadow:var(--sh);transition:all .22s}
+.jump a:hover{color:var(--ink);transform:translateY(-2px);box-shadow:var(--sh-2)}
 
-.svc-sec{position:relative;padding:80px 0;border-top:1px solid var(--line)}
-.svc-grid2{display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);gap:52px;align-items:start}
-.svc-num{font-size:.84rem;font-weight:640;color:var(--sc);margin-bottom:14px;display:flex;align-items:center;gap:10px}
-.svc-num::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--sc)}
-.svc-sec h2{max-width:16ch}
-.offer{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:8px}
-.off{padding:22px 22px;display:flex;flex-direction:column;gap:7px}
-.off b{font-size:.97rem;font-weight:620;letter-spacing:-.016em}
-.off span{font-size:.88rem;color:var(--ink-2)}
+.filter{display:flex;gap:9px;flex-wrap:wrap}
+.filter button{font-size:.86rem;font-weight:580;padding:9px 18px;border-radius:999px;border:1px solid var(--line-2);
+  background:var(--paper);color:var(--ink-2);cursor:pointer;transition:all .22s}
+.filter button:hover{color:var(--ink)}
+.filter button.act{background:var(--coral);border-color:var(--coral);color:#fff}
+.f-count{font-size:.84rem;color:var(--ink-3);margin:16px 0 0}
 
-.faq details{border-radius:16px;background:var(--paper);margin-bottom:11px;overflow:hidden;transition:box-shadow .25s;box-shadow:var(--sh)}
-.faq details[open]{box-shadow:var(--sh-2)}
-.faq summary{cursor:pointer;padding:19px 24px;font-size:1rem;font-weight:600;letter-spacing:-.018em;list-style:none;display:flex;justify-content:space-between;gap:16px;align-items:center}
-.faq summary::-webkit-details-marker{display:none}
-.faq summary::after{content:"+";font-size:1.3rem;color:var(--coral);font-weight:400;line-height:1;transition:transform .25s}
-.faq details[open] summary::after{transform:rotate(45deg)}
-.faq p{padding:0 24px 21px;font-size:.94rem;color:var(--ink-2);max-width:76ch}
+.tl{position:relative;margin-top:34px;padding-left:2px}
+.tl::before{content:"";position:absolute;left:20px;top:12px;bottom:12px;width:2px;border-radius:2px;
+  background:linear-gradient(180deg,#0057B8,#2E96FF 45%,#F0552B 78%,rgba(240,85,43,.15))}
+.ev{position:relative;padding:0 0 24px 66px}
+.ev.hide{display:none}
+.ev::before{content:"";position:absolute;left:12px;top:22px;width:18px;height:18px;border-radius:50%;box-sizing:border-box;
+  background:var(--canvas);border:3px solid var(--line-2);transition:transform .25s,background .25s}
+.ev.live::before{background:var(--coral);border-color:var(--coral)}
+.ev:hover::before{transform:scale(1.2)}
+.ev-card{padding:24px 26px;background:var(--paper);border-radius:var(--r)}
+.ev[data-region="au"] .ev-card{background:var(--fill-sky)}
+.ev[data-region="eu"] .ev-card{background:var(--fill-lilac)}
+.ev[data-region="au"] .ev-date,.ev[data-region="eu"] .ev-date{color:var(--ink)}
+.ev-top{display:flex;align-items:center;gap:11px;flex-wrap:wrap;margin-bottom:11px}
+.ev-date{font-size:.9rem;font-weight:640;letter-spacing:-.018em;color:var(--ink)}
+.tag{font-size:.74rem;font-weight:580;padding:4px 11px;border-radius:999px;color:var(--ink-2);background:var(--mist);white-space:nowrap}
+.tag.au{color:#0057B8;background:var(--fill-sky)}
+.tag.eu{color:#5A48B8;background:var(--fill-lilac)}
+.tag.live{color:#0B7A56;background:var(--fill-mint)}
+.tag.next{color:#93630A;background:var(--fill-sand)}
+.ev h3{font-size:1.16rem;margin-bottom:9px}
+.ev p{color:var(--ink-2);font-size:.94rem;max-width:72ch}
+.ev .src{margin-top:14px;display:inline-flex;align-items:center;gap:7px;font-size:.87rem;font-weight:600;color:var(--coral-deep)}
+.ev .src svg{transition:transform .2s}
+.ev:hover .src svg{transform:translateX(3px)}
+.today{position:relative;padding:0 0 24px 66px}
+.today::before{content:"";position:absolute;left:6px;top:-2px;width:30px;height:30px;border-radius:50%;border:2px dashed var(--line-2)}
+.today span{display:inline-flex;align-items:center;gap:10px;font-size:.85rem;font-weight:600;color:var(--ink);
+  background:var(--fill-blush);padding:8px 17px;border-radius:999px}
 
-@media(max-width:900px){.svc-grid2{grid-template-columns:1fr;gap:30px}.offer{grid-template-columns:1fr}}
+.fw-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.fw{padding:28px 26px;display:flex;flex-direction:column;gap:11px}
+.fw .who{font-size:.79rem;font-weight:640;color:var(--wc);display:flex;align-items:center;gap:8px}
+.fw .who::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--wc)}
+.fw h3{font-size:1.12rem}
+.fw p{font-size:.9rem;color:var(--ink-2);flex:1}
+.fw .src{font-size:.87rem;font-weight:600;color:var(--ink);display:inline-flex;align-items:center;gap:7px;padding-top:13px;border-top:1px solid rgba(18,32,28,.1)}
+.fw:hover .src svg{transform:translateX(3px)}
+.fw .src svg{transition:transform .2s}
+
+.qs{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;counter-reset:qq}
+.qq{padding:26px 28px}
+.qq b{display:block;font-size:1.03rem;font-weight:640;letter-spacing:-.022em;margin-bottom:8px;padding-left:36px;position:relative;color:var(--ink)}
+.qq b::before{counter-increment:qq;content:counter(qq,decimal-leading-zero);position:absolute;left:0;top:1px;
+  font-size:.8rem;font-weight:700;color:var(--coral-deep)}
+.qq p{font-size:.91rem;color:var(--ink-2)}
+
+.read{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.rd{padding:26px 28px;display:flex;flex-direction:column;gap:10px}
+.rd .meta{font-size:.79rem;font-weight:600;color:var(--ink-2);display:flex;align-items:center;gap:9px}
+.rd .meta i{width:8px;height:8px;border-radius:50%}
+.rd h3{font-size:1.08rem}
+.rd p{font-size:.91rem;color:var(--ink-2);flex:1}
+.rd .src{font-size:.87rem;font-weight:600;color:var(--ink);display:inline-flex;align-items:center;gap:7px}
+.rd .src.note{color:var(--ink-3)}
+.rd:hover .src svg{transform:translateX(3px)}
+.rd .src svg{transition:transform .2s}
+
+.disclaimer{margin-top:40px;padding:22px 26px;border-radius:var(--r);background:var(--paper);font-size:.89rem;color:var(--ink-2);max-width:80ch}
+.disclaimer b{display:block;font-size:.83rem;font-weight:640;color:var(--ink);margin-bottom:7px}
+
+@media(max-width:1040px){.fw-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:760px){
+  .fw-grid,.read,.qs{grid-template-columns:1fr}
+  .ev,.today{padding-left:54px}
+  .ev-card{padding:20px}
+  .p-hero{padding:56px 0 48px}
+}
 </style>
 </head>
 <body>
@@ -400,10 +453,10 @@ footer::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;back
   <div class="wrap nav">
     <a class="mark" href="index.html" aria-label="BITDOT home"><span class="wm">bitd</span><svg aria-hidden="true"><use href="#mk"/></svg><span class="wm">t</span></a>
     <ul class="nav-links">
-      <li><a href="services.html" class="on" aria-current="page">Services</a></li>
+      <li><a href="services.html">Services</a></li>
       <li><a href="index.html#assess">Assessment</a></li>
       <li><a href="index.html#lab">Automation Lab<span class="pill">Soon</span></a></li>
-      <li><a href="resources.html">Resources</a></li>
+      <li><a href="resources.html" class="on" aria-current="page">Resources</a></li>
       <li><a href="about.html">About</a></li>
     </ul>
     <a class="btn btn-primary" href="index.html#contact"><span>Book a session</span></a>
@@ -427,113 +480,370 @@ footer::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;back
 
 <section class="p-hero">
   <span class="blob" style="width:520px;height:520px;top:-220px;right:-160px;background:radial-gradient(circle,rgba(0,113,227,.16),transparent 66%)" aria-hidden="true"></span>
-  <span class="blob" style="width:400px;height:400px;top:120px;left:-140px;background:radial-gradient(circle,rgba(240,85,43,.13),transparent 66%);animation-delay:-8s" aria-hidden="true"></span>
+  <span class="blob" style="width:380px;height:380px;top:120px;left:-140px;background:radial-gradient(circle,rgba(14,164,122,.13),transparent 66%);animation-delay:-8s" aria-hidden="true"></span>
   <div class="wrap">
-    <p class="label rv">Services</p>
-    <h1 class="display rv">What we <em>actually do</em>.</h1>
-    <p class="lead rv">Four practices, one idea: bring world-class AI, data and governance expertise within reach of the organisations that usually cannot buy it.</p>
-    <div class="jump rv">
-      <a class="btn btn-ghost" href="#career">Career</a>
-      <a class="btn btn-ghost" href="#training">Training</a>
-      <a class="btn btn-ghost" href="#governance">Governance</a>
-      <a class="btn btn-ghost" href="#crisis">Risk</a>
+    <div class="inner">
+      <p class="label rv">Resource hub</p>
+      <h1 class="display rv">The AI rules, <em>dated</em>.</h1>
+      <p class="lead rv">Most AI governance writing tells you the landscape is moving. Less of it tells you what has actually commenced, what is merely proposed, and which dates are already locked into legislation. This is the reference we keep for our own clients.</p>
+      <p class="stamp rv"><i></i>Reviewed 30 August 2026</p>
+      <div class="jump rv">
+        <a href="#clock">The compliance clock</a>
+        <a href="#frameworks">Frameworks &amp; standards</a>
+        <a href="#board">For boards</a>
+        <a href="#reading">Reading list</a>
+      </div>
     </div>
   </div>
 </section>
 
-<section class="svc-sec" id="career" style="--sc:#0071E3">
-  <div class="wrap svc-grid2">
-    <div class="rv">
-      <p class="svc-num">01</p>
-      <h2 class="display">AI career services</h2>
-      <p class="lead" style="margin-top:16px">Coaching for students, graduates and professionals moving into AI roles, including engineers planning their next step.</p>
-      <a class="btn btn-coral" style="margin-top:26px" href="index.html#contact"><span>Enquire about this</span></a>
-    </div>
-    <div class="offer">
-      <div class="card fill off rv" style="--f:var(--fill-sky)"><b>1:1 coaching &amp; mentoring</b><span>Regular sessions with someone who has hired for these roles and sat on the other side of the table.</span></div>
-      <div class="card fill off rv" style="--f:var(--fill-blush)"><b>Resume &amp; profile review</b><span>A teardown of how you present, rewritten against what AI employers actually screen for.</span></div>
-      <div class="card fill off rv" style="--f:var(--fill-sage)"><b>Interview preparation</b><span>Technical and behavioural practice, with feedback you can act on before the real thing.</span></div>
-      <div class="card fill off rv" style="--f:var(--fill-lilac)"><b>AI engineer roadmap</b><span>A step-by-step plan from where you are now to the role you are aiming at.</span></div>
-    </div>
-  </div>
-</section>
-
-<section class="svc-sec bg-mist" id="training" style="--sc:#0B7A56">
-  <div class="wrap svc-grid2">
-    <div class="rv">
-      <p class="svc-num">02</p>
-      <h2 class="display">Applied AI &amp; automation training</h2>
-      <p class="lead" style="margin-top:16px">Practical sessions that demystify the tools, run on your real workflows rather than a demo dataset.</p>
-      <a class="btn btn-coral" style="margin-top:26px" href="index.html#contact"><span>Enquire about this</span></a>
-    </div>
-    <div class="offer">
-      <div class="card fill off rv" style="--f:var(--fill-sage)"><b>Copilot, Claude, ChatGPT &amp; Gemini</b><span>Hands-on with the assistants your team already has licences for, and the ones about to be asked about.</span></div>
-      <div class="card fill off rv" style="--f:var(--fill-sky)"><b>Prompt engineering</b><span>Repeatable prompting that produces the same quality on Friday afternoon as Monday morning.</span></div>
-      <div class="card fill off rv" style="--f:var(--fill-mint)"><b>Workflow automation</b><span>Finding the repetitive work worth automating, then automating it in front of you.</span></div>
-      <div class="card fill off rv" style="--f:var(--fill-sand)"><b>AI for small business</b><span>Getting the return without hiring a technology team to chase it.</span></div>
-    </div>
-  </div>
-</section>
-
-<section class="svc-sec" id="governance" style="--sc:#6D5BD0">
-  <div class="wrap svc-grid2">
-    <div class="rv">
-      <p class="svc-num">03</p>
-      <h2 class="display">AI governance &amp; executive education</h2>
-      <p class="lead" style="margin-top:16px">Our flagship board program plus the advisory that follows it: frameworks, policy design and accountability that survives an audit.</p>
-      <a class="btn btn-coral" style="margin-top:26px" href="index.html#contact"><span>Enquire about this</span></a>
-    </div>
-    <div class="offer">
-      <div class="card fill off rv" style="--f:var(--fill-lilac)"><b>Mastering AI Governance</b><span>The four-hour board program, delivered in person across three sessions or online in staggered blocks.</span></div>
-      <div class="card fill off rv" style="--f:var(--fill-blush)"><b>Governance frameworks</b><span>Built around the six essential practices in the National AI Centre guidance, sized to your organisation.</span></div>
-      <div class="card fill off rv" style="--f:var(--fill-sky)"><b>Director education</b><span>Aligned to the AICD and UTS Human Technology Institute director resources.</span></div>
-      <div class="card fill off rv" style="--f:var(--fill-sage)"><b>AI strategy development</b><span>Custom strategy aligned to your business goals, with the tool selection to match.</span></div>
-    </div>
-  </div>
-</section>
-
-<section class="svc-sec bg-mist" id="crisis" style="--sc:#B4770B">
-  <div class="wrap svc-grid2">
-    <div class="rv">
-      <p class="svc-num">04</p>
-      <h2 class="display">AI guardrails &amp; risk readiness</h2>
-      <p class="lead" style="margin-top:16px">Rehearse the incident before it rehearses you, and know which obligations already apply to you today.</p>
-      <a class="btn btn-coral" style="margin-top:26px" href="index.html#contact"><span>Enquire about this</span></a>
-    </div>
-    <div class="offer">
-      <div class="card fill off rv" style="--f:var(--fill-sand)"><b>AI risk workshops</b><span>Working sessions that surface where AI is actually running in your organisation.</span></div>
-      <div class="card fill off rv" style="--f:var(--fill-lilac)"><b>Guardrails &amp; data governance</b><span>AI governance cannot be separated from data governance. We treat them as one problem.</span></div>
-      <div class="card fill off rv" style="--f:var(--fill-mint)"><b>Regulatory readiness</b><span>Privacy Act automated-decision transparency, procurement obligations, and what applies if you touch the EU.</span></div>
-      <div class="card fill off rv" style="--f:var(--fill-sky)"><b>Incident rehearsal</b><span>A bad morning, simulated: a model produces something wrong and a journalist calls.</span></div>
-    </div>
-  </div>
-</section>
-
-<section class="section faq" id="faq">
-  <div class="wrap" style="max-width:900px">
+<!-- ══ THE COMPLIANCE CLOCK ══
+     CMS note (Junlong): each .ev is one entry in a `timeline` collection —
+     date (ISO), region, title, body, source label, source URL. The live vs
+     upcoming state is derived from the date at render time, so entries never
+     need re-tagging by hand. -->
+<section class="section bg-mist" id="clock">
+  <div class="wrap">
     <div class="sec-head rv">
-      <p class="label c-blue">Common questions</p>
-      <h2 class="display big">Frequently asked.</h2>
+      <p class="label c-blue">The compliance clock</p>
+      <h2 class="display big">What has commenced, and what is coming.</h2>
+      <p class="lead">Australia has no AI Act. That does not mean nothing has commenced, it means the obligations arrive through privacy law, procurement rules and sector regulators instead, on dates that are already fixed.</p>
     </div>
-    <details class="rv"><summary>Who is BITDOT's board training for?</summary><p>Board members, non-executive directors, executive leadership teams and senior management involved in strategy and risk. The program assumes no technical background.</p></details>
-    <details class="rv"><summary>How long is the Mastering AI Governance program?</summary><p>Four hours of immersive training. In person we split it across three sessions for engagement and retention; online we run it as staggered sessions to suit your team's schedule and location.</p></details>
-    <details class="rv"><summary>Do you work with individuals or organisations?</summary><p>Both. Individuals usually start with career coaching or the free readiness assessment. Organisations engage us for board training, team workshops, governance advisory and AI strategy.</p></details>
-    <details class="rv"><summary>Can you train a whole team on the AI tools?</summary><p>Yes. Our hands-on workshops cover Microsoft Copilot, Claude, ChatGPT and Gemini, plus prompt engineering and workflow automation, delivered in your real workflows rather than generic examples.</p></details>
-    <details class="rv"><summary>What happens after the training?</summary><p>We stay involved. Custom strategy development, tool selection, hands-on workshops, vendor introductions, integration planning and fit-for-purpose customisation are all available as continued partnership.</p></details>
-    <details class="rv"><summary>How does the AI readiness assessment work?</summary><p>You choose your pathway first, then answer five questions, about three minutes. Your level and matched recommendations appear immediately, free and ungated, and nothing is stored.</p></details>
+
+    <div class="filter rv" role="group" aria-label="Filter the timeline">
+      <button class="act" data-f="all" onclick="filterTl(this)">Everything</button>
+      <button data-f="au" onclick="filterTl(this)">Australia</button>
+      <button data-f="eu" onclick="filterTl(this)">European Union</button>
+      <button data-f="live" onclick="filterTl(this)">In force</button>
+      <button data-f="next" onclick="filterTl(this)">Still to come</button>
+    </div>
+    <p class="f-count" id="fcount"></p>
+
+    <div class="tl" id="tl">
+      <article class="ev rv" data-date="2025-02-02" data-region="eu">
+        <div class="ev-card card">
+          <div class="ev-top">
+            <span class="ev-date">2 Feb 2025</span>
+            <span class="tag eu">European Union</span>
+            <span class="tag st"></span>
+          </div>
+          <h3>EU AI Act: banned practices and the AI literacy duty</h3>
+          <p>The first tranche of the AI Act began to bite — a set of outright prohibitions, plus an obligation on providers and deployers to make sure the people operating their AI systems actually understand them. The literacy duty is the one most Australian organisations overlook, because it applies regardless of risk tier.</p>
+          <a class="src" href="https://artificialintelligenceact.eu/" target="_blank" rel="noopener">EU AI Act explorer <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </article>
+      <article class="ev rv" data-date="2025-08-02" data-region="eu">
+        <div class="ev-card card">
+          <div class="ev-top">
+            <span class="ev-date">2 Aug 2025</span>
+            <span class="tag eu">European Union</span>
+            <span class="tag st"></span>
+          </div>
+          <h3>Obligations on general-purpose AI providers begin</h3>
+          <p>Transparency, documentation and copyright-policy duties for the providers of general-purpose models. Relevant to Australian organisations mainly as a supply-chain question: the documentation your vendors now have to produce is documentation you can ask them for.</p>
+          <a class="src" href="https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai" target="_blank" rel="noopener">European Commission <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </article>
+      <article class="ev rv" data-date="2025-10-21" data-region="au">
+        <div class="ev-card card">
+          <div class="ev-top">
+            <span class="ev-date">21 Oct 2025</span>
+            <span class="tag au">Australia</span>
+            <span class="tag st"></span>
+          </div>
+          <h3>Ten voluntary guardrails become six essential practices</h3>
+          <p>The National AI Centre published <em>Guidance for AI Adoption</em>, known as the AI6, consolidating the 2024 Voluntary AI Safety Standard into six practices: decide who is accountable, understand impacts, measure and manage risk, share essential information, test and monitor, and keep humans in control. It ships in two versions — a foundations edition for organisations getting started, and implementation guidance for higher-risk or more complex use. The older standard remains useful as a more detailed control catalogue.</p>
+          <a class="src" href="https://www.ai.gov.au/staying-safe-and-responsible/essential-ai-practices" target="_blank" rel="noopener">ai.gov.au <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </article>
+      <article class="ev rv" data-date="2025-12-01" data-region="au">
+        <div class="ev-card card">
+          <div class="ev-top">
+            <span class="ev-date">Dec 2025</span>
+            <span class="tag au">Australia</span>
+            <span class="tag st"></span>
+          </div>
+          <h3>The National AI Plan closes the door on a standalone AI Act</h3>
+          <p>The plan confirmed that Australia will regulate AI through the laws it already has — privacy, consumer, anti-discrimination, copyright and sector-specific rules — supported by voluntary guidance rather than technology-specific legislation. The mandatory high-risk guardrails floated in September 2024 were not taken forward. For organisations, this is a redistribution of responsibility rather than a reprieve: the standard of care still has to be evidenced, just against existing law.</p>
+          <a class="src" href="https://www.industry.gov.au/" target="_blank" rel="noopener">Dept. of Industry, Science &amp; Resources <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </article>
+      <article class="ev rv" data-date="2026-02-01" data-region="au">
+        <div class="ev-card card">
+          <div class="ev-top">
+            <span class="ev-date">Early 2026</span>
+            <span class="tag au">Australia</span>
+            <span class="tag st"></span>
+          </div>
+          <h3>The Australian AI Safety Institute starts work</h3>
+          <p>Funded at $29.9 million and seated within the industry portfolio, the institute tests systems, analyses capability and harm, and advises regulators where it finds genuine gaps. It has no enforcement power of its own, so its practical significance is as the body whose gap analysis will shape whatever targeted reform eventually arrives.</p>
+          <a class="src" href="https://www.industry.gov.au/" target="_blank" rel="noopener">Dept. of Industry, Science &amp; Resources <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </article>
+      <article class="ev rv" data-date="2026-06-15" data-region="au">
+        <div class="ev-card card">
+          <div class="ev-top">
+            <span class="ev-date">15 Jun 2026</span>
+            <span class="tag au">Australia</span>
+            <span class="tag st"></span>
+          </div>
+          <h3>First mandatory AI requirements for Commonwealth agencies</h3>
+          <p>Under version 2.0 of the Digital Transformation Agency's policy, the first hard obligations commenced for non-corporate Commonwealth entities — public AI transparency statements, a stated position on AI adoption, and foundational AI training for staff. It matters well beyond the public service: if you sell to government, the procurement questions you are asked about AI use and accountability changed on this date.</p>
+          <a class="src" href="https://www.dta.gov.au/help-and-advice/artificial-intelligence" target="_blank" rel="noopener">Digital Transformation Agency <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </article>
+      <article class="ev rv" data-date="2026-07-15" data-region="au">
+        <div class="ev-card card">
+          <div class="ev-top">
+            <span class="ev-date">15 Jul 2026</span>
+            <span class="tag au">Australia</span>
+            <span class="tag st"></span>
+          </div>
+          <h3>Australian Standards for AI announced, plus an Office of AI</h3>
+          <p>The Prime Minister announced an intention to legislate an Australian Standards for AI framework, with an Office of AI established inside Prime Minister and Cabinet. Published material so far centres on large data centres and AI training rather than general duties on organisations using AI. An announcement is not legislation — treat the AI6 as the working baseline until draft law appears.</p>
+          <a class="src" href="https://www.pm.gov.au/" target="_blank" rel="noopener">Prime Minister of Australia <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </article>
+      <article class="ev rv" data-date="2026-07-27" data-region="eu">
+        <div class="ev-card card">
+          <div class="ev-top">
+            <span class="ev-date">27 Jul 2026</span>
+            <span class="tag eu">European Union</span>
+            <span class="tag st"></span>
+          </div>
+          <h3>The Digital Omnibus defers the high-risk deadline</h3>
+          <p>Days before the original cut-off, the simplification package entered into force and moved compliance for standalone high-risk systems out to December 2027, with AI embedded in regulated products following in 2028. Read carefully before relaxing: the deferral is narrow, and several duties stayed exactly where they were.</p>
+          <a class="src" href="https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai" target="_blank" rel="noopener">European Commission <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </article>
+      <article class="ev rv" data-date="2026-08-02" data-region="eu">
+        <div class="ev-card card">
+          <div class="ev-top">
+            <span class="ev-date">2 Aug 2026</span>
+            <span class="tag eu">European Union</span>
+            <span class="tag st"></span>
+          </div>
+          <h3>Transparency duties apply on the original schedule</h3>
+          <p>Telling people when they are dealing with an AI system, and labelling AI-generated content, was not deferred. If you serve EU users through a chatbot, a synthetic-media tool or an AI-assisted service, this one landed on time.</p>
+          <a class="src" href="https://artificialintelligenceact.eu/" target="_blank" rel="noopener">EU AI Act explorer <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </article>
+      <article class="ev rv" data-date="2026-12-02" data-region="eu">
+        <div class="ev-card card">
+          <div class="ev-top">
+            <span class="ev-date">2 Dec 2026</span>
+            <span class="tag eu">European Union</span>
+            <span class="tag st"></span>
+          </div>
+          <h3>Watermarking for generative models released before August</h3>
+          <p>The technical requirement to mark AI-generated output was given a short extension for models already on the market. A narrow provision, but a hard one if you build on top of an older model and ship into Europe.</p>
+          <a class="src" href="https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai" target="_blank" rel="noopener">European Commission <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </article>
+      <article class="ev rv" data-date="2026-12-10" data-region="au">
+        <div class="ev-card card">
+          <div class="ev-top">
+            <span class="ev-date">10 Dec 2026</span>
+            <span class="tag au">Australia</span>
+            <span class="tag st"></span>
+          </div>
+          <h3>The one with a hard date: automated decision transparency</h3>
+          <p>New privacy policy obligations commence for any organisation that has arranged for a computer program to make — or substantially and directly help make — decisions that could significantly affect someone's rights or interests. Your privacy policy has to describe, in general terms, the kinds of personal information involved and the kinds of decisions being made. It captures plain rule-based software, not just AI, and it applies to qualifying decisions from that date regardless of when the system was built. Loan approvals, tenancy screening, insurance pricing, shortlisting job applicants and eligibility assessments are the obvious candidates.</p>
+          <a class="src" href="https://www.oaic.gov.au/" target="_blank" rel="noopener">Office of the Australian Information Commissioner <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </article>
+      <article class="ev rv" data-date="2026-12-15" data-region="au">
+        <div class="ev-card card">
+          <div class="ev-top">
+            <span class="ev-date">Dec 2026</span>
+            <span class="tag au">Australia</span>
+            <span class="tag st"></span>
+          </div>
+          <h3>The rest of the government AI policy switches on</h3>
+          <p>The remaining obligations under the DTA policy — including AI impact assessments before deployment and a maintained register of in-scope AI use cases with a named owner for each — take effect. Suppliers to government should expect these to arrive as contract terms.</p>
+          <a class="src" href="https://www.dta.gov.au/help-and-advice/artificial-intelligence" target="_blank" rel="noopener">Digital Transformation Agency <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </article>
+      <article class="ev rv" data-date="2027-12-02" data-region="eu">
+        <div class="ev-card card">
+          <div class="ev-top">
+            <span class="ev-date">2 Dec 2027</span>
+            <span class="tag eu">European Union</span>
+            <span class="tag st"></span>
+          </div>
+          <h3>High-risk obligations, deferred but not cancelled</h3>
+          <p>Risk management, data quality, human oversight, registration, logging and incident reporting for standalone high-risk systems. Surveys through 2026 kept finding the same gap — most organisations still cannot produce an inventory of the AI they operate. Inventory first, then classification, then documentation.</p>
+          <a class="src" href="https://artificialintelligenceact.eu/" target="_blank" rel="noopener">EU AI Act explorer <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </article>
+      <article class="ev rv" data-date="2028-08-02" data-region="eu">
+        <div class="ev-card card">
+          <div class="ev-top">
+            <span class="ev-date">2 Aug 2028</span>
+            <span class="tag eu">European Union</span>
+            <span class="tag st"></span>
+          </div>
+          <h3>AI embedded in regulated products</h3>
+          <p>The longest runway in the schedule, covering AI inside products already governed by EU product-safety law. If you manufacture or integrate, this is the date your conformity work has to land against.</p>
+          <a class="src" href="https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai" target="_blank" rel="noopener">European Commission <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </article>
+    </div>
   </div>
 </section>
 
-<section class="section tight" style="padding-top:0">
+<section class="section" id="frameworks">
   <div class="wrap">
-    <div class="band rv" style="--pb:var(--bold-maroon)">
+    <div class="sec-head rv">
+      <p class="label c-plum">Frameworks &amp; standards</p>
+      <h2 class="display big">Six documents worth knowing by name.</h2>
+      <p class="lead">You do not need all of these. You need to know which one your organisation is being measured against, and to be able to say so out loud.</p>
+    </div>
+    <div class="fw-grid">
+      <a class="card fill fw rv" style="--f:var(--fill-lilac)" href="https://www.ai.gov.au/staying-safe-and-responsible/essential-ai-practices" target="_blank" rel="noopener">
+        <span class="who" style="--wc:#6D5BD0">Start here · Australia</span>
+        <h3>Guidance for AI Adoption — the AI6</h3>
+        <p>Six essential practices from the National AI Centre, developed with CSIRO's Data61. Voluntary in the same way the Essential Eight is voluntary — which is to say, increasingly the standard of care auditors, insurers and large customers expect to see evidenced.</p>
+        <span class="src">ai.gov.au <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a class="card fill fw rv" style="--f:var(--fill-mint);transition-delay:0.06s" href="https://www.aicd.com.au/innovative-technology/digital-business/artificial-intelligence/governance-of-ai.html" target="_blank" rel="noopener">
+        <span class="who" style="--wc:#0B7A56">Boards · Australia</span>
+        <h3>A Director's Guide to AI Governance</h3>
+        <p>The AICD and UTS Human Technology Institute suite, refreshed in 2026: an introduction for directors new to AI, the governance guide itself, a snapshot of the eight elements, and a separate checklist scaled for SME and not-for-profit boards.</p>
+        <span class="src">AICD <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a class="card fill fw rv" style="--f:var(--fill-blush);transition-delay:0.12s" href="https://www.iso.org/standard/42001" target="_blank" rel="noopener">
+        <span class="who" style="--wc:#D53F17">Certifiable · International</span>
+        <h3>ISO/IEC 42001</h3>
+        <p>The AI management system standard — the one you can actually be certified against, which makes it the usual answer when a customer or tender asks for proof rather than intent. The AI6's six practices map onto it more cleanly than the ten guardrails did.</p>
+        <span class="src">ISO <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a class="card fill fw rv" style="--f:var(--fill-sand)" href="https://www.nist.gov/itl/ai-risk-management-framework" target="_blank" rel="noopener">
+        <span class="who" style="--wc:#93630A">Risk teams · United States</span>
+        <h3>NIST AI Risk Management Framework</h3>
+        <p>Voluntary, widely adopted, and organised around four functions — govern, map, measure, manage. Useful even outside the US as a vocabulary that risk and engineering teams can share without translation.</p>
+        <span class="src">NIST <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a class="card fill fw rv" style="--f:var(--fill-rose);transition-delay:0.06s" href="https://artificialintelligenceact.eu/" target="_blank" rel="noopener">
+        <span class="who" style="--wc:#B23A56">If you touch the EU · Europe</span>
+        <h3>The EU AI Act</h3>
+        <p>Risk-tiered and extraterritorial: if your system's output reaches the EU meaningfully, you are potentially in scope regardless of where you sit. Deadlines have shifted; the tiers and the obligations attached to them have not.</p>
+        <span class="src">AI Act explorer <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a class="card fill fw rv" style="--f:var(--fill-sky);transition-delay:0.12s" href="https://www.oaic.gov.au/privacy/australian-privacy-principles" target="_blank" rel="noopener">
+        <span class="who" style="--wc:#0057B8">Everyone holding personal data · Australia</span>
+        <h3>The Australian Privacy Principles</h3>
+        <p>The quiet centre of Australian AI regulation. Privacy law already governs how AI systems handle personal information, and from December 2026 it carries the automated-decision transparency obligation as well. Regulator guidance is expected close to commencement.</p>
+        <span class="src">OAIC <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="section tight" id="board" style="padding-top:0">
+  <div class="wrap">
+    <div class="band rv">
       <span class="dots" aria-hidden="true"></span>
-      <p class="label on-dark">Not sure which door is yours?</p>
-      <h2 class="display big">Start with three minutes.</h2>
-      <p class="lead">Pick a pathway, take the assessment, and we will point you at the right one, or skip straight to a conversation.</p>
-      <div style="display:flex;gap:13px;flex-wrap:wrap;margin-top:28px">
-        <a class="btn btn-coral btn-lg" href="index.html#pathways"><span>Take the assessment</span></a>
-        <a class="btn btn-on-dark btn-lg" href="index.html#contact">Book a session</a>
+      <p class="label on-dark">For boards and executives</p>
+      <h2 class="display big">Six questions to answer before December.</h2>
+      <p class="lead">If your organisation cannot answer these, the gap is not a compliance gap yet, it is an information gap. Fix that first.</p>
+      <div class="qs" style="margin-top:32px">
+      <div class="card fill qq rv" style="--f:var(--fill-mint)"><b>Where is AI already being used here?</b><p>Not where it is approved. Where it is actually running, including the tools people brought in themselves.</p></div>
+      <div class="card fill qq rv" style="--f:var(--fill-blush);transition-delay:0.04s"><b>Does anything we run make decisions about people?</b><p>If software materially shapes an outcome for a customer, an applicant or an employee, December's transparency obligation is your problem.</p></div>
+      <div class="card fill qq rv" style="--f:var(--fill-sand);transition-delay:0.08s"><b>Who owns each use case by name?</b><p>Accountability is the first of the six essential practices because everything else fails without it.</p></div>
+      <div class="card fill qq rv" style="--f:var(--fill-lilac);transition-delay:0.12s"><b>What would we do at 9am on a bad day?</b><p>A model produces something defamatory, discriminatory or plainly wrong, and a journalist calls. Rehearse it before you need it.</p></div>
+      <div class="card fill qq rv" style="--f:var(--fill-rose);transition-delay:0.16s"><b>What have our vendors actually committed to?</b><p>Supply-chain assurance is where most mid-sized organisations find their real exposure, and where contract renewal is the only lever.</p></div>
+      <div class="card fill qq rv" style="--f:var(--fill-sky);transition-delay:0.20s"><b>Can we show our working?</b><p>Under a technology-neutral regime, the defence is evidence of reasonable care — decisions recorded at the time, not reconstructed afterwards.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="reading">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="label c-green">Reading list</p>
+      <h2 class="display big">Written by us, and worth reading anyway.</h2>
+      <p class="lead">Field notes from our own practice.</p>
+    </div>
+    <div class="read">
+      <article class="card fill rd rv" style="--f:var(--fill-lilac);transition-delay:0.00s"><span class="accent" style="background:#6D5BD0"></span>
+        <span class="meta"><i style="background:#6D5BD0"></i>BITDOT · Change leadership</span>
+        <h3>The real hurdle with AI isn't the software, it is us</h3>
+        <p>Psychological and psychosocial safety decide whether adoption succeeds. How to steady a team while the ground moves under it.</p>
+        <span class="src note">Ask us for the article</span>
+      </article>
+      <article class="card fill rd rv" style="--f:var(--fill-blush);transition-delay:0.05s"><span class="accent" style="background:#D53F17"></span>
+        <span class="meta"><i style="background:#D53F17"></i>BITDOT · AI governance</span>
+        <h3>The imperative of AI governance for NFPs and SMBs</h3>
+        <p>Smaller organisations carry the same AI risks as large enterprises on a fraction of the resources. A practical route through.</p>
+        <span class="src note">Ask us for the article</span>
+      </article>
+      <article class="card fill rd rv" style="--f:var(--fill-sky);transition-delay:0.10s"><span class="accent" style="background:#0057B8"></span>
+        <span class="meta"><i style="background:#0057B8"></i>BITDOT · Data governance</span>
+        <h3>Beyond data governance</h3>
+        <p>What one of the country's largest agencies taught us about turning an information framework into organisational excellence.</p>
+        <span class="src note">Ask us for the article</span>
+      </article>
+      <article class="card fill rd rv" style="--f:var(--fill-mint);transition-delay:0.15s"><span class="accent" style="background:#0B7A56"></span>
+        <span class="meta"><i style="background:#0B7A56"></i>BITDOT · Data literacy</span>
+        <h3>Data literacy in the times of AI and data science</h3>
+        <p>Data doesn't make decisions, people do. On setting honest expectations between business users and the models informing them.</p>
+        <span class="src note">Ask us for the article</span>
+      </article>
+    </div>
+
+    <div class="sec-head rv" style="margin:56px 0 36px">
+      <p class="label c-blue">Primary sources</p>
+      <h2 class="display big">Straight from the people who write the rules.</h2>
+    </div>
+    <div class="read">
+      <a class="card fill rd rv" style="--f:var(--fill-sand);transition-delay:0.00s" href="https://www.ai.gov.au/" target="_blank" rel="noopener"><span class="accent" style="background:#93630A"></span>
+        <span class="meta"><i style="background:#93630A"></i>National AI Centre</span>
+        <h3>ai.gov.au</h3>
+        <p>Where the essential practices, templates and updates now live. Worth a bookmark rather than a one-time read.</p>
+        <span class="src">Open <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a class="card fill rd rv" style="--f:var(--fill-mint);transition-delay:0.05s" href="https://www.oaic.gov.au/" target="_blank" rel="noopener"><span class="accent" style="background:#0B7A56"></span>
+        <span class="meta"><i style="background:#0B7A56"></i>OAIC</span>
+        <h3>Automated decision-making transparency</h3>
+        <p>The regulator's consultation and guidance on the December 2026 obligation. Read it before you rewrite your privacy policy, not after.</p>
+        <span class="src">Open <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a class="card fill rd rv" style="--f:var(--fill-lilac);transition-delay:0.10s" href="https://www.aicd.com.au/innovative-technology/digital-business/artificial-intelligence/governance-of-ai.html" target="_blank" rel="noopener"><span class="accent" style="background:#6D5BD0"></span>
+        <span class="meta"><i style="background:#6D5BD0"></i>AICD × UTS HTI</span>
+        <h3>A Director's Guide to AI Governance</h3>
+        <p>The board-facing suite: an introduction, the governance guide, the eight-element snapshot, and a checklist scaled for SME and NFP boards.</p>
+        <span class="src">Open <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a class="card fill rd rv" style="--f:var(--fill-sand);transition-delay:0.15s" href="https://www.iso.org/standard/42001" target="_blank" rel="noopener"><span class="accent" style="background:#93630A"></span>
+        <span class="meta"><i style="background:#93630A"></i>Standards</span>
+        <h3>ISO/IEC 42001</h3>
+        <p>The AI management system standard, the one you can actually be certified against when a tender asks for proof rather than intent.</p>
+        <span class="src">Open <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+    </div>
+
+    <div class="disclaimer rv">
+      <b>How to use this page</b>
+      Everything here was checked against primary sources and reviewed on 30 August 2026. AI policy moves quickly, and the position may have changed since, always confirm against the linked source before acting. This page is general information, not legal advice, and it is not a substitute for advice on your own circumstances.
+    </div>
+  </div>
+</section>
+
+<section class="section bg-mist" style="padding-top:0">
+  <div class="wrap">
+    <div class="promo rv">
+      <div class="promo-copy">
+        <h2 class="display">Knowing the dates is the <em>easy part</em>.</h2>
+        <p>We run the board training, the workshops and the governance advisory that turn a timeline into something your organisation can actually evidence.</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap">
+          <a class="btn btn-coral btn-lg" href="index.html#contact"><span>Book a session</span></a>
+          <a class="btn btn-on-dark btn-lg" href="index.html#pathways">Take the readiness assessment</a>
+        </div>
+      </div>
+      <div class="promo-media" aria-hidden="true">
+        <img src="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgNjIwIDQ2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGRlZnM+PHJhZGlhbEdyYWRpZW50IGlkPSJnMyIgY3g9IjQ4JSIgY3k9IjQ2JSIgcj0iNjglIj48c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMTUzRjM4IiBzdG9wLW9wYWNpdHk9Ii45NSIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzBBMUYxQiIvPjwvcmFkaWFsR3JhZGllbnQ+PC9kZWZzPgo8cmVjdCB3aWR0aD0iNjIwIiBoZWlnaHQ9IjQ2MCIgZmlsbD0idXJsKCNnMykiLz4KPHBhdGggZD0iTTM2MC4wIDIzMC4wIEE2MCA1Ni40IDAgMCAxIDM1OC42IDI0Mi4xIiBmaWxsPSJub25lIiBzdHJva2U9IiNmMDU1MmIiIHN0cm9rZS13aWR0aD0iMy4yIiBvcGFjaXR5PSIwLjkwIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPHBhdGggZD0iTTM1Ni40IDI0OS4zIEE2MCA1Ni40IDAgMCAxIDM1MC43IDI2MC4yIiBmaWxsPSJub25lIiBzdHJva2U9IiNmMDU4MjkiIHN0cm9rZS13aWR0aD0iMy4yIiBvcGFjaXR5PSIwLjkwIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPHBhdGggZD0iTTM0Ni4wIDI2Ni4zIEE2MCA1Ni40IDAgMCAxIDMzNi42IDI3NC43IiBmaWxsPSJub25lIiBzdHJva2U9IiNmMDViMjgiIHN0cm9rZS13aWR0aD0iMy4yIiBvcGFjaXR5PSIwLjkwIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPHBhdGggZD0iTTMzMC4wIDI3OC44IEE2MCA1Ni40IDAgMCAxIDMxOC4xIDI4My44IiBmaWxsPSJub25lIiBzdHJva2U9IiNmMDVlMjYiIHN0cm9rZS13aWR0aD0iMy4yIiBvcGFjaXR5PSIwLjkwIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPHBhdGggZD0iTTMxMC40IDI4NS41IEE2MCA1Ni40IDAgMCAxIDI5Ny41IDI4Ni40IiBmaWxsPSJub25lIiBzdHJva2U9IiNmMDYxMjUiIHN0cm9rZS13aWR0aD0iMy4yIiBvcGFjaXR5PSIwLjkwIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPHBhdGggZD0iTTI4OS42IDI4NS41IEE2MCA1Ni40IDAgMCAxIDI3Ny4xIDI4Mi4xIiBmaWxsPSJub25lIiBzdHJva2U9IiNmMTY1MjMiIHN0cm9rZS13aWR0aD0iMy4yIiBvcGFjaXR5PSIwLjkwIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPHBhdGggZD0iTTI3MC4wIDI3OC44IEE2MCA1Ni40IDAgMCAxIDI1OS41IDI3MS42IiBmaWxsPSJub25lIiBzdHJva2U9IiNmMTY4MjIiIHN0cm9rZS13aWR0aD0iMy4yIiBvcGFjaXR5PSIwLjkwIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPHBhdGggZD0iTTI1NC4wIDI2Ni4zIEE2MCA1Ni40IDAgMCAxIDI0Ni44IDI1Ni4xIiBmaWxsPSJub25lIiBzdHJva2U9IiNmMTZiMjEiIHN0cm9rZS13aWR0aD0iMy4yIiBvcGFjaXR5PSIwLjkwIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPHBhdGggZD0iTTI0My42IDI0OS4zIEE2MCA1Ni40IDAgMCAxIDI0MC41IDIzNy41IiBmaWxsPSJub25lIiBzdHJva2U9IiNmMTZlMWYiIHN0cm9rZS13aWR0aD0iMy4yIiBvcGFjaXR5PSIwLjkwIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPHBhdGggZD0iTTI0MC4wIDIzMC4wIEE2MCA1Ni40IDAgMCAxIDI0MS40IDIxNy45IiBmaWxsPSJub25lIiBzdHJva2U9IiNmMjcyMWUiIHN0cm9rZS13aWR0aD0iMy4yIiBvcGFjaXR5PSIwLjkwIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPHBhdGggZD0iTTI0My42IDIxMC43IEE2MCA1Ni40IDAgMCAxIDI0OS4zIDE5OS44IiBmaWxsPSJub25lIiBzdHJva2U9IiNmMjc1MWMiIHN0cm9rZS13aWR0aD0iMy4yIiBvcGFjaXR5PSIwLjkwIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPHBhdGggZD0iTTI1NC4wIDE5My43IEE2MCA1Ni40IDAgMCAxIDI2My40IDE4NS4zIiBmaWxsPSJub25lIiBzdHJva2U9IiNmMjc4MWIiIHN0cm9rZS13aWR0aD0iMy4yIiBvcGFjaXR5PSIwLjkwIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPHBhdGggZD0iTTI3MC4wIDE4MS4yIEE2MCA1Ni40IDAgMCAxIDI4MS45IDE3Ni4yIiBmaWxsPSJub25lIiBzdHJva2U9IiNmMjdiMTkiIHN0cm9rZS13aWR0aD0iMy4yIiBvcGFjaXR5PSIwLjkwIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPHBhdGggZD0iTTI4OS42IDE3NC41IEE2MCA1Ni40IDAgMCAxIDMwMi41IDE3My42IiBmaWxsPSJub25lIiBzdHJva2U9IiNmMjdmMTgiIHN0cm9rZS13aWR0aD0iMy4yIiBvcGFjaXR5PSIwLjkwIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPHBhdGggZD0iTTMxMC40IDE3NC41IEE2MCA1Ni40IDAgMCAxIDMyMi45IDE3Ny45IiBmaWxsPSJub25lIiBzdHJva2U9IiNmMzgyMTciIHN0cm9rZS13aWR0aD0iMy4yIiBvcGFjaXR5PSIwLjkwIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPHBhdGggZD0iTTMzMC4wIDE4MS4yIEE2MCA1Ni40IDAgMCAxIDM0MC41IDE4OC40IiBmaWxsPSJub25lIiBzdHJva2U9IiNmMzg1MTUiIHN0cm9rZS13aWR0aD0iMy4yIiBvcGFjaXR5PSIwLjkwIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPHBhdGggZD0iTTM0Ni4wIDE5My43IEE2MCA1Ni40IDAgMCAxIDM1My4yIDIwMy45IiBmaWxsPSJub25lIiBzdHJva2U9IiNmMzg4MTQiIHN0cm9rZS13aWR0aD0iMy4yIiBvcGFjaXR5PSIwLjkwIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPHBhdGggZD0iTTM1Ni40IDIxMC43IEE2MCA1Ni40IDAgMCAxIDM1OS41IDIyMi41IiBmaWxsPSJub25lIiBzdHJva2U9IiNmMzhjMTIiIHN0cm9rZS13aWR0aD0iMy4yIiBvcGFjaXR5PSIwLjkwIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPHBhdGggZD0iTTM5Mi4wIDIzMC4wIEE5MiA4Ni41IDAgMCAxIDM5MC40IDI0Ni4wIiBmaWxsPSJub25lIiBzdHJva2U9IiNmNDhmMTEiIHN0cm9rZS13aWR0aD0iMi45IiBvcGFjaXR5PSIwLjgwIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPHBhdGggZD0iTTM4Ny45IDI1NS41IEE5MiA4Ni41IDAgMCAxIDM4MS40IDI3MC4zIiBmaWxsPSJub25lIiBzdHJva2U9IiNmNDkyMTAiIHN0cm9rZS13aWR0aD0iMi45IiBvcGFjaXR5PSIwLjgwIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPHBhdGggZD0iTTM3Ni4wIDI3OC43IEE5MiA4Ni41IDAgMCAxIDM2NS4yIDI5MS4xIiBmaWxsPSJub25lIiBzdHJva2U9IiNmNDk0MGUiIHN0cm9rZS13aWR0aD0iMi45IiBvcGFjaXR5PSIwLjgwIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPHBhdGggZD0iTTM1Ny40IDI5Ny42IEE5MiA4Ni41IDAgMCAxIDM0My4xIDMwNi40IiBmaWxsPSJub25lIiBzdHJva2U9IiNmNDk3MGQiIHN0cm9rZS13aWR0aD0iMi45IiBvcGFjaXR5PSIwLjgwIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPHBhdGggZD0iTTMzMy42IDMxMC41IEE5MiA4Ni41IDAgMCAxIDMxNy4yIDMxNC45IiBmaWxsPSJub25lIiBzdHJva2U9IiNmNDlhMGMiIHN0cm9rZS13aWR0aD0iMi45IiBvcGFjaXR5PSIwLjgwIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPHBhdGggZD0iTTMwNi45IDMxNi4yIEE5MiA4Ni41IDAgMCAxIDI4OS44IDMxNi4wIiBmaWxsPSJub25lIiBzdHJva2U9IiNmNDlkMGIiIHN0cm9rZS13aWR0aD0iMi45IiBvcGFjaXR5PSIwLjgwIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPHBhdGggZD0iTTI3OS41IDMxNC4zIEE5MiA4Ni41IDAgMCAxIDI2My4zIDMwOS4zIiBmaWxsPSJub25lIiBzdHJva2U9IiNlZTllMGUiIHN0cm9rZS13aWR0aD0iMi45IiBvcGFjaXR5PSIwLjgwIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPHBhdGggZD0iTTI1NC4wIDMwNC45IEE5MiA4Ni41IDAgMCAxIDI0MC4xIDI5NS42IiBmaWxsPSJub25lIiBzdHJva2U9IiNlNTllMTIiIHN0cm9rZS13aWR0aD0iMi45IiBvcGFjaXR5PSIwLjgwIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPHBhdGggZD0iTTIzMi42IDI4OC44IEE5MiA4Ni41IDAgMCAxIDIyMi4yIDI3Ni4xIiBmaWxsPSJub25lIiBzdHJva2U9IiNkYzllMTYiIHN0cm9rZS13aWR0aD0iMi45IiBvcGFjaXR5PSIwLjgwIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPHBhdGggZD0iTTIxNy4xIDI2Ny41IEE5MiA4Ni41IDAgMCAxIDIxMS4yIDI1Mi41IiBmaWxsPSJub25lIiBzdHJva2U9IiNkNDllMWEiIHN0cm9rZS13aWR0aD0iMi45IiBvcGFjaXR5PSIwLjgwIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPHBhdGggZD0iTTIwOS4wIDI0Mi45IEE5MiA4Ni41IDAgMCAxIDIwOC4xIDIyNi45IiBmaWxsPSJub25lIiBzdHJva2U9IiNjYjlmMWYiIHN0cm9rZS13aWR0aD0iMi45IiBvcGFjaXR5PSIwLjgwIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPHBhdGggZD0iTTIwOS4wIDIxNy4xIEE5MiA4Ni41IDAgMCAxIDIxMy4xIDIwMS42IiBmaWxsPSJub25lIiBzdHJva2U9IiNjMjlmMjMiIHN0cm9rZS13aWR0aD0iMi45IiBvcGFjaXR5PSIwLjgwIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPHBhdGggZD0iTTIxNy4xIDE5Mi41IEE5MiA4Ni41IDAgMCAxIDIyNS45IDE3OC44IiBmaWxsPSJub25lIiBzdHJva2U9IiNiOTlmMjciIHN0cm9rZS13aWR0aD0iMi45IiBvcGFjaXR5PSIwLjgwIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPHBhdGggZD0iTTIzMi42IDE3MS4yIEE5MiA4Ni41IDAgMCAxIDI0NS4zIDE2MC41IiBmaWxsPSJub25lIiBzdHJva2U9IiNiMDlmMmIiIHN0cm9rZS13aWR0aD0iMi45IiBvcGFjaXR5PSIwLjgwIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPHBhdGggZD0iTTI1NC4wIDE1NS4xIEE5MiA4Ni41IDAgMCAxIDI2OS41IDE0OC40IiBmaWxsPSJub25lIiBzdHJva2U9IiNhOGEwMmYiIHN0cm9rZS13aWR0aD0iMi45IiBvcGFjaXR5PSIwLjgwIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPHBhdGggZD0iTTI3OS41IDE0NS43IEE5MiA4Ni41IDAgMCAxIDI5Ni40IDE0My42IiBmaWxsPSJub25lIiBzdHJva2U9IiM5ZmEwMzQiIHN0cm9rZS13aWR0aD0iMi45IiBvcGFjaXR5PSIwLjgwIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPHBhdGggZD0iTTMwNi45IDE0My44IEE5MiA4Ni41IDAgMCAxIDMyMy43IDE0Ni40IiBmaWxsPSJub25lIiBzdHJva2U9IiM5NmEwMzgiIHN0cm9rZS13aWR0aD0iMi45IiBvcGFjaXR5PSIwLjgwIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPHBhdGggZD0iTTMzMy42IDE0OS41IEE5MiA4Ni41IDAgMCAxIDM0OC44IDE1Ni43IiBmaWxsPSJub25lIiBzdHJva2U9IiM4ZGEwM2MiIHN0cm9rZS13aWR0aD0iMi45IiBvcGFjaXR5PSIwLjgwIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPHBhdGggZD0iTTM1Ny40IDE2Mi40IEE5MiA4Ni41IDAgMCAxIDM2OS42IDE3My41IiBmaWxsPSJub25lIiBzdHJva2U9IiM4NGEwNDAiIHN0cm9rZS13aWR0aD0iMi45IiBvcGFjaXR5PSIwLjgwIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPHBhdGggZD0iTTM3Ni4wIDE4MS4zIEE5MiA4Ni41IDAgMCAxIDM4NC4zIDE5NS4zIiBmaWxsPSJub25lIiBzdHJva2U9IiM3Y2ExNDUiIHN0cm9rZS13aWR0aD0iMi45IiBvcGFjaXR5PSIwLjgwIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPHBhdGggZD0iTTM4Ny45IDIwNC41IEE5MiA4Ni41IDAgMCAxIDM5MS40IDIyMC4yIiBmaWxsPSJub25lIiBzdHJva2U9IiM3M2ExNDkiIHN0cm9rZS13aWR0aD0iMi45IiBvcGFjaXR5PSIwLjgwIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPHBhdGggZD0iTTQyNC4wIDIzMC4wIEExMjQgMTE2LjYgMCAwIDEgNDIyLjQgMjQ4LjgiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzZhYTE0ZCIgc3Ryb2tlLXdpZHRoPSIyLjYiIG9wYWNpdHk9IjAuNzAiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8cGF0aCBkPSJNNDE5LjggMjYwLjIgQTEyNCAxMTYuNiAwIDAgMSA0MTMuMCAyNzguMCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNjJhMTUxIiBzdHJva2Utd2lkdGg9IjIuNiIgb3BhY2l0eT0iMC43MCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CjxwYXRoIGQ9Ik00MDcuNCAyODguMyBBMTI0IDExNi42IDAgMCAxIDM5Ni4wIDMwMy44IiBmaWxsPSJub25lIiBzdHJva2U9IiM1YWEyNTUiIHN0cm9rZS13aWR0aD0iMi42IiBvcGFjaXR5PSIwLjcwIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPHBhdGggZD0iTTM4Ny43IDMxMi40IEExMjQgMTE2LjYgMCAwIDEgMzcyLjQgMzI0LjciIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzUzYTI1OCIgc3Ryb2tlLXdpZHRoPSIyLjYiIG9wYWNpdHk9IjAuNzAiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8cGF0aCBkPSJNMzYyLjAgMzMwLjkgQTEyNCAxMTYuNiAwIDAgMSAzNDMuOCAzMzkuMCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNGJhMjVjIiBzdHJva2Utd2lkdGg9IjIuNiIgb3BhY2l0eT0iMC43MCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CjxwYXRoIGQ9Ik0zMzIuMSAzNDIuNiBBMTI0IDExNi42IDAgMCAxIDMxMi4zIDM0Ni4wIiBmaWxsPSJub25lIiBzdHJva2U9IiM0M2EyNjAiIHN0cm9rZS13aWR0aD0iMi42IiBvcGFjaXR5PSIwLjcwIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPHBhdGggZD0iTTMwMC4wIDM0Ni42IEExMjQgMTE2LjYgMCAwIDEgMjgwLjAgMzQ1LjAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzNjYTI2MyIgc3Ryb2tlLXdpZHRoPSIyLjYiIG9wYWNpdHk9IjAuNzAiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8cGF0aCBkPSJNMjY3LjkgMzQyLjYgQTEyNCAxMTYuNiAwIDAgMSAyNDkuMCAzMzYuMiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMzRhMzY3IiBzdHJva2Utd2lkdGg9IjIuNiIgb3BhY2l0eT0iMC43MCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CjxwYXRoIGQ9Ik0yMzguMCAzMzAuOSBBMTI0IDExNi42IDAgMCAxIDIyMS41IDMyMC4yIiBmaWxsPSJub25lIiBzdHJva2U9IiMyY2EzNmIiIHN0cm9rZS13aWR0aD0iMi42IiBvcGFjaXR5PSIwLjcwIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPHBhdGggZD0iTTIxMi4zIDMxMi40IEExMjQgMTE2LjYgMCAwIDEgMTk5LjMgMjk4LjAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzI1YTM2ZSIgc3Ryb2tlLXdpZHRoPSIyLjYiIG9wYWNpdHk9IjAuNzAiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8cGF0aCBkPSJNMTkyLjYgMjg4LjMgQTEyNCAxMTYuNiAwIDAgMSAxODQuMCAyNzEuMiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMWRhMzcyIiBzdHJva2Utd2lkdGg9IjIuNiIgb3BhY2l0eT0iMC43MCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CjxwYXRoIGQ9Ik0xODAuMiAyNjAuMiBBMTI0IDExNi42IDAgMCAxIDE3Ni42IDI0MS42IiBmaWxsPSJub25lIiBzdHJva2U9IiMxNWEzNzYiIHN0cm9rZS13aWR0aD0iMi42IiBvcGFjaXR5PSIwLjcwIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPHBhdGggZD0iTTE3Ni4wIDIzMC4wIEExMjQgMTE2LjYgMCAwIDEgMTc3LjYgMjExLjIiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzBlYTQ3YSIgc3Ryb2tlLXdpZHRoPSIyLjYiIG9wYWNpdHk9IjAuNzAiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8cGF0aCBkPSJNMTgwLjIgMTk5LjggQTEyNCAxMTYuNiAwIDAgMSAxODcuMCAxODIuMCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMTFhMTdjIiBzdHJva2Utd2lkdGg9IjIuNiIgb3BhY2l0eT0iMC43MCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CjxwYXRoIGQ9Ik0xOTIuNiAxNzEuNyBBMTI0IDExNi42IDAgMCAxIDIwNC4wIDE1Ni4yIiBmaWxsPSJub25lIiBzdHJva2U9IiMxNDlmN2YiIHN0cm9rZS13aWR0aD0iMi42IiBvcGFjaXR5PSIwLjcwIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPHBhdGggZD0iTTIxMi4zIDE0Ny42IEExMjQgMTE2LjYgMCAwIDEgMjI3LjYgMTM1LjMiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzE3OWM4MiIgc3Ryb2tlLXdpZHRoPSIyLjYiIG9wYWNpdHk9IjAuNzAiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8cGF0aCBkPSJNMjM4LjAgMTI5LjEgQTEyNCAxMTYuNiAwIDAgMSAyNTYuMiAxMjEuMCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMWE5YTg1IiBzdHJva2Utd2lkdGg9IjIuNiIgb3BhY2l0eT0iMC43MCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CjxwYXRoIGQ9Ik0yNjcuOSAxMTcuNCBBMTI0IDExNi42IDAgMCAxIDI4Ny43IDExNC4wIiBmaWxsPSJub25lIiBzdHJva2U9IiMxZDk3ODgiIHN0cm9rZS13aWR0aD0iMi42IiBvcGFjaXR5PSIwLjcwIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPHBhdGggZD0iTTMwMC4wIDExMy40IEExMjQgMTE2LjYgMCAwIDEgMzIwLjAgMTE1LjAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzIxOTU4YiIgc3Ryb2tlLXdpZHRoPSIyLjYiIG9wYWNpdHk9IjAuNzAiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8cGF0aCBkPSJNMzMyLjEgMTE3LjQgQTEyNCAxMTYuNiAwIDAgMSAzNTEuMCAxMjMuOCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMjQ5MjhlIiBzdHJva2Utd2lkdGg9IjIuNiIgb3BhY2l0eT0iMC43MCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CjxwYXRoIGQ9Ik0zNjIuMCAxMjkuMSBBMTI0IDExNi42IDAgMCAxIDM3OC41IDEzOS44IiBmaWxsPSJub25lIiBzdHJva2U9IiMyNzkwOTAiIHN0cm9rZS13aWR0aD0iMi42IiBvcGFjaXR5PSIwLjcwIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPHBhdGggZD0iTTM4Ny43IDE0Ny42IEExMjQgMTE2LjYgMCAwIDEgNDAwLjcgMTYyLjAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzJhOGU5MyIgc3Ryb2tlLXdpZHRoPSIyLjYiIG9wYWNpdHk9IjAuNzAiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8cGF0aCBkPSJNNDA3LjQgMTcxLjcgQTEyNCAxMTYuNiAwIDAgMSA0MTYuMCAxODguOCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMmQ4Yjk2IiBzdHJva2Utd2lkdGg9IjIuNiIgb3BhY2l0eT0iMC43MCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CjxwYXRoIGQ9Ik00MTkuOCAxOTkuOCBBMTI0IDExNi42IDAgMCAxIDQyMy40IDIxOC40IiBmaWxsPSJub25lIiBzdHJva2U9IiMzMDg5OTkiIHN0cm9rZS13aWR0aD0iMi42IiBvcGFjaXR5PSIwLjcwIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPHBhdGggZD0iTTQ1Ni4wIDIzMC4wIEExNTYgMTQ2LjYgMCAwIDEgNDU0LjQgMjUxLjEiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzMzODY5YyIgc3Ryb2tlLXdpZHRoPSIyLjMiIG9wYWNpdHk9IjAuNjAiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8cGF0aCBkPSJNNDUxLjggMjYzLjggQTE1NiAxNDYuNiAwIDAgMSA0NDUuMCAyODQuMCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMzY4NDllIiBzdHJva2Utd2lkdGg9IjIuMyIgb3BhY2l0eT0iMC42MCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CjxwYXRoIGQ9Ik00MzkuNCAyOTUuOCBBMTU2IDE0Ni42IDAgMCAxIDQyNy45IDMxNC4wIiBmaWxsPSJub25lIiBzdHJva2U9IiMzOTgyYTEiIHN0cm9rZS13aWR0aD0iMi4zIiBvcGFjaXR5PSIwLjYwIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPHBhdGggZD0iTTQxOS41IDMyNC4zIEExNTYgMTQ2LjYgMCAwIDEgNDAzLjggMzM5LjQiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzNjODBhNCIgc3Ryb2tlLXdpZHRoPSIyLjMiIG9wYWNpdHk9IjAuNjAiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8cGF0aCBkPSJNMzkzLjIgMzQ3LjYgQTE1NiAxNDYuNiAwIDAgMSAzNzQuMiAzNTkuMCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjM2Y3ZWE2IiBzdHJva2Utd2lkdGg9IjIuMyIgb3BhY2l0eT0iMC42MCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CjxwYXRoIGQ9Ik0zNjEuOCAzNjQuNiBBMTU2IDE0Ni42IDAgMCAxIDM0MC42IDM3MS42IiBmaWxsPSJub25lIiBzdHJva2U9IiM0MjdiYTkiIHN0cm9rZS13aWR0aD0iMi4zIiBvcGFjaXR5PSIwLjYwIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPHBhdGggZD0iTTMyNy4xIDM3NC40IEExNTYgMTQ2LjYgMCAwIDEgMzA0LjcgMzc2LjYiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzQ0NzlhYiIgc3Ryb2tlLXdpZHRoPSIyLjMiIG9wYWNpdHk9IjAuNjAiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8cGF0aCBkPSJNMjkwLjkgMzc2LjQgQTE1NiAxNDYuNiAwIDAgMSAyNjguNiAzNzMuNiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNDc3N2FlIiBzdHJva2Utd2lkdGg9IjIuMyIgb3BhY2l0eT0iMC42MCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CjxwYXRoIGQ9Ik0yNTUuMyAzNzAuNSBBMTU2IDE0Ni42IDAgMCAxIDIzNC4yIDM2My4wIiBmaWxsPSJub25lIiBzdHJva2U9IiM0YTc1YjAiIHN0cm9rZS13aWR0aD0iMi4zIiBvcGFjaXR5PSIwLjYwIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPHBhdGggZD0iTTIyMi4wIDM1Ny4wIEExNTYgMTQ2LjYgMCAwIDEgMjAzLjQgMzQ1LjEiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzRkNzNiMyIgc3Ryb2tlLXdpZHRoPSIyLjMiIG9wYWNpdHk9IjAuNjAiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8cGF0aCBkPSJNMTkyLjkgMzM2LjcgQTE1NiAxNDYuNiAwIDAgMSAxNzcuNyAzMjEuMSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNTA3MWI1IiBzdHJva2Utd2lkdGg9IjIuMyIgb3BhY2l0eT0iMC42MCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CjxwYXRoIGQ9Ik0xNjkuNyAzMTAuNiBBMTU2IDE0Ni42IDAgMCAxIDE1OC43IDI5Mi4xIiBmaWxsPSJub25lIiBzdHJva2U9IiM1MjZmYjgiIHN0cm9rZS13aWR0aD0iMi4zIiBvcGFjaXR5PSIwLjYwIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPHBhdGggZD0iTTE1My40IDI4MC4yIEExNTYgMTQ2LjYgMCAwIDEgMTQ3LjMgMjU5LjgiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzU1NmNiYSIgc3Ryb2tlLXdpZHRoPSIyLjMiIG9wYWNpdHk9IjAuNjAiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8cGF0aCBkPSJNMTQ1LjEgMjQ3LjAgQTE1NiAxNDYuNiAwIDAgMSAxNDQuMSAyMjUuOSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNTg2YWJkIiBzdHJva2Utd2lkdGg9IjIuMyIgb3BhY2l0eT0iMC42MCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CjxwYXRoIGQ9Ik0xNDUuMSAyMTMuMCBBMTU2IDE0Ni42IDAgMCAxIDE0OS4zIDE5Mi4yIiBmaWxsPSJub25lIiBzdHJva2U9IiM1YjY4YzAiIHN0cm9rZS13aWR0aD0iMi4zIiBvcGFjaXR5PSIwLjYwIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPHBhdGggZD0iTTE1My40IDE3OS44IEExNTYgMTQ2LjYgMCAwIDEgMTYyLjYgMTYwLjYiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzVlNjZjMiIgc3Ryb2tlLXdpZHRoPSIyLjMiIG9wYWNpdHk9IjAuNjAiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8cGF0aCBkPSJNMTY5LjcgMTQ5LjQgQTE1NiAxNDYuNiAwIDAgMSAxODMuMyAxMzIuNiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNjE2NGM1IiBzdHJva2Utd2lkdGg9IjIuMyIgb3BhY2l0eT0iMC42MCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CjxwYXRoIGQ9Ik0xOTIuOSAxMjMuMyBBMTU2IDE0Ni42IDAgMCAxIDIxMC40IDExMC4wIiBmaWxsPSJub25lIiBzdHJva2U9IiM2MzYyYzciIHN0cm9rZS13aWR0aD0iMi4zIiBvcGFjaXR5PSIwLjYwIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPHBhdGggZD0iTTIyMi4wIDEwMy4wIEExNTYgMTQ2LjYgMCAwIDEgMjQyLjIgOTMuOCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNjY1ZmNhIiBzdHJva2Utd2lkdGg9IjIuMyIgb3BhY2l0eT0iMC42MCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CjxwYXRoIGQ9Ik0yNTUuMyA4OS41IEExNTYgMTQ2LjYgMCAwIDEgMjc3LjIgODQuOSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNjk1ZGNjIiBzdHJva2Utd2lkdGg9IjIuMyIgb3BhY2l0eT0iMC42MCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CjxwYXRoIGQ9Ik0yOTAuOSA4My42IEExNTYgMTQ2LjYgMCAwIDEgMzEzLjQgODMuOSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNmM1YmNmIiBzdHJva2Utd2lkdGg9IjIuMyIgb3BhY2l0eT0iMC42MCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CjxwYXRoIGQ9Ik0zMjcuMSA4NS42IEExNTYgMTQ2LjYgMCAwIDEgMzQ4LjkgOTAuNyIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNmI1Y2QxIiBzdHJva2Utd2lkdGg9IjIuMyIgb3BhY2l0eT0iMC42MCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CjxwYXRoIGQ9Ik0zNjEuOCA5NS40IEExNTYgMTQ2LjYgMCAwIDEgMzgxLjcgMTA1LjEiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzY5NWVkMiIgc3Ryb2tlLXdpZHRoPSIyLjMiIG9wYWNpdHk9IjAuNjAiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8cGF0aCBkPSJNMzkzLjIgMTEyLjQgQTE1NiAxNDYuNiAwIDAgMSA0MTAuMiAxMjYuMiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNjc1ZmQzIiBzdHJva2Utd2lkdGg9IjIuMyIgb3BhY2l0eT0iMC42MCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CjxwYXRoIGQ9Ik00MTkuNSAxMzUuNyBBMTU2IDE0Ni42IDAgMCAxIDQzMi43IDE1Mi45IiBmaWxsPSJub25lIiBzdHJva2U9IiM2NjYxZDUiIHN0cm9rZS13aWR0aD0iMi4zIiBvcGFjaXR5PSIwLjYwIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPHBhdGggZD0iTTQzOS40IDE2NC4yIEExNTYgMTQ2LjYgMCAwIDEgNDQ4LjAgMTgzLjciIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzY0NjNkNiIgc3Ryb2tlLXdpZHRoPSIyLjMiIG9wYWNpdHk9IjAuNjAiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8cGF0aCBkPSJNNDUxLjggMTk2LjIgQTE1NiAxNDYuNiAwIDAgMSA0NTUuNCAyMTcuMCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNjI2NWQ4IiBzdHJva2Utd2lkdGg9IjIuMyIgb3BhY2l0eT0iMC42MCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CjxwYXRoIGQ9Ik00ODguMCAyMzAuMCBBMTg4IDE3Ni43IDAgMCAxIDQ4Ni40IDI1Mi45IiBmaWxsPSJub25lIiBzdHJva2U9IiM2MDY2ZDkiIHN0cm9rZS13aWR0aD0iMi4wIiBvcGFjaXR5PSIwLjUwIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPHBhdGggZD0iTTQ4My45IDI2Ni43IEExODggMTc2LjcgMCAwIDEgNDc3LjMgMjg4LjgiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzVlNjhkYSIgc3Ryb2tlLXdpZHRoPSIyLjAiIG9wYWNpdHk9IjAuNTAiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8cGF0aCBkPSJNNDcxLjcgMzAxLjkgQTE4OCAxNzYuNyAwIDAgMSA0NjAuNCAzMjIuMiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNWQ2OWRiIiBzdHJva2Utd2lkdGg9IjIuMCIgb3BhY2l0eT0iMC41MCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CjxwYXRoIGQ9Ik00NTIuMSAzMzMuOSBBMTg4IDE3Ni43IDAgMCAxIDQzNi41IDM1MS41IiBmaWxsPSJub25lIiBzdHJva2U9IiM1YjZiZGQiIHN0cm9rZS13aWR0aD0iMi4wIiBvcGFjaXR5PSIwLjUwIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPHBhdGggZD0iTTQyNS44IDM2MS4zIEExODggMTc2LjcgMCAwIDEgNDA2LjYgMzc1LjUiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzU5NmRkZSIgc3Ryb2tlLXdpZHRoPSIyLjAiIG9wYWNpdHk9IjAuNTAiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8cGF0aCBkPSJNMzk0LjAgMzgzLjAgQTE4OCAxNzYuNyAwIDAgMSAzNzIuMSAzOTMuMiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNTc2ZWRmIiBzdHJva2Utd2lkdGg9IjIuMCIgb3BhY2l0eT0iMC41MCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CjxwYXRoIGQ9Ik0zNTguMSAzOTguMSBBMTg4IDE3Ni43IDAgMCAxIDMzNC41IDQwMy43IiBmaWxsPSJub25lIiBzdHJva2U9IiM1NjcwZTAiIHN0cm9rZS13aWR0aD0iMi4wIiBvcGFjaXR5PSIwLjUwIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPHBhdGggZD0iTTMxOS43IDQwNS44IEExODggMTc2LjcgMCAwIDEgMjk1LjMgNDA2LjciIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzU0NzFlMiIgc3Ryb2tlLXdpZHRoPSIyLjAiIG9wYWNpdHk9IjAuNTAiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8cGF0aCBkPSJNMjgwLjMgNDA1LjggQTE4OCAxNzYuNyAwIDAgMSAyNTYuMyA0MDEuOSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNTI3M2UzIiBzdHJva2Utd2lkdGg9IjIuMCIgb3BhY2l0eT0iMC41MCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CjxwYXRoIGQ9Ik0yNDEuOSAzOTguMSBBMTg4IDE3Ni43IDAgMCAxIDIxOS4yIDM4OS42IiBmaWxsPSJub25lIiBzdHJva2U9IiM1MTc0ZTQiIHN0cm9rZS13aWR0aD0iMi4wIiBvcGFjaXR5PSIwLjUwIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPHBhdGggZD0iTTIwNi4wIDM4My4wIEExODggMTc2LjcgMCAwIDEgMTg1LjcgMzcwLjMiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzRmNzZlNSIgc3Ryb2tlLXdpZHRoPSIyLjAiIG9wYWNpdHk9IjAuNTAiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8cGF0aCBkPSJNMTc0LjIgMzYxLjMgQTE4OCAxNzYuNyAwIDAgMSAxNTcuMiAzNDQuOSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNGQ3OGU3IiBzdHJva2Utd2lkdGg9IjIuMCIgb3BhY2l0eT0iMC41MCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CjxwYXRoIGQ9Ik0xNDcuOSAzMzMuOSBBMTg4IDE3Ni43IDAgMCAxIDEzNC45IDMxNC41IiBmaWxsPSJub25lIiBzdHJva2U9IiM0Yzc5ZTgiIHN0cm9rZS13aWR0aD0iMi4wIiBvcGFjaXR5PSIwLjUwIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPHBhdGggZD0iTTEyOC4zIDMwMS45IEExODggMTc2LjcgMCAwIDEgMTE5LjggMjgwLjQiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzRhN2JlOSIgc3Ryb2tlLXdpZHRoPSIyLjAiIG9wYWNpdHk9IjAuNTAiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8cGF0aCBkPSJNMTE2LjEgMjY2LjcgQTE4OCAxNzYuNyAwIDAgMSAxMTIuNiAyNDQuMCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNDg3Y2VhIiBzdHJva2Utd2lkdGg9IjIuMCIgb3BhY2l0eT0iMC41MCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CjxwYXRoIGQ9Ik0xMTIuMCAyMzAuMCBBMTg4IDE3Ni43IDAgMCAxIDExMy42IDIwNy4xIiBmaWxsPSJub25lIiBzdHJva2U9IiM0NzdlZWMiIHN0cm9rZS13aWR0aD0iMi4wIiBvcGFjaXR5PSIwLjUwIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPHBhdGggZD0iTTExNi4xIDE5My4zIEExODggMTc2LjcgMCAwIDEgMTIyLjcgMTcxLjIiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzQ1N2ZlZCIgc3Ryb2tlLXdpZHRoPSIyLjAiIG9wYWNpdHk9IjAuNTAiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8cGF0aCBkPSJNMTI4LjMgMTU4LjEgQTE4OCAxNzYuNyAwIDAgMSAxMzkuNiAxMzcuOCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNDM4MWVlIiBzdHJva2Utd2lkdGg9IjIuMCIgb3BhY2l0eT0iMC41MCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CjxwYXRoIGQ9Ik0xNDcuOSAxMjYuMSBBMTg4IDE3Ni43IDAgMCAxIDE2My41IDEwOC41IiBmaWxsPSJub25lIiBzdHJva2U9IiM0MjgzZWYiIHN0cm9rZS13aWR0aD0iMi4wIiBvcGFjaXR5PSIwLjUwIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPHBhdGggZD0iTTE3NC4yIDk4LjcgQTE4OCAxNzYuNyAwIDAgMSAxOTMuNCA4NC41IiBmaWxsPSJub25lIiBzdHJva2U9IiM0MDg0ZjEiIHN0cm9rZS13aWR0aD0iMi4wIiBvcGFjaXR5PSIwLjUwIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPHBhdGggZD0iTTIwNi4wIDc3LjAgQTE4OCAxNzYuNyAwIDAgMSAyMjcuOSA2Ni44IiBmaWxsPSJub25lIiBzdHJva2U9IiMzZTg2ZjIiIHN0cm9rZS13aWR0aD0iMi4wIiBvcGFjaXR5PSIwLjUwIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPHBhdGggZD0iTTI0MS45IDYxLjkgQTE4OCAxNzYuNyAwIDAgMSAyNjUuNSA1Ni4zIiBmaWxsPSJub25lIiBzdHJva2U9IiMzZDg3ZjMiIHN0cm9rZS13aWR0aD0iMi4wIiBvcGFjaXR5PSIwLjUwIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPHBhdGggZD0iTTI4MC4zIDU0LjIgQTE4OCAxNzYuNyAwIDAgMSAzMDQuNyA1My4zIiBmaWxsPSJub25lIiBzdHJva2U9IiMzYjg5ZjQiIHN0cm9rZS13aWR0aD0iMi4wIiBvcGFjaXR5PSIwLjUwIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPHBhdGggZD0iTTMxOS43IDU0LjIgQTE4OCAxNzYuNyAwIDAgMSAzNDMuNyA1OC4xIiBmaWxsPSJub25lIiBzdHJva2U9IiMzOThhZjYiIHN0cm9rZS13aWR0aD0iMi4wIiBvcGFjaXR5PSIwLjUwIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPHBhdGggZD0iTTM1OC4xIDYxLjkgQTE4OCAxNzYuNyAwIDAgMSAzODAuOCA3MC40IiBmaWxsPSJub25lIiBzdHJva2U9IiMzODhjZjciIHN0cm9rZS13aWR0aD0iMi4wIiBvcGFjaXR5PSIwLjUwIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPHBhdGggZD0iTTM5NC4wIDc3LjAgQTE4OCAxNzYuNyAwIDAgMSA0MTQuMyA4OS43IiBmaWxsPSJub25lIiBzdHJva2U9IiMzNjhlZjgiIHN0cm9rZS13aWR0aD0iMi4wIiBvcGFjaXR5PSIwLjUwIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPHBhdGggZD0iTTQyNS44IDk4LjcgQTE4OCAxNzYuNyAwIDAgMSA0NDIuOCAxMTUuMSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMzQ4ZmY5IiBzdHJva2Utd2lkdGg9IjIuMCIgb3BhY2l0eT0iMC41MCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CjxwYXRoIGQ9Ik00NTIuMSAxMjYuMSBBMTg4IDE3Ni43IDAgMCAxIDQ2NS4xIDE0NS41IiBmaWxsPSJub25lIiBzdHJva2U9IiMzMzkxZmIiIHN0cm9rZS13aWR0aD0iMi4wIiBvcGFjaXR5PSIwLjUwIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPHBhdGggZD0iTTQ3MS43IDE1OC4xIEExODggMTc2LjcgMCAwIDEgNDgwLjIgMTc5LjYiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzMxOTJmYyIgc3Ryb2tlLXdpZHRoPSIyLjAiIG9wYWNpdHk9IjAuNTAiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8cGF0aCBkPSJNNDgzLjkgMTkzLjMgQTE4OCAxNzYuNyAwIDAgMSA0ODcuNCAyMTYuMCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMmY5NGZkIiBzdHJva2Utd2lkdGg9IjIuMCIgb3BhY2l0eT0iMC41MCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CjxsaW5lIHgxPSIzMDAuMCIgeTE9IjkuMSIgeDI9IjMwMC4wIiB5Mj0iLTUuMCIgc3Ryb2tlPSIjZjA1NTJiIiBzdHJva2Utd2lkdGg9IjIuNCIgb3BhY2l0eT0iLjc1IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPGxpbmUgeDE9IjQxNy41IiB5MT0iMzguNyIgeDI9IjQyNS4wIiB5Mj0iMjYuNSIgc3Ryb2tlPSIjZjE2ZDIwIiBzdHJva2Utd2lkdGg9IjIuNCIgb3BhY2l0eT0iLjc1IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPGxpbmUgeDE9IjUwMy41IiB5MT0iMTE5LjYiIHgyPSI1MTYuNSIgeTI9IjExMi41IiBzdHJva2U9IiNmMzg1MTUiIHN0cm9rZS13aWR0aD0iMi40IiBvcGFjaXR5PSIuNzUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8bGluZSB4MT0iNTM1LjAiIHkxPSIyMzAuMCIgeDI9IjU1MC4wIiB5Mj0iMjMwLjAiIHN0cm9rZT0iI2Y1OWUwYiIgc3Ryb2tlLXdpZHRoPSIyLjQiIG9wYWNpdHk9Ii43NSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CjxsaW5lIHgxPSI1MDMuNSIgeTE9IjM0MC40IiB4Mj0iNTE2LjUiIHkyPSIzNDcuNSIgc3Ryb2tlPSIjYThhMDJmIiBzdHJva2Utd2lkdGg9IjIuNCIgb3BhY2l0eT0iLjc1IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPGxpbmUgeDE9IjQxNy41IiB5MT0iNDIxLjMiIHgyPSI0MjUuMCIgeTI9IjQzMy41IiBzdHJva2U9IiM1YWEyNTUiIHN0cm9rZS13aWR0aD0iMi40IiBvcGFjaXR5PSIuNzUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8bGluZSB4MT0iMzAwLjAiIHkxPSI0NTAuOSIgeDI9IjMwMC4wIiB5Mj0iNDY1LjAiIHN0cm9rZT0iIzBlYTQ3YSIgc3Ryb2tlLXdpZHRoPSIyLjQiIG9wYWNpdHk9Ii43NSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CjxsaW5lIHgxPSIxODIuNSIgeTE9IjQyMS4zIiB4Mj0iMTc1LjAiIHkyPSI0MzMuNSIgc3Ryb2tlPSIjMmQ4Yjk2IiBzdHJva2Utd2lkdGg9IjIuNCIgb3BhY2l0eT0iLjc1IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPGxpbmUgeDE9Ijk2LjUiIHkxPSIzNDAuNSIgeDI9IjgzLjUiIHkyPSIzNDcuNSIgc3Ryb2tlPSIjNGQ3M2IzIiBzdHJva2Utd2lkdGg9IjIuNCIgb3BhY2l0eT0iLjc1IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPGxpbmUgeDE9IjY1LjAiIHkxPSIyMzAuMCIgeDI9IjUwLjAiIHkyPSIyMzAuMCIgc3Ryb2tlPSIjNmQ1YmQwIiBzdHJva2Utd2lkdGg9IjIuNCIgb3BhY2l0eT0iLjc1IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPGxpbmUgeDE9Ijk2LjUiIHkxPSIxMTkuNSIgeDI9IjgzLjUiIHkyPSIxMTIuNSIgc3Ryb2tlPSIjNTc2ZWRmIiBzdHJva2Utd2lkdGg9IjIuNCIgb3BhY2l0eT0iLjc1IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPGxpbmUgeDE9IjE4Mi41IiB5MT0iMzguNyIgeDI9IjE3NS4wIiB5Mj0iMjYuNSIgc3Ryb2tlPSIjNDM4MmVmIiBzdHJva2Utd2lkdGg9IjIuNCIgb3BhY2l0eT0iLjc1IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPGNpcmNsZSBjeD0iNDE0LjciIGN5PSIxMzkuMiIgcj0iMTQiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI0YwNTUyQiIgc3Ryb2tlLXdpZHRoPSIxLjQiIG9wYWNpdHk9Ii41Ii8+CjxjaXJjbGUgY3g9IjQxNC43IiBjeT0iMTM5LjIiIHI9IjciIGZpbGw9IiNGMDU1MkIiLz4KPGxpbmUgeDE9IjMwMCIgeTE9IjIzMCIgeDI9IjQxNC43IiB5Mj0iMTM5LjIiIHN0cm9rZT0iI0YwNTUyQiIgc3Ryb2tlLXdpZHRoPSIxLjYiIG9wYWNpdHk9Ii42Ii8+CjxjaXJjbGUgY3g9IjMwMCIgY3k9IjIzMCIgcj0iNSIgZmlsbD0iI0Y5RjdGMSIvPgo8L3N2Zz4=" alt="" loading="lazy">
       </div>
     </div>
   </div>
@@ -592,9 +902,18 @@ footer::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;back
 <script>
 const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
 document.getElementById('yr').textContent = new Date().getFullYear();
+function track(ev,props){
+  try{
+    (window.dataLayer=window.dataLayer||[]).push(Object.assign({event:ev},props||{}));
+    if(window.gtag)gtag('event',ev,props||{});
+    if(window.clarity)clarity('event',ev);
+    console.info('[bitdot]',ev,props||{});
+  }catch(_){}
+}
 function toggleMenu(b){const m=document.getElementById('mmenu');b.setAttribute('aria-expanded',m.classList.toggle('open'));}
 addEventListener('keydown',e=>{if(e.key==='Escape'){document.getElementById('mmenu').classList.remove('open');
   document.querySelector('.burger').setAttribute('aria-expanded','false');}});
+
 const bar=document.getElementById('prog'),btt=document.getElementById('btt'),hd=document.getElementById('hd');
 addEventListener('scroll',()=>{
   const h=document.documentElement,max=h.scrollHeight-h.clientHeight;
@@ -602,14 +921,52 @@ addEventListener('scroll',()=>{
   btt.classList.toggle('show',h.scrollTop>700);
   hd.classList.toggle('scrolled',h.scrollTop>8);
 },{passive:true});
+
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.1});
 document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+
 document.querySelectorAll('.lg img').forEach(img=>{
   const settle=()=>{ if(img.naturalWidth>0){ img.style.display='block';
     const d=img.parentElement.querySelector('.dot'); if(d)d.style.display='none'; } };
   img.addEventListener('load',settle); img.addEventListener('error',()=>{});
   if(img.complete)settle();
 });
+
+/* the clock derives its own state from today's date, so entries never need
+   re-tagging and the marker sits wherever today actually falls */
+const TODAY=new Date(); TODAY.setHours(0,0,0,0);
+const evs=[...document.querySelectorAll('.ev')];
+let marker=null;
+evs.forEach(ev=>{
+  const live=new Date(ev.dataset.date+'T00:00:00')<=TODAY;
+  ev.classList.add(live?'live':'next');
+  ev.dataset.state=live?'live':'next';
+  const st=ev.querySelector('.tag.st');
+  st.textContent=live?'In force':'Still to come';
+  st.classList.add(live?'live':'next');
+  if(!live&&!marker){
+    marker=document.createElement('div');
+    marker.className='today';
+    marker.innerHTML='<span>Today · '+TODAY.toLocaleDateString('en-AU',{day:'numeric',month:'long',year:'numeric'})+'</span>';
+    ev.parentNode.insertBefore(marker,ev);
+  }
+});
+
+function filterTl(btn){
+  document.querySelectorAll('.filter button').forEach(b=>b.classList.remove('act'));
+  btn.classList.add('act');
+  const f=btn.dataset.f; let shown=0;
+  evs.forEach(ev=>{
+    const show = f==='all' || ev.dataset.region===f || ev.dataset.state===f;
+    ev.classList.toggle('hide',!show); if(show)shown++;
+  });
+  if(marker)marker.style.display = f==='all' ? '' : 'none';
+  document.getElementById('fcount').textContent = shown+' of '+evs.length+' milestones shown';
+  track('resources_filtered',{filter:f,shown});
+}
+document.getElementById('fcount').textContent = evs.length+' milestones, oldest first';
+document.querySelectorAll('.ev .src,.fw,.rd').forEach(a=>a.addEventListener('click',
+  ()=>track('resource_clicked',{href:a.getAttribute('href')||'internal'})));
 </script>
 </body>
 </html>
