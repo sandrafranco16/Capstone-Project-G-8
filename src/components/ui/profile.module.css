@@ -1,0 +1,17 @@
+.profile { border-radius: 18px; overflow: hidden; color: #fff; display: flex; flex-direction: column; min-width: 0; }
+.maroon { background: #5c1a2e; }
+.navy { background: #16233e; }
+.forest { background: #0e2e29; }
+.photo { position: relative; aspect-ratio: 16 / 11; background: rgb(255 255 255 / 6%); overflow: hidden; }
+.image { object-fit: cover; transition: transform .3s; }
+.profile:hover .image { transform: scale(1.03); }
+.initials { display: grid; place-items: center; height: 100%; font-size: 3.5rem; font-weight: 700; }
+.body { padding: 24px; overflow-wrap: anywhere; }
+.name { color: #fff; margin: 0 0 8px; font-size: 1.45rem; }
+.role { margin: 0 0 4px; font-weight: 600; }
+.specialty { margin: 0; color: #e0e5e3; font-size: .9rem; }
+.description { margin-top: 20px; padding-top: 16px; border-top: 1px solid rgb(255 255 255 / 25%); color: #e0e5e3; }
+.description > :last-child { margin-bottom: 0; }
+.description a { color: #fff; text-decoration: underline; }
+.description a:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
+@media (prefers-reduced-motion: reduce) { .image { transition: none; transform: none !important; } }
