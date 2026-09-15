@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { Container } from "@/components/ui/container";
+import { CtaAction } from "@/components/ui/cta";
 import { getService, services } from "@/features/services/content";
 
 type ServicePageProps = { params: Promise<{ slug: string }> };
@@ -40,12 +40,12 @@ export default async function ServicePage({ params }: ServicePageProps) {
             ))}
           </ul>
           <div className="button-row">
-            <Link className="button" href="/booking">
+            <CtaAction href="/booking">
               Book a consultation
-            </Link>
-            <Link className="button button--secondary" href="/contact">
+            </CtaAction>
+            <CtaAction variant="secondary" href="/contact">
               Contact BITDOT
-            </Link>
+            </CtaAction>
           </div>
         </Container>
       </section>
