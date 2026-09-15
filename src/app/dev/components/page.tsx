@@ -5,6 +5,9 @@ import { notFound } from "next/navigation";
 import { Accordion } from "@/components/ui/accordion";
 import { Container } from "@/components/ui/container";
 import { Cta, CtaAction } from "@/components/ui/cta";
+import { CardRail } from "@/components/ui/card-rail";
+import { Profile } from "@/components/ui/profile";
+import { services } from "@/features/services/content";
 
 export const metadata: Metadata = {
   title: "Component preview",
@@ -19,8 +22,39 @@ export default function ComponentPreviewPage() {
       <header className="section">
         <p className="eyebrow">BIT-26 · Development preview</p>
         <h1>Shared components</h1>
-        <p>Accordion and call-to-action examples for page authors.</p>
+        <p>Accordion, call-to-action, card rail and profile examples for page authors.</p>
       </header>
+      <div className="section">
+        <CardRail title="Explore our services">
+          {services.map((service) => (
+            <article key={service.slug} className="card">
+              <h3>{service.title}</h3>
+              <p>{service.summary}</p>
+              <Link href={`/services/${service.slug}`}>Explore {service.title}</Link>
+            </article>
+          ))}
+        </CardRail>
+      </div>
+      <div className="section">
+        <CardRail title="Meet the founders">
+          <Profile name="Hemna Goyal" role="Co-Founder & Managing Director" specialty="Management Specialist" variant="maroon" photo={{ src: "/images/people/hemna-goyal.jpg", alt: "Hemna Goyal" }}>
+            <p>B.Arch. and Master of Project &amp; Program Management.</p>
+            <p>Governance and strategic decision-making.</p>
+          </Profile>
+          <Profile name="Vaibhav Agrawal" role="Co-Founder & Director" specialty="Data & AI Specialist" variant="navy" photo={{ src: "/images/people/vaibhav-agrawal.jpg", alt: "Vaibhav Agrawal" }}>
+            <p>GAICD, B.Tech, and M.Tech in Data &amp; Analytics.</p>
+            <p>AI governance and strategic decision-making.</p>
+          </Profile>
+        </CardRail>
+      </div>
+      <div className="section">
+        <CardRail title="Single card and missing photo example">
+          <Profile name="Example team member with a longer name" role="Example role with a longer description to verify mobile wrapping">
+            <p>Preview fixture: optional photo and specialty are omitted.</p>
+          </Profile>
+        </CardRail>
+        <CardRail title="Empty list example">{[]}</CardRail>
+      </div>
       <section aria-labelledby="faq-heading">
         <h2 id="faq-heading">Frequently asked questions</h2>
         <Accordion items={[

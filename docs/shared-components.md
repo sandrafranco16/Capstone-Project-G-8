@@ -1,4 +1,4 @@
-# Shared components — BIT-26, PR 1
+# Shared components — BIT-26
 
 Run `pnpm dev` and open `/dev/components` to review the examples. This route
 returns 404 outside development and is excluded from indexing. Service detail
@@ -56,8 +56,71 @@ No global CSS or demo HTML changes are required.
 
 The homepage, Services overview and About still render through `LegacyDemoPage`.
 Import these components when migrating those pages to React; adding React files
-alone does not replace content inside the legacy HTML. Card Rail and Profile are
-reserved for PR 2.
+alone does not replace content inside the legacy HTML.
+
+## Card Rail (PR 2)
+
+```tsx
+import { CardRail } from "@/components/ui/card-rail";
+
+<CardRail title="Explore services">
+  {services.map((service) => (
+    <article key={service.slug}>
+      <h3>{service.title}</h3>
+      <p>{service.summary}</p>
+    </article>
+  ))}
+</CardRail>
+```
+
+- Required `title` labels the section and scrollable list; `children` supplies
+  cards. Use stable React keys for changing arrays. Optional `className` styles
+  the section. Each direct child is one card; pass arrays rather than a Fragment.
+- Cards are 340px wide, capped at the available width. Native touch/trackpad
+  scrolling and CSS scroll snap remain available without JavaScript.
+- Previous/next buttons move one card including its gap. Buttons hide without
+  overflow and disable at the respective edge. ResizeObserver updates boundaries
+  when list/card geometry changes; listeners and observers clean up on unmount.
+- Focus the list and use Left/Right, Home/End. Keyboard events originating from
+  links or inputs inside cards are left alone. Scrolling honours reduced motion.
+- This is a left-to-right list for the English site; no autoplay or looping.
+- The client boundary is limited to CardRail. Server components may pass card
+  markup as children. Empty lists render nothing; a single fitting card has no
+  arrow controls.
+
+## Profile (PR 2)
+
+```tsx
+import { Profile } from "@/components/ui/profile";
+
+<Profile name="Hemna Goyal" role="Co-Founder & Managing Director"
+  specialty="Management Specialist" variant="maroon"
+  photo={{ src: "/images/people/hemna-goyal.jpg", alt: "Hemna Goyal" }}>
+  <p>Governance and strategic decision-making.</p>
+</Profile>
+```
+
+- `name` is required. `role`, `specialty`, `photo`, `children` and `className` are
+  optional. `variant` accepts `forest` (default), `maroon` or `navy`.
+- Renders an article with an h3; compose below an h2. Children provide biography
+  paragraphs, lists or links. With no photo, decorative initials fill the image
+  area. Omit absent fields instead of supplying empty placeholder labels.
+- `photo` requires `src` and `alt`. Next Image reserves a 16:11 region and crops
+  with object-fit: cover. Use existing local images; remote sources require the
+  project's Next.js image configuration. A supplied but broken URL is not the
+  same as an omitted photo and should be fixed by the page author.
+- The two preview portraits were extracted unchanged from `demo/about.html`.
+  Names stay below the image so long names do not overlap portraits on mobile.
+
+### PR 2 verification
+
+- `pnpm test src/components/ui/card-rail.test.tsx` checks boundaries, resize,
+  independent instances, reduced motion, keyboard handling, empty/single lists
+  and observer cleanup. DOM geometry is mocked; browser review checks real layout.
+- On `/dev/components`, compare services and founder rails. At 390px both should
+  scroll; on a wide desktop, two founders fit and their arrows disappear.
+- Scroll to both ends, resize, and use Tab then Left/Right and Home/End. Confirm
+  the other rail stays put, portrait images load, and long names wrap.
 
 ## Review checklist
 
