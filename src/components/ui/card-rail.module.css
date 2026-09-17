@@ -1,8 +1,24 @@
-.section { min-width: 0; }
-.header { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; margin-bottom: 24px; }
-.header h2 { margin: 0; }
-.controls { display: flex; gap: 10px; }
-.controls[hidden] { display: none; }
+.section {
+  min-width: 0;
+}
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+.header h2 {
+  margin: 0;
+}
+.controls {
+  display: flex;
+  gap: 10px;
+}
+.controls[hidden] {
+  display: none;
+}
 .controls button {
   width: 44px;
   height: 44px;
@@ -13,8 +29,14 @@
   font-size: 1.3rem;
   cursor: pointer;
 }
-.controls button:hover:not(:disabled) { background: #0e2e29; color: #fff; }
-.controls button:disabled { opacity: .35; cursor: default; }
+.controls button:hover:not(:disabled) {
+  background: #0e2e29;
+  color: #fff;
+}
+.controls button:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
 .rail {
   display: grid;
   grid-auto-flow: column;
@@ -27,6 +49,17 @@
   padding: 4px 0 16px;
   margin: 0;
 }
-.item { display: flex; min-width: 0; scroll-snap-align: start; }
-.item > * { width: 100%; min-width: 0; }
-.rail:focus-visible, .controls button:focus-visible { outline: 3px solid #0b7a56; outline-offset: 3px; }
+.item {
+  display: flex;
+  min-width: 0;
+  scroll-snap-align: start;
+}
+.item > * {
+  width: 100%;
+  min-width: 0;
+}
+.rail:focus-visible,
+.controls button:focus-visible {
+  outline: 3px solid #0b7a56;
+  outline-offset: 3px;
+}

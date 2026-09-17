@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import type { ComponentProps } from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -8,6 +9,36 @@ import { Cta, CtaAction } from "@/components/ui/cta";
 import { CardRail } from "@/components/ui/card-rail";
 import { Profile } from "@/components/ui/profile";
 import { services } from "@/features/services/content";
+
+const founders = [
+  {
+    name: "Hemna Goyal",
+    role: "Co-Founder & Managing Director",
+    specialty: "Management Specialist",
+    variant: "maroon",
+    photo: { src: "/images/people/hemna-goyal.jpg", alt: "Hemna Goyal" },
+    paragraphs: [
+      "B.Arch. and Master of Project & Program Management.",
+      "Governance and strategic decision-making.",
+    ],
+  },
+  {
+    name: "Vaibhav Agrawal",
+    role: "Co-Founder & Director",
+    specialty: "Data & AI Specialist",
+    variant: "navy",
+    photo: {
+      src: "/images/people/vaibhav-agrawal.jpg",
+      alt: "Vaibhav Agrawal",
+    },
+    paragraphs: [
+      "GAICD, B.Tech, and M.Tech in Data & Analytics.",
+      "AI governance and strategic decision-making.",
+    ],
+  },
+] satisfies (Omit<ComponentProps<typeof Profile>, "children"> & {
+  paragraphs: string[];
+})[];
 
 export const metadata: Metadata = {
   title: "Component preview",
@@ -22,7 +53,10 @@ export default function ComponentPreviewPage() {
       <header className="section">
         <p className="eyebrow">BIT-26 · Development preview</p>
         <h1>Shared components</h1>
-        <p>Accordion, call-to-action, card rail and profile examples for page authors.</p>
+        <p>
+          Accordion, call-to-action, card rail and profile examples for page
+          authors.
+        </p>
       </header>
       <div className="section">
         <CardRail title="Explore our services">
@@ -30,26 +64,30 @@ export default function ComponentPreviewPage() {
             <article key={service.slug} className="card">
               <h3>{service.title}</h3>
               <p>{service.summary}</p>
-              <Link href={`/services/${service.slug}`}>Explore {service.title}</Link>
+              <Link href={`/services/${service.slug}`}>
+                Explore {service.title}
+              </Link>
             </article>
           ))}
         </CardRail>
       </div>
       <div className="section">
         <CardRail title="Meet the founders">
-          <Profile name="Hemna Goyal" role="Co-Founder & Managing Director" specialty="Management Specialist" variant="maroon" photo={{ src: "/images/people/hemna-goyal.jpg", alt: "Hemna Goyal" }}>
-            <p>B.Arch. and Master of Project &amp; Program Management.</p>
-            <p>Governance and strategic decision-making.</p>
-          </Profile>
-          <Profile name="Vaibhav Agrawal" role="Co-Founder & Director" specialty="Data & AI Specialist" variant="navy" photo={{ src: "/images/people/vaibhav-agrawal.jpg", alt: "Vaibhav Agrawal" }}>
-            <p>GAICD, B.Tech, and M.Tech in Data &amp; Analytics.</p>
-            <p>AI governance and strategic decision-making.</p>
-          </Profile>
+          {founders.map(({ paragraphs, ...profile }) => (
+            <Profile key={profile.name} {...profile}>
+              {paragraphs.map((paragraph) => (
+                <p key={paragraph}>{paragraph}</p>
+              ))}
+            </Profile>
+          ))}
         </CardRail>
       </div>
       <div className="section">
         <CardRail title="Single card and missing photo example">
-          <Profile name="Example team member with a longer name" role="Example role with a longer description to verify mobile wrapping">
+          <Profile
+            name="Example team member with a longer name"
+            role="Example role with a longer description to verify mobile wrapping"
+          >
             <p>Preview fixture: optional photo and specialty are omitted.</p>
           </Profile>
         </CardRail>

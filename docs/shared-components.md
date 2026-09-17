@@ -74,6 +74,10 @@ alone does not replace content inside the legacy HTML.
 
 ## Card Rail (PR 2)
 
+Scroll boundaries, resize tracking, reduced-motion handling and keyboard controls
+live in `useScrollRail` (`src/hooks/use-scroll-rail.ts`). The hook returns
+`railRef`, `edges`, `move` and `onKeyDown` for use with a horizontal list.
+
 ```tsx
 import { CardRail } from "@/components/ui/card-rail";
 
@@ -84,7 +88,7 @@ import { CardRail } from "@/components/ui/card-rail";
       <p>{service.summary}</p>
     </article>
   ))}
-</CardRail>
+</CardRail>;
 ```
 
 - Required `title` labels the section and scrollable list; `children` supplies
@@ -104,14 +108,23 @@ import { CardRail } from "@/components/ui/card-rail";
 
 ## Profile (PR 2)
 
+Photo data uses the shared `ImageSource` type from `src/types/image.ts`.
+The `getInitials` helper in `src/lib/get-initials.ts` handles missing-photo labels,
+including whitespace and Unicode names. The preview maps founder data into
+`Profile` components so adding a person does not duplicate the card markup.
+
 ```tsx
 import { Profile } from "@/components/ui/profile";
 
-<Profile name="Hemna Goyal" role="Co-Founder & Managing Director"
-  specialty="Management Specialist" variant="maroon"
-  photo={{ src: "/images/people/hemna-goyal.jpg", alt: "Hemna Goyal" }}>
+<Profile
+  name="Hemna Goyal"
+  role="Co-Founder & Managing Director"
+  specialty="Management Specialist"
+  variant="maroon"
+  photo={{ src: "/images/people/hemna-goyal.jpg", alt: "Hemna Goyal" }}
+>
   <p>Governance and strategic decision-making.</p>
-</Profile>
+</Profile>;
 ```
 
 - `name` is required. `role`, `specialty`, `photo`, `children` and `className` are
