@@ -32,7 +32,10 @@ describe("parseBlogArticle", () => {
 
   it("rejects missing required fields", () => {
     expect(() =>
-      parseBlogArticle("invalid.md", validArticle.replace("title: A useful article\n", "")),
+      parseBlogArticle(
+        "invalid.md",
+        validArticle.replace("title: A useful article\n", ""),
+      ),
     ).toThrow(BlogContentError);
   });
 });

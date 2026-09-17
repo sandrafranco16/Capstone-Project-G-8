@@ -12,7 +12,9 @@ export function generateStaticParams() {
   return pathways.map((pathway) => ({ slug: pathway.slug }));
 }
 
-export async function generateMetadata({ params }: PathwayPageProps): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: PathwayPageProps): Promise<Metadata> {
   const pathway = getPathway((await params).slug);
   return pathway
     ? { title: pathway.title, description: pathway.summary }

@@ -28,8 +28,8 @@ export default function BookingPage() {
             </a>
           ) : (
             <p className="notice">
-              Add the approved Cal.com URL to `NEXT_PUBLIC_CALCOM_URL` before enabling
-              booking links.
+              Add the approved Cal.com URL to `NEXT_PUBLIC_CALCOM_URL` before
+              enabling booking links.
             </p>
           )}
         </Container>

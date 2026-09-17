@@ -18,8 +18,8 @@ export default function AssessmentPage() {
           <p className="eyebrow">AI Readiness Assessment</p>
           <h1>Understand your current AI readiness.</h1>
           <p className="lead">
-            The assessment will map responses to one of four levels and recommend
-            relevant BITDOT services.
+            The assessment will map responses to one of four levels and
+            recommend relevant BITDOT services.
           </p>
         </Container>
       </header>
@@ -33,8 +33,8 @@ export default function AssessmentPage() {
           </ul>
           {!isConfigured ? (
             <p className="notice">
-              Client-approved questions, score boundaries and recommendation mappings
-              must be added before this journey is enabled.
+              Client-approved questions, score boundaries and recommendation
+              mappings must be added before this journey is enabled.
             </p>
           ) : null}
         </Container>

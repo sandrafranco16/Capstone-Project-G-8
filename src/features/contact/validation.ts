@@ -9,7 +9,9 @@ export type ContactValidationResult =
   | { success: true; data: ContactPayload }
   | { success: false; errors: string[] };
 
-export function validateContactPayload(value: unknown): ContactValidationResult {
+export function validateContactPayload(
+  value: unknown,
+): ContactValidationResult {
   if (!value || typeof value !== "object") {
     return { success: false, errors: ["Invalid request body."] };
   }

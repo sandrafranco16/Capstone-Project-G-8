@@ -29,9 +29,7 @@ export default async function BlogPage() {
       <section className="section">
         <Container>
           {articles.length === 0 ? (
-            <p className="notice">
-              No articles have been published yet.
-            </p>
+            <p className="notice">No articles have been published yet.</p>
           ) : (
             <div className="card-grid blog-grid">
               {articles.map((article) => (

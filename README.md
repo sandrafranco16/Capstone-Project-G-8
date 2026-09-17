@@ -12,27 +12,27 @@ The platform is designed to help different audiences quickly find relevant servi
 
 ## MVP Features
 
-* Responsive homepage with four audience pathways
-* Service pages for BITDOT’s major service areas
-* Blog and article publishing through Decap CMS
-* YouTube video embeds within blog articles
-* AI Readiness Assessment with result categories and service recommendations
-* Contact and assessment lead delivery via email
-* External consultation booking integration
-* Testimonials
-* SEO and analytics
-* Responsive and accessibility-focused design
-* Production deployment using Vercel
+- Responsive homepage with four audience pathways
+- Service pages for BITDOT’s major service areas
+- Blog and article publishing through Decap CMS
+- YouTube video embeds within blog articles
+- AI Readiness Assessment with result categories and service recommendations
+- Contact and assessment lead delivery via email
+- External consultation booking integration
+- Testimonials
+- SEO and analytics
+- Responsive and accessibility-focused design
+- Production deployment using Vercel
 
 ## Technology Stack
 
-* **Next.js**
-* **React**
-* **TypeScript**
-* **Decap CMS**
-* **GitHub**
-* **Vercel**
-* **Jira**
+- **Next.js**
+- **React**
+- **TypeScript**
+- **Decap CMS**
+- **GitHub**
+- **Vercel**
+- **Jira**
 
 ## Team
 
@@ -84,6 +84,17 @@ pnpm lint
 pnpm typecheck
 pnpm build
 ```
+
+Formatting uses Prettier with the checked-in configuration:
+
+```bash
+pnpm format
+pnpm format:check
+```
+
+The equivalent `npm run format` and `npm run format:check` scripts are also
+available after dependencies are installed. Generated files, the approved static
+demo, public assets and CMS-managed content are excluded in `.prettierignore`.
 
 ## Application Structure
 

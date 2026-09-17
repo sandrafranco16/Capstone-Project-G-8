@@ -16,9 +16,15 @@ const config = getCmsOAuthConfig("https://cms.example.com", {
 
 describe("GitHub OAuth", () => {
   it("creates an authorization URL with state and PKCE", () => {
-    const url = createGitHubAuthorizationUrl(config, "expected-state", "verifier");
+    const url = createGitHubAuthorizationUrl(
+      config,
+      "expected-state",
+      "verifier",
+    );
 
-    expect(url.origin + url.pathname).toBe("https://github.com/login/oauth/authorize");
+    expect(url.origin + url.pathname).toBe(
+      "https://github.com/login/oauth/authorize",
+    );
     expect(url.searchParams.get("state")).toBe("expected-state");
     expect(url.searchParams.get("scope")).toBe("public_repo");
     expect(url.searchParams.get("code_challenge_method")).toBe("S256");
@@ -34,12 +40,21 @@ describe("GitHub OAuth", () => {
     const fetchImplementation = vi
       .fn<typeof fetch>()
       .mockResolvedValueOnce(
-        new Response(JSON.stringify({ access_token: "github-token" }), { status: 200 }),
+        new Response(JSON.stringify({ access_token: "github-token" }), {
+          status: 200,
+        }),
       )
-      .mockResolvedValueOnce(new Response(JSON.stringify({ login: "cms-client" }), { status: 200 }));
+      .mockResolvedValueOnce(
+        new Response(JSON.stringify({ login: "cms-client" }), { status: 200 }),
+      );
 
     await expect(
-      exchangeGitHubCode(config, "temporary-code", "verifier", fetchImplementation),
+      exchangeGitHubCode(
+        config,
+        "temporary-code",
+        "verifier",
+        fetchImplementation,
+      ),
     ).resolves.toBe("github-token");
     expect(fetchImplementation).toHaveBeenCalledTimes(2);
   });
@@ -49,8 +64,8 @@ describe("GitHub OAuth", () => {
       token: "github-token",
     });
 
-    expect(html).toContain('event.origin === cmsOrigin');
-    expect(html).toContain('postMessage(resultMessage, cmsOrigin)');
+    expect(html).toContain("event.origin === cmsOrigin");
+    expect(html).toContain("postMessage(resultMessage, cmsOrigin)");
     expect(html).not.toContain('postMessage(resultMessage, "*")');
   });
 });
