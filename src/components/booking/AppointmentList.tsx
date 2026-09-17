@@ -32,9 +32,9 @@ export function AppointmentList({
   };
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
+    <div className="appt-list">
       {selectedAppointment && (
-        <div id="booking-embed-section" style={{ scrollMarginTop: "2rem" }}>
+        <div id="booking-embed-section" className="appt-list__embed">
           <CalEmbed
             url={buildCalComUrl(selectedAppointment.id, prefillOptions)}
             title={`Schedule: ${selectedAppointment.title}`}
@@ -43,13 +43,7 @@ export function AppointmentList({
         </div>
       )}
 
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))",
-          gap: "1.5rem",
-        }}
-      >
+      <div className="appt-list__grid">
         {appointmentTypes.map((appointment) => (
           <AppointmentCard
             key={appointment.id}

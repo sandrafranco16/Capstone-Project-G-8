@@ -6,6 +6,7 @@ export function getAppointmentType(
 ): AppointmentTypeConfig | undefined {
   if (!idOrSlug) return undefined;
   const normalized = idOrSlug.trim().toLowerCase();
+  if (!normalized) return undefined;
   return bookingConfig.appointmentTypes.find(
     (item) => item.id === normalized || item.slug === normalized
   );

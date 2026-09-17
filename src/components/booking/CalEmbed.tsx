@@ -18,48 +18,17 @@ export function CalEmbed({
 }: CalEmbedProps) {
   const [isLoading, setIsLoading] = useState(true);
   const safeUrl = validateCalComUrl(url);
+  const resolvedHeight = typeof height === "number" ? `${height}px` : height;
 
   return (
-    <div
-      className="cal-embed-wrapper"
-      style={{
-        width: "100%",
-        position: "relative",
-        borderRadius: "0.75rem",
-        overflow: "hidden",
-        border: "1px solid rgba(229, 231, 235, 0.8)",
-        backgroundColor: "#ffffff",
-        boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.05)",
-      }}
-      role="region"
-      aria-label={title}
-    >
+    <div className="cal-embed-wrapper" role="region" aria-label={title}>
       {onClose && (
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            padding: "0.75rem 1.25rem",
-            backgroundColor: "#f9fafb",
-            borderBottom: "1px solid #e5e7eb",
-          }}
-        >
-          <span style={{ fontWeight: 600, fontSize: "0.875rem", color: "#374151" }}>
-            {title}
-          </span>
+        <div className="cal-embed__bar">
+          <span className="cal-embed__bar-title">{title}</span>
           <button
             type="button"
             onClick={onClose}
-            style={{
-              padding: "0.25rem 0.75rem",
-              fontSize: "0.875rem",
-              borderRadius: "0.375rem",
-              border: "1px solid #d1d5db",
-              backgroundColor: "#ffffff",
-              color: "#4b5563",
-              cursor: "pointer",
-            }}
+            className="cal-embed__close"
             aria-label="Close booking embed"
           >
             Close ✕
@@ -67,40 +36,11 @@ export function CalEmbed({
         </div>
       )}
 
-      <div
-        style={{
-          position: "relative",
-          width: "100%",
-          height: typeof height === "number" ? `${height}px` : height,
-          backgroundColor: "#f9fafb",
-        }}
-      >
+      <div className="cal-embed__viewport" style={{ height: resolvedHeight }}>
         {isLoading && (
-          <div
-            style={{
-              position: "absolute",
-              inset: 0,
-              zIndex: 10,
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              justifyContent: "center",
-              backgroundColor: "#f9fafb",
-              color: "#6b7280",
-              gap: "0.75rem",
-            }}
-          >
-            <div
-              style={{
-                width: "2rem",
-                height: "2rem",
-                border: "3px solid #e5e7eb",
-                borderTopColor: "#2563eb",
-                borderRadius: "50%",
-                animation: "spin 1s linear infinite",
-              }}
-            />
-            <p style={{ fontSize: "0.875rem" }}>Loading booking calendar...</p>
+          <div className="cal-embed__loader">
+            <div className="cal-embed__spinner" />
+            <p>Loading booking calendar...</p>
           </div>
         )}
 
@@ -109,41 +49,16 @@ export function CalEmbed({
           title={title}
           width="100%"
           height="100%"
-          style={{
-            border: "none",
-            display: "block",
-          }}
+          style={{ border: "none", display: "block" }}
           onLoad={() => setIsLoading(false)}
           sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
           allow="camera; microphone; autoplay; clipboard-write; encrypted-media"
         />
       </div>
 
-      <div
-        style={{
-          padding: "0.75rem 1.25rem",
-          backgroundColor: "#f9fafb",
-          borderTop: "1px solid #e5e7eb",
-          fontSize: "0.8125rem",
-          color: "#6b7280",
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          flexWrap: "wrap",
-          gap: "0.5rem",
-        }}
-      >
+      <div className="cal-embed__fallback">
         <span>Having trouble loading the interactive scheduler?</span>
-        <a
-          href={safeUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          style={{
-            color: "#2563eb",
-            fontWeight: 500,
-            textDecoration: "underline",
-          }}
-        >
+        <a href={safeUrl} target="_blank" rel="noopener noreferrer">
           Open directly on Cal.com ↗
         </a>
       </div>

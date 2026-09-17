@@ -31,35 +31,23 @@ export default async function BookingPage({ searchParams }: BookingPageProps) {
 
   return (
     <>
-      <header className="page-header" style={{ padding: "3rem 0 2rem", backgroundColor: "#f8fafc", borderBottom: "1px solid #e2e8f0" }}>
+      <header className="page-header booking-header">
         <Container>
-          <p className="eyebrow" style={{ color: "#2563eb", fontWeight: 600, fontSize: "0.875rem", textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: "0.5rem" }}>
-            {bookingConfig.provider}
-          </p>
-          <h1 style={{ fontSize: "2.25rem", fontWeight: 800, color: "#0f172a", marginBottom: "0.75rem" }}>
-            Book the right conversation.
-          </h1>
-          <p style={{ fontSize: "1.125rem", color: "#475569", maxWidth: "42rem" }}>
-            Select an appointment type below to schedule directly with our AI governance advisors, career coaches, or technical team.
+          <p className="eyebrow">{bookingConfig.provider}</p>
+          <h1>Book the right conversation.</h1>
+          <p className="lead">
+            Select an appointment type below to schedule directly with our AI
+            governance advisors, career coaches, or technical team.
           </p>
         </Container>
       </header>
 
-      <section className="section" style={{ padding: "3rem 0" }}>
+      <section className="section">
         <Container>
           {params.email || params.name || params.notes ? (
-            <div
-              style={{
-                marginBottom: "2rem",
-                padding: "1rem 1.25rem",
-                backgroundColor: "#eff6ff",
-                borderRadius: "0.5rem",
-                border: "1px solid #bfdbfe",
-                color: "#1e40af",
-                fontSize: "0.875rem",
-              }}
-            >
-              ℹ️ Your details ({params.name || params.email}) have been pre-filled from your previous step.
+            <div className="booking-prefill-banner">
+              ℹ️ Your details ({params.name || params.email}) have been
+              pre-filled from your previous step.
             </div>
           ) : null}
 
