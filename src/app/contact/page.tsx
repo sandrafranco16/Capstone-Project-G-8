@@ -16,9 +16,9 @@ export default function ContactPage() {
       <section className="section">
         <Container className="prose">
           <p className="notice">
-            The server-side validation boundary is ready. Enable the form after the
-            client confirms the email provider, recipient, consent text and retention
-            process.
+            The server-side validation boundary is ready. Enable the form after
+            the client confirms the email provider, recipient, consent text and
+            retention process.
           </p>
         </Container>
       </section>

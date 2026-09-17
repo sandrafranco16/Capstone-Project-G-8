@@ -32,7 +32,7 @@ logic into typed React components. Remote scripts are not executed by this layer
 
 - `pathways`: the four audience entry points and their service mappings.
 - `services`: career, AI and automation, governance, executive/board and risk services.
-- `blog`: Markdown article metadata and the future Decap publishing pipeline.
+- `blog`: Markdown article metadata and the Decap publishing pipeline (see [`docs/features/cms-integration.md`](../features/cms-integration.md)).
 - `assessment`: client-approved questions, scoring and service recommendations.
 - `booking`: Cal.com configuration and appointment links (see [`docs/features/booking-integration.md`](../features/booking-integration.md)).
 - `contact`: validation and the future server-side email delivery adapter.

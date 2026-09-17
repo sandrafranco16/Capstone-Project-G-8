@@ -27,11 +27,14 @@ describe("getCmsConfig", () => {
     expect(() =>
       getCmsConfig({ CMS_REPOSITORY: "missing-slash", NODE_ENV: "test" }),
     ).toThrow("owner/repository");
-    expect(() => getCmsConfig({ CMS_BRANCH: "bad branch", NODE_ENV: "test" })).toThrow(
-      "valid Git branch",
-    );
     expect(() =>
-      getCmsConfig({ CMS_OAUTH_BASE_URL: "http://example.com", NODE_ENV: "test" }),
+      getCmsConfig({ CMS_BRANCH: "bad branch", NODE_ENV: "test" }),
+    ).toThrow("valid Git branch");
+    expect(() =>
+      getCmsConfig({
+        CMS_OAUTH_BASE_URL: "http://example.com",
+        NODE_ENV: "test",
+      }),
     ).toThrow("must use HTTPS");
   });
 });

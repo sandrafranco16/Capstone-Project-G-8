@@ -112,7 +112,9 @@ export async function exchangeGitHubCode(
 
   const result = (await tokenResponse.json()) as GitHubTokenResponse;
   if (!result.access_token) {
-    throw new CmsOAuthError(result.error_description || result.error || "GitHub OAuth failed.");
+    throw new CmsOAuthError(
+      result.error_description || result.error || "GitHub OAuth failed.",
+    );
   }
 
   const userResponse = await fetchImplementation(GITHUB_USER_URL, {

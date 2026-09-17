@@ -23,7 +23,12 @@ function validateRepository(value: string) {
 }
 
 function validateBranch(value: string) {
-  if (!value || /[\s~^:?*\\\[\]]/.test(value) || value.startsWith("-") || value.endsWith(".")) {
+  if (
+    !value ||
+    /[\s~^:?*\\\[\]]/.test(value) ||
+    value.startsWith("-") ||
+    value.endsWith(".")
+  ) {
     throw new Error("CMS_BRANCH is not a valid Git branch name.");
   }
 }
@@ -31,11 +36,20 @@ function validateBranch(value: string) {
 function normaliseBaseUrl(value: string) {
   const url = new URL(value);
 
-  if (url.username || url.password || url.search || url.hash || url.pathname !== "/") {
+  if (
+    url.username ||
+    url.password ||
+    url.search ||
+    url.hash ||
+    url.pathname !== "/"
+  ) {
     throw new Error("CMS_OAUTH_BASE_URL must contain only the site origin.");
   }
 
-  if (url.protocol !== "https:" && !(url.protocol === "http:" && url.hostname === "localhost")) {
+  if (
+    url.protocol !== "https:" &&
+    !(url.protocol === "http:" && url.hostname === "localhost")
+  ) {
     throw new Error("CMS_OAUTH_BASE_URL must use HTTPS, except on localhost.");
   }
 
@@ -48,7 +62,9 @@ export function getCmsConfig(
 ): CmsConfig {
   const repository = environment.CMS_REPOSITORY?.trim() || DEFAULT_REPOSITORY;
   const branch = environment.CMS_BRANCH?.trim() || DEFAULT_BRANCH;
-  const baseUrl = normaliseBaseUrl(environment.CMS_OAUTH_BASE_URL?.trim() || requestOrigin);
+  const baseUrl = normaliseBaseUrl(
+    environment.CMS_OAUTH_BASE_URL?.trim() || requestOrigin,
+  );
 
   validateRepository(repository);
   validateBranch(branch);

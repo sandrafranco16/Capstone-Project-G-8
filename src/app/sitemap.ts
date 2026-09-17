@@ -7,7 +7,16 @@ import { siteConfig } from "@/lib/site-config";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const articles = await listBlogArticles();
-  const staticRoutes = ["", "/about", "/services", "/blog", "/assessment", "/booking", "/contact", "/legal"];
+  const staticRoutes = [
+    "",
+    "/about",
+    "/services",
+    "/blog",
+    "/assessment",
+    "/booking",
+    "/contact",
+    "/legal",
+  ];
   const routes = [
     ...staticRoutes,
     ...pathways.map((pathway) => `/pathways/${pathway.slug}`),

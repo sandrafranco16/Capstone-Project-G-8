@@ -1,8 +1,5 @@
 export type AssessmentLevel =
-  | "beginner"
-  | "explorer"
-  | "practitioner"
-  | "leader";
+  "beginner" | "explorer" | "practitioner" | "leader";
 
 export type AssessmentOption = {
   label: string;

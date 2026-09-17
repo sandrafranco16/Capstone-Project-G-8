@@ -7,9 +7,9 @@ describe("getYouTubeEmbedUrl", () => {
     expect(getYouTubeEmbedUrl("https://youtu.be/abcdefghijk")).toBe(
       "https://www.youtube-nocookie.com/embed/abcdefghijk",
     );
-    expect(getYouTubeEmbedUrl("https://www.youtube.com/watch?v=abcdefghijk")).toBe(
-      "https://www.youtube-nocookie.com/embed/abcdefghijk",
-    );
+    expect(
+      getYouTubeEmbedUrl("https://www.youtube.com/watch?v=abcdefghijk"),
+    ).toBe("https://www.youtube-nocookie.com/embed/abcdefghijk");
   });
 
   it("rejects unsupported or malformed URLs", () => {

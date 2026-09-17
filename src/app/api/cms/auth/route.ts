@@ -15,7 +15,9 @@ const VERIFIER_COOKIE = "bitdot_cms_oauth_verifier";
 
 export function GET(request: NextRequest) {
   if (request.nextUrl.searchParams.get("provider") !== "github") {
-    return new Response("Unsupported CMS authentication provider.", { status: 400 });
+    return new Response("Unsupported CMS authentication provider.", {
+      status: 400,
+    });
   }
 
   try {
@@ -23,7 +25,11 @@ export function GET(request: NextRequest) {
     const oauthConfig = getCmsOAuthConfig(cmsConfig.baseUrl);
     const state = createOAuthState();
     const verifier = createPkceVerifier();
-    const authorizationUrl = createGitHubAuthorizationUrl(oauthConfig, state, verifier);
+    const authorizationUrl = createGitHubAuthorizationUrl(
+      oauthConfig,
+      state,
+      verifier,
+    );
     const response = NextResponse.redirect(authorizationUrl, 302);
     const cookieOptions = {
       httpOnly: true,

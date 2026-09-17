@@ -7,7 +7,7 @@
 **Group:** Group 8  
 **Project:** BITDOT Marketing and Training Platform  
 **Client:** Vibs Agrawal – BITDOT Consulting Services Pty Ltd  
-**Project Period:** 28 July – 6 October 2026  
+**Project Period:** 28 July – 6 October 2026
 
 ---
 
@@ -162,13 +162,13 @@ Lead information will be delivered by email rather than stored in a project data
 
 # 5. Team Roles and Responsibilities
 
-| Team Member | Role | Key Responsibilities |
-|---|---|---|
-| Sandra Franco Pynadath | Project Manager / Back-end Support | Lead team and client meetings, maintain meeting minutes and project documentation, manage the project specification and project board, delegate tasks, track progress, coordinate team activities and support back-end development. |
-| Shravan Suresh Kumar | Front-end Developer | Responsive components, homepage implementation, SEO implementation and browser testing. |
-| Karthikeya Bezwada | Front-end Developer | Blog and article UI, service pages, interaction states, analytics events and responsive testing. |
-| Lizhou Xiong | UI/UX Designer | User flows, content generation, wireframe design and accessibility review. |
-| Junlong Huang | Back-end Developer / Solution Architect | Design and maintain the overall architecture, lead back-end implementation, integrate CMS, booking and email services, define data and security approaches and support deployment and technical handover. |
+| Team Member            | Role                                    | Key Responsibilities                                                                                                                                                                                                                |
+| ---------------------- | --------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Sandra Franco Pynadath | Project Manager / Back-end Support      | Lead team and client meetings, maintain meeting minutes and project documentation, manage the project specification and project board, delegate tasks, track progress, coordinate team activities and support back-end development. |
+| Shravan Suresh Kumar   | Front-end Developer                     | Responsive components, homepage implementation, SEO implementation and browser testing.                                                                                                                                             |
+| Karthikeya Bezwada     | Front-end Developer                     | Blog and article UI, service pages, interaction states, analytics events and responsive testing.                                                                                                                                    |
+| Lizhou Xiong           | UI/UX Designer                          | User flows, content generation, wireframe design and accessibility review.                                                                                                                                                          |
+| Junlong Huang          | Back-end Developer / Solution Architect | Design and maintain the overall architecture, lead back-end implementation, integrate CMS, booking and email services, define data and security approaches and support deployment and technical handover.                           |
 
 ---
 
@@ -186,13 +186,13 @@ Estimated hours represent the expected effort required for each task.
 
 **Dates:** 28 July – 3 August
 
-| Task | Owner(s) | Estimated Hours |
-|---|---|---:|
-| Project introduction and briefing; review client requirements document | All members | 8 |
-| Client kick-off meeting; clarify and resolve requirements | All members | 5 |
-| Agree MVP scope, inclusions and exclusions with client | All members | 5 |
-| Assign roles and responsibilities; set up GitHub, Jira board and communication channels | Sandra | 3 |
-| Create initial risk register | Junlong | 2 |
+| Task                                                                                    | Owner(s)    | Estimated Hours |
+| --------------------------------------------------------------------------------------- | ----------- | --------------: |
+| Project introduction and briefing; review client requirements document                  | All members |               8 |
+| Client kick-off meeting; clarify and resolve requirements                               | All members |               5 |
+| Agree MVP scope, inclusions and exclusions with client                                  | All members |               5 |
+| Assign roles and responsibilities; set up GitHub, Jira board and communication channels | Sandra      |               3 |
+| Create initial risk register                                                            | Junlong     |               2 |
 
 **Sprint Total: 23 hours**
 
@@ -202,14 +202,14 @@ Estimated hours represent the expected effort required for each task.
 
 **Dates:** 4 August – 17 August
 
-| Task | Owner(s) | Estimated Hours |
-|---|---|---:|
-| Information architecture and user journeys | Lizhou | 3 |
-| Wireframes for key pages and confirmation with client | Lizhou, Shravan | 6 |
-| Design system and high-fidelity screens | Lizhou | 6 |
-| Propose MVP architecture using Next.js modular monolith, Vercel, CMS, email and Cal.com Hosted Booking | Junlong | 4 |
-| Repository and TypeScript project setup; establish GitHub branching and pull-request workflow | Shravan, Karthikeya | 6 |
-| Confirm wireframes, design and architecture with client | All members | 5 |
+| Task                                                                                                   | Owner(s)            | Estimated Hours |
+| ------------------------------------------------------------------------------------------------------ | ------------------- | --------------: |
+| Information architecture and user journeys                                                             | Lizhou              |               3 |
+| Wireframes for key pages and confirmation with client                                                  | Lizhou, Shravan     |               6 |
+| Design system and high-fidelity screens                                                                | Lizhou              |               6 |
+| Propose MVP architecture using Next.js modular monolith, Vercel, CMS, email and Cal.com Hosted Booking | Junlong             |               4 |
+| Repository and TypeScript project setup; establish GitHub branching and pull-request workflow          | Shravan, Karthikeya |               6 |
+| Confirm wireframes, design and architecture with client                                                | All members         |               5 |
 
 **Sprint Total: 30 hours**
 
@@ -219,14 +219,14 @@ Estimated hours represent the expected effort required for each task.
 
 **Dates:** 18 August – 31 August
 
-| Task | Owner(s) | Estimated Hours |
-|---|---|---:|
-| Homepage layout and four audience pathways | Shravan, Lizhou | 16 |
-| Service pages: career, AI/automation, governance, executive and risk | Karthikeya, Lizhou | 18 |
-| Navigation, responsive layout and shared components | Shravan, Karthikeya | 12 |
-| Content model and page data structure | Junlong | 12 |
-| Front-end/back-end integration for homepage and services | Junlong, Sandra | 10 |
-| Draft page content and first client review | All members | 10 |
+| Task                                                                 | Owner(s)            | Estimated Hours |
+| -------------------------------------------------------------------- | ------------------- | --------------: |
+| Homepage layout and four audience pathways                           | Shravan, Lizhou     |              16 |
+| Service pages: career, AI/automation, governance, executive and risk | Karthikeya, Lizhou  |              18 |
+| Navigation, responsive layout and shared components                  | Shravan, Karthikeya |              12 |
+| Content model and page data structure                                | Junlong             |              12 |
+| Front-end/back-end integration for homepage and services             | Junlong, Sandra     |              10 |
+| Draft page content and first client review                           | All members         |              10 |
 
 **Sprint Total: 78 hours**
 
@@ -236,14 +236,14 @@ Estimated hours represent the expected effort required for each task.
 
 **Dates:** 1 September – 14 September
 
-| Task | Owner(s) | Estimated Hours |
-|---|---|---:|
-| Blog listing and category pages | Karthikeya | 12 |
-| Individual article template with YouTube links/embeds | Shravan | 10 |
-| Decap CMS integration and CMS-to-GitHub publishing workflow verification | Junlong | 16 |
-| Book Consultation page with Cal.com Hosted Booking integration | Junlong, Sandra | 16 |
-| Testimonials section | Lizhou, Shravan | 10 |
-| Content drafts for blog and client review | All members | 10 |
+| Task                                                                     | Owner(s)        | Estimated Hours |
+| ------------------------------------------------------------------------ | --------------- | --------------: |
+| Blog listing and category pages                                          | Karthikeya      |              12 |
+| Individual article template with YouTube links/embeds                    | Shravan         |              10 |
+| Decap CMS integration and CMS-to-GitHub publishing workflow verification | Junlong         |              16 |
+| Book Consultation page with Cal.com Hosted Booking integration           | Junlong, Sandra |              16 |
+| Testimonials section                                                     | Lizhou, Shravan |              10 |
+| Content drafts for blog and client review                                | All members     |              10 |
 
 **Sprint Total: 74 hours**
 
@@ -253,14 +253,14 @@ Estimated hours represent the expected effort required for each task.
 
 **Dates:** 15 September – 28 September
 
-| Task | Owner(s) | Estimated Hours |
-|---|---|---:|
-| AI Readiness Assessment questions, scoring and result categories | Sandra, Junlong | 16 |
-| Contact form and Assessment lead capture with email delivery | Junlong | 12 |
-| SEO: metadata, sitemap, social preview and semantic structure | Shravan | 10 |
-| Analytics: Google Analytics and Microsoft Clarity event tracking | Karthikeya | 8 |
-| Accessibility review: keyboard, contrast, labels and alt text | Lizhou | 8 |
-| Bug testing and defect fixing across all journeys | All members | 10 |
+| Task                                                             | Owner(s)        | Estimated Hours |
+| ---------------------------------------------------------------- | --------------- | --------------: |
+| AI Readiness Assessment questions, scoring and result categories | Sandra, Junlong |              16 |
+| Contact form and Assessment lead capture with email delivery     | Junlong         |              12 |
+| SEO: metadata, sitemap, social preview and semantic structure    | Shravan         |              10 |
+| Analytics: Google Analytics and Microsoft Clarity event tracking | Karthikeya      |               8 |
+| Accessibility review: keyboard, contrast, labels and alt text    | Lizhou          |               8 |
+| Bug testing and defect fixing across all journeys                | All members     |              10 |
 
 **Sprint Total: 64 hours**
 
@@ -270,14 +270,14 @@ Estimated hours represent the expected effort required for each task.
 
 **Dates:** 29 September – 6 October
 
-| Task | Owner(s) | Estimated Hours |
-|---|---|---:|
-| Full regression testing on desktop, tablet and mobile | All members | 12 |
-| Security and privacy checks: validation, spam controls, secrets and headers | Junlong | 8 |
-| Bug fixing and release-candidate sign-off | All members | 10 |
-| Deployment planning: rollback procedure and launch rehearsal | Junlong | 8 |
-| Production deployment, smoke tests and client acceptance | All members | 8 |
-| Handover pack: repository, CMS guide and configuration | All members | 6 |
+| Task                                                                        | Owner(s)    | Estimated Hours |
+| --------------------------------------------------------------------------- | ----------- | --------------: |
+| Full regression testing on desktop, tablet and mobile                       | All members |              12 |
+| Security and privacy checks: validation, spam controls, secrets and headers | Junlong     |               8 |
+| Bug fixing and release-candidate sign-off                                   | All members |              10 |
+| Deployment planning: rollback procedure and launch rehearsal                | Junlong     |               8 |
+| Production deployment, smoke tests and client acceptance                    | All members |               8 |
+| Handover pack: repository, CMS guide and configuration                      | All members |               6 |
 
 **Final Stage Total: 52 hours**
 
@@ -321,19 +321,19 @@ A task is considered complete when:
 
 # 9. Project Tools
 
-| Tool | Purpose |
-|---|---|
-| GitHub | Source control, feature branches, pull requests and project documentation |
-| Jira | Sprint planning, backlog management, task assignment, priorities, deadlines and workflow tracking |
-| Figma | Information architecture, user flows, wireframes and UI/UX design |
-| Next.js / TypeScript | Website and application development |
-| Decap CMS | Blog and content management |
-| Cal.com Hosted Booking | External consultation and appointment booking |
-| Microsoft Teams | Team, facilitator and client communication |
-| Email | Formal client communication and approvals |
-| Google Analytics | Website analytics |
-| Microsoft Clarity | User-interaction analytics |
-| Vercel | Final production hosting and deployment |
+| Tool                   | Purpose                                                                                           |
+| ---------------------- | ------------------------------------------------------------------------------------------------- |
+| GitHub                 | Source control, feature branches, pull requests and project documentation                         |
+| Jira                   | Sprint planning, backlog management, task assignment, priorities, deadlines and workflow tracking |
+| Figma                  | Information architecture, user flows, wireframes and UI/UX design                                 |
+| Next.js / TypeScript   | Website and application development                                                               |
+| Decap CMS              | Blog and content management                                                                       |
+| Cal.com Hosted Booking | External consultation and appointment booking                                                     |
+| Microsoft Teams        | Team, facilitator and client communication                                                        |
+| Email                  | Formal client communication and approvals                                                         |
+| Google Analytics       | Website analytics                                                                                 |
+| Microsoft Clarity      | User-interaction analytics                                                                        |
+| Vercel                 | Final production hosting and deployment                                                           |
 
 ---
 
@@ -341,12 +341,12 @@ A task is considered complete when:
 
 The team maintains regular communication with the client, facilitator and other team members.
 
-| Touchpoint | Participants | Purpose | Record |
-|---|---|---|---|
-| Weekly client review | Vibs Agrawal and student team | Demonstrate progress, resolve questions and agree priorities | Meeting minutes and project-board updates |
-| Fortnightly sprint review | Vibs Agrawal and student team | Review sprint deliverables, gather feedback and confirm acceptance | Meeting minutes |
-| Fortnightly facilitator check-in | Student team and Karla Ivkovic | Clarify project expectations, discuss progress and raise issues requiring guidance | Meeting minutes |
-| Weekly internal stand-up | Student team | Review progress, blockers and next actions | Meeting minutes and project-board updates |
+| Touchpoint                       | Participants                   | Purpose                                                                            | Record                                    |
+| -------------------------------- | ------------------------------ | ---------------------------------------------------------------------------------- | ----------------------------------------- |
+| Weekly client review             | Vibs Agrawal and student team  | Demonstrate progress, resolve questions and agree priorities                       | Meeting minutes and project-board updates |
+| Fortnightly sprint review        | Vibs Agrawal and student team  | Review sprint deliverables, gather feedback and confirm acceptance                 | Meeting minutes                           |
+| Fortnightly facilitator check-in | Student team and Karla Ivkovic | Clarify project expectations, discuss progress and raise issues requiring guidance | Meeting minutes                           |
+| Weekly internal stand-up         | Student team                   | Review progress, blockers and next actions                                         | Meeting minutes and project-board updates |
 
 Key decisions and outcomes are documented through meeting minutes and project-board updates.
 
