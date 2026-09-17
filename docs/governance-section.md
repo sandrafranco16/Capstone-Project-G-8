@@ -24,4 +24,22 @@ homepage can pass `#contact` to preserve the original same-page enquiry flow.
   not use the legacy reveal classes. The CTA retains the shared accessible dark
   label on coral, and the small program label uses darker coral for contrast.
 
-Homepage replacement and legacy integration are delivered separately.
+## Homepage integration
+
+`src/app/page.tsx` supplies the component through `LegacyDemoPage`'s homepage-only
+`flagship` slot. The migration bridge splits the processed homepage at complete
+main/section boundaries, replaces the old flagship markup, and leaves the approved
+source HTML unchanged. The remaining page still uses the existing styles, link
+rewrites and demo runtime. The slot is rendered on the server, so the section is
+present in the initial HTML and does not depend on a client-side replacement.
+
+The bridge is intentionally limited to the current prototype. Missing, duplicate
+or nested flagship boundaries throw during build instead of silently showing two
+sections or losing surrounding content. Tests use the actual prototype as well as
+malformed fixtures. If the prototype's main/flagship structure changes, update the
+bridge and its tests together.
+
+For integration review, open `/#flagship`, follow the hero's board-program link,
+and activate the enquiry action to reach `#contact`. Confirm a single program
+heading, then check navigation, pathway selection and the readiness assessment for
+regressions.

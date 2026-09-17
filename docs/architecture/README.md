@@ -28,6 +28,13 @@ loads the demo interactions through a client-only runtime. This keeps the approv
 visual result stable while the team progressively moves reusable sections and new MVP
 logic into typed React components. Remote scripts are not executed by this layer.
 
+The homepage now supplies its Mastering AI Governance section as a server-rendered
+React slot. `split-homepage.ts` removes only the old flagship section at complete
+HTML boundaries, preserving the main element, surrounding content and demo runtime.
+Other routes continue to use the full legacy markup. See
+[`governance-section.md`](../governance-section.md) for the migration contract and
+review checklist.
+
 ## MVP module boundaries
 
 - `pathways`: the four audience entry points and their service mappings.

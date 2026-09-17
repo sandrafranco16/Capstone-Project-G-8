@@ -2,15 +2,17 @@ import "server-only";
 
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
+import type { ReactNode } from "react";
 
 import { DemoRuntime } from "./demo-runtime";
+import { splitHomepage } from "./split-homepage";
 
 export type DemoFile =
   "about.html" | "index.html" | "legal.html" | "services.html";
 
-type LegacyDemoPageProps = {
-  file: DemoFile;
-};
+type LegacyDemoPageProps =
+  | { file: "index.html"; flagship?: ReactNode }
+  | { file: Exclude<DemoFile, "index.html">; flagship?: never };
 
 const shellOverride = `
   body:has(.legacy-demo-page) > .skip-link,
@@ -80,15 +82,35 @@ function loadDemo(file: DemoFile) {
   };
 }
 
-export function LegacyDemoPage({ file }: LegacyDemoPageProps) {
+function LegacyMarkup({ markup }: { markup: string }) {
+  return (
+    <div
+      className="legacy-demo-document"
+      dangerouslySetInnerHTML={{ __html: markup }}
+    />
+  );
+}
+
+export function LegacyDemoPage({ file, flagship }: LegacyDemoPageProps) {
   const { markup, scripts } = loadDemo(file);
+  const parts =
+    file === "index.html" && flagship != null ? splitHomepage(markup) : null;
 
   return (
     <div className="legacy-demo-page">
-      <div
-        className="legacy-demo-document"
-        dangerouslySetInnerHTML={{ __html: markup }}
-      />
+      {parts ? (
+        <>
+          <LegacyMarkup markup={parts.beforeMain} />
+          <main id="main">
+            <LegacyMarkup markup={parts.beforeFlagship} />
+            {flagship}
+            <LegacyMarkup markup={parts.afterFlagship} />
+          </main>
+          <LegacyMarkup markup={parts.afterMain} />
+        </>
+      ) : (
+        <LegacyMarkup markup={markup} />
+      )}
       <DemoRuntime scripts={scripts} />
     </div>
   );
