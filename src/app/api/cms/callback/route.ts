@@ -15,20 +15,32 @@ export const dynamic = "force-dynamic";
 const STATE_COOKIE = "bitdot_cms_oauth_state";
 const VERIFIER_COOKIE = "bitdot_cms_oauth_verifier";
 
-function callbackResponse(baseUrl: string, result: { token: string } | { error: string }) {
+function callbackResponse(
+  baseUrl: string,
+  result: { token: string } | { error: string },
+) {
   const nonce = randomBytes(18).toString("base64url");
-  const response = new NextResponse(renderOAuthCallback(baseUrl, nonce, result), {
-    headers: {
-      "Cache-Control": "no-store",
-      "Content-Security-Policy": `default-src 'none'; script-src 'nonce-${nonce}'; base-uri 'none'; frame-ancestors 'none'`,
-      "Content-Type": "text/html; charset=utf-8",
-      "Referrer-Policy": "no-referrer",
-      "X-Content-Type-Options": "nosniff",
+  const response = new NextResponse(
+    renderOAuthCallback(baseUrl, nonce, result),
+    {
+      headers: {
+        "Cache-Control": "no-store",
+        "Content-Security-Policy": `default-src 'none'; script-src 'nonce-${nonce}'; base-uri 'none'; frame-ancestors 'none'`,
+        "Content-Type": "text/html; charset=utf-8",
+        "Referrer-Policy": "no-referrer",
+        "X-Content-Type-Options": "nosniff",
+      },
     },
-  });
+  );
 
-  response.cookies.set(STATE_COOKIE, "", { maxAge: 0, path: "/api/cms/callback" });
-  response.cookies.set(VERIFIER_COOKIE, "", { maxAge: 0, path: "/api/cms/callback" });
+  response.cookies.set(STATE_COOKIE, "", {
+    maxAge: 0,
+    path: "/api/cms/callback",
+  });
+  response.cookies.set(VERIFIER_COOKIE, "", {
+    maxAge: 0,
+    path: "/api/cms/callback",
+  });
   return response;
 }
 
@@ -41,7 +53,9 @@ export async function GET(request: NextRequest) {
 
     const providerError = request.nextUrl.searchParams.get("error");
     if (providerError) {
-      return callbackResponse(baseUrl, { error: "GitHub access was not approved." });
+      return callbackResponse(baseUrl, {
+        error: "GitHub access was not approved.",
+      });
     }
 
     const code = request.nextUrl.searchParams.get("code");
@@ -50,17 +64,23 @@ export async function GET(request: NextRequest) {
     const verifier = request.cookies.get(VERIFIER_COOKIE)?.value;
 
     if (!code || !receivedState || !expectedState || !verifier) {
-      return callbackResponse(baseUrl, { error: "The authentication request has expired." });
+      return callbackResponse(baseUrl, {
+        error: "The authentication request has expired.",
+      });
     }
 
     if (!oauthStatesMatch(receivedState, expectedState)) {
-      return callbackResponse(baseUrl, { error: "The authentication request could not be verified." });
+      return callbackResponse(baseUrl, {
+        error: "The authentication request could not be verified.",
+      });
     }
 
     const oauthConfig = getCmsOAuthConfig(baseUrl);
     const token = await exchangeGitHubCode(oauthConfig, code, verifier);
     return callbackResponse(baseUrl, { token });
   } catch {
-    return callbackResponse(baseUrl, { error: "GitHub authentication failed. Please try again." });
+    return callbackResponse(baseUrl, {
+      error: "GitHub authentication failed. Please try again.",
+    });
   }
 }

@@ -16,11 +16,7 @@ export class BlogContentError extends Error {
   }
 }
 
-function requiredText(
-  value: unknown,
-  field: string,
-  fileName: string,
-): string {
+function requiredText(value: unknown, field: string, fileName: string): string {
   if (typeof value !== "string" || value.trim().length === 0) {
     throw new BlogContentError(fileName, `${field} is required.`);
   }
@@ -46,7 +42,10 @@ function parseCategory(value: unknown, fileName: string): BlogCategory {
   return value as BlogCategory;
 }
 
-export function parseBlogArticle(fileName: string, source: string): BlogArticle {
+export function parseBlogArticle(
+  fileName: string,
+  source: string,
+): BlogArticle {
   const slug = basename(fileName, ".md");
   if (!slugPattern.test(slug)) {
     throw new BlogContentError(fileName, "file name must be a URL-safe slug.");
@@ -76,7 +75,8 @@ export async function listBlogArticles(
   contentDirectory = defaultContentDirectory,
 ): Promise<BlogArticle[]> {
   const fileNames = (await readdir(contentDirectory)).filter(
-    (fileName) => fileName.endsWith(".md") && fileName.toLowerCase() !== "readme.md",
+    (fileName) =>
+      fileName.endsWith(".md") && fileName.toLowerCase() !== "readme.md",
   );
   const articles = await Promise.all(
     fileNames.map(async (fileName) =>
@@ -89,11 +89,14 @@ export async function listBlogArticles(
 
   return articles.sort(
     (left, right) =>
-      new Date(right.publishedAt).getTime() - new Date(left.publishedAt).getTime(),
+      new Date(right.publishedAt).getTime() -
+      new Date(left.publishedAt).getTime(),
   );
 }
 
-export async function getBlogArticle(slug: string): Promise<BlogArticle | null> {
+export async function getBlogArticle(
+  slug: string,
+): Promise<BlogArticle | null> {
   if (!slugPattern.test(slug)) return null;
   const articles = await listBlogArticles();
   return articles.find((article) => article.slug === slug) ?? null;

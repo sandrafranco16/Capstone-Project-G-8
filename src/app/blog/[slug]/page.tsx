@@ -14,7 +14,9 @@ export async function generateStaticParams() {
   return (await listBlogArticles()).map(({ slug }) => ({ slug }));
 }
 
-export async function generateMetadata({ params }: ArticlePageProps): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: ArticlePageProps): Promise<Metadata> {
   const article = await getBlogArticle((await params).slug);
   return article
     ? { title: article.title, description: article.excerpt }
