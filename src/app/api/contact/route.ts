@@ -31,6 +31,9 @@ export async function POST(request: Request) {
       );
     }
 
-    return NextResponse.json({ error: "Unable to deliver contact request." }, { status: 502 });
+    return NextResponse.json(
+      { error: "Unable to deliver contact request." },
+      { status: 502 },
+    );
   }
 }

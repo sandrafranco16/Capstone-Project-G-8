@@ -5,7 +5,8 @@ import { join } from "node:path";
 
 import { DemoRuntime } from "./demo-runtime";
 
-export type DemoFile = "about.html" | "index.html" | "legal.html" | "services.html";
+export type DemoFile =
+  "about.html" | "index.html" | "legal.html" | "services.html";
 
 type LegacyDemoPageProps = {
   file: DemoFile;
@@ -37,9 +38,11 @@ function loadDemo(file: DemoFile) {
   const styles = [...source.matchAll(/<style[^>]*>([\s\S]*?)<\/style>/gi)].map(
     (match) => match[1],
   );
-  const structuredData = [...source.matchAll(
-    /<script\s+type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi,
-  )].map((match) => match[1].trim());
+  const structuredData = [
+    ...source.matchAll(
+      /<script\s+type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi,
+    ),
+  ].map((match) => match[1].trim());
   const body = source.match(/<body[^>]*>([\s\S]*?)<\/body>/i)?.[1];
 
   if (!body) throw new Error(`The demo file ${file} does not contain a body.`);
@@ -47,11 +50,22 @@ function loadDemo(file: DemoFile) {
   // Comments include analytics examples containing script tags. Drop comments
   // before extracting active scripts so those examples remain inactive.
   const uncommentedBody = body.replace(/<!--[\s\S]*?-->/g, "");
-  const scripts = [...uncommentedBody.matchAll(/<script(?![^>]*\bsrc=)[^>]*>([\s\S]*?)<\/script>/gi)]
+  const scripts = [
+    ...uncommentedBody.matchAll(
+      /<script(?![^>]*\bsrc=)[^>]*>([\s\S]*?)<\/script>/gi,
+    ),
+  ]
     .map((match) => match[1].trim())
     .filter(Boolean);
-  const visibleBody = uncommentedBody.replace(/<script[^>]*>[\s\S]*?<\/script>/gi, "");
-  const fontLinks = [...source.matchAll(/<link[^>]+href=["']https:\/\/fonts\.googleapis\.com[^>]*>/gi)]
+  const visibleBody = uncommentedBody.replace(
+    /<script[^>]*>[\s\S]*?<\/script>/gi,
+    "",
+  );
+  const fontLinks = [
+    ...source.matchAll(
+      /<link[^>]+href=["']https:\/\/fonts\.googleapis\.com[^>]*>/gi,
+    ),
+  ]
     .map((match) => match[0])
     .join("\n");
   const jsonLd = structuredData
@@ -71,7 +85,10 @@ export function LegacyDemoPage({ file }: LegacyDemoPageProps) {
 
   return (
     <div className="legacy-demo-page">
-      <div className="legacy-demo-document" dangerouslySetInnerHTML={{ __html: markup }} />
+      <div
+        className="legacy-demo-document"
+        dangerouslySetInnerHTML={{ __html: markup }}
+      />
       <DemoRuntime scripts={scripts} />
     </div>
   );

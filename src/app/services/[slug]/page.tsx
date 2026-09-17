@@ -11,7 +11,9 @@ export function generateStaticParams() {
   return services.map((service) => ({ slug: service.slug }));
 }
 
-export async function generateMetadata({ params }: ServicePageProps): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: ServicePageProps): Promise<Metadata> {
   const service = getService((await params).slug);
   return service
     ? { title: service.title, description: service.summary }
@@ -40,9 +42,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
             ))}
           </ul>
           <div className="button-row">
-            <CtaAction href="/booking">
-              Book a consultation
-            </CtaAction>
+            <CtaAction href="/booking">Book a consultation</CtaAction>
             <CtaAction variant="secondary" href="/contact">
               Contact BITDOT
             </CtaAction>

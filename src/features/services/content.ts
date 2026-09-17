@@ -9,25 +9,29 @@ export const services: Service[] = [
   {
     slug: "career-development",
     title: "AI Career Development",
-    summary: "Career coaching, mentoring and practical preparation for AI roles.",
+    summary:
+      "Career coaching, mentoring and practical preparation for AI roles.",
     outcomes: ["Clear career roadmap", "Stronger professional positioning"],
   },
   {
     slug: "ai-and-automation",
     title: "AI & Automation Training",
-    summary: "Practical learning for professionals, teams and small businesses.",
+    summary:
+      "Practical learning for professionals, teams and small businesses.",
     outcomes: ["Repeatable AI workflows", "Improved team capability"],
   },
   {
     slug: "ai-governance",
     title: "AI Governance",
-    summary: "Governance frameworks, policies and accountability for responsible AI.",
+    summary:
+      "Governance frameworks, policies and accountability for responsible AI.",
     outcomes: ["Clear governance controls", "Defined responsibilities"],
   },
   {
     slug: "executive-and-board",
     title: "Executive & Board Advisory",
-    summary: "Focused education and advisory support for organisational leaders.",
+    summary:
+      "Focused education and advisory support for organisational leaders.",
     outcomes: ["Informed oversight", "Better strategic decisions"],
   },
   {

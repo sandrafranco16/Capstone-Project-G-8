@@ -9,13 +9,19 @@ pages (`/services/[slug]`) use the new CTA actions in production.
 ```tsx
 import { Accordion } from "@/components/ui/accordion";
 
-<Accordion items={[
-  { id: "audience", title: "Who is this for?", content: <p>Individuals and teams.</p> },
-]} />
+<Accordion
+  items={[
+    {
+      id: "audience",
+      title: "Who is this for?",
+      content: <p>Individuals and teams.</p>,
+    },
+  ]}
+/>;
 ```
 
 - `items`: readonly array of `{ id: string, title: string, content: ReactNode,
-  defaultOpen?: boolean }`. IDs must be unique within each array; they are React
+defaultOpen?: boolean }`. IDs must be unique within each array; they are React
   keys, so multiple instances may reuse the same data.
 - `className`: optional wrapper class. An empty array renders nothing.
 - Native `details`/`summary` works without JavaScript. Enter or Space toggles a
@@ -31,8 +37,10 @@ import { Cta, CtaAction } from "@/components/ui/cta";
 
 <Cta title="Let's talk" description="Find the right support.">
   <CtaAction href="/booking">Book a consultation</CtaAction>
-  <CtaAction href="/contact" variant="secondary">Contact us</CtaAction>
-</Cta>
+  <CtaAction href="/contact" variant="secondary">
+    Contact us
+  </CtaAction>
+</Cta>;
 ```
 
 - `Cta`: required `title` and `children`, optional `description` (ReactNode) and
@@ -48,6 +56,12 @@ import { Cta, CtaAction } from "@/components/ui/cta";
   and disclose new-tab behaviour in the visible label if using it.
 
 ## Design and scope
+
+Use `cn` from `@/lib/cn` to combine optional or conditional class names. CTA action
+variants are defined with `class-variance-authority`; their TypeScript values are
+derived from that definition. Component-only prop types stay private until a
+shared use case requires them. Run `pnpm format` and `pnpm format:check` to maintain
+consistent formatting across the project.
 
 CSS Modules isolate component styles. Rounded FAQ cards and forest/coral CTA
 colours follow `demo/`. Coral buttons use dark text for readable contrast.

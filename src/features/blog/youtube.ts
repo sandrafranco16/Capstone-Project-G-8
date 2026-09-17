@@ -12,7 +12,10 @@ export function getYouTubeEmbedUrl(value: string | undefined): string | null {
       videoId = url.pathname.split("/").filter(Boolean)[0] ?? null;
     } else if (host === "youtube.com") {
       if (url.pathname === "/watch") videoId = url.searchParams.get("v");
-      if (url.pathname.startsWith("/embed/") || url.pathname.startsWith("/shorts/")) {
+      if (
+        url.pathname.startsWith("/embed/") ||
+        url.pathname.startsWith("/shorts/")
+      ) {
         videoId = url.pathname.split("/").filter(Boolean)[1] ?? null;
       }
     }

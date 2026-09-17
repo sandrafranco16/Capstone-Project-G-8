@@ -8,5 +8,7 @@ export function resolveAssessmentLevel(
     (left, right) => right.minimumScore - left.minimumScore,
   );
 
-  return ordered.find((threshold) => score >= threshold.minimumScore)?.level ?? null;
+  return (
+    ordered.find((threshold) => score >= threshold.minimumScore)?.level ?? null
+  );
 }
