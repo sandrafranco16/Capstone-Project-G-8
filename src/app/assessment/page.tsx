@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 
 import { Container } from "@/components/ui/container";
 import { AssessmentJourney } from "@/features/assessment/assessment-journey";
@@ -33,6 +34,12 @@ export default async function AssessmentPage({
       </header>
       <section className="section" aria-label="Readiness assessment">
         <Container>
+          <noscript>
+            <p className="notice">
+              Enable JavaScript to answer the assessment, or{" "}
+              <Link href="/services">explore BITDOT services</Link> directly.
+            </p>
+          </noscript>
           <AssessmentJourney
             key={initialPathway ?? "choose"}
             initialPathway={initialPathway}
