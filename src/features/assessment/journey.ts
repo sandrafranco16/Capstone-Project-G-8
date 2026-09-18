@@ -22,33 +22,32 @@ export function journeyReducer(
   state: JourneyState,
   action: JourneyAction,
 ): JourneyState {
-  if (action.type === "pathway") return initialJourney(action.pathway);
-  if (action.type === "restart") return initialJourney(state.pathway);
-  if (!state.pathway) return state;
-  const questions = assessmentPathways[state.pathway].questions;
-  const question = questions[state.step];
   switch (action.type) {
-    case "answer":
-      if (
-        state.complete ||
-        !question.options.some((o) => o.value === action.value)
-      )
-        return state;
+    case "pathway":
+      return initialJourney(action.pathway);
+    case "restart":
+      return initialJourney(state.pathway);
+    case "answer": {
+      if (!state.pathway || state.complete) return state;
+      const question = assessmentPathways[state.pathway].questions[state.step];
+      if (!question.options.some((o) => o.value === action.value)) return state;
       return {
         ...state,
         answers: { ...state.answers, [question.id]: action.value },
       };
+    }
     case "back":
+      if (!state.pathway) return state;
       return {
         ...state,
         complete: false,
         step: Math.max(0, state.step - (state.complete ? 0 : 1)),
       };
-    case "next":
-      if (
-        state.complete ||
-        !question.options.some((o) => o.value === state.answers[question.id])
-      )
+    case "next": {
+      if (!state.pathway || state.complete) return state;
+      const questions = assessmentPathways[state.pathway].questions;
+      const question = questions[state.step];
+      if (!question.options.some((o) => o.value === state.answers[question.id]))
         return state;
       if (state.step === questions.length - 1) {
         return scoreAssessment(state.pathway, state.answers)
@@ -56,5 +55,10 @@ export function journeyReducer(
           : state;
       }
       return { ...state, step: state.step + 1 };
+    }
+    default: {
+      const exhaustive: never = action;
+      return exhaustive;
+    }
   }
 }
