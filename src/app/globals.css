@@ -375,8 +375,259 @@ h3 {
   }
 }
 
+/* ── Booking page ─────────────────────────────────── */
+
+.booking-header {
+  padding: 3rem 0 2rem;
+  background-color: var(--paper);
+  border-bottom: 1px solid var(--line);
+}
+
+.booking-header .lead {
+  font-size: 1.125rem;
+  color: var(--slate);
+  max-width: 42rem;
+}
+
+.booking-prefill-banner {
+  margin-bottom: 2rem;
+  padding: 1rem 1.25rem;
+  background-color: #eff6ff;
+  border-radius: 0.5rem;
+  border: 1px solid #bfdbfe;
+  color: #1e40af;
+  font-size: 0.875rem;
+}
+
+/* ── CalEmbed ─────────────────────────────────────── */
+
+.cal-embed-wrapper {
+  width: 100%;
+  position: relative;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.cal-embed__bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1.25rem;
+  background: var(--mist);
+  border-bottom: 1px solid var(--line);
+}
+
+.cal-embed__bar-title {
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: var(--ink-soft);
+}
+
+.cal-embed__close {
+  padding: 0.25rem 0.75rem;
+  font-size: 0.875rem;
+  border-radius: 0.375rem;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--slate);
+  cursor: pointer;
+}
+
+.cal-embed__viewport {
+  position: relative;
+  width: 100%;
+  background: var(--mist);
+}
+
+.cal-embed__loader {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--mist);
+  color: var(--slate);
+  gap: 0.75rem;
+}
+
+.cal-embed__spinner {
+  width: 2rem;
+  height: 2rem;
+  border: 3px solid var(--line);
+  border-top-color: var(--azure);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.cal-embed__loader p {
+  font-size: 0.875rem;
+}
+
+.cal-embed__fallback {
+  padding: 0.75rem 1.25rem;
+  background: var(--mist);
+  border-top: 1px solid var(--line);
+  font-size: 0.8125rem;
+  color: var(--slate);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.cal-embed__fallback a {
+  color: var(--azure);
+  font-weight: 500;
+  text-decoration: underline;
+}
+
+/* ── AppointmentCard ──────────────────────────────── */
+
+.appt-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1.5rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  background: var(--surface);
+  box-shadow: 0 1px 3px rgb(0 0 0 / 5%);
+  transition: all 0.2s ease-in-out;
+}
+
+.appt-card--selected {
+  border: 2px solid var(--azure);
+  background: #eff6ff;
+  box-shadow: 0 4px 12px rgb(37 99 235 / 15%);
+}
+
+.appt-card__meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.75rem;
+}
+
+.appt-card__duration {
+  display: inline-block;
+  padding: 0.25rem 0.625rem;
+  border-radius: 9999px;
+  background: #dbeafe;
+  color: #1e40af;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.appt-card__rec {
+  font-size: 0.75rem;
+  color: #059669;
+  font-weight: 500;
+  background: #ecfdf5;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.375rem;
+}
+
+.appt-card__title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 0.5rem;
+}
+
+.appt-card__desc {
+  font-size: 0.875rem;
+  color: var(--slate);
+  line-height: 1.5;
+  margin-bottom: 1rem;
+}
+
+.appt-card__audience {
+  font-size: 0.8125rem;
+  color: var(--slate);
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+}
+
+.appt-card__actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.appt-card__book-btn {
+  flex: 1;
+  padding: 0.625rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  border-radius: 0.5rem;
+  border: none;
+  background: var(--azure);
+  color: #ffffff;
+  cursor: pointer;
+  text-align: center;
+  transition: background-color 0.15s ease;
+}
+
+.appt-card__ext-link {
+  padding: 0.625rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border-radius: 0.5rem;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--ink-soft);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ── AppointmentList ──────────────────────────────── */
+
+.appt-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.appt-list__embed {
+  scroll-margin-top: 2rem;
+}
+
+.appt-list__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+@media (max-width: 760px) {
+  .appt-list__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+
+  .cal-embed-wrapper * {
+    animation: none !important;
   }
 }
