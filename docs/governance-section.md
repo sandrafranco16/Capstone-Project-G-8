@@ -39,6 +39,19 @@ sections or losing surrounding content. Tests use the actual prototype as well a
 malformed fixtures. If the prototype's main/flagship structure changes, update the
 bridge and its tests together.
 
+`LegacyHomepage` owns the section composition, while `LegacyMarkup` renders each
+trusted fragment and `LegacyDemoPage` retains loading/runtime responsibilities.
+The splitter separates main extraction (`extractMain`) from flagship validation
+(`findFlagshipSection`) and preserves the original guardrails and output.
+
+Parser decision: this PR replaces one fixed, checked-in section and does not add
+a general HTML injection mechanism. Keep that narrow boundary and the existing
+byte-preservation tests for this refactor. PR22 also transforms the homepage, so
+before adding further replacement slots, move the remaining sections into React
+or consolidate HTML transformations behind a parser such as parse5/htmlparser2;
+do not grow another collection of regular expressions. No parser dependency is
+introduced by this PR, and arbitrary or user-supplied HTML is not supported.
+
 For integration review, open `/#flagship`, follow the hero's board-program link,
 and activate the enquiry action to reach `#contact`. Confirm a single program
 heading, then check navigation, pathway selection and the readiness assessment for

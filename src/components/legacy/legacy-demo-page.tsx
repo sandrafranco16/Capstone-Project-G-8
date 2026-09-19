@@ -5,7 +5,8 @@ import { join } from "node:path";
 import type { ReactNode } from "react";
 
 import { DemoRuntime } from "./demo-runtime";
-import { splitHomepage } from "./split-homepage";
+import { LegacyHomepage } from "./legacy-homepage";
+import { LegacyMarkup } from "./legacy-markup";
 
 export type DemoFile =
   "about.html" | "index.html" | "legal.html" | "services.html";
@@ -82,32 +83,13 @@ function loadDemo(file: DemoFile) {
   };
 }
 
-function LegacyMarkup({ markup }: { markup: string }) {
-  return (
-    <div
-      className="legacy-demo-document"
-      dangerouslySetInnerHTML={{ __html: markup }}
-    />
-  );
-}
-
 export function LegacyDemoPage({ file, flagship }: LegacyDemoPageProps) {
   const { markup, scripts } = loadDemo(file);
-  const parts =
-    file === "index.html" && flagship != null ? splitHomepage(markup) : null;
 
   return (
     <div className="legacy-demo-page">
-      {parts ? (
-        <>
-          <LegacyMarkup markup={parts.beforeMain} />
-          <main id="main">
-            <LegacyMarkup markup={parts.beforeFlagship} />
-            {flagship}
-            <LegacyMarkup markup={parts.afterFlagship} />
-          </main>
-          <LegacyMarkup markup={parts.afterMain} />
-        </>
+      {file === "index.html" && flagship != null ? (
+        <LegacyHomepage markup={markup} flagship={flagship} />
       ) : (
         <LegacyMarkup markup={markup} />
       )}

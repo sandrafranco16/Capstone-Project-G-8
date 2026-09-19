@@ -3,7 +3,7 @@
  * Keep complete main/section boundaries so raw HTML never straddles React nodes.
  * Fail the build if the prototype structure changes instead of duplicating content.
  */
-export function splitHomepage(markup: string) {
+function extractMain(markup: string) {
   const main = markup.match(
     /^([\s\S]*?)<main id="main">([\s\S]*?)<\/main>([\s\S]*)$/,
   );
@@ -14,6 +14,10 @@ export function splitHomepage(markup: string) {
   }
 
   const [, beforeMain, content, afterMain] = main;
+  return { beforeMain, content, afterMain };
+}
+
+function findFlagshipSection(markup: string, content: string) {
   const section = content.match(
     /<section class="section" id="flagship">[\s\S]*?<\/section>/,
   );
@@ -27,6 +31,12 @@ export function splitHomepage(markup: string) {
     );
   }
 
+  return section;
+}
+
+export function splitHomepage(markup: string) {
+  const { beforeMain, content, afterMain } = extractMain(markup);
+  const section = findFlagshipSection(markup, content);
   const start = section.index!;
   return {
     beforeMain,
