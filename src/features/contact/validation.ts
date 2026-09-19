@@ -36,3 +36,38 @@ export function validateContactPayload(
     ? { success: false, errors }
     : { success: true, data: { name, email, message, consent } };
 }
+
+/**
+ * Returns true if the honeypot field is filled — indicating a bot submission.
+ * The honeypot field should be a hidden input that real users never fill in.
+ */
+export function isHoneypotTriggered(value: unknown): boolean {
+  if (!value || typeof value !== "object") return false;
+  const input = value as Record<string, unknown>;
+  const hp = typeof input.website === "string" ? input.website.trim() : "";
+  return hp.length > 0;
+}
+
+/**
+ * Verify a Cloudflare Turnstile token server-side.
+ * Returns true if the token is valid, false otherwise.
+ */
+export async function verifyTurnstileToken(token: string): Promise<boolean> {
+  const secret = process.env.TURNSTILE_SECRET_KEY;
+  if (!secret) return false;
+
+  try {
+    const response = await fetch(
+      "https://challenges.cloudflare.com/turnstile/v0/siteverify",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams({ secret, response: token }),
+      },
+    );
+    const data = (await response.json()) as { success: boolean };
+    return data.success === true;
+  } catch {
+    return false;
+  }
+}
