@@ -4,7 +4,11 @@ import {
   ContactDeliveryNotConfiguredError,
   deliverContactLead,
 } from "@/features/contact/server/deliver-contact-lead";
-import { validateContactPayload } from "@/features/contact/validation";
+import {
+  isHoneypotTriggered,
+  validateContactPayload,
+  verifyTurnstileToken,
+} from "@/features/contact/validation";
 
 export async function POST(request: Request) {
   let body: unknown;
@@ -15,9 +19,31 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Invalid JSON body." }, { status: 400 });
   }
 
+  // Spam check: honeypot
+  if (isHoneypotTriggered(body)) {
+    // Silently accept to avoid revealing detection to bots
+    return NextResponse.json({ accepted: true }, { status: 202 });
+  }
+
   const result = validateContactPayload(body);
   if (!result.success) {
     return NextResponse.json({ errors: result.errors }, { status: 400 });
+  }
+
+  // Spam check: Turnstile
+  const input = body as Record<string, unknown>;
+  const turnstileToken =
+    typeof input.turnstileToken === "string" ? input.turnstileToken : "";
+  const hasTurnstileSecret = !!process.env.TURNSTILE_SECRET_KEY;
+
+  if (hasTurnstileSecret) {
+    const isValid = await verifyTurnstileToken(turnstileToken);
+    if (!isValid) {
+      return NextResponse.json(
+        { errors: ["Verification failed. Please try again."] },
+        { status: 400 },
+      );
+    }
   }
 
   try {
