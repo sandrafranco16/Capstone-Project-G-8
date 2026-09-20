@@ -2,6 +2,8 @@
 
 import { useState, useRef } from "react";
 
+import { validateContactForm } from "@/features/contact/client-validation";
+
 type FormState = "idle" | "submitting" | "success" | "error";
 
 export function ContactForm() {
@@ -26,14 +28,12 @@ export function ContactForm() {
     const turnstileToken = (data.get("cf-turnstile-response") as string) ?? "";
     const website = (data.get("website") as string) ?? "";
 
-    const clientErrors: string[] = [];
-    if (name.length < 2) clientErrors.push("Please enter your name.");
-    if (!/^\S+@\S+\.\S+$/.test(email))
-      clientErrors.push("Please enter a valid email address.");
-    if (message.length < 10)
-      clientErrors.push("Message must be at least 10 characters.");
-    if (!consent)
-      clientErrors.push("You must consent to being contacted.");
+    const clientErrors = validateContactForm({
+      name,
+      email,
+      message,
+      consent,
+    });
 
     if (clientErrors.length > 0) {
       setErrors(clientErrors);
