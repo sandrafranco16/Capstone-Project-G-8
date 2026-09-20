@@ -2,15 +2,18 @@ import "server-only";
 
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
+import type { ReactNode } from "react";
 
 import { DemoRuntime } from "./demo-runtime";
+import { LegacyHomepage } from "./legacy-homepage";
+import { LegacyMarkup } from "./legacy-markup";
 
 export type DemoFile =
   "about.html" | "index.html" | "legal.html" | "services.html";
 
-type LegacyDemoPageProps = {
-  file: DemoFile;
-};
+type LegacyDemoPageProps =
+  | { file: "index.html"; flagship?: ReactNode }
+  | { file: Exclude<DemoFile, "index.html">; flagship?: never };
 
 const shellOverride = `
   body:has(.legacy-demo-page) > .skip-link,
@@ -80,15 +83,16 @@ function loadDemo(file: DemoFile) {
   };
 }
 
-export function LegacyDemoPage({ file }: LegacyDemoPageProps) {
+export function LegacyDemoPage({ file, flagship }: LegacyDemoPageProps) {
   const { markup, scripts } = loadDemo(file);
 
   return (
     <div className="legacy-demo-page">
-      <div
-        className="legacy-demo-document"
-        dangerouslySetInnerHTML={{ __html: markup }}
-      />
+      {file === "index.html" && flagship != null ? (
+        <LegacyHomepage markup={markup} flagship={flagship} />
+      ) : (
+        <LegacyMarkup markup={markup} />
+      )}
       <DemoRuntime scripts={scripts} />
     </div>
   );

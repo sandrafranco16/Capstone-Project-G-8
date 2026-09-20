@@ -24,4 +24,35 @@ homepage can pass `#contact` to preserve the original same-page enquiry flow.
   not use the legacy reveal classes. The CTA retains the shared accessible dark
   label on coral, and the small program label uses darker coral for contrast.
 
-Homepage replacement and legacy integration are delivered separately.
+## Homepage integration
+
+`src/app/page.tsx` supplies the component through `LegacyDemoPage`'s homepage-only
+`flagship` slot. The migration bridge splits the processed homepage at complete
+main/section boundaries, replaces the old flagship markup, and leaves the approved
+source HTML unchanged. The remaining page still uses the existing styles, link
+rewrites and demo runtime. The slot is rendered on the server, so the section is
+present in the initial HTML and does not depend on a client-side replacement.
+
+The bridge is intentionally limited to the current prototype. Missing, duplicate
+or nested flagship boundaries throw during build instead of silently showing two
+sections or losing surrounding content. Tests use the actual prototype as well as
+malformed fixtures. If the prototype's main/flagship structure changes, update the
+bridge and its tests together.
+
+`LegacyHomepage` owns the section composition, while `LegacyMarkup` renders each
+trusted fragment and `LegacyDemoPage` retains loading/runtime responsibilities.
+The splitter separates main extraction (`extractMain`) from flagship validation
+(`findFlagshipSection`) and preserves the original guardrails and output.
+
+Parser decision: this PR replaces one fixed, checked-in section and does not add
+a general HTML injection mechanism. Keep that narrow boundary and the existing
+byte-preservation tests for this refactor. PR22 also transforms the homepage, so
+before adding further replacement slots, move the remaining sections into React
+or consolidate HTML transformations behind a parser such as parse5/htmlparser2;
+do not grow another collection of regular expressions. No parser dependency is
+introduced by this PR, and arbitrary or user-supplied HTML is not supported.
+
+For integration review, open `/#flagship`, follow the hero's board-program link,
+and activate the enquiry action to reach `#contact`. Confirm a single program
+heading, then check navigation, pathway selection and the readiness assessment for
+regressions.

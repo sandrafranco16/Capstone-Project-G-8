@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 import { LegacyDemoPage } from "@/components/legacy/legacy-demo-page";
+import { GovernanceSection } from "@/features/home/governance-section";
 
 export const metadata: Metadata = {
   title: {
@@ -12,5 +13,10 @@ export const metadata: Metadata = {
 };
 
 export default function HomePage() {
-  return <LegacyDemoPage file="index.html" />;
+  return (
+    <LegacyDemoPage
+      file="index.html"
+      flagship={<GovernanceSection enquiryHref="#contact" />}
+    />
+  );
 }
