@@ -5,6 +5,7 @@ import {
   deliverContactLead,
 } from "@/features/contact/server/deliver-contact-lead";
 import {
+  getTurnstilePolicy,
   isHoneypotTriggered,
   validateContactPayload,
   verifyTurnstileToken,
@@ -34,9 +35,26 @@ export async function POST(request: Request) {
   const input = body as Record<string, unknown>;
   const turnstileToken =
     typeof input.turnstileToken === "string" ? input.turnstileToken : "";
-  const hasTurnstileSecret = !!process.env.TURNSTILE_SECRET_KEY;
+  const turnstilePolicy = getTurnstilePolicy({
+    isProduction: process.env.NODE_ENV === "production",
+    secret: process.env.TURNSTILE_SECRET_KEY,
+  });
 
-  if (hasTurnstileSecret) {
+  if (turnstilePolicy === "misconfigured") {
+    return NextResponse.json(
+      { error: "Spam protection is not configured." },
+      { status: 503 },
+    );
+  }
+
+  if (turnstilePolicy === "enabled") {
+    if (!turnstileToken) {
+      return NextResponse.json(
+        { errors: ["Please complete the verification."] },
+        { status: 400 },
+      );
+    }
+
     const isValid = await verifyTurnstileToken(turnstileToken);
     if (!isValid) {
       return NextResponse.json(

@@ -9,6 +9,8 @@ export type ContactValidationResult =
   | { success: true; data: ContactPayload }
   | { success: false; errors: string[] };
 
+export type TurnstilePolicy = "disabled" | "enabled" | "misconfigured";
+
 export function validateContactPayload(
   value: unknown,
 ): ContactValidationResult {
@@ -49,11 +51,28 @@ export function isHoneypotTriggered(value: unknown): boolean {
 }
 
 /**
+ * Turnstile may be omitted for local development, but deployed production
+ * builds must fail closed when the secret is missing.
+ */
+export function getTurnstilePolicy({
+  isProduction,
+  secret,
+}: {
+  isProduction: boolean;
+  secret: string | undefined;
+}): TurnstilePolicy {
+  const hasSecret = Boolean(secret?.trim());
+
+  if (isProduction && !hasSecret) return "misconfigured";
+  return hasSecret ? "enabled" : "disabled";
+}
+
+/**
  * Verify a Cloudflare Turnstile token server-side.
  * Returns true if the token is valid, false otherwise.
  */
 export async function verifyTurnstileToken(token: string): Promise<boolean> {
-  const secret = process.env.TURNSTILE_SECRET_KEY;
+  const secret = process.env.TURNSTILE_SECRET_KEY?.trim();
   if (!secret) return false;
 
   try {
