@@ -1250,7 +1250,7 @@ const RECS={
   board:["Board competence program","#flagship"],
   risk:["AI guardrails & risk workshops","services.html#crisis"],
   read:["The resource hub","resources.html"],
-  call:["A no-obligation discovery call","#contact"]
+  call:["A no-obligation discovery call","/contact"]
 };
 const PICK={
   career:{0:["career","train"],1:["career","lab"],2:["roadmap","lab"],3:["roadmap","gov"]},
@@ -1318,7 +1318,7 @@ function qRender(){
     <p>${L.c}</p>
     <div class="recs"><span class="rlab">Recommended for you</span>${recs}</div>
     <div class="q-row">
-      <a class="btn btn-coral" href="#contact" onclick="track('assessment_to_contact')"><span>Talk it through with us</span></a>
+      <a class="btn btn-coral" href="/contact" onclick="track('assessment_to_contact')"><span>Talk it through with us</span></a>
       <button class="q-restart" type="button" onclick="qReset()">Retake</button>
       <button class="q-restart" type="button" onclick="clearPath()">Change pathway</button>
     </div>
