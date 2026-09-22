@@ -8,6 +8,10 @@ export const metadata: Metadata = {
   },
   description:
     "BITDOT Consulting Services privacy policy, terms of use, disclaimer and accessibility statement.",
+  robots: {
+    index: false,
+    follow: false,
+  },
 };
 
 export default function LegalPage() {
