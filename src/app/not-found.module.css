@@ -1,0 +1,189 @@
+.page {
+  --error-ink: #12201c;
+  --error-muted: #4b5a52;
+  --error-line: #e6e0d3;
+  --error-coral: #f0552b;
+  --error-blue: #0071e3;
+
+  min-height: calc(100vh - 4.5rem);
+  padding: clamp(4rem, 7vw, 7rem) 0 4rem;
+  background: #fcfaf5;
+  color: var(--error-ink);
+}
+
+.container {
+  width: min(78rem, calc(100% - 3rem));
+  margin-inline: auto;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr);
+  align-items: center;
+  gap: clamp(2rem, 5vw, 5rem);
+  min-height: 29rem;
+}
+
+.copy {
+  max-width: 43rem;
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+  color: var(--error-coral);
+  font-size: 0.82rem;
+  font-weight: 750;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+}
+
+.eyebrow::before {
+  width: 0.65rem;
+  height: 0.65rem;
+  border-radius: 50%;
+  background: var(--error-coral);
+  content: "";
+}
+
+.copy h1 {
+  max-width: 15ch;
+  margin-bottom: 1.3rem;
+  color: var(--error-ink);
+  font-size: clamp(2.8rem, 5vw, 4.65rem);
+  font-weight: 750;
+  letter-spacing: -0.052em;
+  line-height: 1.04;
+}
+
+.description {
+  margin-bottom: 0;
+  color: var(--error-muted);
+  font-size: clamp(1rem, 1.45vw, 1.2rem);
+  line-height: 1.5;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.65rem;
+}
+
+.primaryAction,
+.secondaryAction {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3.5rem;
+  padding: 0.8rem 1.65rem;
+  border: 1px solid transparent;
+  border-radius: 1rem;
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 0.18s ease, border-color 0.18s ease;
+}
+
+.primaryAction {
+  background: var(--error-coral);
+  color: #fff;
+}
+
+.primaryAction:hover {
+  background: #d53f17;
+}
+
+.secondaryAction {
+  border-color: #d8cfbb;
+  background: #fff;
+  color: var(--error-ink);
+}
+
+.secondaryAction:hover {
+  border-color: var(--error-ink);
+}
+
+.suggestions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.55rem 1rem;
+  margin-top: 1.75rem;
+  color: var(--error-muted);
+  font-size: 0.9rem;
+}
+
+.suggestions a {
+  color: var(--error-blue);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.suggestions a:hover,
+.contactLink:hover {
+  text-decoration: underline;
+}
+
+.helpCard {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-top: clamp(3rem, 6vw, 5rem);
+  padding: 1.5rem 2rem;
+  border: 1px solid var(--error-line);
+  border-radius: 1.15rem;
+  background: #fff;
+  box-shadow: 0 2px 10px rgb(18 32 28 / 4%);
+}
+
+.helpIcon {
+  display: grid;
+  width: 4.25rem;
+  height: 4.25rem;
+  flex: none;
+  place-items: center;
+  border-radius: 50%;
+  background: #dbeafd;
+  color: var(--error-blue);
+}
+
+.helpIcon svg {
+  width: 2.45rem;
+  height: 2.45rem;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2.5;
+}
+
+.helpCopy {
+  padding-left: 1.5rem;
+  border-left: 1px solid var(--error-line);
+}
+
+.helpCopy h2 {
+  margin-bottom: 0.25rem;
+  color: var(--error-ink);
+  font-size: 1.2rem;
+  letter-spacing: -0.02em;
+}
+
+.helpCopy p {
+  margin-bottom: 0;
+  color: var(--error-muted);
+  font-size: 0.93rem;
+}
+
+.contactLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-left: auto;
+  color: var(--error-ink);
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+}
