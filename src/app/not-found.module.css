@@ -49,10 +49,10 @@
 }
 
 .copy h1 {
-  max-width: 15ch;
+  max-width: 100%;
   margin-bottom: 1.3rem;
   color: var(--error-ink);
-  font-size: clamp(2.8rem, 5vw, 4.65rem);
+  font-size: clamp(2.8rem, 4.6vw, 4.4rem);
   font-weight: 750;
   letter-spacing: -0.052em;
   line-height: 1.04;
@@ -150,7 +150,7 @@
   left: 0;
   width: 62%;
   height: 59%;
-  padding: 1.8rem;
+  padding: 1.4rem;
   background: #dbeafd;
 }
 
@@ -181,7 +181,7 @@
 .routeCard {
   position: absolute;
   top: 12%;
-  left: 20%;
+  left: 22%;
   width: 66%;
   height: 81%;
   overflow: hidden;
