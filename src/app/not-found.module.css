@@ -289,3 +289,136 @@
   text-decoration: none;
   white-space: nowrap;
 }
+
+.page a:focus-visible {
+  outline: 3px solid var(--error-blue);
+  outline-offset: 4px;
+  border-radius: 0.4rem;
+}
+
+@media (max-width: 900px) {
+  .hero {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .copy {
+    max-width: 42rem;
+  }
+
+  .artwork {
+    width: min(100%, 38rem);
+    margin-inline: auto;
+  }
+
+  .helpCard {
+    margin-top: 2rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .page {
+    padding: 3rem 0;
+  }
+
+  .container {
+    width: min(calc(100% - 2rem), 78rem);
+  }
+
+  .hero {
+    gap: 2.5rem;
+  }
+
+  .copy h1 {
+    font-size: clamp(2.65rem, 12vw, 3.65rem);
+  }
+
+  .desktopBreak {
+    display: none;
+  }
+
+  .actions {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .primaryAction,
+  .secondaryAction {
+    min-height: 3.25rem;
+    padding-inline: 0.75rem;
+    font-size: 0.9rem;
+  }
+
+  .suggestions {
+    gap: 0.45rem 0.85rem;
+  }
+
+  .suggestions span {
+    width: 100%;
+  }
+
+  .artwork {
+    height: clamp(20rem, 91vw, 27rem);
+  }
+
+  .skyPanel {
+    padding: 1.3rem;
+  }
+
+  .blushPanel {
+    padding: 1.5rem 0.8rem 0.8rem 1.5rem;
+  }
+
+  .skyPanel,
+  .blushPanel {
+    font-size: 0.7rem;
+  }
+
+  .errorCode {
+    top: 9%;
+    font-size: clamp(4.25rem, 17vw, 7.5rem);
+  }
+
+  .routeCaption {
+    font-size: 0.53rem;
+  }
+
+  .helpCard {
+    display: grid;
+    grid-template-columns: 3.5rem minmax(0, 1fr);
+    gap: 1rem;
+    padding: 1.25rem;
+  }
+
+  .helpIcon {
+    width: 3.5rem;
+    height: 3.5rem;
+  }
+
+  .helpIcon svg {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .helpCopy {
+    padding-left: 1rem;
+  }
+
+  .contactLink {
+    grid-column: 2;
+    margin-left: 1rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .actions {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .primaryAction,
+  .secondaryAction {
+    transition: none;
+  }
+}
