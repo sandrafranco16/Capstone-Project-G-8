@@ -84,7 +84,9 @@
   font-weight: 700;
   text-align: center;
   text-decoration: none;
-  transition: background-color 0.18s ease, border-color 0.18s ease;
+  transition:
+    background-color 0.18s ease,
+    border-color 0.18s ease;
 }
 
 .primaryAction {
@@ -125,6 +127,106 @@
 .suggestions a:hover,
 .contactLink:hover {
   text-decoration: underline;
+}
+
+.artwork {
+  position: relative;
+  height: clamp(25rem, 36vw, 31rem);
+  min-width: 0;
+}
+
+.skyPanel,
+.blushPanel {
+  position: absolute;
+  border-radius: 1.65rem;
+  color: var(--error-muted);
+  font-size: 0.86rem;
+  font-weight: 550;
+  line-height: 1.4;
+}
+
+.skyPanel {
+  top: 0;
+  left: 0;
+  width: 62%;
+  height: 59%;
+  padding: 1.8rem;
+  background: #dbeafd;
+}
+
+.blushPanel {
+  top: 38%;
+  right: 0;
+  width: 38%;
+  height: 43%;
+  padding: 2rem 1.4rem 1.4rem 2.6rem;
+  background: #fbddd4;
+}
+
+.skyPanel p,
+.blushPanel p {
+  max-width: 12ch;
+  margin-bottom: 1rem;
+}
+
+.skyPanel span,
+.blushPanel span {
+  display: block;
+  width: 1.35rem;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.55;
+}
+
+.routeCard {
+  position: absolute;
+  top: 12%;
+  left: 20%;
+  width: 66%;
+  height: 81%;
+  overflow: hidden;
+  border-radius: 1.7rem;
+  background: linear-gradient(145deg, #173a32, #0e2e29);
+  box-shadow: 0 20px 36px rgb(14 46 41 / 9%);
+}
+
+.errorCode {
+  position: absolute;
+  top: 6%;
+  left: 0;
+  width: 100%;
+  color: #fff;
+  font-size: clamp(6.2rem, 10vw, 8.8rem);
+  font-weight: 800;
+  letter-spacing: -0.095em;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.errorCode span {
+  color: var(--error-coral);
+}
+
+.routeLine {
+  position: absolute;
+  top: 43%;
+  left: 0;
+  width: 100%;
+  height: 31%;
+}
+
+.routeCaption {
+  position: absolute;
+  bottom: 7%;
+  left: 10%;
+  margin: 0;
+  color: rgb(255 255 255 / 60%);
+  font-size: 0.67rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  line-height: 1.6;
+  text-transform: uppercase;
 }
 
 .helpCard {

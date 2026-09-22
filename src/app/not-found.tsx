@@ -14,7 +14,8 @@ export default function NotFound() {
             </h1>
             <p className={styles.description}>
               The page you’re looking for doesn’t exist or may have moved.
-              <br className={styles.desktopBreak} /> Let’s get you back on track.
+              <br className={styles.desktopBreak} /> Let’s get you back on
+              track.
             </p>
             <div className={styles.actions}>
               <Link className={styles.primaryAction} href="/">
@@ -30,6 +31,79 @@ export default function NotFound() {
               <Link href="/blog">Resources</Link>
               <Link href="/about">About</Link>
             </nav>
+          </div>
+
+          <div className={styles.artwork} aria-hidden="true">
+            <div className={styles.skyPanel}>
+              <p>
+                Different problems.
+                <br />A clearer path.
+              </p>
+              <span />
+            </div>
+            <div className={styles.blushPanel}>
+              <p>
+                Better systems.
+                <br />
+                Brighter tomorrows.
+              </p>
+              <span />
+            </div>
+            <div className={styles.routeCard}>
+              <div className={styles.errorCode}>
+                4<span>0</span>4
+              </div>
+              <svg
+                className={styles.routeLine}
+                viewBox="0 0 360 120"
+                fill="none"
+                preserveAspectRatio="none"
+                focusable="false"
+              >
+                <path
+                  d="M0 38 C52 28 57 77 113 73 S203 61 234 74"
+                  stroke="#2e96ff"
+                  strokeWidth="4"
+                />
+                <path
+                  d="M234 74 C270 87 265 115 321 110"
+                  stroke="#2e96ff"
+                  strokeWidth="4"
+                  strokeDasharray="10 8"
+                />
+                <circle
+                  cx="71"
+                  cy="58"
+                  r="11"
+                  fill="#2e96ff"
+                  stroke="#fff"
+                  strokeWidth="3"
+                />
+                <circle
+                  cx="211"
+                  cy="67"
+                  r="11"
+                  fill="#2e96ff"
+                  stroke="#fff"
+                  strokeWidth="3"
+                />
+                <circle
+                  cx="321"
+                  cy="110"
+                  r="13"
+                  fill="#f0552b"
+                  stroke="#fff"
+                  strokeWidth="3"
+                />
+              </svg>
+              <p className={styles.routeCaption}>
+                Some paths
+                <br />
+                lead elsewhere.
+                <br />
+                Good things still do.
+              </p>
+            </div>
           </div>
         </div>
 
