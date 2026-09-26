@@ -39,7 +39,7 @@ not match the GitHub OAuth callback.
 4. Add the following Vercel environment variables to the Preview environment:
 
 ```dotenv
-CMS_REPOSITORY=Hjl2065889707/Capstone-Project-G-8
+CMS_REPOSITORY=sandrafranco16/Capstone-Project-G-8
 CMS_BRANCH=feature/cms-blog-demo
 CMS_OAUTH_BASE_URL=https://your-deployment.example.com
 CMS_GITHUB_CLIENT_ID=replace-with-client-id
@@ -56,6 +56,12 @@ The client secret belongs only in Vercel environment variables. Never prefix it 
 repository uses `public_repo`; change the scope to `repo` if the repository becomes
 private. Because an OAuth token is not limited to one repository, the dedicated test
 account should have access only to repositories required for CMS testing.
+
+Production deployments must explicitly set `CMS_REPOSITORY` and
+`CMS_OAUTH_BASE_URL`. The application returns a service-unavailable response for CMS
+configuration and authentication routes when either value is missing, instead of
+silently targeting a fallback repository or request origin. Local development keeps
+safe defaults for the current repository and `http://localhost:3000`.
 
 ## Review and deployment
 

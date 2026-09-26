@@ -1,4 +1,4 @@
-const DEFAULT_REPOSITORY = "Hjl2065889707/Capstone-Project-G-8";
+const DEFAULT_REPOSITORY = "sandrafranco16/Capstone-Project-G-8";
 const DEFAULT_BRANCH = "main";
 
 type CmsEnvironment = Partial<
@@ -60,11 +60,21 @@ export function getCmsConfig(
   environment: CmsEnvironment = process.env,
   requestOrigin = "http://localhost:3000",
 ): CmsConfig {
-  const repository = environment.CMS_REPOSITORY?.trim() || DEFAULT_REPOSITORY;
+  const isProduction = environment.NODE_ENV === "production";
+  const configuredRepository = environment.CMS_REPOSITORY?.trim();
+  const configuredBaseUrl = environment.CMS_OAUTH_BASE_URL?.trim();
+
+  if (isProduction && !configuredRepository) {
+    throw new Error("CMS_REPOSITORY is required in production.");
+  }
+
+  if (isProduction && !configuredBaseUrl) {
+    throw new Error("CMS_OAUTH_BASE_URL is required in production.");
+  }
+
+  const repository = configuredRepository || DEFAULT_REPOSITORY;
   const branch = environment.CMS_BRANCH?.trim() || DEFAULT_BRANCH;
-  const baseUrl = normaliseBaseUrl(
-    environment.CMS_OAUTH_BASE_URL?.trim() || requestOrigin,
-  );
+  const baseUrl = normaliseBaseUrl(configuredBaseUrl || requestOrigin);
 
   validateRepository(repository);
   validateBranch(branch);
@@ -73,8 +83,8 @@ export function getCmsConfig(
     repository,
     branch,
     baseUrl,
-    localBackend: environment.NODE_ENV !== "production",
-    editorialWorkflow: environment.NODE_ENV === "production",
+    localBackend: !isProduction,
+    editorialWorkflow: isProduction,
   };
 }
 
