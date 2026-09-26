@@ -290,6 +290,12 @@
   white-space: nowrap;
 }
 
+.contactLink svg {
+  width: 1rem;
+  height: 1rem;
+  flex: none;
+}
+
 .page a:focus-visible {
   outline: 3px solid var(--error-blue);
   outline-offset: 4px;

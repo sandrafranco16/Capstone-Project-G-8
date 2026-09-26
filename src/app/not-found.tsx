@@ -1,3 +1,5 @@
+import { ArrowRight, Compass } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 
 import styles from "./not-found.module.css";
@@ -53,49 +55,14 @@ export default function NotFound() {
               <div className={styles.errorCode}>
                 4<span>0</span>4
               </div>
-              <svg
+              <Image
+                alt=""
+                aria-hidden="true"
                 className={styles.routeLine}
-                viewBox="0 0 360 120"
-                fill="none"
-                preserveAspectRatio="none"
-                focusable="false"
-              >
-                <path
-                  d="M0 38 C52 28 57 77 113 73 S203 61 234 74"
-                  stroke="#2e96ff"
-                  strokeWidth="4"
-                />
-                <path
-                  d="M234 74 C270 87 265 115 321 110"
-                  stroke="#2e96ff"
-                  strokeWidth="4"
-                  strokeDasharray="10 8"
-                />
-                <circle
-                  cx="71"
-                  cy="58"
-                  r="11"
-                  fill="#2e96ff"
-                  stroke="#fff"
-                  strokeWidth="3"
-                />
-                <circle
-                  cx="211"
-                  cy="67"
-                  r="11"
-                  fill="#2e96ff"
-                  stroke="#fff"
-                  strokeWidth="3"
-                />
-                <circle
-                  cx="321"
-                  cy="110"
-                  r="13"
-                  fill="#f0552b"
-                  stroke="#fff"
-                  strokeWidth="3"
-                />
-              </svg>
+                height={120}
+                src="/assets/images/not-found-route.svg"
+                width={360}
+              />
               <p className={styles.routeCaption}>
                 Some paths
                 <br />
@@ -109,10 +76,7 @@ export default function NotFound() {
 
         <aside className={styles.helpCard} aria-label="Finding help">
           <div className={styles.helpIcon} aria-hidden="true">
-            <svg viewBox="0 0 48 48" fill="none" focusable="false">
-              <circle cx="24" cy="24" r="17" />
-              <path d="m30 18-4 8-8 4 4-8 8-4Z" />
-            </svg>
+            <Compass />
           </div>
           <div className={styles.helpCopy}>
             <h2>Need help finding something?</h2>
@@ -122,7 +86,7 @@ export default function NotFound() {
             </p>
           </div>
           <Link className={styles.contactLink} href="/contact">
-            Contact us <span aria-hidden="true">→</span>
+            Contact us <ArrowRight aria-hidden="true" />
           </Link>
         </aside>
       </div>
