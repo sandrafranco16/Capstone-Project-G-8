@@ -1,8 +1,8 @@
 # BIT-40 legal page review
 
-The four sections at `/legal` are implemented in `demo/legal.html`. The page is a
-draft and is marked `noindex` in `src/app/legal/page.tsx`; `/legal` is excluded
-from `src/app/sitemap.ts` until BITDOT approves the copy.
+The four sections at `/legal` are implemented as a native Next.js route in
+`src/app/legal/page.tsx`. The page is a draft and is marked `noindex`;
+`/legal` is excluded from `src/app/sitemap.ts` until BITDOT approves the copy.
 
 ## BITDOT decisions before publication
 
@@ -24,5 +24,4 @@ lists the information an APP privacy policy must cover when the APPs apply. The
 recommends a stated standard, contact route and known limitations.
 
 After approval, update the visible draft notice and final copy, remove `robots`
-from `src/app/legal/page.tsx` and the static demo's `<meta name="robots">`,
-and add `/legal` back to `src/app/sitemap.ts`.
+from `src/app/legal/page.tsx`, and add `/legal` back to `src/app/sitemap.ts`.
