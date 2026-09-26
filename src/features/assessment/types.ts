@@ -17,3 +17,12 @@ export type AssessmentThreshold = {
   level: AssessmentLevel;
   minimumScore: number;
 };
+
+export type PathwayId = "career" | "learn" | "govern" | "risk";
+export type AssessmentPathway = {
+  id: PathwayId;
+  label: string;
+  audience: string;
+  description: string;
+  questions: AssessmentQuestion[];
+};
