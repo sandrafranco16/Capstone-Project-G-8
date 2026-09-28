@@ -237,3 +237,122 @@
     transform: none;
   }
 }
+
+/* ---------- Leadership: dark, cinematic founder cards ---------- */
+.founders {
+  display: grid;
+  gap: 1.5rem;
+  padding: 0;
+  list-style: none;
+}
+
+.founder {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 1.75rem;
+  background:
+    radial-gradient(120% 70% at 85% 0%, rgb(46 150 255 / 16%), transparent 60%),
+    linear-gradient(170deg, #1b2b4b 0%, var(--navy) 42%, #0f1a2f 100%);
+  color: #fff;
+  box-shadow: 0 30px 60px -30px rgb(15 26 47 / 55%);
+}
+
+.founderTop {
+  display: grid;
+  grid-template-columns: minmax(0, 9.5rem) minmax(0, 1fr);
+  gap: 1.5rem;
+  align-items: end;
+  padding: clamp(1.5rem, 3.5vw, 2.25rem);
+}
+
+.founderPhoto {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  border-radius: 1.1rem;
+  background: #0f1a2f;
+}
+
+.founderPhoto img {
+  object-fit: cover;
+  filter: grayscale(1) contrast(1.06);
+  transform: scale(1.06);
+}
+
+.page .founderName {
+  font-size: clamp(1.6rem, 2.8vw, 2.15rem);
+  font-weight: 720;
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+}
+
+.founderRole {
+  margin-top: 0.5rem;
+  color: rgb(255 255 255 / 88%);
+  font-weight: 600;
+}
+
+.founderSpecialty {
+  margin-top: 0.15rem;
+  color: rgb(255 255 255 / 64%);
+  font-size: 0.95rem;
+}
+
+.highlights {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  padding: 0;
+  list-style: none;
+}
+
+.highlights li {
+  padding: 0.3rem 0.75rem;
+  border: 1px solid rgb(255 255 255 / 26%);
+  border-radius: 999px;
+  color: rgb(255 255 255 / 90%);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.details {
+  flex: 1;
+  padding: 0 clamp(1.5rem, 3.5vw, 2.25rem) clamp(1.5rem, 3.5vw, 2.25rem);
+}
+
+.detail {
+  display: grid;
+  gap: 0.35rem;
+  padding: 1.1rem 0;
+  border-top: 1px solid rgb(255 255 255 / 14%);
+}
+
+.detail dt {
+  color: var(--coral-light);
+  font-size: 0.8rem;
+  font-weight: 650;
+}
+
+.detail dd {
+  color: rgb(255 255 255 / 80%);
+  font-size: 0.97rem;
+}
+
+@media (min-width: 62rem) {
+  .founders {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 30rem) {
+  .founderTop {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .founderPhoto {
+    width: min(12rem, 70%);
+  }
+}
