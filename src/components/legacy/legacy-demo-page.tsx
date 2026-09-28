@@ -5,8 +5,7 @@ import { join } from "node:path";
 
 import { DemoRuntime } from "./demo-runtime";
 
-export type DemoFile =
-  "about.html" | "index.html" | "legal.html" | "services.html";
+export type DemoFile = "about.html" | "index.html" | "legal.html";
 
 type LegacyDemoPageProps = {
   file: DemoFile;
