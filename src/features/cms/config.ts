@@ -1,4 +1,3 @@
-const DEFAULT_REPOSITORY = "sandrafranco16/Capstone-Project-G-8";
 const DEFAULT_BRANCH = "main";
 
 type CmsEnvironment = Partial<
@@ -64,15 +63,15 @@ export function getCmsConfig(
   const configuredRepository = environment.CMS_REPOSITORY?.trim();
   const configuredBaseUrl = environment.CMS_OAUTH_BASE_URL?.trim();
 
-  if (isProduction && !configuredRepository) {
-    throw new Error("CMS_REPOSITORY is required in production.");
+  if (!configuredRepository) {
+    throw new Error("CMS_REPOSITORY is required.");
   }
 
   if (isProduction && !configuredBaseUrl) {
     throw new Error("CMS_OAUTH_BASE_URL is required in production.");
   }
 
-  const repository = configuredRepository || DEFAULT_REPOSITORY;
+  const repository = configuredRepository;
   const branch = environment.CMS_BRANCH?.trim() || DEFAULT_BRANCH;
   const baseUrl = normaliseBaseUrl(configuredBaseUrl || requestOrigin);
 

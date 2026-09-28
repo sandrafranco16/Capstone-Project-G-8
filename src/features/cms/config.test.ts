@@ -3,14 +3,14 @@ import { describe, expect, it } from "vitest";
 import { getCmsConfig, renderCmsConfig } from "./config";
 
 describe("getCmsConfig", () => {
-  it("uses the current repository and request origin for local development", () => {
+  it("uses the configured repository and request origin for local development", () => {
     const config = getCmsConfig(
-      { NODE_ENV: "development" },
+      { CMS_REPOSITORY: "bitdot/site", NODE_ENV: "development" },
       "http://localhost:3000",
     );
 
     expect(config).toEqual({
-      repository: "sandrafranco16/Capstone-Project-G-8",
+      repository: "bitdot/site",
       branch: "main",
       baseUrl: "http://localhost:3000",
       localBackend: true,
@@ -38,17 +38,25 @@ describe("getCmsConfig", () => {
     });
   });
 
-  it("requires explicit repository and OAuth origins in production", () => {
-    expect(() =>
-      getCmsConfig({
-        CMS_OAUTH_BASE_URL: "https://cms.example.com",
-        NODE_ENV: "production",
-      }),
-    ).toThrow("CMS_REPOSITORY is required in production");
+  it.each(["development", "test", "production"] as const)(
+    "requires a non-blank repository in %s",
+    (nodeEnv) => {
+      for (const repository of [undefined, "", "   "]) {
+        expect(() =>
+          getCmsConfig({
+            CMS_REPOSITORY: repository,
+            CMS_OAUTH_BASE_URL: "https://cms.example.com",
+            NODE_ENV: nodeEnv,
+          }),
+        ).toThrow("CMS_REPOSITORY is required.");
+      }
+    },
+  );
 
+  it("requires an explicit OAuth origin in production", () => {
     expect(() =>
       getCmsConfig({
-        CMS_REPOSITORY: "sandrafranco16/Capstone-Project-G-8",
+        CMS_REPOSITORY: "bitdot/site",
         NODE_ENV: "production",
       }),
     ).toThrow("CMS_OAUTH_BASE_URL is required in production");
@@ -59,10 +67,15 @@ describe("getCmsConfig", () => {
       getCmsConfig({ CMS_REPOSITORY: "missing-slash", NODE_ENV: "test" }),
     ).toThrow("owner/repository");
     expect(() =>
-      getCmsConfig({ CMS_BRANCH: "bad branch", NODE_ENV: "test" }),
+      getCmsConfig({
+        CMS_REPOSITORY: "bitdot/site",
+        CMS_BRANCH: "bad branch",
+        NODE_ENV: "test",
+      }),
     ).toThrow("valid Git branch");
     expect(() =>
       getCmsConfig({
+        CMS_REPOSITORY: "bitdot/site",
         CMS_OAUTH_BASE_URL: "http://example.com",
         NODE_ENV: "test",
       }),
