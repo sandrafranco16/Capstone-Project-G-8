@@ -23,13 +23,8 @@
   overflow-wrap: break-word;
 }
 
-.page h1,
-.page h2,
-.page h3,
-.page p,
-.page dl,
-.page dd,
-.page ul {
+.page :where(h1, h2, h3, p, dl, dd, ul) {
+  /* Zero-specificity reset so component spacing below always wins. */
   margin: 0;
 }
 
@@ -121,7 +116,7 @@
 .heroMark {
   position: absolute;
   top: 50%;
-  right: max(-6rem, calc((100vw - 75rem) / 2 - 6rem));
+  right: max(1.5rem, calc((100vw - 75rem) / 2));
   width: clamp(18rem, 34vw, 28rem);
   height: auto;
   opacity: 0.14;
@@ -355,4 +350,47 @@
   .founderPhoto {
     width: min(12rem, 70%);
   }
+}
+
+/* ---------- Values ---------- */
+.values {
+  display: grid;
+  gap: 2rem;
+  padding: 0;
+  list-style: none;
+}
+
+.value {
+  padding-top: 1.25rem;
+  border-top: 2px solid var(--coral);
+}
+
+.value h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+}
+
+.value p {
+  margin-top: 0.6rem;
+  color: var(--ink-2);
+}
+
+@media (min-width: 52rem) {
+  .values {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 2.5rem;
+  }
+}
+
+/* ---------- Closing call to action ---------- */
+.cta {
+  padding-top: 0;
+}
+
+.page .ctaPanel h2 {
+  font-size: clamp(1.8rem, 3.6vw, 2.6rem);
+  font-weight: 730;
+  line-height: 1.08;
+  letter-spacing: -0.04em;
 }

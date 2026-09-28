@@ -64,7 +64,7 @@ export const aboutCredibility = {
       value: "30+ years",
       title: "Combined experience",
       description:
-        "Combined experience across both directors, not a single founder's résumé stretched thin.",
+        "Across both directors, not a single founder's résumé stretched thin.",
     },
     {
       value: "GAICD",
