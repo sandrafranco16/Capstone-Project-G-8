@@ -1,0 +1,226 @@
+.page {
+  composes: page from "./services-theme.module.css";
+}
+
+.page :global(.p-hero) {
+  position: relative;
+  padding: 4.75rem 0 4rem;
+  overflow: hidden;
+}
+.page :global(.p-hero .wrap) {
+  position: relative;
+  z-index: 1;
+}
+.page :global(.p-hero h1) {
+  max-width: 15ch;
+  margin-bottom: 0;
+  overflow-wrap: break-word;
+}
+.page :global(.p-hero .lead) {
+  margin-top: 0;
+  padding-top: 20px;
+  font-size: 1.13rem;
+}
+.page :global(.jump) {
+  margin-top: 1.875rem;
+  display: flex;
+  gap: 0.625rem;
+  flex-wrap: wrap;
+}
+
+.page :global(.svc-sec) {
+  position: relative;
+  padding: 5rem 0;
+  border-top: 0.0625rem solid var(--line);
+}
+.page :global(.svc-grid2) {
+  display: grid;
+  grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+  gap: 3.25rem;
+  align-items: start;
+}
+.page :global(.svc-num) {
+  font-size: 0.84rem;
+  font-weight: 640;
+  color: var(--sc);
+  margin-bottom: 0.875rem;
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+}
+.page :global(.svc-num::before) {
+  content: "";
+  width: 0.5625rem;
+  height: 0.5625rem;
+  border-radius: 50%;
+  background: var(--sc);
+}
+.page :global(.svc-sec h2) {
+  max-width: 16ch;
+  margin-bottom: 0;
+}
+.page :global(.offer) {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.875rem;
+  margin-top: 0.5rem;
+  padding: 0;
+}
+.page :global(.off) {
+  padding: 1.375rem 1.375rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4375rem;
+}
+.page :global(.off b) {
+  font-size: 0.97rem;
+  font-weight: 620;
+  letter-spacing: -0.016em;
+}
+.page :global(.off span) {
+  font-size: 0.88rem;
+  color: var(--ink-2);
+}
+
+.page :global(.faq details) {
+  border-radius: 1rem;
+  background: var(--paper);
+  margin-bottom: 0.6875rem;
+  overflow: hidden;
+  transition: box-shadow 0.25s;
+  box-shadow: var(--sh);
+}
+.page :global(.faq details[open]) {
+  box-shadow: var(--sh-2);
+}
+.page :global(.faq summary) {
+  cursor: pointer;
+  padding: 1.1875rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: -0.018em;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: center;
+}
+.page :global(.faq summary::-webkit-details-marker) {
+  display: none;
+}
+.page :global(.faq summary::after) {
+  content: "+";
+  font-size: 1.3rem;
+  color: var(--coral);
+  font-weight: 400;
+  line-height: 1;
+  transition: transform 0.25s;
+}
+.page :global(.faq details[open] summary::after) {
+  transform: rotate(45deg);
+}
+.page :global(.faq p) {
+  padding: 0 1.5rem 1.3125rem;
+  font-size: 0.94rem;
+  color: var(--ink-2);
+  max-width: 76ch;
+}
+
+@media (max-width: 56.25rem) {
+  .page :global(.svc-grid2) {
+    grid-template-columns: 1fr;
+    gap: 1.875rem;
+  }
+  .page :global(.offer) {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Native React elements preserve the reference geometry. */
+.page {
+  overflow-x: clip;
+}
+.page :global(.offer) {
+  list-style: none;
+}
+.page :global(.off h3) {
+  font-size: 0.97rem;
+  font-weight: 620;
+  letter-spacing: -0.016em;
+  line-height: inherit;
+  margin: 0;
+}
+.page :global(.off p) {
+  font-size: 0.88rem;
+  color: var(--ink-2);
+  margin: 0;
+}
+.page :global(.svc-grid2 .lead) {
+  margin-top: 1rem;
+  margin-bottom: 0;
+}
+.page :global(.svc-grid2 .btn) {
+  margin-top: 1.625rem;
+}
+.page :global(.faq .wrap) {
+  max-width: 56.25rem;
+}
+.page :global(.closing) {
+  padding-top: 0;
+}
+.page :global(.closing-actions) {
+  display: flex;
+  gap: 0.8125rem;
+  flex-wrap: wrap;
+  margin-top: 1.75rem;
+}
+.page :global(.hero-blob-blue) {
+  width: 32.5rem;
+  height: 32.5rem;
+  top: -13.75rem;
+  right: -10rem;
+  background: radial-gradient(circle, rgba(0, 113, 227, 0.16), transparent 66%);
+}
+.page :global(.hero-blob-coral) {
+  width: 25rem;
+  height: 25rem;
+  top: 7.5rem;
+  left: -8.75rem;
+  background: radial-gradient(circle, rgba(240, 85, 43, 0.13), transparent 66%);
+  animation-delay: -8s;
+}
+.page :global(.card[data-tone="sky"]) {
+  --f: var(--fill-sky);
+}
+.page :global(.card[data-tone="blush"]) {
+  --f: var(--fill-blush);
+}
+.page :global(.card[data-tone="sage"]) {
+  --f: var(--fill-sage);
+}
+.page :global(.card[data-tone="lilac"]) {
+  --f: var(--fill-lilac);
+}
+.page :global(.card[data-tone="mint"]) {
+  --f: var(--fill-mint);
+}
+.page :global(.card[data-tone="sand"]) {
+  --f: var(--fill-sand);
+}
+.page :global(#career) {
+  --sc: #0071e3;
+}
+.page :global(#training) {
+  --sc: #0b7a56;
+}
+.page :global(#governance) {
+  --sc: #6d5bd0;
+}
+.page :global(#crisis) {
+  --sc: #b4770b;
+}
+/* Content is readable before hydration and if JavaScript is disabled. */
+.page:not([data-enhanced]) :global(.rv) {
+  opacity: 1;
+  transform: none;
+}

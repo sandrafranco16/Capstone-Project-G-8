@@ -1,0 +1,368 @@
+/* Reference Services theme, scoped to this page. Dimensions preserve the HTML at a 16px root. */
+
+.page {
+  --canvas: #fcfaf5;
+  --paper: #ffffff;
+  --mist: #f3f0e8;
+  --mist-2: #ece7db;
+  --line: #e6e0d3;
+  --line-2: #d8cfbb;
+
+  --ink: #12201c;
+  --ink-2: #4b5a52;
+  --ink-3: #7c8a81;
+  --blue: #0071e3;
+  --blue-deep: #0057b8;
+  --blue-bright: #2e96ff;
+  --blue-wash: #eaf3ff;
+  --coral: #f0552b;
+  --coral-deep: #d53f17;
+  --coral-wash: #fde7de;
+
+  --amber: #f59e0b;
+  --amber-wash: #fdf1dd;
+  --green: #0ea47a;
+  --green-wash: #e3f5ed;
+  --plum: #6d5bd0;
+  --plum-wash: #ece7fb;
+  --forest: #0e2e29;
+  --forest-2: #153f38;
+  --forest-3: #1c4f46;
+  --maroon: #5c1a2e;
+  --maroon-2: #742038;
+  --navy: #16233e;
+  --navy-2: #1e304f;
+
+  --grad: linear-gradient(100deg, #0057b8 0%, #0071e3 45%, #2e96ff 100%);
+  --grad-warm: linear-gradient(100deg, #f0552b 0%, #f59e0b 100%);
+  --fill-sky: #dbeafd;
+  --fill-sand: #f7e7c9;
+  --fill-sage: #daeee1;
+  --fill-lilac: #e6dff9;
+  --fill-blush: #fbded2;
+  --fill-mint: #d3f0e8;
+  --fill-slate: #e3e8f0;
+  --fill-rose: #f7dce3;
+  --bold-coral: #f0552b;
+  --bold-plum: #6d5bd0;
+  --bold-green: #0b7a56;
+  --bold-maroon: #5c1a2e;
+  --bold-navy: #16233e;
+  --bold-forest: #0e2e29;
+
+  --sans:
+    -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Inter",
+    "Helvetica Neue", Arial, sans-serif;
+
+  --r: 1.125rem;
+  --r-lg: 1.625rem;
+  --sh:
+    0 0.0625rem 0.125rem rgba(18, 32, 28, 0.05),
+    0 0.25rem 0.875rem rgba(18, 32, 28, 0.06);
+  --sh-2:
+    0 0.1875rem 0.375rem rgba(18, 32, 28, 0.05),
+    0 1rem 2.25rem rgba(18, 32, 28, 0.11);
+  --sh-3:
+    0 0.375rem 0.75rem rgba(18, 32, 28, 0.06),
+    0 1.75rem 4rem rgba(18, 32, 28, 0.16);
+}
+
+.page,
+.page :global(*) {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.page {
+  font-family: var(--sans);
+  background: var(--canvas);
+  color: var(--ink);
+  font-size: 1.0625rem;
+  line-height: 1.56;
+  letter-spacing: -0.011em;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+}
+.page :global(img) {
+  max-width: 100%;
+  display: block;
+}
+.page :global(a) {
+  color: inherit;
+  text-decoration: none;
+}
+.page :global(button) {
+  font-family: inherit;
+}
+.page :global(:focus-visible) {
+  outline: 0.125rem solid var(--blue);
+  outline-offset: 0.1875rem;
+  border-radius: 0.5rem;
+}
+.page :global(::selection) {
+  background: #fbd2c2;
+  color: var(--ink);
+}
+
+.page :global(.wrap) {
+  max-width: 75rem;
+  margin: 0 auto;
+  padding: 0 1.75rem;
+}
+.page :global(.section) {
+  padding: 5.5rem 0;
+  position: relative;
+}
+.page :global(.section.tight) {
+  padding: 0 0 3.5rem 0;
+}
+.page :global(.bg-mist) {
+  background: var(--mist);
+}
+
+.page :global(h1),
+.page :global(h2),
+.page :global(h3),
+.page :global(h4) {
+  font-weight: 680;
+  letter-spacing: -0.036em;
+  line-height: 1.06;
+  color: var(--ink);
+}
+.page :global(h1) {
+  font-size: clamp(2.5rem, 5.4vw, 4.2rem);
+}
+.page :global(h2) {
+  font-size: clamp(1.9rem, 3.7vw, 2.8rem);
+  max-width: 20ch;
+}
+.page :global(h3) {
+  font-size: 1.18rem;
+  letter-spacing: -0.024em;
+  line-height: 1.26;
+}
+.page :global(.lead) {
+  color: var(--ink-2);
+  font-size: 1.08rem;
+  max-width: 62ch;
+  letter-spacing: -0.006em;
+}
+.page :global(.display) {
+  font-weight: 730;
+  letter-spacing: -0.044em;
+  line-height: 1.02;
+}
+.page :global(.display em) {
+  font-style: italic;
+  font-weight: 730;
+  color: var(--coral);
+}
+.page :global(h2.big) {
+  font-size: clamp(2.1rem, 4.6vw, 3.5rem);
+  max-width: 22ch;
+}
+
+.page :global(.label) {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.83rem;
+  font-weight: 620;
+  color: var(--coral);
+  margin-bottom: 1rem;
+}
+.page :global(.label::before) {
+  content: "";
+  width: 0.4375rem;
+  height: 0.4375rem;
+  border-radius: 50%;
+  background: var(--coral);
+  flex: none;
+}
+.page :global(.label.c-blue) {
+  color: var(--blue);
+}
+.page :global(.label.c-blue::before) {
+  background: var(--blue);
+}
+.page :global(.label.on-dark) {
+  color: #ff9e7a;
+}
+.page :global(.label.on-dark::before) {
+  background: #ff9e7a;
+}
+.page :global(.sec-head) {
+  margin-bottom: 2.75rem;
+  max-width: 47.5rem;
+}
+.page :global(.sec-head .lead) {
+  margin-top: 0.875rem;
+}
+.page :global(.btn) {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5625rem;
+  font-size: 0.97rem;
+  font-weight: 640;
+  letter-spacing: -0.01em;
+  padding: 0.875rem 1.625rem;
+  border-radius: 62.4375rem;
+  border: 0.0625rem solid transparent;
+  cursor: pointer;
+  transition:
+    transform 0.18s cubic-bezier(0.2, 0.7, 0.3, 1),
+    box-shadow 0.22s,
+    background 0.18s,
+    border-color 0.18s;
+}
+.page :global(.btn:hover) {
+  transform: translateY(-0.125rem);
+}
+.page :global(.btn-primary) {
+  background: var(--ink);
+  color: #fff;
+}
+.page :global(.btn-primary:hover) {
+  background: var(--forest-3);
+  box-shadow: 0 0.75rem 1.75rem rgba(14, 46, 41, 0.28);
+}
+.page :global(.btn-coral) {
+  background: var(--coral);
+  color: #fff;
+}
+.page :global(.btn-coral:hover) {
+  background: var(--coral-deep);
+  box-shadow: 0 0.75rem 1.875rem rgba(240, 85, 43, 0.38);
+}
+.page :global(.btn-ghost) {
+  background: var(--paper);
+  border-color: var(--line-2);
+  color: var(--ink);
+}
+.page :global(.btn-ghost:hover) {
+  border-color: var(--ink);
+  box-shadow: var(--sh);
+}
+.page :global(.btn-on-dark) {
+  background: rgba(255, 255, 255, 0.14);
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.28);
+}
+.page :global(.btn-on-dark:hover) {
+  background: rgba(255, 255, 255, 0.22);
+}
+.page :global(.btn-lg) {
+  padding: 1.0625rem 2rem;
+  font-size: 1.02rem;
+}
+.page :global(.blob) {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(4rem);
+  pointer-events: none;
+  z-index: 0;
+  animation: drift 24s ease-in-out infinite alternate;
+}
+@keyframes drift {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(2.75rem, -1.875rem, 0) scale(1.1);
+  }
+  100% {
+    transform: translate3d(-2rem, 1.375rem, 0) scale(0.95);
+  }
+}
+.page :global(.dots) {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image: radial-gradient(
+    rgba(255, 255, 255, 0.14) 0.075rem,
+    transparent 0.075rem
+  );
+  background-size: 1.375rem 1.375rem;
+}
+.page :global(.card) {
+  position: relative;
+  background: var(--paper);
+  border: 0.0625rem solid var(--line);
+  border-radius: var(--r);
+  transition:
+    transform 0.28s cubic-bezier(0.2, 0.7, 0.3, 1),
+    border-color 0.25s,
+    box-shadow 0.28s;
+  overflow: hidden;
+}
+.page :global(.card:hover) {
+  transform: translateY(-0.25rem);
+  border-color: var(--line-2);
+  box-shadow: var(--sh-2);
+}
+.page :global(.card.fill) {
+  background: var(--f, var(--fill-sky));
+  border-color: transparent;
+}
+.page :global(.card.fill:hover) {
+  border-color: transparent;
+  box-shadow: var(--sh-2);
+}
+.page :global(.band) {
+  background: var(--forest);
+  border-radius: var(--r-lg);
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+  padding: 3.5rem 3.25rem;
+}
+.page :global(.band > *) {
+  position: relative;
+}
+.page :global(.band h2) {
+  color: #fff;
+}
+.page :global(.band .lead) {
+  color: rgba(255, 255, 255, 0.7);
+}
+.page :global(.rv) {
+  opacity: 0;
+  transform: translateY(1.375rem);
+  transition:
+    opacity 0.75s cubic-bezier(0.2, 0.7, 0.3, 1),
+    transform 0.75s cubic-bezier(0.2, 0.7, 0.3, 1);
+}
+.page :global(.rv.in) {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page :global(.rv) {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .page :global(.blob) {
+    animation: none !important;
+  }
+  .page :global(.btn:hover),
+  .page :global(.card:hover) {
+    transform: none;
+  }
+}
+@media (max-width: 47.5rem) {
+  .page {
+    font-size: 1.03125rem;
+  }
+  .page :global(.section) {
+    padding: 3.75rem 0;
+  }
+  .page :global(.wrap) {
+    padding: 0 1.375rem;
+  }
+  .page :global(.band) {
+    padding: 2.25rem 1.625rem;
+  }
+}
