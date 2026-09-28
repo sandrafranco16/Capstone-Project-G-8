@@ -1,0 +1,239 @@
+/* About page (BIT-39). Tokens follow the approved prototype:
+   warm canvas, coral accent, jewel-tone dark bands. */
+.page {
+  --canvas: #fcfaf5;
+  --paper: #ffffff;
+  --ink: #12201c;
+  --ink-2: #4d5d56;
+  --coral: #f0552b;
+  --coral-text: #b63716;
+  --coral-light: #ff9e7a;
+  --forest: #0e2e29;
+  --navy: #16233e;
+  --line: rgb(18 32 28 / 12%);
+
+  background: var(--canvas);
+  color: var(--ink);
+  font-family:
+    -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Inter",
+    "Helvetica Neue", Arial, sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.56;
+  letter-spacing: -0.011em;
+  overflow-wrap: break-word;
+}
+
+.page h1,
+.page h2,
+.page h3,
+.page p,
+.page dl,
+.page dd,
+.page ul {
+  margin: 0;
+}
+
+.wrap {
+  width: min(75rem, 100%);
+  margin: 0 auto;
+  padding: 0 1.75rem;
+}
+
+.section {
+  padding: 5.5rem 0;
+}
+
+.sectionTight {
+  padding: 2.5rem 0;
+}
+
+.onPaper {
+  background: var(--paper);
+}
+
+.label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  color: var(--coral-text);
+  font-size: 0.83rem;
+  font-weight: 620;
+}
+
+.label::before {
+  content: "";
+  flex: none;
+  width: 0.4375rem;
+  height: 0.4375rem;
+  border-radius: 50%;
+  background: var(--coral);
+}
+
+.page .title {
+  max-width: 22ch;
+  color: inherit;
+  font-size: clamp(2.1rem, 4.6vw, 3.5rem);
+  font-weight: 730;
+  line-height: 1.04;
+  letter-spacing: -0.044em;
+}
+
+.lead {
+  max-width: 62ch;
+  margin-top: 0.875rem;
+  color: var(--ink-2);
+  font-size: 1.08rem;
+}
+
+.sectionHead {
+  max-width: 47.5rem;
+  margin-bottom: 2.75rem;
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(4.5rem, 9vw, 7.5rem) 0 clamp(4rem, 7vw, 6rem);
+}
+
+.heroInner {
+  position: relative;
+  z-index: 1;
+}
+
+.page .heroTitle {
+  max-width: 21ch;
+  font-size: clamp(2.25rem, 5.4vw, 4.4rem);
+  font-weight: 740;
+  line-height: 1.02;
+  letter-spacing: -0.048em;
+}
+
+.heroLead {
+  max-width: 48ch;
+  margin-top: 1.5rem;
+  color: var(--ink-2);
+  font-size: clamp(1.08rem, 1.6vw, 1.25rem);
+}
+
+.heroMark {
+  position: absolute;
+  top: 50%;
+  right: max(-6rem, calc((100vw - 75rem) / 2 - 6rem));
+  width: clamp(18rem, 34vw, 28rem);
+  height: auto;
+  opacity: 0.14;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+/* ---------- Story ---------- */
+.story {
+  display: grid;
+  gap: 2rem;
+}
+
+.storyBody {
+  display: grid;
+  gap: 1.1rem;
+  max-width: 62ch;
+  color: var(--ink-2);
+}
+
+.storyBody p:first-child {
+  color: var(--ink);
+  font-size: 1.18rem;
+  line-height: 1.5;
+}
+
+@media (min-width: 60rem) {
+  .story {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr);
+    gap: 4rem;
+    align-items: start;
+  }
+}
+
+/* ---------- Credibility band ---------- */
+.band {
+  padding: clamp(2rem, 5vw, 3.5rem);
+  border-radius: 1.75rem;
+  background: var(--forest);
+  color: #fff;
+}
+
+.band .label {
+  color: var(--coral-light);
+}
+
+.band .lead {
+  color: rgb(255 255 255 / 76%);
+}
+
+.specs {
+  display: grid;
+  gap: 0;
+  margin-top: 2.75rem;
+  padding: 0;
+  list-style: none;
+}
+
+.spec {
+  padding: 1.5rem 0;
+  border-top: 1px solid rgb(255 255 255 / 18%);
+}
+
+.specValue {
+  display: block;
+  color: var(--coral-light);
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  font-weight: 720;
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+}
+
+.spec h3 {
+  margin-top: 0.6rem;
+  color: #fff;
+  font-size: 1.05rem;
+  font-weight: 650;
+  letter-spacing: -0.015em;
+}
+
+.spec p {
+  margin-top: 0.4rem;
+  color: rgb(255 255 255 / 72%);
+  font-size: 0.95rem;
+}
+
+@media (min-width: 40rem) {
+  .specs {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 2rem;
+  }
+}
+
+@media (min-width: 64rem) {
+  .specs {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 40rem) {
+  .wrap {
+    padding: 0 1.25rem;
+  }
+
+  .section {
+    padding: 4rem 0;
+  }
+
+  .heroMark {
+    top: 1.5rem;
+    right: -5rem;
+    width: 15rem;
+    transform: none;
+  }
+}
