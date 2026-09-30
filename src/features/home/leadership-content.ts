@@ -28,21 +28,21 @@ export const directors: readonly Director[] = [
     role: "Co-Founder & Managing Director",
     specialism: "Management Specialist",
     photo: {
-      src: "/images/leadership/hemna-goyal.jpg",
+      src: "/images/people/hemna-goyal.jpg",
       alt: "Portrait of Hemna Goyal",
     },
-    badges: ["30+ yrs leadership", "Governance"],
+    badges: ["Management expertise", "Governance"],
     details: [
       {
         label: "Academic foundation",
-        text: "B.Arch. and Master of Project & Program Management",
+        text: "B.Arch. and Master of Project & Program Management.",
       },
       {
         label: "Expertise",
-        text: "Governance and strategic decision-making. Development of AI governance training for not-for-profits and small-to-medium business. AI guardrails and data governance.",
+        text: "Governance and strategic decision-making. Development of AI governance training for not-for-profits and small-to-medium businesses. AI guardrails and data governance.",
       },
       {
-        label: "Leadership & vision",
+        label: "Management expertise",
         text: "A strategic visionary empowering boards in the age of AI. Drives impactful board visions and strategies for business growth, future-proofing frameworks, and creating training to equip leaders for ethical and efficient AI implementation.",
       },
     ],
@@ -54,14 +54,14 @@ export const directors: readonly Director[] = [
     role: "Co-Founder & Director",
     specialism: "Data & AI Specialist",
     photo: {
-      src: "/images/leadership/vaibhav-agrawal.jpg",
+      src: "/images/people/vaibhav-agrawal.jpg",
       alt: "Portrait of Vaibhav Agrawal",
     },
     badges: ["GAICD", "National AI Guardrails"],
     details: [
       {
         label: "Academic foundation",
-        text: "GAICD, B.Tech, and M.Tech in Data & Analytics",
+        text: "GAICD, B.Tech and M.Tech in Data & Analytics. Currently an MBA candidate.",
       },
       {
         label: "Expertise",
@@ -69,7 +69,7 @@ export const directors: readonly Director[] = [
       },
       {
         label: "Industry leadership",
-        text: "Held senior leadership roles at leading organisations. Lecturer at UWA, shaping future AI professionals. Member of the advisory board for UWA's Business and Computer Science schools, contributing to Master of AI curriculum design.",
+        text: "Has held senior leadership roles at leading organisations. Lecturer at UWA, shaping future AI professionals, and a member of the advisory board for UWA's Business and Computer Science schools, contributing to Master of AI curriculum design.",
       },
     ],
     theme: "navy",

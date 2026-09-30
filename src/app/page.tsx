@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 
-import { GovernanceSection } from "@/features/home/governance-section";
-import { LeadershipSection } from "@/features/home/leadership-section";
-import { TestimonialsSection } from "@/features/home/testimonials-section";
+import { LegacyDemoPage } from "@/components/legacy/legacy-demo-page";
 
 export const metadata: Metadata = {
   title: {
@@ -13,14 +11,6 @@ export const metadata: Metadata = {
     "BITDOT helps professionals, AI engineers and leaders succeed with AI — career coaching, Copilot & Claude training, board-level AI governance and crisis simulation.",
 };
 
-// Only migrated sections render here; the remaining homepage sections are
-// added as their tickets land, in the order of the approved demo.
 export default function HomePage() {
-  return (
-    <>
-      <GovernanceSection enquiryHref="/contact" />
-      <LeadershipSection />
-      <TestimonialsSection />
-    </>
-  );
+  return <LegacyDemoPage file="index.html" />;
 }

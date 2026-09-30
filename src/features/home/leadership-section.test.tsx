@@ -37,7 +37,7 @@ describe("LeadershipSection", () => {
   it("renders profile rows as a description list", () => {
     expect(html).toContain("<dt>Academic foundation</dt>");
     expect(html).toContain(
-      "<dd>GAICD, B.Tech, and M.Tech in Data &amp; Analytics</dd>",
+      "<dd>GAICD, B.Tech and M.Tech in Data &amp; Analytics. Currently an MBA candidate.</dd>",
     );
   });
 

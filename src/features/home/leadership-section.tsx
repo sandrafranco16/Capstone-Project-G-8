@@ -33,9 +33,6 @@ export function LeadershipSection({
           <h2 id="leadership-heading" className={styles.title}>
             Two directors, thirty years of experience.
           </h2>
-          <p className={styles.lead}>
-            Select a card to read each director&rsquo;s background.
-          </p>
         </div>
         <ul className={styles.grid} role="list">
           {directors.map((director) => (
