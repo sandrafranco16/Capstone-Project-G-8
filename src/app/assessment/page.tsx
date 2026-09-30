@@ -1,42 +1,49 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 
 import { Container } from "@/components/ui/container";
-import {
-  assessmentLevels,
-  assessmentQuestions,
-} from "@/features/assessment/config";
+import { AssessmentJourney } from "@/features/assessment/assessment-journey";
+import { isPathwayId } from "@/features/assessment/pathways";
 
-export const metadata: Metadata = { title: "AI Readiness Assessment" };
+export const metadata: Metadata = {
+  title: "AI Readiness Assessment",
+  description:
+    "Explore your next step in AI careers, automation, governance or risk preparation with a five-question self-assessment.",
+  robots: { index: false, follow: true },
+};
 
-export default function AssessmentPage() {
-  const isConfigured = assessmentQuestions.length > 0;
+export default async function AssessmentPage({
+  searchParams,
+}: {
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
+}) {
+  const { path } = await searchParams;
+  const initialPathway = isPathwayId(path) ? path : null;
 
   return (
     <>
       <header className="page-header">
         <Container>
           <p className="eyebrow">AI Readiness Assessment</p>
-          <h1>Understand your current AI readiness.</h1>
+          <h1>Find your next step with AI.</h1>
           <p className="lead">
-            The assessment will map responses to one of four levels and
-            recommend relevant BITDOT services.
+            Choose a pathway, reflect on five questions and explore relevant
+            BITDOT services. Free, with no sign-up.
           </p>
         </Container>
       </header>
-      <section className="section">
-        <Container className="prose">
-          <h2>Result levels</h2>
-          <ul>
-            {Object.values(assessmentLevels).map((level) => (
-              <li key={level}>{level}</li>
-            ))}
-          </ul>
-          {!isConfigured ? (
+      <section className="section" aria-label="Readiness assessment">
+        <Container>
+          <noscript>
             <p className="notice">
-              Client-approved questions, score boundaries and recommendation
-              mappings must be added before this journey is enabled.
+              Enable JavaScript to answer the assessment, or{" "}
+              <Link href="/services">explore BITDOT services</Link> directly.
             </p>
-          ) : null}
+          </noscript>
+          <AssessmentJourney
+            key={initialPathway ?? "choose"}
+            initialPathway={initialPathway}
+          />
         </Container>
       </section>
     </>

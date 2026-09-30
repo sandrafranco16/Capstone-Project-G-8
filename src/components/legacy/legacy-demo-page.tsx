@@ -1,4 +1,5 @@
 import "server-only";
+import { prepareHomepageAssessment } from "./prepare-homepage-assessment";
 
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
@@ -34,7 +35,9 @@ function rewriteDemoLinks(markup: string) {
 }
 
 function loadDemo(file: DemoFile) {
-  const source = readFileSync(join(process.cwd(), "demo", file), "utf8");
+  const original = readFileSync(join(process.cwd(), "demo", file), "utf8");
+  const source =
+    file === "index.html" ? prepareHomepageAssessment(original) : original;
   const styles = [...source.matchAll(/<style[^>]*>([\s\S]*?)<\/style>/gi)].map(
     (match) => match[1],
   );
