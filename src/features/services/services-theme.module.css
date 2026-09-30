@@ -108,9 +108,9 @@
   max-width: 100%;
   display: block;
 }
-/* Button-styled links carry their own affordances; plain text links stay recognisable. */
+/* Button-styled links carry their own affordances; plain text links stay recognisable.
+   Colour comes from the .btn-* variants, so it must not be set here (higher specificity). */
 .page :global(a.btn) {
-  color: inherit;
   text-decoration: none;
 }
 .page :global(a:not(.btn)) {
