@@ -16,12 +16,7 @@ export function CTASection({ content }: { content: CTAContent }) {
           <p className="lead">{content.description}</p>
           <div className="closing-actions">
             {content.actions.map(({ href, label, variant }) => (
-              <ServiceLink
-                key={href}
-                href={href}
-                variant={variant === "secondary" ? "on-dark" : "coral"}
-                large
-              >
+              <ServiceLink key={href} href={href} variant={variant} large>
                 {label}
               </ServiceLink>
             ))}

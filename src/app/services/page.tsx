@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Inter } from "next/font/google";
 
 import { CTASection } from "@/features/services/components/cta-section";
 import { FAQSection } from "@/features/services/components/faq-section";
@@ -12,6 +13,14 @@ import {
   servicesHero,
 } from "@/features/services/services.content";
 
+/** Self-hosted via next/font; scoped to the Services design through a CSS variable. */
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+  display: "swap",
+  variable: "--font-inter",
+});
+
 export const metadata: Metadata = {
   title: {
     absolute:
@@ -24,33 +33,18 @@ export const metadata: Metadata = {
 
 export default function ServicesPage() {
   return (
-    <>
-      <link rel="preconnect" href="https://fonts.googleapis.com" />
-      <link
-        rel="preconnect"
-        href="https://fonts.gstatic.com"
-        crossOrigin="anonymous"
-      />
-      {/* This reference font is intentionally scoped to the Services design. */}
-      {/* eslint-disable-next-line @next/next/no-page-custom-font */}
-      <link
-        rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-        precedence="services-font"
-      />
-      <ServicesFrame>
-        <ServicesHero content={servicesHero} practices={servicePractices} />
-        {servicePractices.map((practice, index) => (
-          <ServiceSection
-            key={practice.id}
-            practice={practice}
-            number={index + 1}
-            tinted={index % 2 === 1}
-          />
-        ))}
-        <FAQSection content={servicesFAQ} />
-        <CTASection content={servicesCTA} />
-      </ServicesFrame>
-    </>
+    <ServicesFrame className={inter.variable}>
+      <ServicesHero content={servicesHero} practices={servicePractices} />
+      {servicePractices.map((practice, index) => (
+        <ServiceSection
+          key={practice.id}
+          practice={practice}
+          number={index + 1}
+          tinted={index % 2 === 1}
+        />
+      ))}
+      <FAQSection content={servicesFAQ} />
+      <CTASection content={servicesCTA} />
+    </ServicesFrame>
   );
 }

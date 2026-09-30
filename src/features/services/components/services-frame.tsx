@@ -1,14 +1,24 @@
 "use client";
 
 import { useEffect, useRef, type ReactNode } from "react";
+import { cn } from "@/lib/cn";
 import styles from "../services.module.css";
 
+type ServicesFrameProps = {
+  children: ReactNode;
+  className?: string;
+};
+
 /** Enhances only Services content; the shared site shell is untouched. */
-export function ServicesFrame({ children }: { children: ReactNode }) {
+export function ServicesFrame({ children, className }: ServicesFrameProps) {
   const frame = useRef<HTMLDivElement>(null);
   useEffect(() => {
     const root = frame.current;
     if (!root) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      root.querySelectorAll(".rv").forEach((el) => el.classList.add("in"));
+      return;
+    }
     const observer = new IntersectionObserver(
       (entries) =>
         entries.forEach((entry) => {
@@ -29,7 +39,7 @@ export function ServicesFrame({ children }: { children: ReactNode }) {
     };
   }, []);
   return (
-    <div ref={frame} className={styles.page}>
+    <div ref={frame} className={cn(styles.page, className)}>
       {children}
     </div>
   );

@@ -1,12 +1,13 @@
+import Link from "next/link";
 import type { ComponentPropsWithoutRef } from "react";
 import { cn } from "@/lib/cn";
+import type { ServiceLinkVariant } from "../services.types";
 
-type ServiceLinkProps = ComponentPropsWithoutRef<"a"> & {
+type ServiceLinkProps = ComponentPropsWithoutRef<typeof Link> & {
   href: string;
-  variant?: "primary" | "coral" | "ghost" | "on-dark";
+  variant?: ServiceLinkVariant;
   large?: boolean;
 };
-/** Native navigation also clears styles/scripts when leaving older demo routes. */
 export function ServiceLink({
   variant = "coral",
   large,
@@ -15,11 +16,11 @@ export function ServiceLink({
   ...props
 }: ServiceLinkProps) {
   return (
-    <a
+    <Link
       {...props}
       className={cn("btn", `btn-${variant}`, large && "btn-lg", className)}
     >
       {children}
-    </a>
+    </Link>
   );
 }

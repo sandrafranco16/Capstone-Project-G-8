@@ -51,8 +51,8 @@
   --bold-forest: #0e2e29;
 
   --sans:
-    -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Inter",
-    "Helvetica Neue", Arial, sans-serif;
+    -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text",
+    var(--font-inter, "Inter"), "Helvetica Neue", Arial, sans-serif;
 
   --r: 1.125rem;
   --r-lg: 1.625rem;
@@ -67,8 +67,29 @@
     0 1.75rem 4rem rgba(18, 32, 28, 0.16);
 }
 
+/* Reset only the elements this page renders, not everything Next.js may inject. */
 .page,
-.page :global(*) {
+.page
+  :global(
+    :is(
+      section,
+      div,
+      nav,
+      span,
+      h1,
+      h2,
+      h3,
+      h4,
+      p,
+      em,
+      ul,
+      ol,
+      li,
+      a,
+      details,
+      summary
+    )
+  ) {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -87,9 +108,19 @@
   max-width: 100%;
   display: block;
 }
-.page :global(a) {
+/* Button-styled links carry their own affordances; plain text links stay recognisable. */
+.page :global(a.btn) {
   color: inherit;
   text-decoration: none;
+}
+.page :global(a:not(.btn)) {
+  color: var(--blue-deep);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+.page :global(a:not(.btn):hover) {
+  color: var(--blue);
+  text-decoration-thickness: 0.125rem;
 }
 .page :global(button) {
   font-family: inherit;

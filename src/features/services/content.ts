@@ -1,6 +1,6 @@
 import type { Service } from "./services.types";
 
-export type { Service } from "./services.types";
+export type { Service };
 
 export const services: Service[] = [
   {

@@ -11,10 +11,12 @@ export type ServiceOffer = {
   tone: "sky" | "blush" | "sage" | "lilac" | "mint" | "sand";
 };
 
+export type ServiceLinkVariant = "primary" | "coral" | "ghost" | "on-dark";
+
 export type ServiceAction = {
   label: string;
   href: string;
-  variant?: "primary" | "secondary";
+  variant?: ServiceLinkVariant;
 };
 
 export type ServicePractice = {

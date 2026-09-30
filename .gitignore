@@ -25,3 +25,6 @@
 *.log
 .DS_Store
 *.pem
+
+# pnpm is the package manager; npm lockfiles conflict with pnpm-lock.yaml
+package-lock.json

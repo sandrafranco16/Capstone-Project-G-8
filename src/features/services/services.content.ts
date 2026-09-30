@@ -220,7 +220,7 @@ export const servicesCTA = {
     {
       label: "Book a session",
       href: "/#contact",
-      variant: "secondary",
+      variant: "on-dark",
     },
   ],
 } satisfies CTAContent;
