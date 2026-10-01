@@ -1,6 +1,9 @@
 "use client";
 
-import type { AppointmentTypeConfig, CalBookingOptions } from "@/features/booking/types";
+import type {
+  AppointmentTypeConfig,
+  CalBookingOptions,
+} from "@/features/booking/types";
 import { buildCalComUrl } from "@/features/booking/utils";
 
 export interface AppointmentCardProps {
@@ -27,11 +30,12 @@ export function AppointmentCard({
             {appointment.durationMinutes} mins
           </span>
 
-          {appointment.recommendedFor && appointment.recommendedFor.length > 0 && (
-            <span className="appt-card__rec">
-              Rec: {appointment.recommendedFor.join(", ")}
-            </span>
-          )}
+          {appointment.recommendedFor &&
+            appointment.recommendedFor.length > 0 && (
+              <span className="appt-card__rec">
+                Rec: {appointment.recommendedFor.join(", ")}
+              </span>
+            )}
         </div>
 
         <h3 className="appt-card__title">{appointment.title}</h3>
