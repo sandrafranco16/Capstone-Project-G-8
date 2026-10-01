@@ -1,0 +1,292 @@
+.section {
+  padding: 5.5rem 0;
+  background: #f3f0e8;
+  color: #12201c;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Inter",
+    "Helvetica Neue", Arial, sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.56;
+  letter-spacing: -0.011em;
+  overflow-wrap: anywhere;
+}
+.section p,
+.section h2,
+.section h3,
+.section ul,
+.section dl,
+.section dd {
+  margin: 0;
+}
+.wrap {
+  max-width: 75rem;
+  margin: 0 auto;
+  padding: 0 1.75rem;
+}
+.header {
+  margin-bottom: 2.75rem;
+  max-width: 47.5rem;
+}
+.section .label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.83rem;
+  font-weight: 620;
+  color: #b63716;
+  margin-bottom: 1rem;
+}
+.label::before {
+  content: "";
+  width: 0.4375rem;
+  height: 0.4375rem;
+  border-radius: 50%;
+  background: #f0552b;
+  flex: none;
+}
+.section .title {
+  max-width: 22ch;
+  color: #12201c;
+  font-size: clamp(2.1rem, 4.6vw, 3.5rem);
+  font-weight: 730;
+  letter-spacing: -0.044em;
+  line-height: 1.02;
+}
+.section .lead {
+  margin-top: 0.875rem;
+  color: #4b5a52;
+  font-size: 1.02rem;
+}
+.section .grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+  list-style: none;
+  padding: 0;
+}
+.grid > li,
+.article {
+  display: flex;
+  min-width: 0;
+}
+.card {
+  --card-bg: #0e2e29;
+  border-radius: 1.375rem;
+  filter: drop-shadow(0 0.125rem 0.25rem rgb(18 32 28 / 8%))
+    drop-shadow(0 1.25rem 2.5rem rgb(18 32 28 / 14%));
+}
+.maroon {
+  --card-bg: #5c1a2e;
+}
+.navy {
+  --card-bg: #16233e;
+}
+
+/* ── front: portrait fills the face, credentials sit on a colour wash ── */
+.front {
+  position: relative;
+  height: 100%;
+  min-height: 29rem;
+  background: var(--card-bg);
+  color: #fff;
+}
+.photo {
+  object-fit: cover;
+  object-position: center 20%;
+  transition: transform 0.7s cubic-bezier(0.2, 0.7, 0.3, 1);
+}
+.card:hover .photo {
+  transform: scale(1.04);
+}
+.front::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      180deg,
+      rgb(0 0 0 / 18%) 0%,
+      transparent 22%,
+      transparent 38%,
+      var(--card-bg) 88%
+    ),
+    linear-gradient(200deg, transparent 40%, rgb(0 0 0 / 25%) 100%);
+}
+.overlay {
+  position: absolute;
+  inset: auto 0 0;
+  z-index: 1;
+  padding: 1.75rem 1.875rem 1.875rem;
+}
+.section .specialism {
+  display: inline-block;
+  margin-bottom: 0.625rem;
+  color: rgb(255 255 255 / 80%);
+  font-size: 0.74rem;
+  font-weight: 650;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.section .name {
+  color: #fff;
+  font-size: clamp(1.5rem, 2.4vw, 1.875rem);
+  font-weight: 720;
+  letter-spacing: -0.035em;
+  line-height: 1.1;
+}
+.section .role {
+  margin-top: 0.375rem;
+  color: rgb(255 255 255 / 90%);
+  font-size: 0.95rem;
+  font-weight: 560;
+}
+.section .badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1.125rem;
+  padding: 0;
+  list-style: none;
+}
+.badges li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4375rem;
+  padding: 0.375rem 0.8125rem;
+  border: 1px solid rgb(255 255 255 / 22%);
+  border-radius: 62.4375rem;
+  background: rgb(255 255 255 / 12%);
+  -webkit-backdrop-filter: blur(0.5rem);
+  backdrop-filter: blur(0.5rem);
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+.badges li::before {
+  content: "";
+  flex: none;
+  width: 0.375rem;
+  height: 0.375rem;
+  border-radius: 50%;
+  background: #ff9e7a;
+}
+
+/* ── back: the full profile ── */
+.back {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 29rem;
+  padding: 2.25rem 2.25rem 2.5rem;
+  background:
+    radial-gradient(
+      120% 70% at 100% 0%,
+      rgb(255 255 255 / 9%),
+      transparent 60%
+    ),
+    var(--card-bg);
+  color: #fff;
+}
+.backHeader {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding-right: 7rem;
+  padding-bottom: 1.625rem;
+  border-bottom: 1px solid rgb(255 255 255 / 14%);
+}
+.avatar {
+  flex: none;
+  width: 4rem;
+  height: 4rem;
+  border: 2px solid rgb(255 255 255 / 28%);
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 0.375rem 1rem rgb(0 0 0 / 22%);
+}
+.section .backSpecialism {
+  margin-bottom: 0.25rem;
+  color: #ffb89c;
+  font-size: 0.7rem;
+  font-weight: 650;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.section .backName {
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: -0.028em;
+  line-height: 1.2;
+}
+.section .backRole {
+  margin-top: 0.1875rem;
+  color: rgb(255 255 255 / 78%);
+  font-size: 0.875rem;
+}
+.details {
+  display: grid;
+  margin-top: 0.5rem;
+}
+.details > div {
+  padding: 1.25rem 0;
+  border-bottom: 1px solid rgb(255 255 255 / 10%);
+}
+.details > div:last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+.details dt {
+  margin-bottom: 0.5rem;
+  color: rgb(255 255 255 / 66%);
+  font-size: 0.72rem;
+  font-weight: 650;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+.details dd {
+  max-width: 58ch;
+  color: rgb(255 255 255 / 92%);
+  font-size: 0.95rem;
+  line-height: 1.65;
+}
+.more {
+  margin-top: 2rem;
+}
+@media (max-width: 65rem) {
+  .section .grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+@media (max-width: 47.5rem) {
+  .section {
+    padding: 3.75rem 0;
+  }
+  .wrap {
+    padding: 0 1.375rem;
+  }
+  .front,
+  .back {
+    min-height: 26rem;
+  }
+  .overlay {
+    padding: 1.25rem 1.375rem 1.5rem;
+  }
+  .back {
+    padding: 1.5rem 1.5rem 1.75rem;
+  }
+  .backHeader {
+    padding-right: 0;
+    padding-top: 3rem;
+  }
+  .avatar {
+    width: 3.5rem;
+    height: 3.5rem;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .photo {
+    transition: none;
+  }
+  .card:hover .photo {
+    transform: none;
+  }
+}
