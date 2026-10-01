@@ -495,15 +495,7 @@ h3 {
     justify-content: center;
   }
 
-  .site-header nav {
-    order: 3;
-    width: 100%;
-    overflow-x: auto;
-  }
-
-  .nav-list {
-    min-width: max-content;
-  }
+  
 
   .card-grid,
   .split-callout {
