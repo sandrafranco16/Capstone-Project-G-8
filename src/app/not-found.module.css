@@ -1,0 +1,430 @@
+.page {
+  --error-ink: #12201c;
+  --error-muted: #4b5a52;
+  --error-line: #e6e0d3;
+  --error-coral: #f0552b;
+  --error-blue: #0071e3;
+
+  min-height: calc(100vh - 4.5rem);
+  padding: clamp(4rem, 7vw, 7rem) 0 4rem;
+  background: #fcfaf5;
+  color: var(--error-ink);
+}
+
+.container {
+  width: min(78rem, calc(100% - 3rem));
+  margin-inline: auto;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr);
+  align-items: center;
+  gap: clamp(2rem, 5vw, 5rem);
+  min-height: 29rem;
+}
+
+.copy {
+  max-width: 43rem;
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+  color: var(--error-coral);
+  font-size: 0.82rem;
+  font-weight: 750;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+}
+
+.eyebrow::before {
+  width: 0.65rem;
+  height: 0.65rem;
+  border-radius: 50%;
+  background: var(--error-coral);
+  content: "";
+}
+
+.copy h1 {
+  max-width: 100%;
+  margin-bottom: 1.3rem;
+  color: var(--error-ink);
+  font-size: clamp(2.8rem, 4.6vw, 4.4rem);
+  font-weight: 750;
+  letter-spacing: -0.052em;
+  line-height: 1.04;
+}
+
+.description {
+  margin-bottom: 0;
+  color: var(--error-muted);
+  font-size: clamp(1rem, 1.45vw, 1.2rem);
+  line-height: 1.5;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.65rem;
+}
+
+.primaryAction,
+.secondaryAction {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3.5rem;
+  padding: 0.8rem 1.65rem;
+  border: 1px solid transparent;
+  border-radius: 1rem;
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+  transition:
+    background-color 0.18s ease,
+    border-color 0.18s ease;
+}
+
+.primaryAction {
+  background: var(--error-coral);
+  color: #fff;
+}
+
+.primaryAction:hover {
+  background: #d53f17;
+}
+
+.secondaryAction {
+  border-color: #d8cfbb;
+  background: #fff;
+  color: var(--error-ink);
+}
+
+.secondaryAction:hover {
+  border-color: var(--error-ink);
+}
+
+.suggestions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.55rem 1rem;
+  margin-top: 1.75rem;
+  color: var(--error-muted);
+  font-size: 0.9rem;
+}
+
+.suggestions a {
+  color: var(--error-blue);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.suggestions a:hover,
+.contactLink:hover {
+  text-decoration: underline;
+}
+
+.artwork {
+  position: relative;
+  height: clamp(25rem, 36vw, 31rem);
+  min-width: 0;
+}
+
+.skyPanel,
+.blushPanel {
+  position: absolute;
+  border-radius: 1.65rem;
+  color: var(--error-muted);
+  font-size: 0.86rem;
+  font-weight: 550;
+  line-height: 1.4;
+}
+
+.skyPanel {
+  top: 0;
+  left: 0;
+  width: 62%;
+  height: 59%;
+  padding: 1.4rem;
+  background: #dbeafd;
+}
+
+.blushPanel {
+  top: 38%;
+  right: 0;
+  width: 38%;
+  height: 43%;
+  padding: 2rem 1.4rem 1.4rem 2.6rem;
+  background: #fbddd4;
+}
+
+.skyPanel p,
+.blushPanel p {
+  max-width: 12ch;
+  margin-bottom: 1rem;
+}
+
+.skyPanel span,
+.blushPanel span {
+  display: block;
+  width: 1.35rem;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.55;
+}
+
+.routeCard {
+  position: absolute;
+  top: 12%;
+  left: 22%;
+  width: 66%;
+  height: 81%;
+  overflow: hidden;
+  border-radius: 1.7rem;
+  background: linear-gradient(145deg, #173a32, #0e2e29);
+  box-shadow: 0 20px 36px rgb(14 46 41 / 9%);
+}
+
+.errorCode {
+  position: absolute;
+  top: 6%;
+  left: 0;
+  width: 100%;
+  color: #fff;
+  font-size: clamp(6.2rem, 10vw, 8.8rem);
+  font-weight: 800;
+  letter-spacing: -0.095em;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.errorCode span {
+  color: var(--error-coral);
+}
+
+.routeLine {
+  position: absolute;
+  top: 43%;
+  left: 0;
+  width: 100%;
+  height: 31%;
+}
+
+.routeCaption {
+  position: absolute;
+  bottom: 7%;
+  left: 10%;
+  margin: 0;
+  color: rgb(255 255 255 / 60%);
+  font-size: 0.67rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  line-height: 1.6;
+  text-transform: uppercase;
+}
+
+.helpCard {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-top: clamp(3rem, 6vw, 5rem);
+  padding: 1.5rem 2rem;
+  border: 1px solid var(--error-line);
+  border-radius: 1.15rem;
+  background: #fff;
+  box-shadow: 0 2px 10px rgb(18 32 28 / 4%);
+}
+
+.helpIcon {
+  display: grid;
+  width: 4.25rem;
+  height: 4.25rem;
+  flex: none;
+  place-items: center;
+  border-radius: 50%;
+  background: #dbeafd;
+  color: var(--error-blue);
+}
+
+.helpIcon svg {
+  width: 2.45rem;
+  height: 2.45rem;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2.5;
+}
+
+.helpCopy {
+  padding-left: 1.5rem;
+  border-left: 1px solid var(--error-line);
+}
+
+.helpCopy h2 {
+  margin-bottom: 0.25rem;
+  color: var(--error-ink);
+  font-size: 1.2rem;
+  letter-spacing: -0.02em;
+}
+
+.helpCopy p {
+  margin-bottom: 0;
+  color: var(--error-muted);
+  font-size: 0.93rem;
+}
+
+.contactLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-left: auto;
+  color: var(--error-ink);
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.contactLink svg {
+  width: 1rem;
+  height: 1rem;
+  flex: none;
+}
+
+.page a:focus-visible {
+  outline: 3px solid var(--error-blue);
+  outline-offset: 4px;
+  border-radius: 0.4rem;
+}
+
+@media (max-width: 900px) {
+  .hero {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .copy {
+    max-width: 42rem;
+  }
+
+  .artwork {
+    width: min(100%, 38rem);
+    margin-inline: auto;
+  }
+
+  .helpCard {
+    margin-top: 2rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .page {
+    padding: 3rem 0;
+  }
+
+  .container {
+    width: min(calc(100% - 2rem), 78rem);
+  }
+
+  .hero {
+    gap: 2.5rem;
+  }
+
+  .copy h1 {
+    font-size: clamp(2.65rem, 12vw, 3.65rem);
+  }
+
+  .desktopBreak {
+    display: none;
+  }
+
+  .actions {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .primaryAction,
+  .secondaryAction {
+    min-height: 3.25rem;
+    padding-inline: 0.75rem;
+    font-size: 0.9rem;
+  }
+
+  .suggestions {
+    gap: 0.45rem 0.85rem;
+  }
+
+  .suggestions span {
+    width: 100%;
+  }
+
+  .artwork {
+    height: clamp(20rem, 91vw, 27rem);
+  }
+
+  .skyPanel {
+    padding: 1.3rem;
+  }
+
+  .blushPanel {
+    padding: 1.5rem 0.8rem 0.8rem 1.5rem;
+  }
+
+  .skyPanel,
+  .blushPanel {
+    font-size: 0.7rem;
+  }
+
+  .errorCode {
+    top: 9%;
+    font-size: clamp(4.25rem, 17vw, 7.5rem);
+  }
+
+  .routeCaption {
+    font-size: 0.53rem;
+  }
+
+  .helpCard {
+    display: grid;
+    grid-template-columns: 3.5rem minmax(0, 1fr);
+    gap: 1rem;
+    padding: 1.25rem;
+  }
+
+  .helpIcon {
+    width: 3.5rem;
+    height: 3.5rem;
+  }
+
+  .helpIcon svg {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .helpCopy {
+    padding-left: 1rem;
+  }
+
+  .contactLink {
+    grid-column: 2;
+    margin-left: 1rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .actions {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .primaryAction,
+  .secondaryAction {
+    transition: none;
+  }
+}
