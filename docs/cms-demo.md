@@ -5,6 +5,11 @@ uses a file proxy; an online deployment uses GitHub login and pull-request revie
 
 ## Run locally
 
+Copy `.env.example` to `.env.local` and set `CMS_REPOSITORY` to the GitHub
+repository you intend to edit, using the `owner/repository` format. The example
+file contains keys only; provide the values needed for your environment locally
+and never commit secrets. There is no default repository, even in development.
+
 Install dependencies, then open two terminals in the repository root:
 
 ```bash
@@ -39,7 +44,7 @@ not match the GitHub OAuth callback.
 4. Add the following Vercel environment variables to the Preview environment:
 
 ```dotenv
-CMS_REPOSITORY=Hjl2065889707/Capstone-Project-G-8
+CMS_REPOSITORY=sandrafranco16/Capstone-Project-G-8
 CMS_BRANCH=feature/cms-blog-demo
 CMS_OAUTH_BASE_URL=https://your-deployment.example.com
 CMS_GITHUB_CLIENT_ID=replace-with-client-id
@@ -56,6 +61,13 @@ The client secret belongs only in Vercel environment variables. Never prefix it 
 repository uses `public_repo`; change the scope to `repo` if the repository becomes
 private. Because an OAuth token is not limited to one repository, the dedicated test
 account should have access only to repositories required for CMS testing.
+
+All environments must explicitly set `CMS_REPOSITORY`. Production deployments must
+also set `CMS_OAUTH_BASE_URL`. The application returns a service-unavailable response
+for CMS configuration and authentication routes when a required value is missing,
+instead of silently targeting a fallback repository or request origin. Local
+development can use the request origin (normally `http://localhost:3000`) for OAuth;
+`CMS_BRANCH` defaults to `main` when omitted.
 
 ## Review and deployment
 
