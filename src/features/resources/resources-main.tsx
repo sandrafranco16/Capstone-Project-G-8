@@ -14,31 +14,8 @@ export const ResourcesMain = memo(function ResourcesMain() {
   return (
     <>
       <section className={rc("p-hero")}>
-        <span
-          className={rc("blob")}
-          style={{
-            width: "520px",
-            height: "520px",
-            top: "-220px",
-            right: "-160px",
-            background:
-              "radial-gradient(circle,rgba(0,113,227,.16),transparent 66%)",
-          }}
-          aria-hidden="true"
-        ></span>
-        <span
-          className={rc("blob")}
-          style={{
-            width: "380px",
-            height: "380px",
-            top: "120px",
-            left: "-140px",
-            background:
-              "radial-gradient(circle,rgba(14,164,122,.13),transparent 66%)",
-            animationDelay: "-8s",
-          }}
-          aria-hidden="true"
-        ></span>
+        <span className={rc("blob blob-blue")} aria-hidden="true"></span>
+        <span className={rc("blob blob-green")} aria-hidden="true"></span>
         <div className={rc("wrap")}>
           <div className={rc("inner")}>
             <p className={rc("label rv")}>{"Resource hub"}</p>
@@ -151,7 +128,7 @@ export const ResourcesMain = memo(function ResourcesMain() {
               <h3>{"A Director's Guide to AI Governance"}</h3>
               <p>
                 {
-                  "The AICD and UTS Human Technology Institute suite, refreshed in 2026: an introduction for directors new to AI, the governance guide itself, a snapshot of the eight elements, and a separate checklist scaled for SME and not-for-profit boards."
+                  "The AICD board governance suite: an introduction for directors new to AI, the governance guide itself, a snapshot of the eight elements, and a separate checklist scaled for SME and not-for-profit boards."
                 }
               </p>
               <span className={rc("src")}>
@@ -661,7 +638,7 @@ export const ResourcesMain = memo(function ResourcesMain() {
               ></span>
               <span className={rc("meta")}>
                 <i style={{ background: "#6D5BD0" }}></i>
-                {"AICD × UTS HTI"}
+                {"AICD"}
               </span>
               <h3>{"A Director's Guide to AI Governance"}</h3>
               <p>
@@ -751,7 +728,7 @@ export const ResourcesMain = memo(function ResourcesMain() {
                 }
               </p>
               <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
-                <Link className={rc("btn btn-coral btn-lg")} href="/#contact">
+                <Link className={rc("btn btn-coral btn-lg")} href="/booking">
                   <span>{"Book a session"}</span>
                 </Link>
                 <Link

@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 
 export type ResourceMilestone = {
+  id: string;
   date: string;
   dateLabel: string;
   region: "au" | "eu";
@@ -13,6 +14,7 @@ export type ResourceMilestone = {
 /** Content transcribed from the approved resources prototype. */
 export const milestones: ResourceMilestone[] = [
   {
+    id: "eu-ai-act-prohibited-practices",
     date: "2025-02-02",
     dateLabel: "2 Feb 2025",
     region: "eu",
@@ -28,6 +30,7 @@ export const milestones: ResourceMilestone[] = [
     ),
   },
   {
+    id: "eu-general-purpose-ai-obligations",
     date: "2025-08-02",
     dateLabel: "2 Aug 2025",
     region: "eu",
@@ -43,6 +46,7 @@ export const milestones: ResourceMilestone[] = [
     ),
   },
   {
+    id: "au-six-essential-ai-practices",
     date: "2025-10-21",
     dateLabel: "21 Oct 2025",
     region: "au",
@@ -60,6 +64,7 @@ export const milestones: ResourceMilestone[] = [
     ),
   },
   {
+    id: "au-national-ai-plan",
     date: "2025-12-01",
     dateLabel: "Dec 2025",
     region: "au",
@@ -75,6 +80,7 @@ export const milestones: ResourceMilestone[] = [
     ),
   },
   {
+    id: "au-ai-safety-institute-announced",
     date: "2026-02-01",
     dateLabel: "Early 2026",
     region: "au",
@@ -90,6 +96,7 @@ export const milestones: ResourceMilestone[] = [
     ),
   },
   {
+    id: "au-privacy-act-review-response",
     date: "2026-06-15",
     dateLabel: "15 Jun 2026",
     region: "au",
@@ -105,6 +112,7 @@ export const milestones: ResourceMilestone[] = [
     ),
   },
   {
+    id: "au-copyright-and-ai-reference-group",
     date: "2026-07-15",
     dateLabel: "15 Jul 2026",
     region: "au",
@@ -120,6 +128,7 @@ export const milestones: ResourceMilestone[] = [
     ),
   },
   {
+    id: "au-ai-safety-institute-operational",
     date: "2026-07-27",
     dateLabel: "27 Jul 2026",
     region: "eu",
@@ -135,6 +144,7 @@ export const milestones: ResourceMilestone[] = [
     ),
   },
   {
+    id: "eu-ai-act-transparency-rules",
     date: "2026-08-02",
     dateLabel: "2 Aug 2026",
     region: "eu",
@@ -150,6 +160,7 @@ export const milestones: ResourceMilestone[] = [
     ),
   },
   {
+    id: "au-online-safety-codes",
     date: "2026-12-02",
     dateLabel: "2 Dec 2026",
     region: "eu",
@@ -165,6 +176,7 @@ export const milestones: ResourceMilestone[] = [
     ),
   },
   {
+    id: "au-privacy-act-reforms",
     date: "2026-12-10",
     dateLabel: "10 Dec 2026",
     region: "au",
@@ -180,6 +192,7 @@ export const milestones: ResourceMilestone[] = [
     ),
   },
   {
+    id: "au-automated-decision-making-rules",
     date: "2026-12-15",
     dateLabel: "Dec 2026",
     region: "au",
@@ -195,6 +208,7 @@ export const milestones: ResourceMilestone[] = [
     ),
   },
   {
+    id: "au-statutory-tort-privacy",
     date: "2027-12-02",
     dateLabel: "2 Dec 2027",
     region: "eu",
@@ -210,6 +224,7 @@ export const milestones: ResourceMilestone[] = [
     ),
   },
   {
+    id: "eu-ai-act-high-risk-systems",
     date: "2028-08-02",
     dateLabel: "2 Aug 2028",
     region: "eu",

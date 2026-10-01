@@ -44,6 +44,13 @@ export function ResourceTimeline() {
       }).format(new Date(`${today}T00:00:00Z`))
     : "";
 
+  useEffect(() => {
+    trackClientEvent("resources_filtered", {
+      filter,
+      shown: shown.length,
+    });
+  }, [filter, shown.length]);
+
   return (
     <>
       <div
@@ -57,18 +64,7 @@ export function ResourceTimeline() {
             type="button"
             className={filter === value ? rc("act") : undefined}
             aria-pressed={filter === value}
-            onClick={() => {
-              setFilter(value);
-              const count = filterMilestones(
-                milestones,
-                value,
-                today ?? "",
-              ).length;
-              trackClientEvent("resources_filtered", {
-                filter: value,
-                shown: count,
-              });
-            }}
+            onClick={() => setFilter(value)}
           >
             {label}
           </button>
@@ -84,7 +80,7 @@ export function ResourceTimeline() {
           const live = today !== null && item.date <= today;
           const visible = shown.includes(item);
           return (
-            <div key={item.date + item.title}>
+            <div key={item.id}>
               {filter === "all" && index === nextIndex && (
                 <div className={rc("today")}>
                   <span>Today · {formattedToday}</span>

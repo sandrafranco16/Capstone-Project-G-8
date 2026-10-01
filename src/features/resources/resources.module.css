@@ -284,6 +284,21 @@
   z-index: 0;
   animation: drift 24s ease-in-out infinite alternate;
 }
+.page .blob-blue {
+  width: 520px;
+  height: 520px;
+  top: -220px;
+  right: -160px;
+  background: radial-gradient(circle, rgba(0, 113, 227, 0.16), transparent 66%);
+}
+.page .blob-green {
+  width: 380px;
+  height: 380px;
+  top: 120px;
+  left: -140px;
+  background: radial-gradient(circle, rgba(14, 164, 122, 0.13), transparent 66%);
+  animation-delay: -8s;
+}
 @keyframes drift {
   0% {
     transform: translate3d(0, 0, 0) scale(1);
