@@ -1,6 +1,8 @@
 "use client";
 
 import { memo, type CSSProperties } from "react";
+
+import { resourceClassNames as rc } from "./resource-class-names";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -10,10 +12,10 @@ type CustomStyle = CSSProperties & Record<`--${string}`, string>;
 
 export const ResourcesMain = memo(function ResourcesMain() {
   return (
-    <main id="main">
-      <section className="p-hero">
+    <>
+      <section className={rc("p-hero")}>
         <span
-          className="blob"
+          className={rc("blob")}
           style={{
             width: "520px",
             height: "520px",
@@ -25,7 +27,7 @@ export const ResourcesMain = memo(function ResourcesMain() {
           aria-hidden="true"
         ></span>
         <span
-          className="blob"
+          className={rc("blob")}
           style={{
             width: "380px",
             height: "380px",
@@ -37,24 +39,24 @@ export const ResourcesMain = memo(function ResourcesMain() {
           }}
           aria-hidden="true"
         ></span>
-        <div className="wrap">
-          <div className="inner">
-            <p className="label rv">{"Resource hub"}</p>
-            <h1 className="display rv">
+        <div className={rc("wrap")}>
+          <div className={rc("inner")}>
+            <p className={rc("label rv")}>{"Resource hub"}</p>
+            <h1 className={rc("display rv")}>
               {"The AI rules, "}
               <em>{"dated"}</em>
               {"."}
             </h1>
-            <p className="lead rv">
+            <p className={rc("lead rv")}>
               {
                 "Most AI governance writing tells you the landscape is moving. Less of it tells you what has actually commenced, what is merely proposed, and which dates are already locked into legislation. This is the reference we keep for our own clients."
               }
             </p>
-            <p className="stamp rv">
+            <p className={rc("stamp rv")}>
               <i></i>
               {"Reviewed 30 August 2026"}
             </p>
-            <div className="jump rv">
+            <div className={rc("jump rv")}>
               <a href="#clock">{"The compliance clock"}</a>
               <a href="#frameworks">{"Frameworks & standards"}</a>
               <a href="#board">{"For boards"}</a>
@@ -63,14 +65,14 @@ export const ResourcesMain = memo(function ResourcesMain() {
           </div>
         </div>
       </section>
-      <section className="section bg-mist" id="clock">
-        <div className="wrap">
-          <div className="sec-head rv">
-            <p className="label c-blue">{"The compliance clock"}</p>
-            <h2 className="display big">
+      <section className={rc("section bg-mist")} id="clock">
+        <div className={rc("wrap")}>
+          <div className={rc("sec-head rv")}>
+            <p className={rc("label c-blue")}>{"The compliance clock"}</p>
+            <h2 className={rc("display big")}>
               {"What has commenced, and what is coming."}
             </h2>
-            <p className="lead">
+            <p className={rc("lead")}>
               {
                 "Australia has no AI Act. That does not mean nothing has commenced, it means the obligations arrive through privacy law, procurement rules and sector regulators instead, on dates that are already fixed."
               }
@@ -79,29 +81,29 @@ export const ResourcesMain = memo(function ResourcesMain() {
           <ResourceTimeline />
         </div>
       </section>
-      <section className="section" id="frameworks">
-        <div className="wrap">
-          <div className="sec-head rv">
-            <p className="label c-plum">{"Frameworks & standards"}</p>
-            <h2 className="display big">
+      <section className={rc("section")} id="frameworks">
+        <div className={rc("wrap")}>
+          <div className={rc("sec-head rv")}>
+            <p className={rc("label c-plum")}>{"Frameworks & standards"}</p>
+            <h2 className={rc("display big")}>
               {"Six documents worth knowing by name."}
             </h2>
-            <p className="lead">
+            <p className={rc("lead")}>
               {
                 "You do not need all of these. You need to know which one your organisation is being measured against, and to be able to say so out loud."
               }
             </p>
           </div>
-          <div className="fw-grid">
+          <div className={rc("fw-grid")}>
             <a
-              className="card fill fw rv"
+              className={rc("card fill fw rv")}
               style={{ "--f": "var(--fill-lilac)" } as CustomStyle}
               href="https://www.ai.gov.au/staying-safe-and-responsible/essential-ai-practices"
               target="_blank"
               rel="noopener"
             >
               <span
-                className="who"
+                className={rc("who")}
                 style={{ "--wc": "#6D5BD0" } as CustomStyle}
               >
                 {"Start here · Australia"}
@@ -112,7 +114,7 @@ export const ResourcesMain = memo(function ResourcesMain() {
                   "Six essential practices from the National AI Centre, developed with CSIRO's Data61. Voluntary in the same way the Essential Eight is voluntary — which is to say, increasingly the standard of care auditors, insurers and large customers expect to see evidenced."
                 }
               </p>
-              <span className="src">
+              <span className={rc("src")}>
                 {"ai.gov.au "}
                 <svg
                   width="14"
@@ -129,7 +131,7 @@ export const ResourcesMain = memo(function ResourcesMain() {
               </span>
             </a>
             <a
-              className="card fill fw rv"
+              className={rc("card fill fw rv")}
               style={
                 {
                   "--f": "var(--fill-mint)",
@@ -141,7 +143,7 @@ export const ResourcesMain = memo(function ResourcesMain() {
               rel="noopener"
             >
               <span
-                className="who"
+                className={rc("who")}
                 style={{ "--wc": "#0B7A56" } as CustomStyle}
               >
                 {"Boards · Australia"}
@@ -152,7 +154,7 @@ export const ResourcesMain = memo(function ResourcesMain() {
                   "The AICD and UTS Human Technology Institute suite, refreshed in 2026: an introduction for directors new to AI, the governance guide itself, a snapshot of the eight elements, and a separate checklist scaled for SME and not-for-profit boards."
                 }
               </p>
-              <span className="src">
+              <span className={rc("src")}>
                 {"AICD "}
                 <svg
                   width="14"
@@ -169,7 +171,7 @@ export const ResourcesMain = memo(function ResourcesMain() {
               </span>
             </a>
             <a
-              className="card fill fw rv"
+              className={rc("card fill fw rv")}
               style={
                 {
                   "--f": "var(--fill-blush)",
@@ -181,7 +183,7 @@ export const ResourcesMain = memo(function ResourcesMain() {
               rel="noopener"
             >
               <span
-                className="who"
+                className={rc("who")}
                 style={{ "--wc": "#D53F17" } as CustomStyle}
               >
                 {"Certifiable · International"}
@@ -192,7 +194,7 @@ export const ResourcesMain = memo(function ResourcesMain() {
                   "The AI management system standard — the one you can actually be certified against, which makes it the usual answer when a customer or tender asks for proof rather than intent. The AI6's six practices map onto it more cleanly than the ten guardrails did."
                 }
               </p>
-              <span className="src">
+              <span className={rc("src")}>
                 {"ISO "}
                 <svg
                   width="14"
@@ -209,14 +211,14 @@ export const ResourcesMain = memo(function ResourcesMain() {
               </span>
             </a>
             <a
-              className="card fill fw rv"
+              className={rc("card fill fw rv")}
               style={{ "--f": "var(--fill-sand)" } as CustomStyle}
               href="https://www.nist.gov/itl/ai-risk-management-framework"
               target="_blank"
               rel="noopener"
             >
               <span
-                className="who"
+                className={rc("who")}
                 style={{ "--wc": "#93630A" } as CustomStyle}
               >
                 {"Risk teams · United States"}
@@ -227,7 +229,7 @@ export const ResourcesMain = memo(function ResourcesMain() {
                   "Voluntary, widely adopted, and organised around four functions — govern, map, measure, manage. Useful even outside the US as a vocabulary that risk and engineering teams can share without translation."
                 }
               </p>
-              <span className="src">
+              <span className={rc("src")}>
                 {"NIST "}
                 <svg
                   width="14"
@@ -244,7 +246,7 @@ export const ResourcesMain = memo(function ResourcesMain() {
               </span>
             </a>
             <a
-              className="card fill fw rv"
+              className={rc("card fill fw rv")}
               style={
                 {
                   "--f": "var(--fill-rose)",
@@ -256,7 +258,7 @@ export const ResourcesMain = memo(function ResourcesMain() {
               rel="noopener"
             >
               <span
-                className="who"
+                className={rc("who")}
                 style={{ "--wc": "#B23A56" } as CustomStyle}
               >
                 {"If you touch the EU · Europe"}
@@ -267,7 +269,7 @@ export const ResourcesMain = memo(function ResourcesMain() {
                   "Risk-tiered and extraterritorial: if your system's output reaches the EU meaningfully, you are potentially in scope regardless of where you sit. Deadlines have shifted; the tiers and the obligations attached to them have not."
                 }
               </p>
-              <span className="src">
+              <span className={rc("src")}>
                 {"AI Act explorer "}
                 <svg
                   width="14"
@@ -284,7 +286,7 @@ export const ResourcesMain = memo(function ResourcesMain() {
               </span>
             </a>
             <a
-              className="card fill fw rv"
+              className={rc("card fill fw rv")}
               style={
                 {
                   "--f": "var(--fill-sky)",
@@ -296,7 +298,7 @@ export const ResourcesMain = memo(function ResourcesMain() {
               rel="noopener"
             >
               <span
-                className="who"
+                className={rc("who")}
                 style={{ "--wc": "#0057B8" } as CustomStyle}
               >
                 {"Everyone holding personal data · Australia"}
@@ -307,7 +309,7 @@ export const ResourcesMain = memo(function ResourcesMain() {
                   "The quiet centre of Australian AI regulation. Privacy law already governs how AI systems handle personal information, and from December 2026 it carries the automated-decision transparency obligation as well. Regulator guidance is expected close to commencement."
                 }
               </p>
-              <span className="src">
+              <span className={rc("src")}>
                 {"OAIC "}
                 <svg
                   width="14"
@@ -326,22 +328,26 @@ export const ResourcesMain = memo(function ResourcesMain() {
           </div>
         </div>
       </section>
-      <section className="section tight" id="board" style={{ paddingTop: "0" }}>
-        <div className="wrap">
-          <div className="band rv">
-            <span className="dots" aria-hidden="true"></span>
-            <p className="label on-dark">{"For boards and executives"}</p>
-            <h2 className="display big">
+      <section
+        className={rc("section tight")}
+        id="board"
+        style={{ paddingTop: "0" }}
+      >
+        <div className={rc("wrap")}>
+          <div className={rc("band rv")}>
+            <span className={rc("dots")} aria-hidden="true"></span>
+            <p className={rc("label on-dark")}>{"For boards and executives"}</p>
+            <h2 className={rc("display big")}>
               {"Six questions to answer before December."}
             </h2>
-            <p className="lead">
+            <p className={rc("lead")}>
               {
                 "If your organisation cannot answer these, the gap is not a compliance gap yet, it is an information gap. Fix that first."
               }
             </p>
-            <div className="qs" style={{ marginTop: "32px" }}>
+            <div className={rc("qs")} style={{ marginTop: "32px" }}>
               <div
-                className="card fill qq rv"
+                className={rc("card fill qq rv")}
                 style={{ "--f": "var(--fill-mint)" } as CustomStyle}
               >
                 <b>{"Where is AI already being used here?"}</b>
@@ -352,7 +358,7 @@ export const ResourcesMain = memo(function ResourcesMain() {
                 </p>
               </div>
               <div
-                className="card fill qq rv"
+                className={rc("card fill qq rv")}
                 style={
                   {
                     "--f": "var(--fill-blush)",
@@ -368,7 +374,7 @@ export const ResourcesMain = memo(function ResourcesMain() {
                 </p>
               </div>
               <div
-                className="card fill qq rv"
+                className={rc("card fill qq rv")}
                 style={
                   {
                     "--f": "var(--fill-sand)",
@@ -384,7 +390,7 @@ export const ResourcesMain = memo(function ResourcesMain() {
                 </p>
               </div>
               <div
-                className="card fill qq rv"
+                className={rc("card fill qq rv")}
                 style={
                   {
                     "--f": "var(--fill-lilac)",
@@ -400,7 +406,7 @@ export const ResourcesMain = memo(function ResourcesMain() {
                 </p>
               </div>
               <div
-                className="card fill qq rv"
+                className={rc("card fill qq rv")}
                 style={
                   {
                     "--f": "var(--fill-rose)",
@@ -416,7 +422,7 @@ export const ResourcesMain = memo(function ResourcesMain() {
                 </p>
               </div>
               <div
-                className="card fill qq rv"
+                className={rc("card fill qq rv")}
                 style={
                   {
                     "--f": "var(--fill-sky)",
@@ -435,18 +441,18 @@ export const ResourcesMain = memo(function ResourcesMain() {
           </div>
         </div>
       </section>
-      <section className="section" id="reading">
-        <div className="wrap">
-          <div className="sec-head rv">
-            <p className="label c-green">{"Reading list"}</p>
-            <h2 className="display big">
+      <section className={rc("section")} id="reading">
+        <div className={rc("wrap")}>
+          <div className={rc("sec-head rv")}>
+            <p className={rc("label c-green")}>{"Reading list"}</p>
+            <h2 className={rc("display big")}>
               {"Written by us, and worth reading anyway."}
             </h2>
-            <p className="lead">{"Field notes from our own practice."}</p>
+            <p className={rc("lead")}>{"Field notes from our own practice."}</p>
           </div>
-          <div className="read">
+          <div className={rc("read")}>
             <article
-              className="card fill rd rv"
+              className={rc("card fill rd rv")}
               style={
                 {
                   "--f": "var(--fill-lilac)",
@@ -454,8 +460,11 @@ export const ResourcesMain = memo(function ResourcesMain() {
                 } as CustomStyle
               }
             >
-              <span className="accent" style={{ background: "#6D5BD0" }}></span>
-              <span className="meta">
+              <span
+                className={rc("accent")}
+                style={{ background: "#6D5BD0" }}
+              ></span>
+              <span className={rc("meta")}>
                 <i style={{ background: "#6D5BD0" }}></i>
                 {"BITDOT · Change leadership"}
               </span>
@@ -465,10 +474,10 @@ export const ResourcesMain = memo(function ResourcesMain() {
                   "Psychological and psychosocial safety decide whether adoption succeeds. How to steady a team while the ground moves under it."
                 }
               </p>
-              <span className="src note">{"Ask us for the article"}</span>
+              <span className={rc("src note")}>{"Ask us for the article"}</span>
             </article>
             <article
-              className="card fill rd rv"
+              className={rc("card fill rd rv")}
               style={
                 {
                   "--f": "var(--fill-blush)",
@@ -476,8 +485,11 @@ export const ResourcesMain = memo(function ResourcesMain() {
                 } as CustomStyle
               }
             >
-              <span className="accent" style={{ background: "#D53F17" }}></span>
-              <span className="meta">
+              <span
+                className={rc("accent")}
+                style={{ background: "#D53F17" }}
+              ></span>
+              <span className={rc("meta")}>
                 <i style={{ background: "#D53F17" }}></i>
                 {"BITDOT · AI governance"}
               </span>
@@ -487,10 +499,10 @@ export const ResourcesMain = memo(function ResourcesMain() {
                   "Smaller organisations carry the same AI risks as large enterprises on a fraction of the resources. A practical route through."
                 }
               </p>
-              <span className="src note">{"Ask us for the article"}</span>
+              <span className={rc("src note")}>{"Ask us for the article"}</span>
             </article>
             <article
-              className="card fill rd rv"
+              className={rc("card fill rd rv")}
               style={
                 {
                   "--f": "var(--fill-sky)",
@@ -498,8 +510,11 @@ export const ResourcesMain = memo(function ResourcesMain() {
                 } as CustomStyle
               }
             >
-              <span className="accent" style={{ background: "#0057B8" }}></span>
-              <span className="meta">
+              <span
+                className={rc("accent")}
+                style={{ background: "#0057B8" }}
+              ></span>
+              <span className={rc("meta")}>
                 <i style={{ background: "#0057B8" }}></i>
                 {"BITDOT · Data governance"}
               </span>
@@ -509,10 +524,10 @@ export const ResourcesMain = memo(function ResourcesMain() {
                   "What one of the country's largest agencies taught us about turning an information framework into organisational excellence."
                 }
               </p>
-              <span className="src note">{"Ask us for the article"}</span>
+              <span className={rc("src note")}>{"Ask us for the article"}</span>
             </article>
             <article
-              className="card fill rd rv"
+              className={rc("card fill rd rv")}
               style={
                 {
                   "--f": "var(--fill-mint)",
@@ -520,8 +535,11 @@ export const ResourcesMain = memo(function ResourcesMain() {
                 } as CustomStyle
               }
             >
-              <span className="accent" style={{ background: "#0B7A56" }}></span>
-              <span className="meta">
+              <span
+                className={rc("accent")}
+                style={{ background: "#0B7A56" }}
+              ></span>
+              <span className={rc("meta")}>
                 <i style={{ background: "#0B7A56" }}></i>
                 {"BITDOT · Data literacy"}
               </span>
@@ -531,18 +549,18 @@ export const ResourcesMain = memo(function ResourcesMain() {
                   "Data doesn't make decisions, people do. On setting honest expectations between business users and the models informing them."
                 }
               </p>
-              <span className="src note">{"Ask us for the article"}</span>
+              <span className={rc("src note")}>{"Ask us for the article"}</span>
             </article>
           </div>
-          <div className="sec-head rv" style={{ margin: "56px 0 36px" }}>
-            <p className="label c-blue">{"Primary sources"}</p>
-            <h2 className="display big">
+          <div className={rc("sec-head rv")} style={{ margin: "56px 0 36px" }}>
+            <p className={rc("label c-blue")}>{"Primary sources"}</p>
+            <h2 className={rc("display big")}>
               {"Straight from the people who write the rules."}
             </h2>
           </div>
-          <div className="read">
+          <div className={rc("read")}>
             <a
-              className="card fill rd rv"
+              className={rc("card fill rd rv")}
               style={
                 {
                   "--f": "var(--fill-sand)",
@@ -553,8 +571,11 @@ export const ResourcesMain = memo(function ResourcesMain() {
               target="_blank"
               rel="noopener"
             >
-              <span className="accent" style={{ background: "#93630A" }}></span>
-              <span className="meta">
+              <span
+                className={rc("accent")}
+                style={{ background: "#93630A" }}
+              ></span>
+              <span className={rc("meta")}>
                 <i style={{ background: "#93630A" }}></i>
                 {"National AI Centre"}
               </span>
@@ -564,7 +585,7 @@ export const ResourcesMain = memo(function ResourcesMain() {
                   "Where the essential practices, templates and updates now live. Worth a bookmark rather than a one-time read."
                 }
               </p>
-              <span className="src">
+              <span className={rc("src")}>
                 {"Open "}
                 <svg
                   width="14"
@@ -581,7 +602,7 @@ export const ResourcesMain = memo(function ResourcesMain() {
               </span>
             </a>
             <a
-              className="card fill rd rv"
+              className={rc("card fill rd rv")}
               style={
                 {
                   "--f": "var(--fill-mint)",
@@ -592,8 +613,11 @@ export const ResourcesMain = memo(function ResourcesMain() {
               target="_blank"
               rel="noopener"
             >
-              <span className="accent" style={{ background: "#0B7A56" }}></span>
-              <span className="meta">
+              <span
+                className={rc("accent")}
+                style={{ background: "#0B7A56" }}
+              ></span>
+              <span className={rc("meta")}>
                 <i style={{ background: "#0B7A56" }}></i>
                 {"OAIC"}
               </span>
@@ -603,7 +627,7 @@ export const ResourcesMain = memo(function ResourcesMain() {
                   "The regulator's consultation and guidance on the December 2026 obligation. Read it before you rewrite your privacy policy, not after."
                 }
               </p>
-              <span className="src">
+              <span className={rc("src")}>
                 {"Open "}
                 <svg
                   width="14"
@@ -620,7 +644,7 @@ export const ResourcesMain = memo(function ResourcesMain() {
               </span>
             </a>
             <a
-              className="card fill rd rv"
+              className={rc("card fill rd rv")}
               style={
                 {
                   "--f": "var(--fill-lilac)",
@@ -631,8 +655,11 @@ export const ResourcesMain = memo(function ResourcesMain() {
               target="_blank"
               rel="noopener"
             >
-              <span className="accent" style={{ background: "#6D5BD0" }}></span>
-              <span className="meta">
+              <span
+                className={rc("accent")}
+                style={{ background: "#6D5BD0" }}
+              ></span>
+              <span className={rc("meta")}>
                 <i style={{ background: "#6D5BD0" }}></i>
                 {"AICD × UTS HTI"}
               </span>
@@ -642,7 +669,7 @@ export const ResourcesMain = memo(function ResourcesMain() {
                   "The board-facing suite: an introduction, the governance guide, the eight-element snapshot, and a checklist scaled for SME and NFP boards."
                 }
               </p>
-              <span className="src">
+              <span className={rc("src")}>
                 {"Open "}
                 <svg
                   width="14"
@@ -659,7 +686,7 @@ export const ResourcesMain = memo(function ResourcesMain() {
               </span>
             </a>
             <a
-              className="card fill rd rv"
+              className={rc("card fill rd rv")}
               style={
                 {
                   "--f": "var(--fill-sand)",
@@ -670,8 +697,11 @@ export const ResourcesMain = memo(function ResourcesMain() {
               target="_blank"
               rel="noopener"
             >
-              <span className="accent" style={{ background: "#93630A" }}></span>
-              <span className="meta">
+              <span
+                className={rc("accent")}
+                style={{ background: "#93630A" }}
+              ></span>
+              <span className={rc("meta")}>
                 <i style={{ background: "#93630A" }}></i>
                 {"Standards"}
               </span>
@@ -681,7 +711,7 @@ export const ResourcesMain = memo(function ResourcesMain() {
                   "The AI management system standard, the one you can actually be certified against when a tender asks for proof rather than intent."
                 }
               </p>
-              <span className="src">
+              <span className={rc("src")}>
                 {"Open "}
                 <svg
                   width="14"
@@ -698,7 +728,7 @@ export const ResourcesMain = memo(function ResourcesMain() {
               </span>
             </a>
           </div>
-          <div className="disclaimer rv">
+          <div className={rc("disclaimer rv")}>
             <b>{"How to use this page"}</b>
             {
               " Everything here was checked against primary sources and reviewed on 30 August 2026. AI policy moves quickly, and the position may have changed since, always confirm against the linked source before acting. This page is general information, not legal advice, and it is not a substitute for advice on your own circumstances. "
@@ -706,11 +736,11 @@ export const ResourcesMain = memo(function ResourcesMain() {
           </div>
         </div>
       </section>
-      <section className="section bg-mist" style={{ paddingTop: "0" }}>
-        <div className="wrap">
-          <div className="promo rv">
-            <div className="promo-copy">
-              <h2 className="display">
+      <section className={rc("section bg-mist")} style={{ paddingTop: "0" }}>
+        <div className={rc("wrap")}>
+          <div className={rc("promo rv")}>
+            <div className={rc("promo-copy")}>
+              <h2 className={rc("display")}>
                 {"Knowing the dates is the "}
                 <em>{"easy part"}</em>
                 {"."}
@@ -721,15 +751,18 @@ export const ResourcesMain = memo(function ResourcesMain() {
                 }
               </p>
               <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
-                <Link className="btn btn-coral btn-lg" href="/#contact">
+                <Link className={rc("btn btn-coral btn-lg")} href="/#contact">
                   <span>{"Book a session"}</span>
                 </Link>
-                <Link className="btn btn-on-dark btn-lg" href="/#pathways">
+                <Link
+                  className={rc("btn btn-on-dark btn-lg")}
+                  href="/#pathways"
+                >
                   {"Take the readiness assessment"}
                 </Link>
               </div>
             </div>
-            <div className="promo-media" aria-hidden="true">
+            <div className={rc("promo-media")} aria-hidden="true">
               <Image
                 src="/images/resources/156d12e0456d.svg"
                 alt=""
@@ -741,6 +774,6 @@ export const ResourcesMain = memo(function ResourcesMain() {
           </div>
         </div>
       </section>
-    </main>
+    </>
   );
 });

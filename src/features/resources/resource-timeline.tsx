@@ -2,11 +2,18 @@
 
 import { useEffect, useState } from "react";
 
+import { trackClientEvent } from "@/features/analytics/client";
+
+import { resourceClassNames as rc } from "./resource-class-names";
+import {
+  filterMilestones,
+  findNextMilestoneIndex,
+  getPerthDate,
+  type TimelineFilter,
+} from "./timeline";
 import { milestones } from "./timeline-data";
 
-type Filter = "all" | "au" | "eu" | "live" | "next";
-
-const filters: { value: Filter; label: string }[] = [
+const filters: { value: TimelineFilter; label: string }[] = [
   { value: "all", label: "Everything" },
   { value: "au", label: "Australia" },
   { value: "eu", label: "European Union" },
@@ -14,55 +21,20 @@ const filters: { value: Filter; label: string }[] = [
   { value: "next", label: "Still to come" },
 ];
 
-function perthToday() {
-  const parts = new Intl.DateTimeFormat("en-AU", {
-    timeZone: "Australia/Perth",
-    year: "numeric",
-    month: "2-digit",
-    day: "2-digit",
-  }).formatToParts(new Date());
-  const part = (type: string) =>
-    parts.find((item) => item.type === type)?.value ?? "";
-  return `${part("year")}-${part("month")}-${part("day")}`;
-}
-
-function trackFilter(filter: Filter, shown: number) {
-  const analytics = window as Window & {
-    dataLayer?: Record<string, unknown>[];
-    gtag?: (
-      command: string,
-      name: string,
-      properties: Record<string, unknown>,
-    ) => void;
-    clarity?: (command: string, name: string) => void;
-  };
-  analytics.dataLayer ??= [];
-  analytics.dataLayer.push({ event: "resources_filtered", filter, shown });
-  analytics.gtag?.("event", "resources_filtered", { filter, shown });
-  analytics.clarity?.("event", "resources_filtered");
-}
-
 export function ResourceTimeline() {
-  const [filter, setFilter] = useState<Filter>("all");
+  const [filter, setFilter] = useState<TimelineFilter>("all");
   const [today, setToday] = useState<string | null>(null);
 
   useEffect(() => {
-    const updateToday = () => setToday(perthToday());
+    const updateToday = () => setToday(getPerthDate());
     updateToday();
     const timer = window.setInterval(updateToday, 60_000);
     return () => window.clearInterval(timer);
   }, []);
 
-  const shown = milestones.filter((item) => {
-    if (filter === "all") return true;
-    if (filter === "au" || filter === "eu") return item.region === filter;
-    return (
-      today !== null &&
-      (filter === "live" ? item.date <= today : item.date > today)
-    );
-  });
+  const shown = filterMilestones(milestones, filter, today ?? "");
   const nextIndex =
-    today === null ? -1 : milestones.findIndex((item) => item.date > today);
+    today === null ? -1 : findNextMilestoneIndex(milestones, today);
   const formattedToday = today
     ? new Intl.DateTimeFormat("en-AU", {
         day: "numeric",
@@ -75,7 +47,7 @@ export function ResourceTimeline() {
   return (
     <>
       <div
-        className="filter rv in"
+        className={rc("filter rv in")}
         role="group"
         aria-label="Filter the timeline"
       >
@@ -83,56 +55,57 @@ export function ResourceTimeline() {
           <button
             key={value}
             type="button"
-            className={filter === value ? "act" : undefined}
+            className={filter === value ? rc("act") : undefined}
             aria-pressed={filter === value}
             onClick={() => {
               setFilter(value);
-              const count = milestones.filter(
-                (item) =>
-                  value === "all" ||
-                  item.region === value ||
-                  (today !== null &&
-                    (value === "live"
-                      ? item.date <= today
-                      : value === "next" && item.date > today)),
+              const count = filterMilestones(
+                milestones,
+                value,
+                today ?? "",
               ).length;
-              trackFilter(value, count);
+              trackClientEvent("resources_filtered", {
+                filter: value,
+                shown: count,
+              });
             }}
           >
             {label}
           </button>
         ))}
       </div>
-      <p className="f-count" aria-live="polite">
+      <p className={rc("f-count")} aria-live="polite">
         {filter === "all"
           ? `${milestones.length} milestones, oldest first`
           : `${shown.length} of ${milestones.length} milestones shown`}
       </p>
-      <div className="tl" id="tl">
+      <div className={rc("tl")} id="tl">
         {milestones.map((item, index) => {
           const live = today !== null && item.date <= today;
           const visible = shown.includes(item);
           return (
             <div key={item.date + item.title}>
               {filter === "all" && index === nextIndex && (
-                <div className="today">
+                <div className={rc("today")}>
                   <span>Today · {formattedToday}</span>
                 </div>
               )}
               <article
-                className={`ev rv in ${live ? "live" : "next"}${visible ? "" : " hide"}`}
+                className={rc(
+                  `ev rv in ${live ? "live" : "next"}${visible ? "" : " hide"}`,
+                )}
                 data-date={item.date}
                 data-region={item.region}
                 data-state={live ? "live" : "next"}
               >
-                <div className="ev-card card">
-                  <div className="ev-top">
-                    <span className="ev-date">{item.dateLabel}</span>
-                    <span className={`tag ${item.region}`}>
+                <div className={rc("ev-card card")}>
+                  <div className={rc("ev-top")}>
+                    <span className={rc("ev-date")}>{item.dateLabel}</span>
+                    <span className={rc(`tag ${item.region}`)}>
                       {item.region === "au" ? "Australia" : "European Union"}
                     </span>
                     {today !== null && (
-                      <span className={`tag st ${live ? "live" : "next"}`}>
+                      <span className={rc(`tag st ${live ? "live" : "next"}`)}>
                         {live ? "In force" : "Still to come"}
                       </span>
                     )}
@@ -140,7 +113,7 @@ export function ResourceTimeline() {
                   <h3>{item.title}</h3>
                   {item.description}
                   <a
-                    className="src"
+                    className={rc("src")}
                     href={item.href}
                     target="_blank"
                     rel="noopener noreferrer"

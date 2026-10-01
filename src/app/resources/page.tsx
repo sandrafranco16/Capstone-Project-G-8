@@ -2,8 +2,6 @@ import type { Metadata } from "next";
 
 import { ResourcesContent } from "@/features/resources/resources-content";
 
-import "@/features/resources/resources.css";
-
 export const metadata: Metadata = {
   title: {
     absolute:
