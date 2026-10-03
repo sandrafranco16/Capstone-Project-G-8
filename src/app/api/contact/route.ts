@@ -17,7 +17,10 @@ export async function POST(request: Request) {
   try {
     body = await request.json();
   } catch {
-    return NextResponse.json({ error: "Invalid JSON body." }, { status: 400 });
+    return NextResponse.json(
+      { errors: ["Invalid JSON body."] },
+      { status: 400 },
+    );
   }
 
   // Spam check: honeypot
@@ -42,7 +45,11 @@ export async function POST(request: Request) {
 
   if (turnstilePolicy === "misconfigured") {
     return NextResponse.json(
-      { error: "Spam protection is not configured." },
+      {
+        errors: [
+          "The contact service is temporarily unavailable. Please try again later.",
+        ],
+      },
       { status: 503 },
     );
   }
@@ -70,13 +77,17 @@ export async function POST(request: Request) {
   } catch (error) {
     if (error instanceof ContactDeliveryNotConfiguredError) {
       return NextResponse.json(
-        { error: "Contact delivery is not configured." },
+        {
+          errors: [
+            "The contact service is temporarily unavailable. Please try again later.",
+          ],
+        },
         { status: 503 },
       );
     }
 
     return NextResponse.json(
-      { error: "Unable to deliver contact request." },
+      { errors: ["Unable to send your enquiry. Please try again later."] },
       { status: 502 },
     );
   }
