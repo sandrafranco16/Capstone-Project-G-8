@@ -91,11 +91,12 @@ The provider is selected by the `CONTACT_EMAIL_PROVIDER` environment variable.
 
 ### Tests
 
-| File                                            | Coverage                                               |
-| :---------------------------------------------- | :----------------------------------------------------- |
-| `features/contact/validation.test.ts`           | 12 tests — payload validation edge cases               |
-| `features/contact/spam.test.ts`                 | 13 tests — honeypot, policy and Turnstile verification |
-| `features/email/server/resend-provider.test.ts` | 8 tests — API call, security, escaping                 |
+| File                                            | Coverage                                                         |
+| :---------------------------------------------- | :--------------------------------------------------------------- |
+| `features/contact/validation.test.ts`           | 12 tests — payload validation edge cases                         |
+| `features/contact/spam.test.ts`                 | 13 tests — honeypot, policy and Turnstile verification           |
+| `app/api/contact/route.test.ts`                 | Error response format, unavailable service and delivery failures |
+| `features/email/server/resend-provider.test.ts` | 8 tests — API call, security, escaping                           |
 
 ---
 
@@ -325,6 +326,10 @@ TURNSTILE_SECRET_KEY=<secret-key>
 ---
 
 ## Testing
+
+### API Error Messages
+
+All unsuccessful contact API responses use an `errors` array, which the form displays to the visitor. Missing production Turnstile or email configuration returns `503` with **The contact service is temporarily unavailable. Please try again later.** Delivery failures return `502` with **Unable to send your enquiry. Please try again later.** Internal configuration and provider details are not exposed.
 
 ### Automated Tests
 
