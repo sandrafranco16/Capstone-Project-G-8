@@ -30,9 +30,9 @@ describe("isHoneypotTriggered", () => {
 
 describe("getTurnstilePolicy", () => {
   it("allows an explicit local development bypass", () => {
-    expect(
-      getTurnstilePolicy({ isProduction: false, secret: undefined }),
-    ).toBe("disabled");
+    expect(getTurnstilePolicy({ isProduction: false, secret: undefined })).toBe(
+      "disabled",
+    );
   });
 
   it("enables verification when a secret is configured", () => {
@@ -42,9 +42,9 @@ describe("getTurnstilePolicy", () => {
   });
 
   it("fails closed when the production secret is missing or blank", () => {
-    expect(
-      getTurnstilePolicy({ isProduction: true, secret: undefined }),
-    ).toBe("misconfigured");
+    expect(getTurnstilePolicy({ isProduction: true, secret: undefined })).toBe(
+      "misconfigured",
+    );
     expect(getTurnstilePolicy({ isProduction: true, secret: "   " })).toBe(
       "misconfigured",
     );

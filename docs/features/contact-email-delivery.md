@@ -70,32 +70,32 @@ The provider is selected by the `CONTACT_EMAIL_PROVIDER` environment variable.
 
 ### Domain Layer (`src/features/`)
 
-| File | Purpose |
-|:---|:---|
-| `features/contact/validation.ts` | Payload validation, honeypot detection, Turnstile server-side verification |
-| `features/contact/server/deliver-contact-lead.ts` | Resolves provider (mock/resend) and delivers email |
-| `features/email/server/email-provider.ts` | `EmailProvider` interface and `LeadEmailInput` type |
-| `features/email/server/resend-provider.ts` | Resend API integration with HTML escaping |
-| `features/email/server/mock-provider.ts` | Mock provider for local development |
-| `features/email/server/email-errors.ts` | `EmailNotConfiguredError`, `EmailDeliveryError` |
+| File                                              | Purpose                                                                    |
+| :------------------------------------------------ | :------------------------------------------------------------------------- |
+| `features/contact/validation.ts`                  | Payload validation, honeypot detection, Turnstile server-side verification |
+| `features/contact/server/deliver-contact-lead.ts` | Resolves provider (mock/resend) and delivers email                         |
+| `features/email/server/email-provider.ts`         | `EmailProvider` interface and `LeadEmailInput` type                        |
+| `features/email/server/resend-provider.ts`        | Resend API integration with HTML escaping                                  |
+| `features/email/server/mock-provider.ts`          | Mock provider for local development                                        |
+| `features/email/server/email-errors.ts`           | `EmailNotConfiguredError`, `EmailDeliveryError`                            |
 
 ### UI Layer (`src/components/`, `src/app/`)
 
-| File | Purpose |
-|:---|:---|
-| `components/contact/contact-form.tsx` | Client component: form fields, validation, submit handling, success state |
-| `components/contact/turnstile-widget.tsx` | Explicit Turnstile rendering, token callbacks, reset and cleanup |
-| `app/contact/page.tsx` | Server component: renders the contact page and form |
-| `app/api/contact/route.ts` | API route: validates, checks spam, delivers email |
-| `app/globals.css` | Contact form CSS classes (`.contact-form`, `.contact-form__field`, etc.) |
+| File                                      | Purpose                                                                   |
+| :---------------------------------------- | :------------------------------------------------------------------------ |
+| `components/contact/contact-form.tsx`     | Client component: form fields, validation, submit handling, success state |
+| `components/contact/turnstile-widget.tsx` | Explicit Turnstile rendering, token callbacks, reset and cleanup          |
+| `app/contact/page.tsx`                    | Server component: renders the contact page and form                       |
+| `app/api/contact/route.ts`                | API route: validates, checks spam, delivers email                         |
+| `app/globals.css`                         | Contact form CSS classes (`.contact-form`, `.contact-form__field`, etc.)  |
 
 ### Tests
 
-| File | Coverage |
-|:---|:---|
-| `features/contact/validation.test.ts` | 12 tests — payload validation edge cases |
-| `features/contact/spam.test.ts` | 13 tests — honeypot, policy and Turnstile verification |
-| `features/email/server/resend-provider.test.ts` | 8 tests — API call, security, escaping |
+| File                                            | Coverage                                               |
+| :---------------------------------------------- | :----------------------------------------------------- |
+| `features/contact/validation.test.ts`           | 12 tests — payload validation edge cases               |
+| `features/contact/spam.test.ts`                 | 13 tests — honeypot, policy and Turnstile verification |
+| `features/email/server/resend-provider.test.ts` | 8 tests — API call, security, escaping                 |
 
 ---
 
@@ -151,25 +151,25 @@ All contact form styles are in `src/app/globals.css` under the `/* ── Contac
 
 Key CSS classes:
 
-| Class | Element |
-|:---|:---|
-| `.contact-form` | Form container (flex column, max-width 36rem) |
-| `.contact-form__field` | Each field wrapper (label + input) |
-| `.contact-form__consent` | Consent checkbox row |
-| `.contact-form__errors` | Error message container (red background) |
-| `.contact-success` | Success confirmation card |
+| Class                    | Element                                       |
+| :----------------------- | :-------------------------------------------- |
+| `.contact-form`          | Form container (flex column, max-width 36rem) |
+| `.contact-form__field`   | Each field wrapper (label + input)            |
+| `.contact-form__consent` | Consent checkbox row                          |
+| `.contact-form__errors`  | Error message container (red background)      |
+| `.contact-success`       | Success confirmation card                     |
 
 Available CSS variables from the design system:
 
-| Variable | Usage |
-|:---|:---|
-| `--ink` | Primary text color |
-| `--slate` | Secondary text color |
-| `--azure` | Accent / focus color |
-| `--line` | Border color |
-| `--surface` | Input background |
-| `--mist` | Section background |
-| `--radius` | Border radius |
+| Variable    | Usage                |
+| :---------- | :------------------- |
+| `--ink`     | Primary text color   |
+| `--slate`   | Secondary text color |
+| `--azure`   | Accent / focus color |
+| `--line`    | Border color         |
+| `--surface` | Input background     |
+| `--mist`    | Section background   |
+| `--radius`  | Border radius        |
 
 To override styles, edit the corresponding classes in `globals.css`. No inline styles are used in the components.
 
@@ -229,12 +229,12 @@ CONTACT_EMAIL_TO=info@bitdot.com.au
 CONTACT_EMAIL_API_KEY=re_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ```
 
-| Variable | Description |
-|:---|:---|
-| `CONTACT_EMAIL_PROVIDER` | Set to `resend` for real delivery, `mock` for local dev |
-| `CONTACT_EMAIL_FROM` | The sender address (must match a verified Resend domain) |
-| `CONTACT_EMAIL_TO` | The recipient inbox for all enquiries |
-| `CONTACT_EMAIL_API_KEY` | Your Resend API key (starts with `re_`) |
+| Variable                 | Description                                              |
+| :----------------------- | :------------------------------------------------------- |
+| `CONTACT_EMAIL_PROVIDER` | Set to `resend` for real delivery, `mock` for local dev  |
+| `CONTACT_EMAIL_FROM`     | The sender address (must match a verified Resend domain) |
+| `CONTACT_EMAIL_TO`       | The recipient inbox for all enquiries                    |
+| `CONTACT_EMAIL_API_KEY`  | Your Resend API key (starts with `re_`)                  |
 
 ### Email Format
 
@@ -341,26 +341,26 @@ CI=true pnpm build          # Production build
 2. Run `pnpm dev`
 3. Open `http://localhost:3000/contact`
 
-| Test | Steps | Expected |
-|:---|:---|:---|
-| Valid submit | Fill all fields, check consent, submit | "Thank you" confirmation |
-| Empty fields | Submit without filling anything | Client-side error list |
-| Bad email | Enter `abc` as email | "Please enter a valid email address" |
-| Short message | Enter 2-character message | "Message must be at least 10 characters" |
-| No consent | Fill everything, don't check consent | "You must consent to being contacted" |
-| Submit again | Click "Send another message" after success | Form reappears |
+| Test          | Steps                                      | Expected                                 |
+| :------------ | :----------------------------------------- | :--------------------------------------- |
+| Valid submit  | Fill all fields, check consent, submit     | "Thank you" confirmation                 |
+| Empty fields  | Submit without filling anything            | Client-side error list                   |
+| Bad email     | Enter `abc` as email                       | "Please enter a valid email address"     |
+| Short message | Enter 2-character message                  | "Message must be at least 10 characters" |
+| No consent    | Fill everything, don't check consent       | "You must consent to being contacted"    |
+| Submit again  | Click "Send another message" after success | Form reappears                           |
 
 ### Manual Testing — Turnstile Lifecycle
 
 Use Cloudflare test keys in `.env.local`, then restart `pnpm dev`.
 
-| Test | Steps | Expected |
-|:---|:---|:---|
-| Initial verification | Open `/contact` | Widget renders and enables submit after producing a token |
-| Failed submission | Force the API to return an error, then retry | Widget resets and produces a fresh token |
-| Submit again | Complete a successful submission and click **Send another message** | A new working widget is rendered |
-| Missing deployed secret | Remove `TURNSTILE_SECRET_KEY` from a Preview deployment and submit | API returns `503`; no email is sent |
-| Invalid token | Submit an invalid or reused token | API returns `400`; no email is sent |
+| Test                    | Steps                                                               | Expected                                                  |
+| :---------------------- | :------------------------------------------------------------------ | :-------------------------------------------------------- |
+| Initial verification    | Open `/contact`                                                     | Widget renders and enables submit after producing a token |
+| Failed submission       | Force the API to return an error, then retry                        | Widget resets and produces a fresh token                  |
+| Submit again            | Complete a successful submission and click **Send another message** | A new working widget is rendered                          |
+| Missing deployed secret | Remove `TURNSTILE_SECRET_KEY` from a Preview deployment and submit  | API returns `503`; no email is sent                       |
+| Invalid token           | Submit an invalid or reused token                                   | API returns `400`; no email is sent                       |
 
 ### Manual Testing — With Resend
 
@@ -410,17 +410,17 @@ curl -s -X POST http://localhost:3000/api/contact \
 
 ## Security Notes
 
-| Concern | How it's handled |
-|:---|:---|
-| User email as From address | Blocked — user email is only used as `Reply-To` |
-| HTML injection in email body | All user input is HTML-escaped before embedding |
-| API key exposure | Key is only in server-side `process.env`, never in responses or client bundle |
-| Bot spam | Honeypot field + Turnstile challenge + field length limits |
-| Honeypot detection | Bots that fill the hidden `website` field get a silent 202 (not a 400) |
-| Turnstile secret exposure | Uses `TURNSTILE_SECRET_KEY` (no `NEXT_PUBLIC_` prefix) |
-| Missing deployed Turnstile secret | API fails closed with `503`; email delivery is not attempted |
-| Reused or expired Turnstile token | Server rejects it and the client resets the widget before retry |
-| Error message leakage | Server errors return generic messages, never stack traces or config details |
+| Concern                           | How it's handled                                                              |
+| :-------------------------------- | :---------------------------------------------------------------------------- |
+| User email as From address        | Blocked — user email is only used as `Reply-To`                               |
+| HTML injection in email body      | All user input is HTML-escaped before embedding                               |
+| API key exposure                  | Key is only in server-side `process.env`, never in responses or client bundle |
+| Bot spam                          | Honeypot field + Turnstile challenge + field length limits                    |
+| Honeypot detection                | Bots that fill the hidden `website` field get a silent 202 (not a 400)        |
+| Turnstile secret exposure         | Uses `TURNSTILE_SECRET_KEY` (no `NEXT_PUBLIC_` prefix)                        |
+| Missing deployed Turnstile secret | API fails closed with `503`; email delivery is not attempted                  |
+| Reused or expired Turnstile token | Server rejects it and the client resets the widget before retry               |
+| Error message leakage             | Server errors return generic messages, never stack traces or config details   |
 
 ---
 

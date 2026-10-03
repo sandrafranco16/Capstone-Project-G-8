@@ -1,6 +1,7 @@
 import type { BookingConfig } from "./types";
 
-const defaultBaseUrl = process.env.NEXT_PUBLIC_CALCOM_URL || "https://cal.com/bitdot";
+const defaultBaseUrl =
+  process.env.NEXT_PUBLIC_CALCOM_URL || "https://cal.com/bitdot";
 
 export const bookingConfig: BookingConfig = {
   provider: "Cal.com Hosted Booking",
@@ -10,7 +11,8 @@ export const bookingConfig: BookingConfig = {
     {
       id: "career-coaching",
       title: "Career Coaching",
-      description: "1-on-1 career guidance for AI practitioners, transitioners, and students looking to advance their AI governance or engineering career.",
+      description:
+        "1-on-1 career guidance for AI practitioners, transitioners, and students looking to advance their AI governance or engineering career.",
       durationMinutes: 45,
       targetAudience: "Students, Graduates & AI Professionals",
       slug: "career-coaching",
@@ -20,7 +22,8 @@ export const bookingConfig: BookingConfig = {
     {
       id: "discovery-call",
       title: "Discovery Call",
-      description: "Initial introductory call to explore how BITDOT's AI governance, training, and advisory services align with your needs.",
+      description:
+        "Initial introductory call to explore how BITDOT's AI governance, training, and advisory services align with your needs.",
       durationMinutes: 30,
       targetAudience: "General Enquirers & Business Managers",
       slug: "discovery-call",
@@ -29,7 +32,8 @@ export const bookingConfig: BookingConfig = {
     {
       id: "executive-consultation",
       title: "Executive Consultation",
-      description: "Strategic advice for executives and boards on AI governance frameworks, compliance, and responsible AI adoption.",
+      description:
+        "Strategic advice for executives and boards on AI governance frameworks, compliance, and responsible AI adoption.",
       durationMinutes: 60,
       targetAudience: "C-Suite, Executives & Board Members",
       slug: "executive-consultation",
@@ -39,7 +43,8 @@ export const bookingConfig: BookingConfig = {
     {
       id: "training-discussion",
       title: "Training Discussion",
-      description: "Customized discussion to tailor AI & automation training programs for corporate teams and organizations.",
+      description:
+        "Customized discussion to tailor AI & automation training programs for corporate teams and organizations.",
       durationMinutes: 45,
       targetAudience: "Corporate Learning & HR Leads",
       slug: "training-discussion",
@@ -49,7 +54,8 @@ export const bookingConfig: BookingConfig = {
     {
       id: "workshop-enquiry",
       title: "Workshop Enquiry",
-      description: "Planning and scheduling hands-on AI risk, governance, or technical workshops for your organization.",
+      description:
+        "Planning and scheduling hands-on AI risk, governance, or technical workshops for your organization.",
       durationMinutes: 45,
       targetAudience: "Risk Management & IT Operations Leads",
       slug: "workshop-enquiry",

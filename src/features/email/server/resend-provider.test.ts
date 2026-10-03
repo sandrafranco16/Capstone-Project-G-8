@@ -7,7 +7,8 @@ describe("createResendProvider", () => {
 
   beforeEach(() => {
     process.env.CONTACT_EMAIL_API_KEY = "re_test_key";
-    process.env.CONTACT_EMAIL_FROM = "BITDOT Website <website@notifications.bitdot.com.au>";
+    process.env.CONTACT_EMAIL_FROM =
+      "BITDOT Website <website@notifications.bitdot.com.au>";
     process.env.CONTACT_EMAIL_TO = "test@example.com";
   });
 
@@ -52,7 +53,9 @@ describe("createResendProvider", () => {
     expect(url).toBe("https://api.resend.com/emails");
 
     const body = JSON.parse(options.body);
-    expect(body.from).toBe("BITDOT Website <website@notifications.bitdot.com.au>");
+    expect(body.from).toBe(
+      "BITDOT Website <website@notifications.bitdot.com.au>",
+    );
     expect(body.to).toBe("test@example.com");
     expect(body.reply_to).toBe("jane@example.com");
     expect(body.subject).toBe("New website enquiry");

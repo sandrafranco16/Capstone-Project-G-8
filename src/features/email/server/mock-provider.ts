@@ -1,4 +1,8 @@
-import type { EmailProvider, LeadEmailInput, EmailSendResult } from "./email-provider";
+import type {
+  EmailProvider,
+  LeadEmailInput,
+  EmailSendResult,
+} from "./email-provider";
 
 export function createMockProvider(): EmailProvider {
   return {
