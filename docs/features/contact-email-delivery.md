@@ -46,7 +46,7 @@ ContactForm                      POST /api/contact
   ├─ client-side validation        ├─ parse JSON body
   ├─ honeypot hidden field         ├─ check honeypot → silent 202 if triggered
   ├─ Turnstile widget              ├─ validate payload (name, email, message, consent)
-  └─ POST /api/contact             ├─ verify Turnstile token (if configured)
+  └─ POST /api/contact             ├─ enforce deployed configuration and verify token
                                    ├─ resolve email provider (mock / resend)
                                    ├─ send email via provider
                                    └─ return 202 { accepted: true }
@@ -81,20 +81,22 @@ The provider is selected by the `CONTACT_EMAIL_PROVIDER` environment variable.
 
 ### UI Layer (`src/components/`, `src/app/`)
 
-| File                                  | Purpose                                                                   |
-| :------------------------------------ | :------------------------------------------------------------------------ |
-| `components/contact/contact-form.tsx` | Client component: form fields, validation, submit handling, success state |
-| `app/contact/page.tsx`                | Server component: renders form, loads Turnstile script                    |
-| `app/api/contact/route.ts`            | API route: validates, checks spam, delivers email                         |
-| `app/globals.css`                     | Contact form CSS classes (`.contact-form`, `.contact-form__field`, etc.)  |
+| File                                      | Purpose                                                                   |
+| :---------------------------------------- | :------------------------------------------------------------------------ |
+| `components/contact/contact-form.tsx`     | Client component: form fields, validation, submit handling, success state |
+| `components/contact/turnstile-widget.tsx` | Explicit Turnstile rendering, token callbacks, reset and cleanup          |
+| `app/contact/page.tsx`                    | Server component: renders the contact page and form                       |
+| `app/api/contact/route.ts`                | API route: validates, checks spam, delivers email                         |
+| `app/globals.css`                         | Contact form CSS classes (`.contact-form`, `.contact-form__field`, etc.)  |
 
 ### Tests
 
-| File                                            | Coverage                                      |
-| :---------------------------------------------- | :-------------------------------------------- |
-| `features/contact/validation.test.ts`           | 12 tests — payload validation edge cases      |
-| `features/contact/spam.test.ts`                 | 9 tests — honeypot and Turnstile verification |
-| `features/email/server/resend-provider.test.ts` | 8 tests — API call, security, escaping        |
+| File                                            | Coverage                                                         |
+| :---------------------------------------------- | :--------------------------------------------------------------- |
+| `features/contact/validation.test.ts`           | 12 tests — payload validation edge cases                         |
+| `features/contact/spam.test.ts`                 | 13 tests — honeypot, policy and Turnstile verification           |
+| `app/api/contact/route.test.ts`                 | Error response format, unavailable service and delivery failures |
+| `features/email/server/resend-provider.test.ts` | 8 tests — API call, security, escaping                           |
 
 ---
 
@@ -104,7 +106,7 @@ The provider is selected by the `CONTACT_EMAIL_PROVIDER` environment variable.
 1. User visits /contact
 2. Fills in Name, Email, Message
 3. Checks "I consent to BITDOT using my details to respond to this enquiry"
-4. (If Turnstile is configured) Completes the Turnstile challenge
+4. Completes the Turnstile challenge in deployed environments
 5. Clicks "Send Enquiry"
 6. Button changes to "Sending..."
 7. On success → "Thank you for your enquiry" confirmation
@@ -249,7 +251,10 @@ Each enquiry email is sent with:
 
 ## Cloudflare Turnstile Setup
 
-Turnstile is optional but recommended for production.
+Turnstile is optional during local development and required in deployed
+environments. Production and Vercel Preview runtimes fail closed when the
+server secret is missing, so a configuration error cannot silently bypass spam
+protection.
 
 ### Step 1: Create a Turnstile Widget
 
@@ -271,8 +276,15 @@ TURNSTILE_SECRET_KEY=0x4AAAAAAA...
 
 ### Behavior
 
-- If both keys are set: Turnstile widget appears on the form, server verifies the token.
-- If keys are blank: Turnstile is skipped entirely (suitable for local development).
+- If both keys are set, the widget appears and the server verifies every token.
+- If both keys are blank during local development, Turnstile is intentionally skipped.
+- If the secret is missing from a deployed runtime, the API returns `503` and does not send an email.
+- If the secret exists but a token is missing or invalid, the API returns `400`.
+- Tokens are single-use. A failed submission resets the widget, and **Send another message** mounts a fresh widget.
+
+The contact form uses Turnstile's explicit rendering API so React controls the
+widget lifecycle. Expired or errored challenges clear the current token, and
+the submit button remains disabled until a fresh token is available.
 
 ---
 
@@ -293,9 +305,12 @@ CONTACT_EMAIL_PROVIDER=resend
 CONTACT_EMAIL_FROM=onboarding@resend.dev
 CONTACT_EMAIL_TO=<your-resend-account-email>
 CONTACT_EMAIL_API_KEY=re_<your-test-key>
+NEXT_PUBLIC_TURNSTILE_SITE_KEY=<test-site-key>
+TURNSTILE_SECRET_KEY=<test-secret-key>
 ```
 
 > With Resend's test domain, emails can only be delivered to the Resend account owner's email. Do NOT use `info@bitdot.com.au` for testing.
+> Use Cloudflare's published Turnstile test keys in Preview rather than production credentials.
 
 ### Production
 
@@ -312,13 +327,17 @@ TURNSTILE_SECRET_KEY=<secret-key>
 
 ## Testing
 
+### API Error Messages
+
+All unsuccessful contact API responses use an `errors` array, which the form displays to the visitor. Missing production Turnstile or email configuration returns `503` with **The contact service is temporarily unavailable. Please try again later.** Delivery failures return `502` with **Unable to send your enquiry. Please try again later.** Internal configuration and provider details are not exposed.
+
 ### Automated Tests
 
 ```bash
-CI=true pnpm test --run     # 55 tests (including 29 contact/email tests)
+CI=true pnpm test --run     # Full automated test suite
 CI=true pnpm typecheck      # TypeScript check
-CI=true pnpm lint            # ESLint
-CI=true pnpm build           # Production build
+CI=true pnpm lint           # ESLint
+CI=true pnpm build          # Production build
 ```
 
 ### Manual Testing — Local (Mock Mode)
@@ -335,6 +354,18 @@ CI=true pnpm build           # Production build
 | Short message | Enter 2-character message                  | "Message must be at least 10 characters" |
 | No consent    | Fill everything, don't check consent       | "You must consent to being contacted"    |
 | Submit again  | Click "Send another message" after success | Form reappears                           |
+
+### Manual Testing — Turnstile Lifecycle
+
+Use Cloudflare test keys in `.env.local`, then restart `pnpm dev`.
+
+| Test                    | Steps                                                               | Expected                                                  |
+| :---------------------- | :------------------------------------------------------------------ | :-------------------------------------------------------- |
+| Initial verification    | Open `/contact`                                                     | Widget renders and enables submit after producing a token |
+| Failed submission       | Force the API to return an error, then retry                        | Widget resets and produces a fresh token                  |
+| Submit again            | Complete a successful submission and click **Send another message** | A new working widget is rendered                          |
+| Missing deployed secret | Remove `TURNSTILE_SECRET_KEY` from a Preview deployment and submit  | API returns `503`; no email is sent                       |
+| Invalid token           | Submit an invalid or reused token                                   | API returns `400`; no email is sent                       |
 
 ### Manual Testing — With Resend
 
@@ -384,15 +415,17 @@ curl -s -X POST http://localhost:3000/api/contact \
 
 ## Security Notes
 
-| Concern                      | How it's handled                                                              |
-| :--------------------------- | :---------------------------------------------------------------------------- |
-| User email as From address   | Blocked — user email is only used as `Reply-To`                               |
-| HTML injection in email body | All user input is HTML-escaped before embedding                               |
-| API key exposure             | Key is only in server-side `process.env`, never in responses or client bundle |
-| Bot spam                     | Honeypot field + Turnstile challenge + field length limits                    |
-| Honeypot detection           | Bots that fill the hidden `website` field get a silent 202 (not a 400)        |
-| Turnstile secret exposure    | Uses `TURNSTILE_SECRET_KEY` (no `NEXT_PUBLIC_` prefix)                        |
-| Error message leakage        | Server errors return generic messages, never stack traces or config details   |
+| Concern                           | How it's handled                                                              |
+| :-------------------------------- | :---------------------------------------------------------------------------- |
+| User email as From address        | Blocked — user email is only used as `Reply-To`                               |
+| HTML injection in email body      | All user input is HTML-escaped before embedding                               |
+| API key exposure                  | Key is only in server-side `process.env`, never in responses or client bundle |
+| Bot spam                          | Honeypot field + Turnstile challenge + field length limits                    |
+| Honeypot detection                | Bots that fill the hidden `website` field get a silent 202 (not a 400)        |
+| Turnstile secret exposure         | Uses `TURNSTILE_SECRET_KEY` (no `NEXT_PUBLIC_` prefix)                        |
+| Missing deployed Turnstile secret | API fails closed with `503`; email delivery is not attempted                  |
+| Reused or expired Turnstile token | Server rejects it and the client resets the widget before retry               |
+| Error message leakage             | Server errors return generic messages, never stack traces or config details   |
 
 ---
 
@@ -405,7 +438,9 @@ Yes. Set `CONTACT_EMAIL_PROVIDER=mock`. The form will work normally but no real 
 To avoid revealing to bots that they've been detected. A 400 would tell them to remove the honeypot field.
 
 **Q: Do I need Turnstile for local development?**
-No. If the Turnstile keys are blank, the widget and server verification are both skipped.
+No. If both keys are blank in `pnpm dev`, the widget and server verification
+are skipped. Deployed builds do not allow this bypass and must be configured
+with matching keys.
 
 **Q: Where do I change the email subject line?**
 In `src/features/email/server/resend-provider.ts`, the `subject` field in the `sendContactLead` method.
