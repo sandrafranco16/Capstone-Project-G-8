@@ -495,8 +495,6 @@ h3 {
     justify-content: center;
   }
 
-  
-
   .card-grid,
   .split-callout {
     grid-template-columns: 1fr;
