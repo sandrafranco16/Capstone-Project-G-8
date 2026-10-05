@@ -1,14 +1,18 @@
 import { bookingConfig } from "./config";
-import type { AppointmentTypeConfig, AppointmentTypeId, CalBookingOptions } from "./types";
+import type {
+  AppointmentTypeConfig,
+  AppointmentTypeId,
+  CalBookingOptions,
+} from "./types";
 
 export function getAppointmentType(
-  idOrSlug?: string
+  idOrSlug?: string,
 ): AppointmentTypeConfig | undefined {
   if (!idOrSlug) return undefined;
   const normalized = idOrSlug.trim().toLowerCase();
   if (!normalized) return undefined;
   return bookingConfig.appointmentTypes.find(
-    (item) => item.id === normalized || item.slug === normalized
+    (item) => item.id === normalized || item.slug === normalized,
   );
 }
 
@@ -39,7 +43,7 @@ export function validateCalComUrl(rawUrl?: string): string {
 
 export function buildCalComUrl(
   typeId?: AppointmentTypeId | string,
-  options: CalBookingOptions = {}
+  options: CalBookingOptions = {},
 ): string {
   const matchedType = getAppointmentType(typeId);
   const targetSlug = matchedType ? matchedType.slug : bookingConfig.defaultSlug;
@@ -72,7 +76,7 @@ export function buildCalComUrl(
   if (options.hideEventTypeDetails !== undefined) {
     url.searchParams.set(
       "hideEventTypeDetails",
-      options.hideEventTypeDetails ? "1" : "0"
+      options.hideEventTypeDetails ? "1" : "0",
     );
   }
 

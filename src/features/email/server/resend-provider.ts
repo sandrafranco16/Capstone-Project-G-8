@@ -1,4 +1,8 @@
-import type { EmailProvider, LeadEmailInput, EmailSendResult } from "./email-provider";
+import type {
+  EmailProvider,
+  LeadEmailInput,
+  EmailSendResult,
+} from "./email-provider";
 import { EmailDeliveryError, EmailNotConfiguredError } from "./email-errors";
 
 function escapeHtml(text: string): string {

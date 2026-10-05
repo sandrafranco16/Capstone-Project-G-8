@@ -1,7 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import type { AppointmentTypeConfig, CalBookingOptions } from "@/features/booking/types";
+import type {
+  AppointmentTypeConfig,
+  CalBookingOptions,
+} from "@/features/booking/types";
 import { buildCalComUrl } from "@/features/booking/utils";
 import { AppointmentCard } from "./AppointmentCard";
 import { CalEmbed } from "./CalEmbed";
@@ -18,7 +21,7 @@ export function AppointmentList({
   prefillOptions = {},
 }: AppointmentListProps) {
   const defaultSelected = appointmentTypes.find(
-    (item) => item.id === initialSelectedId || item.slug === initialSelectedId
+    (item) => item.id === initialSelectedId || item.slug === initialSelectedId,
   );
 
   const [selectedAppointment, setSelectedAppointment] = useState<
@@ -27,7 +30,7 @@ export function AppointmentList({
 
   const handleSelect = (appointment: AppointmentTypeConfig) => {
     setSelectedAppointment((prev) =>
-      prev?.id === appointment.id ? undefined : appointment
+      prev?.id === appointment.id ? undefined : appointment,
     );
   };
 

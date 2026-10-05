@@ -2,6 +2,9 @@
   "name": "capstone-project-g-8",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": ">=24 <25"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -11,12 +14,14 @@
     "test": "vitest run",
     "typecheck": "next typegen && tsc --noEmit",
     "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "prepare": "husky"
   },
   "dependencies": {
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "gray-matter": "^4.0.3",
+    "lucide-react": "^1.48.0",
     "motion": "^13.4.4",
     "next": "16.3.1",
     "react": "19.2.8",
@@ -31,9 +36,18 @@
     "decap-server": "^3.10.0",
     "eslint": "^9",
     "eslint-config-next": "16.3.1",
+    "husky": "^9.1.7",
+    "lint-staged": "^17.6.0",
     "prettier": "^3.9.6",
     "typescript": "^5.9.3",
     "vitest": "^4.1.11"
   },
-  "packageManager": "pnpm@11.19.0"
+  "packageManager": "pnpm@11.19.0",
+  "lint-staged": {
+    "*.{js,jsx,mjs,cjs,ts,tsx}": [
+      "eslint --fix --no-warn-ignored",
+      "prettier --write --ignore-unknown"
+    ],
+    "*.{css,json,md,yml,yaml}": "prettier --write --ignore-unknown"
+  }
 }

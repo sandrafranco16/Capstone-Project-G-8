@@ -24,11 +24,15 @@ describe("Booking Utilities", () => {
 
   describe("validateCalComUrl", () => {
     it("validates and returns clean https URL", () => {
-      expect(validateCalComUrl("https://cal.com/bitdot")).toBe("https://cal.com/bitdot");
+      expect(validateCalComUrl("https://cal.com/bitdot")).toBe(
+        "https://cal.com/bitdot",
+      );
     });
 
     it("returns default base url for invalid or unsafe protocols", () => {
-      expect(validateCalComUrl("javascript:alert(1)")).toBe(bookingConfig.baseUrl);
+      expect(validateCalComUrl("javascript:alert(1)")).toBe(
+        bookingConfig.baseUrl,
+      );
       expect(validateCalComUrl("not-a-url")).toBe(bookingConfig.baseUrl);
       expect(validateCalComUrl("")).toBe(bookingConfig.baseUrl);
       expect(validateCalComUrl(undefined)).toBe(bookingConfig.baseUrl);
@@ -58,7 +62,7 @@ describe("Booking Utilities", () => {
       expect(parsed.searchParams.get("name")).toBe("Jane Doe");
       expect(parsed.searchParams.get("email")).toBe("jane@example.com");
       expect(parsed.searchParams.get("notes")).toBe(
-        "Interested in AI Governance transition"
+        "Interested in AI Governance transition",
       );
       expect(parsed.searchParams.get("theme")).toBe("dark");
     });
@@ -73,7 +77,9 @@ describe("Booking Utilities", () => {
       const parsed = new URL(url);
       expect(parsed.searchParams.get("name")).toBe("O'Connor & Sons");
       expect(parsed.searchParams.get("email")).toBe("user+test@domain.com");
-      expect(parsed.searchParams.get("notes")).toBe("AI & ML > 100% assessment score");
+      expect(parsed.searchParams.get("notes")).toBe(
+        "AI & ML > 100% assessment score",
+      );
     });
   });
 });
