@@ -57,6 +57,13 @@ describe("About content — integrity", () => {
     }
   });
 
+  it("serves the hero brand mark from public/", () => {
+    expect(aboutHero.mark).toMatch(/\.svg$/);
+    expect(existsSync(join(process.cwd(), "public", aboutHero.mark))).toBe(
+      true,
+    );
+  });
+
   it("points the call to action at a real route", () => {
     const route = aboutCta.bookingHref.replace(/^\//, "");
     expect(existsSync(join(process.cwd(), "src/app", route, "page.tsx"))).toBe(

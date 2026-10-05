@@ -43,6 +43,8 @@ export const aboutHero = {
   title:
     "To help individuals advance their AI careers, professionals become more productive, and leaders govern AI confidently.",
   lead: "Through coaching, education, automation and advisory services.",
+  /** Original BITDOT ring-and-dot mark, shown as a decorative watermark. */
+  mark: "/images/brand/bitdot-mark.svg",
 } as const;
 
 export const aboutStory = {
