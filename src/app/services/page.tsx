@@ -27,7 +27,7 @@ export const metadata: Metadata = {
       "Services — Board Training, AI Governance, Training & Career Coaching | BITDOT",
   },
   description:
-    "AI governance board training, applied AI and automation workshops, career coaching and risk readiness from BITDOT Consulting Services, Western Australia.",
+    "AI governance board training, applied AI and automation workshops, career coaching and risk readiness from BITDOT Consulting Services.",
   alternates: { canonical: "/services" },
 };
 

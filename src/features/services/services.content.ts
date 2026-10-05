@@ -114,7 +114,7 @@ export const servicePractices = [
       {
         title: "Director education",
         description:
-          "Aligned to the AICD and UTS Human Technology Institute director resources.",
+          "Aligned to the AICD director resources.",
         tone: "sky",
       },
       {
