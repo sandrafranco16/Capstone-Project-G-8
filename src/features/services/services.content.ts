@@ -113,8 +113,7 @@ export const servicePractices = [
       },
       {
         title: "Director education",
-        description:
-          "Aligned to the AICD director resources.",
+        description: "Aligned to the AICD director resources.",
         tone: "sky",
       },
       {
