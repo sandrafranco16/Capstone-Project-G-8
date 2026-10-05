@@ -30,6 +30,8 @@ function rewriteDemoLinks(markup: string) {
     .replaceAll("href='services.html", "href='/services")
     .replaceAll('href="about.html', 'href="/about')
     .replaceAll("href='about.html", "href='/about")
+    .replaceAll('href="resources.html', 'href="/resources')
+    .replaceAll("href='resources.html", "href='/resources")
     .replaceAll('href="legal.html', 'href="/legal')
     .replaceAll("href='legal.html", "href='/legal");
 }
