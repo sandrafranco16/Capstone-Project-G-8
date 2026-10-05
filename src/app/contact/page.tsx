@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Script from "next/script";
 
 import { Container } from "@/components/ui/container";
 import { ContactForm } from "@/components/contact/contact-form";
@@ -11,17 +10,8 @@ export const metadata: Metadata = {
 };
 
 export default function ContactPage() {
-  const hasTurnstile = !!process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
-
   return (
     <>
-      {hasTurnstile && (
-        <Script
-          src="https://challenges.cloudflare.com/turnstile/v0/api.js"
-          async
-          defer
-        />
-      )}
       <header className="page-header">
         <Container>
           <p className="eyebrow">Contact BITDOT</p>

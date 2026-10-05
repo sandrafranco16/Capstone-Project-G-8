@@ -1,5 +1,9 @@
 import { describe, expect, it, vi } from "vitest";
-import { isHoneypotTriggered, verifyTurnstileToken } from "./validation";
+import {
+  getTurnstilePolicy,
+  isHoneypotTriggered,
+  verifyTurnstileToken,
+} from "./validation";
 
 describe("isHoneypotTriggered", () => {
   it("returns false when honeypot field is absent", () => {
@@ -24,10 +28,39 @@ describe("isHoneypotTriggered", () => {
   });
 });
 
+describe("getTurnstilePolicy", () => {
+  it("allows an explicit local development bypass", () => {
+    expect(getTurnstilePolicy({ isProduction: false, secret: undefined })).toBe(
+      "disabled",
+    );
+  });
+
+  it("enables verification when a secret is configured", () => {
+    expect(
+      getTurnstilePolicy({ isProduction: true, secret: "test-secret" }),
+    ).toBe("enabled");
+  });
+
+  it("fails closed when the production secret is missing or blank", () => {
+    expect(getTurnstilePolicy({ isProduction: true, secret: undefined })).toBe(
+      "misconfigured",
+    );
+    expect(getTurnstilePolicy({ isProduction: true, secret: "   " })).toBe(
+      "misconfigured",
+    );
+  });
+});
+
 describe("verifyTurnstileToken", () => {
   it("returns false when TURNSTILE_SECRET_KEY is not set", async () => {
     delete process.env.TURNSTILE_SECRET_KEY;
     expect(await verifyTurnstileToken("any-token")).toBe(false);
+  });
+
+  it("returns false when TURNSTILE_SECRET_KEY is blank", async () => {
+    process.env.TURNSTILE_SECRET_KEY = "   ";
+    expect(await verifyTurnstileToken("any-token")).toBe(false);
+    delete process.env.TURNSTILE_SECRET_KEY;
   });
 
   it("returns true when Turnstile API responds with success", async () => {
