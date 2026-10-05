@@ -1,5 +1,7 @@
 import Image from "next/image";
 
+import { cn } from "@/lib/cn";
+
 import { aboutHero } from "../content";
 
 import styles from "../about.module.css";
@@ -15,7 +17,7 @@ export function AboutHero() {
         height={64}
         className={styles.heroMark}
       />
-      <div className={`${styles.wrap} ${styles.heroInner}`}>
+      <div className={cn(styles.wrap, styles.heroInner)}>
         <p className={styles.label}>{aboutHero.label}</p>
         <h1 id="about-heading" className={styles.heroTitle}>
           {aboutHero.title}

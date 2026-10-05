@@ -1,3 +1,5 @@
+import { cn } from "@/lib/cn";
+
 import { aboutStory } from "../content";
 
 import styles from "../about.module.css";
@@ -5,10 +7,10 @@ import styles from "../about.module.css";
 export function AboutStory() {
   return (
     <section
-      className={`${styles.section} ${styles.onPaper}`}
+      className={cn(styles.section, styles.onPaper)}
       aria-labelledby="about-story-heading"
     >
-      <div className={`${styles.wrap} ${styles.story}`}>
+      <div className={cn(styles.wrap, styles.story)}>
         <div>
           <p className={styles.label}>{aboutStory.label}</p>
           <h2 id="about-story-heading" className={styles.title}>

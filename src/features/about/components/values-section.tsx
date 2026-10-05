@@ -1,3 +1,5 @@
+import { cn } from "@/lib/cn";
+
 import { aboutValues } from "../content";
 
 import styles from "../about.module.css";
@@ -5,7 +7,7 @@ import styles from "../about.module.css";
 export function ValuesSection() {
   return (
     <section
-      className={`${styles.section} ${styles.onPaper}`}
+      className={cn(styles.section, styles.onPaper)}
       aria-labelledby="values-heading"
     >
       <div className={styles.wrap}>
