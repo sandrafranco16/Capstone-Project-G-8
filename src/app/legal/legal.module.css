@@ -1,0 +1,152 @@
+.header h1 {
+  max-width: 19ch;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+}
+
+.header :global(.lead) {
+  margin-bottom: 0;
+}
+
+.navigation {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-top: 1.75rem;
+}
+
+.navigation a {
+  display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
+  padding: 0.6rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition:
+    border-color 0.2s,
+    background-color 0.2s;
+}
+
+.navigation a:hover {
+  border-color: var(--azure);
+  background: var(--mist);
+}
+
+.navigation a:focus-visible {
+  outline: 3px solid var(--azure);
+  outline-offset: 3px;
+}
+
+.draftNotice {
+  display: grid;
+  gap: 0.35rem;
+  max-width: 52rem;
+  margin-top: 1.75rem;
+  padding: 1.25rem 1.5rem;
+  border: 1px solid #e8d8ad;
+  border-radius: 0.8rem;
+  background: #fff8e7;
+  color: var(--ink-soft);
+  font-size: 0.93rem;
+}
+
+.draftNotice strong {
+  color: #7c5400;
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.content {
+  max-width: 54rem;
+  padding-bottom: clamp(4rem, 8vw, 7rem);
+}
+
+.section {
+  padding-block: clamp(2.5rem, 5vw, 4rem);
+  border-top: 1px solid var(--line);
+  scroll-margin-top: 6rem;
+}
+
+.section h2 {
+  display: flex;
+  max-width: none;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+}
+
+.section h2::before {
+  width: 0.65rem;
+  height: 0.65rem;
+  flex: none;
+  border-radius: 50%;
+  background: var(--violet);
+  content: "";
+}
+
+.section h3 {
+  margin: 1.75rem 0 0.65rem;
+  font-size: 1.1rem;
+}
+
+.section p,
+.section li {
+  color: var(--slate);
+}
+
+.section p {
+  margin-bottom: 0.9rem;
+}
+
+.section ul {
+  margin: 0 0 0.9rem;
+  padding-left: 1.4rem;
+}
+
+.section li + li {
+  margin-top: 0.5rem;
+}
+
+.section a {
+  color: var(--azure);
+  font-weight: 650;
+}
+
+.section a:focus-visible {
+  outline: 3px solid var(--azure);
+  outline-offset: 3px;
+  border-radius: 0.2rem;
+}
+
+.note {
+  margin-top: 1.25rem;
+  padding-left: 1rem;
+  border-left: 3px solid var(--violet);
+  font-size: 0.88rem;
+}
+
+@media (max-width: 760px) {
+  .navigation {
+    gap: 0.5rem;
+  }
+
+  .navigation a {
+    min-height: 2.6rem;
+    padding-inline: 0.85rem;
+  }
+
+  .draftNotice {
+    padding: 1.1rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .navigation a {
+    transition: none;
+  }
+}

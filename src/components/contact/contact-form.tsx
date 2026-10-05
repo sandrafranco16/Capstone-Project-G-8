@@ -60,8 +60,9 @@ export function ContactForm() {
         formRef.current?.reset();
       } else {
         const body = await response.json().catch(() => ({}));
-        const serverErrors =
-          (body as { errors?: string[] }).errors ?? ["Something went wrong. Please try again."];
+        const serverErrors = (body as { errors?: string[] }).errors ?? [
+          "Something went wrong. Please try again.",
+        ];
         setErrors(serverErrors);
         setState("error");
       }
@@ -75,9 +76,7 @@ export function ContactForm() {
     return (
       <div className="contact-success" role="status">
         <h2>Thank you for your enquiry.</h2>
-        <p>
-          We have received your message and will get back to you shortly.
-        </p>
+        <p>We have received your message and will get back to you shortly.</p>
         <button
           type="button"
           className="button"

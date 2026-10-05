@@ -5,9 +5,11 @@
 This module integrates [Decap CMS](https://decapcms.org/) as a Git-based headless Content Management System for creating, editing, and publishing blog articles on the BITDOT platform.
 
 ### Architectural Decision: Git-Based Headless CMS
+
 Instead of running a database-backed CMS server (such as WordPress or Strapi), the platform uses Decap CMS with GitHub as the content backend.
 
 ### Key Advantages
+
 - **Zero Database Overhead**: Content is stored directly as Markdown files in `src/content/blog` and static images in `public/uploads`. No database management, migrations, or database hosting costs are required.
 - **Security & Zero PII**: Content management requires no public database ports or third-party cloud data stores. Raw HTML rendering is disabled to prevent stored XSS.
 - **Auditability & Version Control**: Every article draft, revision, and publication is tracked through Git commits and GitHub Pull Requests.
@@ -44,6 +46,7 @@ sequenceDiagram
 ```
 
 ### Step 1: Login & Access Permission
+
 - **Who can log in?**
   Authors access the CMS by navigating to `/admin` in any web browser and clicking **Login with GitHub**.
 - **Permission requirement**:
@@ -52,6 +55,7 @@ sequenceDiagram
   The application uses GitHub OAuth with PKCE security (`/api/cms/auth` and `/api/cms/callback`). Once verified, Decap securely receives an authorization token to interact with the repository on the author's behalf.
 
 ### Step 2: Content Creation & Editing
+
 - After logging in, the author enters the **BITDOT Content Manager** dashboard.
 - Clicking **Blog** displays all existing articles. Clicking **New Blog** opens the article editor.
 - The editor provides clear, structured fields:
@@ -59,10 +63,11 @@ sequenceDiagram
   - **Summary (Excerpt)**: A 1–2 sentence summary displayed on card previews and search engines.
   - **Category**: A required selection from 5 agreed topics (`Career Development`, `AI and Automation`, `AI Governance`, `Executive and Board`, `AI Risk`).
   - **Publish Date**: The date and time of publication.
-  - **YouTube URL** *(Optional)*: An optional video link that automatically embeds a responsive video player.
+  - **YouTube URL** _(Optional)_: An optional video link that automatically embeds a responsive video player.
   - **Body**: The full article text using a rich-text or Markdown editor, with support for uploading images (saved automatically to `public/uploads/`).
 
 ### Step 3: What Happens When Clicking "Save" (Draft State)
+
 - When an author clicks **Save**:
   - The article is saved as a **Draft**.
   - **Important**: The article is **NOT live on the public website** yet.
@@ -73,6 +78,7 @@ sequenceDiagram
     4. In the CMS dashboard, the article appears under the **Workflow** tab in the **Drafts** column.
 
 ### Step 4: Editorial Review Process ("In Review" → "Ready")
+
 - In production, Decap operates in **Editorial Workflow** mode:
   - Team members can review the draft, read the content, and suggest edits.
   - In the CMS **Workflow** tab, the article card can be dragged across three stages:
@@ -82,6 +88,7 @@ sequenceDiagram
   - Every update made in the CMS automatically pushes a new commit to the draft branch on GitHub.
 
 ### Step 5: What Happens When Clicking "Publish" (Going Live)
+
 - When an authorized user clicks **Publish**:
   - **Under the hood**:
     1. Decap CMS calls GitHub to **merge the Pull Request** into the main branch.
@@ -91,6 +98,7 @@ sequenceDiagram
     5. Within 1–2 minutes, the article goes live and is immediately visible to the public.
 
 ### Step 6: Local Development Alternative (For Developers)
+
 - During local development, developers run:
   - Terminal 1: `pnpm dev` (starts Next.js on `localhost:3000`)
   - Terminal 2: `pnpm cms` (starts local Decap proxy server on port 8081)
@@ -121,6 +129,7 @@ src/
 ```
 
 ### Security Controls
+
 - **PKCE OAuth**: Authenticates via GitHub OAuth with PKCE S256 code challenge and timing-safe state comparison.
 - **Markdown Sanitization**: `ReactMarkdown` with `remarkGfm` converts Markdown safely without executing arbitrary HTML scripts.
 - **Privacy-Enhanced Video Embeds**: YouTube URLs are transformed into `https://www.youtube-nocookie.com/embed/<id>` with strict referrer policy.
@@ -131,6 +140,7 @@ src/
 ## 4. Front-end Integration Guide
 
 ### 4.1 Consuming Blog Articles in Components
+
 ```typescript
 import { listBlogArticles, getBlogArticle } from "@/features/blog/repository";
 import { getYouTubeEmbedUrl } from "@/features/blog/youtube";
@@ -140,7 +150,9 @@ import { blogCategories, type BlogArticle } from "@/features/blog/types";
 const articles = await listBlogArticles();
 
 // 2. Fetch a single article by slug
-const article = await getBlogArticle("2026-08-20-five-questions-before-adopting-ai");
+const article = await getBlogArticle(
+  "2026-08-20-five-questions-before-adopting-ai",
+);
 
 // 3. Extract privacy-friendly YouTube embed URL
 const embedUrl = getYouTubeEmbedUrl(article?.youtubeUrl);
@@ -149,6 +161,7 @@ const embedUrl = getYouTubeEmbedUrl(article?.youtubeUrl);
 ### 4.2 Rendering Articles in Next.js Pages
 
 #### Blog List Page (`src/app/blog/page.tsx`)
+
 ```tsx
 import Link from "next/link";
 import { listBlogArticles } from "@/features/blog/repository";
@@ -163,7 +176,9 @@ export default async function BlogPage() {
           <span className="badge">{article.category}</span>
           <h2>{article.title}</h2>
           <p>{article.excerpt}</p>
-          <time>{new Date(article.publishedAt).toLocaleDateString("en-AU")}</time>
+          <time>
+            {new Date(article.publishedAt).toLocaleDateString("en-AU")}
+          </time>
           <Link href={`/blog/${article.slug}`}>Read Article →</Link>
         </article>
       ))}
@@ -173,6 +188,7 @@ export default async function BlogPage() {
 ```
 
 #### Article Detail Page (`src/app/blog/[slug]/page.tsx`)
+
 ```tsx
 import { notFound } from "next/navigation";
 import ReactMarkdown from "react-markdown";
@@ -184,7 +200,11 @@ export async function generateStaticParams() {
   return articles.map(({ slug }) => ({ slug }));
 }
 
-export default async function ArticlePage({ params }: { params: Promise<{ slug: string }> }) {
+export default async function ArticlePage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
   const { slug } = await params;
   const article = await getBlogArticle(slug);
   if (!article) notFound();
@@ -194,17 +214,16 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
       <span className="category">{article.category}</span>
       <h1>{article.title}</h1>
       <p className="lead">{article.excerpt}</p>
-      
+
       {/* Markdown Body */}
-      <ReactMarkdown remarkPlugins={[remarkGfm]}>
-        {article.body}
-      </ReactMarkdown>
+      <ReactMarkdown remarkPlugins={[remarkGfm]}>{article.body}</ReactMarkdown>
     </article>
   );
 }
 ```
 
 ### 4.3 Front-end Team Handover Checklist
+
 - [ ] **Design Tokens & Typography**: Apply unified brand styling, responsive font sizes, and prose spacing to the article body.
 - [ ] **Category Filtering**: Implement category filter tabs using `blogCategories` on `/blog`.
 - [ ] **Image Styling**: Ensure uploaded images (`/uploads/*`) are styled with responsive max-width and rounded borders.
@@ -216,6 +235,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
 ## 5. Testing & Verification
 
 ### 5.1 Automated Tests
+
 ```bash
 # Run CMS and blog test suites (13 unit tests)
 pnpm test src/features/blog src/features/cms
@@ -226,6 +246,7 @@ pnpm build
 ```
 
 **Test Coverage:**
+
 - `repository.test.ts` (3 tests): Verifies YAML front matter parsing, missing required fields validation, and slug sorting.
 - `youtube.test.ts` (2 tests): Tests YouTube URL parsing for standard, short, and embed formats into `youtube-nocookie.com`.
 - `config.test.ts` (4 tests): Tests Decap YAML generation, repository string validation, origin URL normalisation, and production publish mode.
