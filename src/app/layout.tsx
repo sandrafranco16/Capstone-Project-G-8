@@ -18,6 +18,14 @@ export const metadata: Metadata = {
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
+  // Pages set their own title, description and url; these are the shared
+  // defaults. The social image comes from app/opengraph-image.tsx.
+  openGraph: {
+    type: "website",
+    locale: "en_AU",
+    siteName: "BITDOT Consulting Services",
+  },
+  twitter: { card: "summary_large_image" },
 };
 
 export default function RootLayout({
