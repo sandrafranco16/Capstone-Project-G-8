@@ -3,6 +3,10 @@ import type { ReactNode } from "react";
 
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
+import {
+  organizationJsonLd,
+  serializeJsonLd,
+} from "@/features/seo/structured-data";
 import { siteConfig } from "@/lib/site-config";
 
 import "./globals.css";
@@ -28,6 +32,12 @@ export default function RootLayout({
         <SiteHeader />
         <main id="main-content">{children}</main>
         <SiteFooter />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: serializeJsonLd(organizationJsonLd()),
+          }}
+        />
       </body>
     </html>
   );
