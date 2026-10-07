@@ -30,6 +30,9 @@ export async function deliverContactLead(
     await provider.sendContactLead({
       name: payload.name,
       email: payload.email,
+      phone: payload.phone,
+      organisation: payload.organisation,
+      enquiryType: payload.enquiryType,
       message: payload.message,
     });
   } catch (error) {
