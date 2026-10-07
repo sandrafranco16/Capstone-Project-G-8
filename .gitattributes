@@ -1,0 +1,2 @@
+# Keep the prototype HTML on LF everywhere; the homepage adapters match LF snippets.
+demo/*.html text eol=lf
