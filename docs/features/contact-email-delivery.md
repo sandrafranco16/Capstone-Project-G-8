@@ -1,5 +1,9 @@
 # Contact Enquiry Email — Implementation & Integration Guide
 
+Client operations: [user guide](../handover/client-user-guide.md). Canonical account/DNS setup:
+[platform guide](../handover/platform-account-setup.md). Live results must be recorded in
+[acceptance and handover](../handover/acceptance-and-handover.md).
+
 ## Table of Contents
 
 - [Feature Overview](#feature-overview)
@@ -31,7 +35,7 @@ The `/contact` page provides an enquiry form that sends an email to BITDOT's des
 **What this feature does NOT do:**
 
 - Does not send a confirmation email to the user.
-- Does not store any user data on the server.
+- Does not persist leads in an application database; Resend and mailbox providers may store messages.
 - Does not handle booking (Cal.com handles that separately).
 - Does not send assessment results via email.
 
@@ -113,13 +117,9 @@ The provider is selected by the `CONTACT_EMAIL_PROVIDER` environment variable.
    On error  → Error messages displayed above the form
 ```
 
-From the Assessment page:
-
-```
-1. User completes the AI Readiness Assessment
-2. Clicks "Talk it through with us" or "A no-obligation discovery call"
-3. Redirected to /contact (not #contact anchor)
-```
+The agreed business direction is Assessment → Contact enquiry, with no separate
+assessment email. The inspected result component currently links to services, not
+directly to Contact. Frontend integration and its acceptance test remain necessary.
 
 ---
 
@@ -191,7 +191,7 @@ To pre-fill the form in the future (not currently implemented but the API route 
 ### Step 1: Create a Resend Account
 
 1. Go to [https://resend.com/signup](https://resend.com/signup)
-2. Sign up with your email (free tier: 100 emails/day, 3000/month)
+2. Sign up with a client-controlled email and check current plan quotas in the dashboard
 3. Verify your email address
 
 ### Step 2: Get an API Key
@@ -205,17 +205,14 @@ To pre-fill the form in the future (not currently implemented but the API route 
 
 ### Step 3: Configure a Sending Domain (Production Only)
 
-For production use, you need a verified sending domain so emails don't land in spam.
+For production use, verify a sending domain. Verification is required but does not guarantee inbox placement.
 
 1. Go to [https://resend.com/domains](https://resend.com/domains)
 2. Click **"Add Domain"**
-3. Enter the subdomain: `notifications.bitdot.com.au`
-4. Resend will show DNS records to add:
-   - **SPF** — TXT record
-   - **DKIM** — CNAME records (usually 3)
-   - **DMARC** — TXT record (optional but recommended)
-5. Add these records in the domain's DNS provider (e.g., Cloudflare, Route53)
-6. Click **"Verify"** in Resend — it may take a few minutes to propagate
+3. Enter the client-approved sending domain/subdomain; `notifications.bitdot.com.au` is an example, not a confirmed setting.
+4. Copy the exact record types, names and values displayed by Resend for sending verification; do not assume a fixed DKIM record count/type.
+5. Ask the DNS administrator to add them without replacing existing business-mail MX records. Review DMARC separately.
+6. Verify in Resend after DNS propagation, then test actual inbox delivery. See the [canonical setup guide](../handover/platform-account-setup.md#5-resend-email-account-and-dns).
 
 > **Note:** For testing, you can skip this step and use Resend's test domain `onboarding@resend.dev`. This only delivers to the Resend account owner's own email address.
 
@@ -406,10 +403,9 @@ curl -s -X POST http://localhost:3000/api/contact \
 
 ### Assessment Link Testing
 
-1. Open `http://localhost:3000` (homepage)
-2. Scroll to the Assessment section, pick a pathway, complete the quiz
-3. On the result screen, click **"Talk it through with us"** or **"A no-obligation discovery call"**
-4. Verify it navigates to `/contact` (not `/#contact`)
+1. Complete a pathway on `/assessment`.
+2. Verify the agreed result-to-Contact path after frontend integration; do not assume an old static-demo button exists in the current result component.
+3. Open `/contact` directly for isolated form tests and record site-wide navigation separately.
 
 ---
 

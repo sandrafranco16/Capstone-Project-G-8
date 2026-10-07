@@ -1,42 +1,114 @@
-# Capstone-Project-G-8
-
 # BITDOT Marketing and Training Platform
 
-This repository contains the source code for the **BITDOT Marketing and Training Platform**, developed by **Group 8** for **CITS5206 – Information Technology Capstone Project, Semester 2, 2026** at The University of Western Australia.
+Group 8 · CITS5206, Semester 2, 2026 · The University of Western Australia.
+Client: BITDOT Consulting Services Pty Ltd; representative: Vibs Agrawal.
 
-## Project Overview
+A Next.js website for service discovery, educational articles, AI readiness
+self-assessment, enquiries and consultation booking. It uses React, TypeScript,
+Decap CMS/GitHub, Cal.com, Resend and Cloudflare Turnstile. The MVP has no application
+database, learner accounts, payments or LMS.
 
-The project aims to redesign and develop BITDOT Consulting Services Pty Ltd’s digital presence into a responsive, professional and user-focused platform that clearly communicates its AI governance, career development, training and advisory services.
+**Handover status:** documentation prepared for review, not signed-off delivery.
+Record the final hosting provider, URL and account owners in the
+[handover index](docs/handover/README.md). An old preview link is not the final production site.
 
-The platform is designed to help different audiences quickly find relevant services, access educational content, complete an AI Readiness Assessment, submit enquiries and book consultations.
+## Run the local demonstration
 
-## MVP Features
+Install **Node.js 24.x** and **pnpm 11.19.0**, matching `package.json`.
+Check `node --version` and `pnpm --version` before proceeding.
 
-- Responsive homepage with four audience pathways
-- Service pages for BITDOT’s major service areas
-- Blog and article publishing through Decap CMS
-- YouTube video embeds within blog articles
-- AI Readiness Assessment with result categories and service recommendations
-- Contact and assessment lead delivery via email
-- External consultation booking integration
-- Testimonials
-- SEO and analytics
-- Responsive and accessibility-focused design
-- Production deployment using Vercel
+```bash
+git clone https://github.com/sandrafranco16/Capstone-Project-G-8.git
+cd Capstone-Project-G-8
+pnpm install --frozen-lockfile
+cp .env.example .env.local
+```
 
-## Technology Stack
+Edit `.env.local` so these values are set explicitly:
 
-- **Next.js**
-- **React**
-- **TypeScript**
-- **Decap CMS**
-- **GitHub**
-- **Vercel**
-- **Jira**
+```dotenv
+NEXT_PUBLIC_SITE_URL=http://localhost:3000
+CMS_REPOSITORY=sandrafranco16/Capstone-Project-G-8
+CMS_BRANCH=main
+CMS_OAUTH_BASE_URL=http://localhost:3000
+CONTACT_EMAIL_PROVIDER=mock
+```
 
-## Team
+Leave OAuth credentials, email credentials, Turnstile keys and analytics identifiers
+blank for this local demo. Do not leave `NEXT_PUBLIC_SITE_URL` blank. To test booking,
+set `NEXT_PUBLIC_CALCOM_URL` to an authorised Cal.com profile; otherwise do not submit
+a booking to the built-in example profile.
 
-| Team Member            | Role                                    |
+Start the website:
+
+```bash
+pnpm dev
+```
+
+In a **second terminal in the same directory**, start the local CMS proxy:
+
+```bash
+pnpm cms
+```
+
+Open <http://localhost:3000>. Useful demonstration routes:
+
+| Route                                    | What to try                                                                 |
+| ---------------------------------------- | --------------------------------------------------------------------------- |
+| `/`, `/services`, `/about`, `/resources` | Browse the website and audience pathways                                    |
+| `/assessment`                            | Choose a pathway, answer five questions and view recommendations            |
+| `/blog`                                  | Read an article, including its optional YouTube video                       |
+| `/admin/`                                | Select the local login option; edit an article and publish locally          |
+| `/booking`                               | View five appointment types; use an authorised Cal.com account for bookings |
+| `/contact`                               | Submit a valid form; **mock mode sends no email**                           |
+
+Local CMS changes write to the working copy; they do not create GitHub PRs or deploy
+the website. Stop both servers with `Ctrl+C`. Never expose the local CMS proxy publicly.
+
+If development reports `EMFILE: too many open files, watch`, stop that server and
+on macOS/Linux try `WATCHPACK_POLLING=true pnpm dev`. This workaround was checked
+in the isolated verification environment; it uses polling instead of native watchers.
+
+## Verify and run a production build
+
+```bash
+pnpm lint
+pnpm test
+pnpm typecheck
+pnpm build
+pnpm start
+```
+
+`pnpm start` uses production behaviour: CMS needs GitHub OAuth, and Contact requires
+Turnstile configuration. A build passing does not prove live email, CMS publishing
+or booking works. See the [verification record](docs/handover/verification-record.md).
+Use `pnpm format:check` to check formatting; `pnpm format` rewrites eligible files.
+
+## Documentation
+
+- [Handover index and release details](docs/handover/README.md)
+- [Client user guide](docs/handover/client-user-guide.md)
+- [External platform accounts and configuration](docs/handover/platform-account-setup.md)
+- [Cal.com setup and daily operations](docs/handover/calcom-client-guide.md)
+- [Deployment, maintenance and recovery](docs/handover/deployment-and-maintenance.md)
+- [Hosting and service costs](docs/handover/hosting-and-service-costs.md)
+- [Acceptance tests and account transfer record](docs/handover/acceptance-and-handover.md)
+- [Known issues and release gates](docs/handover/known-issues.md)
+- [AI use and review evidence](docs/handover/ai-use-and-review.md)
+- [Project plan](PROJECT_PLAN.md) and [architecture](docs/architecture/README.md)
+
+## Repository structure and workflow
+
+`src/app` contains routes and server endpoints; `src/components` contains shared UI;
+`src/features` contains domain logic; `src/content/blog` and `public/uploads` contain
+CMS content. `demo/` retains the static design reference. Some pages still use a
+compatibility layer: check known issues before claiming complete UI integration.
+
+Use feature branches and reviewed PRs for code changes. CMS publishing depends
+on GitHub rules and hosting permissions; there is no unconditional auto-publish
+guarantee. Tasks and evidence are tracked in Jira and GitHub.
+
+| Member                 | Role                                    |
 | ---------------------- | --------------------------------------- |
 | Sandra Franco Pynadath | Project Manager / Back-end Support      |
 | Shravan Suresh Kumar   | Front-end Developer                     |
@@ -44,64 +116,5 @@ The platform is designed to help different audiences quickly find relevant servi
 | Lizhou Xiong           | UI/UX Designer                          |
 | Junlong Huang          | Back-end Developer / Solution Architect |
 
-## Development Workflow
-
-Development work is managed through Jira and GitHub. Tasks are assigned to team members and progressed through the project workflow:
-
-**Backlog → Ready → In Progress → Review/Testing → Done**
-
-Development changes are completed using feature branches and submitted through pull requests for review before being merged into the project codebase.
-
-## Project Timeline
-
-**28 July 2026 – 6 October 2026**
-
-The project is being developed iteratively across multiple sprints, followed by final regression testing, production deployment to Vercel, smoke testing and client acceptance.
-
-## Client
-
-**BITDOT Consulting Services Pty Ltd**
-Client Representative: **Vibs Agrawal**
-
-## Academic Context
-
-This project is being completed as part of **CITS5206 – Information Technology Capstone Project, Semester 2, 2026** at The University of Western Australia.
-
-## Local Development
-
-Requirements: Node.js 20.9 or later and pnpm.
-
-```bash
-pnpm install
-cp .env.example .env.local
-pnpm dev
-```
-
-Quality checks:
-
-```bash
-pnpm lint
-pnpm typecheck
-pnpm build
-```
-
-Formatting uses Prettier with the checked-in configuration:
-
-```bash
-pnpm format
-pnpm format:check
-```
-
-The equivalent `npm run format` and `npm run format:check` scripts are also
-available after dependencies are installed. Generated files, the approved static
-demo, public assets and CMS-managed content are excluded in `.prettierignore`.
-
-## Application Structure
-
-The Next.js application lives at the repository root and uses the App Router. Shared UI is under `src/components`, feature-specific rules are under `src/features`, routes and server endpoints are under `src/app`, and Decap-managed Markdown content is under `src/content/blog`.
-
-The approved static pages are retained in `demo/` as the source of truth for the
-initial high-fidelity migration. The Next.js routes render those local assets through
-an isolated compatibility layer while new MVP features continue to use the modular
-`src/features` structure. See [`docs/architecture/README.md`](docs/architecture/README.md)
-for module boundaries, integration points and deferred decisions.
+GenAI assisted development and documentation. The team must verify outputs, record
+review and test evidence, and complete the AI-use record before submission.
