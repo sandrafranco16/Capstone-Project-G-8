@@ -5,7 +5,7 @@ import { ArrowRight, Bot, ShieldCheck, Sparkles, Workflow } from "lucide-react";
 import styles from "./automation-lab.module.css";
 
 export const metadata: Metadata = {
-  title: "Automation Lab | BITDOT",
+  title: "Automation Lab",
   description:
     "BITDOT's Automation Lab is coming soon — practical AI workflows, tool experiments and responsible automation.",
 };
@@ -33,7 +33,7 @@ const features = [
 
 export default function AutomationLabPage() {
   return (
-    <main className={styles.page}>
+    <div className={styles.page}>
       <section className={styles.hero}>
         <div className={styles.glowOne} aria-hidden="true" />
         <div className={styles.glowTwo} aria-hidden="true" />
@@ -86,6 +86,6 @@ export default function AutomationLabPage() {
           </p>
         </div>
       </section>
-    </main>
+    </div>
   );
 }
