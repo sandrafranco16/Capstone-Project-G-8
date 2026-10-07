@@ -23,7 +23,7 @@ export default async function AssessmentPage({
   const initialPathway = isPathwayId(path) ? path : null;
 
   return (
-    <main className={styles.page}>
+    <div className={styles.page}>
       <header className={styles.hero}>
         <Container className={styles.heroInner}>
           <p className={styles.eyebrow}>AI Readiness Assessment</p>
@@ -69,6 +69,6 @@ export default async function AssessmentPage({
           />
         </Container>
       </section>
-    </main>
+    </div>
   );
 }
