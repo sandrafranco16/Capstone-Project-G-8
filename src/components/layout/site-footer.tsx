@@ -1,35 +1,70 @@
 import Link from "next/link";
 
-import { Container } from "@/components/ui/container";
-import { siteConfig } from "@/lib/site-config";
+import { BrandMark } from "./brand-mark";
+import {
+  type FooterItem,
+  footerColumns,
+  footerTagline,
+  legalLinks,
+} from "./navigation.content";
+import styles from "./site-footer.module.css";
+
+/** Client-side links for app routes, plain anchors for mailto:/tel:, text otherwise. */
+function FooterEntry({ href, label }: FooterItem) {
+  if (!href) return <span>{label}</span>;
+  return href.startsWith("/") ? (
+    <Link href={href}>{label}</Link>
+  ) : (
+    <a href={href}>{label}</a>
+  );
+}
 
 export function SiteFooter() {
   return (
-    <footer className="site-footer">
-      <Container className="site-footer__inner">
-        <div className="site-footer__brand">
-          <strong>{siteConfig.name}</strong>
-          <p>{siteConfig.description}</p>
+    <footer className={styles.footer}>
+      <div className={styles.top}>
+        <div className={styles.brandColumn}>
+          <Link className={styles.brand} href="/" aria-label="BITDOT home">
+            <span className={styles.wordmark}>bitd</span>
+            <BrandMark onDark className={styles.mark} />
+            <span className={styles.wordmark}>t</span>
+          </Link>
+          <p>{footerTagline}</p>
         </div>
 
-        <div className="site-footer__group">
-          <strong>Explore</strong>
-          <nav aria-label="Footer navigation">
-            <Link href="/services">Services</Link>
-            <Link href="/assessment">Assessment</Link>
-            <Link href="/resources">Resources</Link>
-            <Link href="/about">About</Link>
-            <Link href="/legal">Privacy and legal</Link>
+        {footerColumns.map(({ title, links }) => (
+          <nav
+            key={title}
+            className={styles.column}
+            aria-label={`Footer: ${title}`}
+          >
+            <h2>{title}</h2>
+            <ul>
+              {links.map((link) => (
+                <li key={link.label}>
+                  <FooterEntry {...link} />
+                </li>
+              ))}
+            </ul>
           </nav>
-        </div>
+        ))}
+      </div>
 
-        <address className="site-footer__group">
-          <strong>Contact</strong>
-          <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>
-          <a href={siteConfig.phoneHref}>{siteConfig.phoneDisplay}</a>
-          <span>{siteConfig.address}</span>
-        </address>
-      </Container>
+      <div className={styles.legal}>
+        <p>
+          © {new Date().getFullYear()} BITDOT Consulting Services Pty Ltd. All
+          rights reserved.
+        </p>
+        <nav aria-label="Legal">
+          <ul>
+            {legalLinks.map(({ href, label }) => (
+              <li key={href}>
+                <Link href={href}>{label}</Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </div>
     </footer>
   );
 }
