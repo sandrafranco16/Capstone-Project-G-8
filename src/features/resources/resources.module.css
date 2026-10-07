@@ -296,7 +296,11 @@
   height: 380px;
   top: 120px;
   left: -140px;
-  background: radial-gradient(circle, rgba(14, 164, 122, 0.13), transparent 66%);
+  background: radial-gradient(
+    circle,
+    rgba(14, 164, 122, 0.13),
+    transparent 66%
+  );
   animation-delay: -8s;
 }
 @keyframes drift {
