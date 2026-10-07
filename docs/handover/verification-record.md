@@ -1,0 +1,65 @@
+# Verification Record
+
+## 1. Executed baseline checks — 7 October 2026
+
+Source: a clean Git archive of `origin/main` **`149020a`**, excluding the user's
+uncommitted working-copy changes. Runtime: Node **24.19.0**, pnpm **11.19.0**.
+Next.js: **16.3.1**. No live secrets or customer service accounts were used.
+Local configuration matched README's explicit localhost/CMS values and mock email.
+
+| Check                                                     | Actual result                                                                                              |
+| --------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| `pnpm install --frozen-lockfile`                          | Passed; lockfile unchanged. Husky noted no `.git` in the archive, as expected                              |
+| `pnpm lint`                                               | Passed, exit 0                                                                                             |
+| `pnpm test`                                               | Passed: **26 test files, 151 tests**, exit 0                                                               |
+| `pnpm typecheck`                                          | Passed, exit 0                                                                                             |
+| `pnpm build`                                              | Passed; 34 static pages generated and dynamic server routes listed                                         |
+| `pnpm format:check` on baseline                           | Passed, exit 0                                                                                             |
+| `pnpm start --port 3107`                                  | Started successfully                                                                                       |
+| Production HTTP smoke check                               | All 13 checked routes returned 200; listed below                                                           |
+| Production Contact, valid synthetic payload but no secret | Returned **503** with an `errors` array; mock mode, no real email                                          |
+| Local `pnpm cms`                                          | Started proxy on 8081; `info` request returned 200 with local filesystem/simple publication mode           |
+| Local development HTTP check                              | `/`, `/blog`, `/admin/`, `/api/cms/config`, `/contact` returned 200; config included `local_backend: true` |
+| Local mock Contact                                        | Returned **202**, `accepted: true`; no real email sent                                                     |
+
+Production routes checked: `/`, `/services`, `/about`, `/resources`, `/assessment`,
+`/blog`, `/blog/2026-08-31-image-test`, `/booking`, `/contact`, `/admin/`,
+`/api/cms/config`, `/sitemap.xml`, `/robots.txt`.
+
+Local `pnpm dev --port 3108` initially hit **EMFILE watcher errors** in this environment.
+Increasing the process file limit did not resolve it. Restarting with
+`WATCHPACK_POLLING=true pnpm dev --port 3108` allowed the checks above to complete
+without those errors. This is an environment workaround, not a code fix.
+
+These were terminal/HTTP checks, not a visual browser test, full fresh-clone training
+test, real CMS publish/upload, real booking, real email or client acceptance. Test
+success does not establish those outcomes. Re-run on the final release after all merges.
+
+## 2. Reproduce the baseline
+
+Follow [README](../../README.md), then run its lint/test/typecheck/build commands.
+Keep server/function checks separate from local mock checks: `pnpm dev` deliberately
+allows unconfigured Turnstile, while `pnpm start` enforces deployed behaviour.
+Record the actual SHA and results rather than copying this version's test count.
+
+Detailed test locations: `src/features/**/*.test.ts`,
+`src/components/legacy/prepare-homepage-assessment.test.ts`,
+`src/app/api/contact/route.test.ts`, and `src/lib/cn.test.ts`.
+Unit tests cover content/configuration, assessment logic, blog/YouTube parsing,
+booking URLs, OAuth, contact validation, spam policy and email-provider responses.
+They do not certify third-party account configuration or complete browser accessibility.
+
+## 3. Final-release evidence still needed
+
+| Evidence                     | Required record                                                                             |
+| ---------------------------- | ------------------------------------------------------------------------------------------- |
+| Release CI/build             | Final SHA, date, commands, counts and accessible run/deployment link                        |
+| Fresh-user README exercise   | Independent tester, setup steps, issues and retest outcome                                  |
+| Browser/mobile/accessibility | Devices/browsers, tested journeys and results; do not claim WCAG compliance from unit tests |
+| Production service tests     | Real client roles, CMS/image/video, calendar booking and actual inbox delivery              |
+| Recovery exercise            | Staging restore actions, version and actual outcome                                         |
+| Client training/acceptance   | Client actions, direct feedback, agreed issues and acceptance evidence                      |
+
+Use [acceptance and handover](acceptance-and-handover.md) for the detailed record.
+Store redacted logs/screenshots in an accessible project location and link them here.
+The baseline was observed during this audit; final CI/client evidence is still pending.
