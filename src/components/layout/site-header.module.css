@@ -1,0 +1,284 @@
+/* Shared site header, ported from the homepage design in demo/index.html.
+   Colours are set here rather than read from page tokens, so the header looks
+   the same on every page, including the prototype-rendered homepage. */
+
+.header {
+  --hd-canvas: rgba(252, 250, 245, 0.86);
+  --hd-paper: #ffffff;
+  --hd-ink: #12201c;
+  --hd-ink-2: #4b5a52;
+  --hd-line: #e6e0d3;
+  --hd-line-2: #d8cfbb;
+  --hd-coral: #f0552b;
+  --hd-coral-deep: #d53f17;
+  --hd-coral-wash: #fde7de;
+  --hd-forest-3: #1c4f46;
+  --hd-blue: #0071e3;
+  --hd-shadow:
+    0 0.1875rem 0.375rem rgba(18, 32, 28, 0.05),
+    0 1rem 2.25rem rgba(18, 32, 28, 0.11);
+
+  position: sticky;
+  top: 0;
+  z-index: 60;
+  margin: 0;
+  padding: 0;
+  border-bottom: 0.0625rem solid transparent;
+  background: var(--hd-canvas);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  color: var(--hd-ink);
+  font-family:
+    -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text",
+    var(--font-inter, "Inter"), "Helvetica Neue", Arial, sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.56;
+  letter-spacing: -0.011em;
+  -webkit-font-smoothing: antialiased;
+  transition:
+    border-color 0.3s,
+    box-shadow 0.3s;
+}
+/* :where keeps this reset below the component classes that follow. */
+.header :where(ul, li, a, span, button, svg) {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.scrolled {
+  border-bottom-color: var(--hd-line);
+  box-shadow: 0 0.25rem 1.25rem rgba(18, 32, 28, 0.06);
+}
+
+.progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 70;
+  height: 0.125rem;
+  background: #f0552b;
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  pointer-events: none;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  max-width: 75rem;
+  height: 4.375rem;
+  margin: 0 auto;
+  padding: 0 1.75rem;
+}
+
+/* Wordmark: "bitd" + ring mark + "t" */
+.brand {
+  display: inline-flex;
+  align-items: center;
+  flex: none;
+  color: var(--hd-ink);
+  font-weight: 700;
+  letter-spacing: -0.05em;
+  line-height: 1;
+  text-decoration: none;
+}
+.wordmark {
+  font-size: 1.42rem;
+}
+.mark {
+  flex: none;
+  width: 1.14em;
+  height: 1.14em;
+}
+
+/* Desktop links */
+.links {
+  display: flex;
+  align-items: center;
+  gap: 1.875rem;
+  list-style: none;
+}
+.links a {
+  position: relative;
+  color: var(--hd-ink-2);
+  font-size: 0.93rem;
+  font-weight: 540;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 0.18s;
+}
+.links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 100%;
+  bottom: -0.4375rem;
+  height: 0.125rem;
+  border-radius: 0.125rem;
+  background: var(--hd-coral);
+  transition: right 0.28s cubic-bezier(0.2, 0.7, 0.3, 1);
+}
+.links a:hover,
+.links a[aria-current="page"] {
+  color: var(--hd-ink);
+}
+.links a:hover::after,
+.links a[aria-current="page"]::after {
+  right: 0;
+}
+
+.tag {
+  margin-left: 0.4375rem;
+  padding: 0.125rem 0.4375rem;
+  border: 0.0625rem solid #f8c6b2;
+  border-radius: 62.4375rem;
+  background: var(--hd-coral-wash);
+  color: var(--hd-coral-deep);
+  font-size: 0.6rem;
+  font-weight: 680;
+  vertical-align: 0.0625rem;
+}
+
+/* Buttons */
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  flex: none;
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.625rem 1.25rem;
+  border: 0.0625rem solid transparent;
+  border-radius: 62.4375rem;
+  font-size: 0.88rem;
+  font-weight: 640;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    transform 0.18s cubic-bezier(0.2, 0.7, 0.3, 1),
+    box-shadow 0.22s,
+    background 0.18s,
+    border-color 0.18s;
+}
+.btn:hover {
+  transform: translateY(-0.125rem);
+}
+.btnPrimary {
+  background: var(--hd-ink);
+  color: #fff;
+}
+.btnPrimary:hover {
+  background: var(--hd-forest-3);
+  box-shadow: 0 0.75rem 1.75rem rgba(14, 46, 41, 0.28);
+}
+.btnGhost {
+  border-color: var(--hd-line-2);
+  background: var(--hd-paper);
+  color: var(--hd-ink);
+}
+.btnGhost:hover {
+  border-color: var(--hd-ink);
+  box-shadow:
+    0 0.0625rem 0.125rem rgba(18, 32, 28, 0.05),
+    0 0.25rem 0.875rem rgba(18, 32, 28, 0.06);
+}
+.btnGhost[aria-current="page"] {
+  border-color: var(--hd-ink);
+}
+
+/* Keyboard focus only; no ring on mouse click. */
+.header :is(a, button):focus {
+  outline: none;
+}
+.header :is(a, button):focus-visible {
+  outline: 0.125rem solid var(--hd-blue);
+  outline-offset: 0.25rem;
+  border-radius: 0.5rem;
+}
+.header .btn:focus-visible {
+  border-radius: 62.4375rem;
+}
+
+/* Mobile */
+.burger {
+  display: none;
+  border: none;
+  background: none;
+  color: var(--hd-ink);
+  cursor: pointer;
+  padding: 0.5rem;
+  line-height: 0;
+}
+.mobileMenu {
+  display: none;
+}
+
+@media (max-width: 65rem) {
+  .desktopNav,
+  .actions {
+    display: none;
+  }
+  .burger {
+    display: block;
+  }
+  .mobileMenu[data-open="true"] {
+    position: fixed;
+    inset: 4.375rem 0 auto 0;
+    z-index: 59;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    max-height: calc(100dvh - 4.375rem);
+    overflow-y: auto;
+    padding: 0.875rem 1.375rem 1.625rem;
+    border-bottom: 0.0625rem solid var(--hd-line);
+    background: var(--hd-paper);
+    box-shadow: var(--hd-shadow);
+  }
+  .mobileMenu ul {
+    list-style: none;
+    margin-bottom: 0.25rem;
+  }
+  .mobileMenu li {
+    border-bottom: 0.0625rem solid var(--hd-line);
+  }
+  .mobileMenu li a {
+    display: block;
+    padding: 0.9375rem 0.125rem;
+    color: var(--hd-ink);
+    font-weight: 560;
+    text-decoration: none;
+  }
+  .mobileMenu li a[aria-current="page"] {
+    color: var(--hd-coral-deep);
+  }
+  .mobileMenu .btn {
+    width: 100%;
+    padding: 0.875rem 1.25rem;
+    font-size: 0.97rem;
+  }
+}
+@media (max-width: 47.5rem) {
+  .nav {
+    padding: 0 1.375rem;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .header,
+  .links a,
+  .links a::after,
+  .btn {
+    transition: none;
+  }
+  .btn:hover {
+    transform: none;
+  }
+}

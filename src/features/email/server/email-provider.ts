@@ -1,6 +1,9 @@
 export type LeadEmailInput = {
   name: string;
   email: string;
+  phone?: string;
+  organisation?: string;
+  enquiryType?: string;
   message: string;
 };
 

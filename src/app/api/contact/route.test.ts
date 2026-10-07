@@ -14,6 +14,7 @@ vi.mock("@/features/contact/server/deliver-contact-lead", () => ({
 const validPayload = {
   name: "Jane Doe",
   email: "jane@example.com",
+  enquiryType: "Board training",
   message: "I would like to discuss AI governance training.",
   consent: true,
 };

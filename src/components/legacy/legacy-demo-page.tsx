@@ -1,9 +1,7 @@
 import "server-only";
 import { prepareHomepageAssessment } from "./prepare-homepage-assessment";
-import {
-  prepareHomepageSections,
-  SLOT_PATTERN,
-} from "./prepare-homepage-sections";
+
+import { prepareHomepageShell } from "./prepare-homepage-shell";
 
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
@@ -11,7 +9,7 @@ import { Fragment, type ReactNode } from "react";
 
 import { DemoRuntime } from "./demo-runtime";
 
-export type DemoFile = "about.html" | "index.html" | "legal.html";
+export type DemoFile = "index.html";
 
 type LegacyDemoPageProps = {
   file: DemoFile;
@@ -19,10 +17,9 @@ type LegacyDemoPageProps = {
   slots?: Partial<Record<string, ReactNode>>;
 };
 
+// The shared header and footer stay visible; the prototype's own copies are
+// removed by prepareHomepageShell.
 const shellOverride = `
-  body:has(.legacy-demo-page) > .skip-link,
-  body:has(.legacy-demo-page) > .site-header,
-  body:has(.legacy-demo-page) > .site-footer { display: none !important; }
   body:has(.legacy-demo-page) > #main-content { display: contents; }
   .legacy-demo-page,
   .legacy-demo-document { display: contents; }
@@ -46,7 +43,7 @@ function loadDemo(file: DemoFile) {
   const original = readFileSync(join(process.cwd(), "demo", file), "utf8");
   const source =
     file === "index.html"
-      ? prepareHomepageSections(prepareHomepageAssessment(original))
+      ? prepareHomepageShell(prepareHomepageAssessment(original))
       : original;
   const styles = [...source.matchAll(/<style[^>]*>([\s\S]*?)<\/style>/gi)].map(
     (match) => match[1],
