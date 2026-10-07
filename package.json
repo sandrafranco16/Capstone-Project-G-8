@@ -15,6 +15,7 @@
     "typecheck": "next typegen && tsc --noEmit",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
+    "check:headers": "node scripts/check-security-headers.mjs",
     "prepare": "husky"
   },
   "dependencies": {

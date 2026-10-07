@@ -39,13 +39,17 @@ describe("security headers", () => {
     const matches = (path: string) =>
       new RegExp(`^${securityHeadersSource}$`).test(path);
 
-    it.each(["/", "/about", "/services/ai-governance", "/api/contact"])(
-      "applies to %s",
-      (path) => expect(matches(path)).toBe(true),
-    );
+    it.each([
+      "/",
+      "/about",
+      "/services/ai-governance",
+      "/api/contact",
+      "/api/cms/auth",
+      "/api/cms/config",
+    ])("applies to %s", (path) => expect(matches(path)).toBe(true));
 
-    it.each(["/admin", "/api/cms/auth", "/api/cms/callback"])(
-      "skips %s, which sets its own headers",
+    it.each(["/admin", "/api/cms/callback"])(
+      "skips %s, which sets its own stricter policy",
       (path) => expect(matches(path)).toBe(false),
     );
   });

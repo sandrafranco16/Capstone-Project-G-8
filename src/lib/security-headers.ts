@@ -1,12 +1,15 @@
 /**
  * Baseline HTTP security headers for public pages and API routes.
  *
- * /admin and /api/cms/* are left out because those responses already send
- * stricter headers of their own (a nonce CSP on the OAuth callback, DENY
- * framing on the CMS), and sending two values for the same header can make
- * browsers ignore both.
+ * Only two routes are left out, because they send a stricter policy of their
+ * own and two values for the same header can make browsers ignore both:
+ * - /admin (X-Frame-Options: DENY and Referrer-Policy: same-origin)
+ * - /api/cms/callback (nonce-based CSP and Referrer-Policy: no-referrer)
+ *
+ * /api/cms/auth and /api/cms/config do not set these headers themselves, so
+ * they get the baseline on both their success and error responses.
  */
-export const securityHeadersSource = "/((?!admin|api/cms).*)";
+export const securityHeadersSource = "/((?!admin|api/cms/callback).*)";
 
 export const securityHeaders: { key: string; value: string }[] = [
   {
