@@ -2,7 +2,8 @@
 
 Reviewed 7 October 2026 against main `149020a` and the available source/docs.
 These entries are code findings or unverified configuration gates, not a claim that
-every deployed environment fails. No application fixes are included in this documentation change.
+every deployed environment fails. This PR removes test articles/media but does not
+change application logic or resolve the integration gates below.
 Suggested owners require team agreement. Recheck on the final release.
 
 ## Current register
@@ -15,7 +16,7 @@ Suggested owners require team agreement. Recheck on the final release.
 | H04 | CMS config still has the old repository-owner fallback; production validation is proposed in [PR #26](https://github.com/sandrafranco16/Capstone-Project-G-8/pull/26)        | Set the current repository, branch and stable origin explicitly; decide/test PR before release. Fresh configuration must not rely on old defaults                             | Backend/repository owner |
 | H05 | CMS media can require a direct target-branch write; protected-branch upload behaviour was previously reported                                                                | Validate both media upload and publishing with the real client role. Record a safe policy; this remains an acceptance gate until tested                                       | Repository owner/backend |
 | H06 | Vercel retained; commercial plan approval, project, final domain, account ownership and production variables not verified in this audit                                      | Approve the cost summary, confirm configuration and run live tests. Local checks do not establish Vercel production acceptance                                                | PM/client/backend        |
-| H07 | Demo Markdown articles remain under `src/content/blog`, including test-named entries                                                                                         | Review visible test content before commercial launch; remove through reviewed changes or get explicit client approval                                                         | Content owner/client     |
+| H07 | Three CMS test articles and their dedicated screenshot are removed in this PR; two sample articles remain                                                                    | Client must approve or replace the remaining sample content before commercial launch                                                                                          | Content owner/client     |
 | H08 | [PR #39](https://github.com/sandrafranco16/Capstone-Project-G-8/pull/39) and [PR #40](https://github.com/sandrafranco16/Capstone-Project-G-8/pull/40) are open at inspection | Social-preview/structured-data and baseline-header changes are not in the inspected main. Record merge/retest or agreed deferral; do not claim those PRs as delivered         | PR owners/reviewer       |
 | H09 | `PROJECT_PLAN.md` still specifies separate assessment lead email and Vercel as the final host                                                                                | Record actual customer-approved flow and any hosting change with dated evidence in the final report; do not silently present original plans as final facts                    | PM/client                |
 

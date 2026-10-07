@@ -26,6 +26,11 @@ Production routes checked: `/`, `/services`, `/about`, `/resources`, `/assessmen
 `/blog`, `/blog/2026-08-31-image-test`, `/booking`, `/contact`, `/admin/`,
 `/api/cms/config`, `/sitemap.xml`, `/robots.txt`.
 
+The image-test route above belongs to the historical `149020a` baseline. This
+handover PR removes that test article; use `/blog/2026-08-18-practical-ai-governance-first-step`
+for subsequent article smoke checks. The baseline result is not a claim that a
+removed test URL remains available.
+
 Local `pnpm dev --port 3108` initially hit **EMFILE watcher errors** in this environment.
 Increasing the process file limit did not resolve it. Restarting with
 `WATCHPACK_POLLING=true pnpm dev --port 3108` allowed the checks above to complete
