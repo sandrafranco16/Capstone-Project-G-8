@@ -4,6 +4,7 @@ import {
   prepareHomepageSections,
   SLOT_PATTERN,
 } from "./prepare-homepage-sections";
+import { toReplayableScript } from "./replayable-script";
 
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
@@ -68,7 +69,7 @@ function loadDemo(file: DemoFile) {
       /<script(?![^>]*\bsrc=)[^>]*>([\s\S]*?)<\/script>/gi,
     ),
   ]
-    .map((match) => match[1].trim())
+    .map((match) => toReplayableScript(match[1].trim()))
     .filter(Boolean);
   const visibleBody = uncommentedBody.replace(
     /<script[^>]*>[\s\S]*?<\/script>/gi,
