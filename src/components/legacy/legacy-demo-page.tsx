@@ -1,11 +1,9 @@
 import "server-only";
 import { prepareHomepageAssessment } from "./prepare-homepage-assessment";
-
 import { prepareHomepageShell } from "./prepare-homepage-shell";
 
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
-import { Fragment, type ReactNode } from "react";
 
 import { DemoRuntime } from "./demo-runtime";
 
@@ -13,8 +11,6 @@ export type DemoFile = "index.html";
 
 type LegacyDemoPageProps = {
   file: DemoFile;
-  /** React content rendered in place of the matching slot markers. */
-  slots?: Partial<Record<string, ReactNode>>;
 };
 
 // The shared header and footer stay visible; the prototype's own copies are
@@ -90,23 +86,15 @@ function loadDemo(file: DemoFile) {
   };
 }
 
-export function LegacyDemoPage({ file, slots = {} }: LegacyDemoPageProps) {
+export function LegacyDemoPage({ file }: LegacyDemoPageProps) {
   const { markup, scripts } = loadDemo(file);
-  const parts = markup.split(new RegExp(SLOT_PATTERN.source, "g"));
 
   return (
     <div className="legacy-demo-page">
-      {parts.map((part, index) =>
-        index % 2 === 0 ? (
-          <div
-            key={index}
-            className="legacy-demo-document"
-            dangerouslySetInnerHTML={{ __html: part }}
-          />
-        ) : (
-          <Fragment key={index}>{slots[part]}</Fragment>
-        ),
-      )}
+      <div
+        className="legacy-demo-document"
+        dangerouslySetInnerHTML={{ __html: markup }}
+      />
       <DemoRuntime scripts={scripts} />
     </div>
   );
