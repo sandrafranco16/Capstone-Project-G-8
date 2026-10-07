@@ -1,0 +1,98 @@
+.card {
+  position: relative;
+  width: 100%;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+/* Both faces share one grid cell, so the card is as tall as its taller face. */
+.rotor {
+  display: grid;
+  height: 100%;
+  border-radius: inherit;
+  transform-style: preserve-3d;
+}
+.face {
+  position: relative;
+  grid-area: 1 / 1;
+  overflow: hidden;
+  border-radius: inherit;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.back {
+  transform: rotateY(180deg);
+}
+.toggle {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4375rem;
+  min-height: 2.25rem;
+  padding: 0.4375rem 0.875rem;
+  border: 1px solid rgb(255 255 255 / 28%);
+  border-radius: 62.4375rem;
+  background: rgb(10 16 14 / 36%);
+  -webkit-backdrop-filter: blur(0.625rem);
+  backdrop-filter: blur(0.625rem);
+  color: #fff;
+  font: inherit;
+  font-size: 0.8rem;
+  font-weight: 620;
+  letter-spacing: -0.005em;
+  cursor: pointer;
+  transition:
+    background-color 0.2s,
+    border-color 0.2s;
+}
+.toggle:hover {
+  background: rgb(10 16 14 / 58%);
+  border-color: rgb(255 255 255 / 50%);
+}
+.toggle:focus-visible {
+  outline: 0.1875rem solid #fff;
+  outline-offset: 0.1875rem;
+}
+.toggle svg {
+  transition: transform 0.45s cubic-bezier(0.2, 0.7, 0.3, 1);
+}
+.card:hover .toggle svg {
+  transform: rotate(-180deg);
+}
+.glare {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: radial-gradient(
+    circle farthest-side at var(--flip-glare-x, 50%) var(--flip-glare-y, 50%),
+    rgb(255 255 255 / 16%) 0%,
+    rgb(255 255 255 / 7%) 30%,
+    rgb(255 255 255 / 0%) 70%
+  );
+  opacity: var(--flip-sheen, 0);
+  pointer-events: none;
+}
+
+/* Reduced motion: swap faces with a short crossfade instead of rotating. */
+.card[data-fade] .face {
+  transform: none;
+  backface-visibility: visible;
+  -webkit-backface-visibility: visible;
+  transition: opacity 0.2s ease;
+}
+.card[data-fade] .back,
+.card[data-fade][data-flipped] .front {
+  opacity: 0;
+}
+.card[data-fade][data-flipped] .back {
+  opacity: 1;
+}
+@media (prefers-reduced-motion: reduce) {
+  .toggle svg,
+  .card:hover .toggle svg {
+    transition: none;
+    transform: none;
+  }
+}
