@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Homepage "AI tools" and "Resources" preview copy (BIT-32).
  *
  * Source: the client-reviewed prototype, `demo/index.html#tools` and
@@ -68,10 +68,9 @@ export const toolsSection = {
 } as const;
 
 /**
- * There is no /resources route yet, so every card links to the Insights blog.
- * When a resources page exists, update `href` here; nothing else changes.
- * The dated claims below come from the approved prototype: re-check them
- * before launch.
+ * Homepage resource cards link to the matching sections of the Resources hub.
+ * The dated claims below come from the approved prototype and should be
+ * re-checked before launch.
  */
 export const resourcesSection = {
   label: "Resources",
@@ -84,8 +83,8 @@ export const resourcesSection = {
       title: "The dates that are already fixed",
       description:
         "Privacy Act automated-decision transparency starts 10 December 2026. The EU's high-risk deadline moved to December 2027; its transparency rules did not.",
-      href: "/blog",
-      linkLabel: "Read more in Insights",
+      href: "/resources#clock",
+      linkLabel: "View the compliance clock",
     },
     {
       id: "frameworks",
@@ -93,8 +92,8 @@ export const resourcesSection = {
       title: "Ten guardrails became six practices",
       description:
         "The National AI Centre's Guidance for AI Adoption is now the working baseline for Australian organisations, and it maps onto ISO/IEC 42001.",
-      href: "/blog",
-      linkLabel: "Read more in Insights",
+      href: "/resources#frameworks",
+      linkLabel: "Explore the frameworks",
     },
     {
       id: "reading",
@@ -102,7 +101,7 @@ export const resourcesSection = {
       title: "Articles from our directors",
       description:
         "Writing on change leadership, governance for smaller organisations, data literacy and data governance.",
-      href: "/blog",
+      href: "/resources#reading",
       linkLabel: "Browse the articles",
     },
   ] satisfies readonly ResourcePreview[],
