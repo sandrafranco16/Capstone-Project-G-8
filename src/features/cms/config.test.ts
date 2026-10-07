@@ -3,6 +3,21 @@ import { describe, expect, it } from "vitest";
 import { getCmsConfig, renderCmsConfig } from "./config";
 
 describe("getCmsConfig", () => {
+  it("uses the configured repository and request origin for local development", () => {
+    const config = getCmsConfig(
+      { CMS_REPOSITORY: "bitdot/site", NODE_ENV: "development" },
+      "http://localhost:3000",
+    );
+
+    expect(config).toEqual({
+      repository: "bitdot/site",
+      branch: "main",
+      baseUrl: "http://localhost:3000",
+      localBackend: true,
+      editorialWorkflow: false,
+    });
+  });
+
   it("uses deployment settings and disables the local proxy in production", () => {
     const config = getCmsConfig(
       {
@@ -23,15 +38,44 @@ describe("getCmsConfig", () => {
     });
   });
 
+  it.each(["development", "test", "production"] as const)(
+    "requires a non-blank repository in %s",
+    (nodeEnv) => {
+      for (const repository of [undefined, "", "   "]) {
+        expect(() =>
+          getCmsConfig({
+            CMS_REPOSITORY: repository,
+            CMS_OAUTH_BASE_URL: "https://cms.example.com",
+            NODE_ENV: nodeEnv,
+          }),
+        ).toThrow("CMS_REPOSITORY is required.");
+      }
+    },
+  );
+
+  it("requires an explicit OAuth origin in production", () => {
+    expect(() =>
+      getCmsConfig({
+        CMS_REPOSITORY: "bitdot/site",
+        NODE_ENV: "production",
+      }),
+    ).toThrow("CMS_OAUTH_BASE_URL is required in production");
+  });
+
   it("rejects unsafe repository, branch and origin values", () => {
     expect(() =>
       getCmsConfig({ CMS_REPOSITORY: "missing-slash", NODE_ENV: "test" }),
     ).toThrow("owner/repository");
     expect(() =>
-      getCmsConfig({ CMS_BRANCH: "bad branch", NODE_ENV: "test" }),
+      getCmsConfig({
+        CMS_REPOSITORY: "bitdot/site",
+        CMS_BRANCH: "bad branch",
+        NODE_ENV: "test",
+      }),
     ).toThrow("valid Git branch");
     expect(() =>
       getCmsConfig({
+        CMS_REPOSITORY: "bitdot/site",
         CMS_OAUTH_BASE_URL: "http://example.com",
         NODE_ENV: "test",
       }),
