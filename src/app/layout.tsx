@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Inter } from "next/font/google";
 import type { ReactNode } from "react";
 
 import { SiteFooter } from "@/components/layout/site-footer";
@@ -10,6 +11,14 @@ import {
 import { siteConfig } from "@/lib/site-config";
 
 import "./globals.css";
+
+/** Cross-platform fallback for the shared header and footer's Apple system font stack. */
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  display: "swap",
+  variable: "--font-inter",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
@@ -32,7 +41,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: ReactNode }>) {
   return (
-    <html lang="en-AU">
+    <html lang="en-AU" className={inter.variable}>
       <body>
         <a className="skip-link" href="#main-content">
           Skip to content
