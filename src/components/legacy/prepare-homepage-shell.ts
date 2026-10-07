@@ -77,5 +77,6 @@ function removeShellScripts(source: string): string {
 }
 
 export function prepareHomepageShell(source: string): string {
-  return removeShellScripts(removeMarkup(source));
+  const normalizedSource = source.replace(/\r\n?/g, "\n");
+  return removeShellScripts(removeMarkup(normalizedSource));
 }

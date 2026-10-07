@@ -5,6 +5,8 @@ import { Container } from "@/components/ui/container";
 import { AssessmentJourney } from "@/features/assessment/assessment-journey";
 import { isPathwayId } from "@/features/assessment/pathways";
 
+import styles from "./assessment-page.module.css";
+
 export const metadata: Metadata = {
   title: "AI Readiness Assessment",
   description:
@@ -21,18 +23,38 @@ export default async function AssessmentPage({
   const initialPathway = isPathwayId(path) ? path : null;
 
   return (
-    <>
-      <header className="page-header">
-        <Container>
-          <p className="eyebrow">AI Readiness Assessment</p>
-          <h1>Find your next step with AI.</h1>
-          <p className="lead">
-            Choose a pathway, reflect on five questions and explore relevant
-            BITDOT services. Free, with no sign-up.
+    <main className={styles.page}>
+      <header className={styles.hero}>
+        <Container className={styles.heroInner}>
+          <p className={styles.eyebrow}>AI Readiness Assessment</p>
+
+          <h1 className={styles.title}>
+            Find your next step <span>with AI.</span>
+          </h1>
+
+          <p className={styles.lead}>
+            Choose a pathway, answer five focused questions and get a clearer
+            next step based on where you are today. Free, with no sign-up.
           </p>
+
+          <div className={styles.steps} aria-label="How the assessment works">
+            <span className={styles.step}>
+              <strong>1.</strong> Choose your pathway
+            </span>
+            <span className={styles.step}>
+              <strong>2.</strong> Answer five questions
+            </span>
+            <span className={styles.step}>
+              <strong>3.</strong> Get your next step
+            </span>
+          </div>
         </Container>
       </header>
-      <section className="section" aria-label="Readiness assessment">
+
+      <section
+        className={styles.assessmentSection}
+        aria-label="Readiness assessment"
+      >
         <Container>
           <noscript>
             <p className="notice">
@@ -40,12 +62,13 @@ export default async function AssessmentPage({
               <Link href="/services">explore BITDOT services</Link> directly.
             </p>
           </noscript>
+
           <AssessmentJourney
             key={initialPathway ?? "choose"}
             initialPathway={initialPathway}
           />
         </Container>
       </section>
-    </>
+    </main>
   );
 }
