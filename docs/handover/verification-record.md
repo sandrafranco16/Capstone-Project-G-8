@@ -68,3 +68,26 @@ They do not certify third-party account configuration or complete browser access
 Use [acceptance and handover](acceptance-and-handover.md) for the detailed record.
 Store redacted logs/screenshots in an accessible project location and link them here.
 The baseline was observed during this audit; final CI/client evidence is still pending.
+
+## 4. Handover branch checks — 7 October 2026
+
+Verified a clean archive of `docs/client-handover` at **`a77ecb3`**, after removing
+the three CMS test articles and their dedicated screenshot. Documentation-only
+follow-up commits record these results. Runtime: Node 24.19.0, pnpm 11.19.0.
+The archive excluded `.env.local`, uncommitted `next-env.d.ts` changes and `tmp/`.
+Synthetic localhost configuration and mock email were used; no live services were tested.
+
+| Check                                   | Actual result                                                                                            |
+| --------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| Frozen-lockfile install                 | Passed; no dependency changes                                                                            |
+| `pnpm lint` / `pnpm typecheck`          | Passed                                                                                                   |
+| `pnpm test`                             | 26 files, 151 tests passed                                                                               |
+| `pnpm build`                            | Passed; 31 static pages generated                                                                        |
+| `pnpm format:check`                     | Passed                                                                                                   |
+| Local documentation links               | 68 relative file links checked across 17 changed Markdown documents; no missing targets                  |
+| Production HTTP smoke checks, port 3127 | Blog index and both remaining articles: 200; three deleted test articles and the deleted screenshot: 404 |
+| Sitemap                                 | 200; no removed test-article slugs                                                                       |
+
+The test server was stopped after verification. Client acceptance, real CMS publishing,
+calendar bookings, email delivery and account transfer remain pending; do not infer
+them from these local checks.
