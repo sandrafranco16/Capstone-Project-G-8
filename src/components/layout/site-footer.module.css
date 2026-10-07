@@ -1,0 +1,157 @@
+/* Shared site footer, ported from the homepage design in demo/index.html. */
+
+.footer {
+  position: relative;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  background: #0e2e29;
+  color: rgba(255, 255, 255, 0.72);
+  font-family:
+    -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text",
+    var(--font-inter, "Inter"), "Helvetica Neue", Arial, sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.56;
+  letter-spacing: -0.011em;
+  -webkit-font-smoothing: antialiased;
+}
+.footer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 0.1875rem;
+  background: linear-gradient(100deg, #f0552b 0%, #f59e0b 100%);
+}
+/* :where keeps this reset below the component classes that follow. */
+.footer :where(div, nav, h2, p, ul, li, a, span, svg) {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.footer a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Content spans the full 75rem on desktop (as in the prototype), with a side
+   gutter once the viewport is narrower. */
+.top,
+.legal {
+  width: min(75rem, 100% - 3.5rem);
+  margin-inline: auto;
+}
+.top {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+  gap: 2.75rem;
+  padding-block: 4rem 3rem;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  color: #fff;
+  font-weight: 700;
+  letter-spacing: -0.05em;
+  line-height: 1;
+}
+.wordmark {
+  font-size: 1.42rem;
+}
+.mark {
+  flex: none;
+  width: 1.14em;
+  height: 1.14em;
+}
+.brandColumn p {
+  max-width: 34ch;
+  margin-top: 1.125rem;
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 0.92rem;
+}
+
+.column h2 {
+  max-width: none;
+  margin-bottom: 1rem;
+  color: #fff;
+  font-size: 0.82rem;
+  font-weight: 640;
+  letter-spacing: normal;
+  line-height: 1.56;
+}
+.column ul,
+.legal ul {
+  list-style: none;
+}
+.column li {
+  margin-bottom: 0.6875rem;
+}
+.column :is(a, span) {
+  color: rgba(255, 255, 255, 0.66);
+  font-size: 0.92rem;
+  overflow-wrap: anywhere;
+  transition: color 0.18s;
+}
+.column a:hover {
+  color: #ff9e7a;
+}
+
+.legal {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-block: 1.375rem 1.875rem;
+  border-top: 0.0625rem solid rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.48);
+  font-size: 0.83rem;
+}
+.legal ul {
+  display: flex;
+  flex-wrap: wrap;
+}
+.legal li + li::before {
+  content: "·";
+  margin-inline: 0.375rem;
+}
+.legal a {
+  transition: color 0.18s;
+}
+.legal a:hover {
+  color: #fff;
+}
+
+/* Keyboard focus only; no ring on mouse click. */
+.footer a:focus {
+  outline: none;
+}
+.footer a:focus-visible {
+  outline: 0.125rem solid #ff9e7a;
+  outline-offset: 0.25rem;
+  border-radius: 0.25rem;
+}
+
+@media (max-width: 65rem) {
+  .top {
+    grid-template-columns: 1fr 1fr;
+    gap: 2.25rem;
+  }
+}
+@media (max-width: 47.5rem) {
+  .top {
+    grid-template-columns: 1fr;
+    gap: 1.875rem;
+  }
+  .top,
+  .legal {
+    width: calc(100% - 2.75rem);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .column a,
+  .legal a {
+    transition: none;
+  }
+}

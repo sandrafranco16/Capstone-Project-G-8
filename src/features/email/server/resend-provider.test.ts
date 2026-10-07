@@ -63,6 +63,53 @@ describe("createResendProvider", () => {
     expect(body.text).toContain("Tell me about AI governance.");
   });
 
+  it("includes the optional details and enquiry type when provided", async () => {
+    const mockFetch = vi.fn().mockResolvedValue({
+      ok: true,
+      json: () => Promise.resolve({ id: "email-456" }),
+    });
+    vi.stubGlobal("fetch", mockFetch);
+
+    const provider = createResendProvider();
+    await provider.sendContactLead({
+      name: "Jane Doe",
+      email: "jane@example.com",
+      phone: "+61 476 779 285",
+      organisation: "Smith & <Co>",
+      enquiryType: "Board training",
+      message: "Tell me about AI governance.",
+    });
+
+    const body = JSON.parse(mockFetch.mock.calls[0][1].body);
+    expect(body.text).toContain("Phone: +61 476 779 285");
+    expect(body.text).toContain("Organisation: Smith & <Co>");
+    expect(body.text).toContain("Enquiry type: Board training");
+    expect(body.html).toContain("Smith &amp; &lt;Co&gt;");
+    expect(body.html).not.toContain("<Co>");
+  });
+
+  it("leaves out optional details that were not provided", async () => {
+    const mockFetch = vi.fn().mockResolvedValue({
+      ok: true,
+      json: () => Promise.resolve({ id: "email-789" }),
+    });
+    vi.stubGlobal("fetch", mockFetch);
+
+    const provider = createResendProvider();
+    await provider.sendContactLead({
+      name: "Jane Doe",
+      email: "jane@example.com",
+      phone: "",
+      organisation: "",
+      message: "Tell me about AI governance.",
+    });
+
+    const body = JSON.parse(mockFetch.mock.calls[0][1].body);
+    expect(body.text).not.toContain("Phone:");
+    expect(body.text).not.toContain("Organisation:");
+    expect(body.html).not.toContain("Phone:");
+  });
+
   it("uses user email only as reply_to, never as from", async () => {
     const mockFetch = vi.fn().mockResolvedValue({
       ok: true,
