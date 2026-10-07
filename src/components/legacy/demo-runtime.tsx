@@ -2,6 +2,8 @@
 
 import { useEffect, useRef } from "react";
 
+import { toReplayableScript } from "./replayable-script";
+
 type DemoRuntimeProps = {
   scripts: string[];
 };
@@ -17,7 +19,7 @@ export function DemoRuntime({ scripts }: DemoRuntimeProps) {
     const nodes = scripts.map((source) => {
       const script = document.createElement("script");
       script.dataset.bitdotDemoRuntime = "true";
-      script.text = source;
+      script.text = toReplayableScript(source);
       document.body.appendChild(script);
       return script;
     });
