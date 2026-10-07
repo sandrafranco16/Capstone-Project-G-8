@@ -1,8 +1,13 @@
 import "server-only";
 import { prepareHomepageAssessment } from "./prepare-homepage-assessment";
+import {
+  prepareHomepageSections,
+  SLOT_PATTERN,
+} from "./prepare-homepage-sections";
 
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
+import { Fragment, type ReactNode } from "react";
 
 import { DemoRuntime } from "./demo-runtime";
 
@@ -10,6 +15,8 @@ export type DemoFile = "about.html" | "index.html" | "legal.html";
 
 type LegacyDemoPageProps = {
   file: DemoFile;
+  /** React content rendered in place of the matching slot markers. */
+  slots?: Partial<Record<string, ReactNode>>;
 };
 
 const shellOverride = `
@@ -38,7 +45,9 @@ function rewriteDemoLinks(markup: string) {
 function loadDemo(file: DemoFile) {
   const original = readFileSync(join(process.cwd(), "demo", file), "utf8");
   const source =
-    file === "index.html" ? prepareHomepageAssessment(original) : original;
+    file === "index.html"
+      ? prepareHomepageSections(prepareHomepageAssessment(original))
+      : original;
   const styles = [...source.matchAll(/<style[^>]*>([\s\S]*?)<\/style>/gi)].map(
     (match) => match[1],
   );
@@ -84,15 +93,23 @@ function loadDemo(file: DemoFile) {
   };
 }
 
-export function LegacyDemoPage({ file }: LegacyDemoPageProps) {
+export function LegacyDemoPage({ file, slots = {} }: LegacyDemoPageProps) {
   const { markup, scripts } = loadDemo(file);
+  const parts = markup.split(new RegExp(SLOT_PATTERN.source, "g"));
 
   return (
     <div className="legacy-demo-page">
-      <div
-        className="legacy-demo-document"
-        dangerouslySetInnerHTML={{ __html: markup }}
-      />
+      {parts.map((part, index) =>
+        index % 2 === 0 ? (
+          <div
+            key={index}
+            className="legacy-demo-document"
+            dangerouslySetInnerHTML={{ __html: part }}
+          />
+        ) : (
+          <Fragment key={index}>{slots[part]}</Fragment>
+        ),
+      )}
       <DemoRuntime scripts={scripts} />
     </div>
   );

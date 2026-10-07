@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 
 import { LegacyDemoPage } from "@/components/legacy/legacy-demo-page";
+import { LEADERSHIP_SLOT } from "@/components/legacy/prepare-homepage-sections";
+import { LeadershipSection } from "@/features/home/leadership-section";
+import { TestimonialsSection } from "@/features/home/testimonials-section";
 
 export const metadata: Metadata = {
   title: {
@@ -12,5 +15,17 @@ export const metadata: Metadata = {
 };
 
 export default function HomePage() {
-  return <LegacyDemoPage file="index.html" />;
+  return (
+    <LegacyDemoPage
+      file="index.html"
+      slots={{
+        [LEADERSHIP_SLOT]: (
+          <>
+            <LeadershipSection />
+            <TestimonialsSection />
+          </>
+        ),
+      }}
+    />
+  );
 }
