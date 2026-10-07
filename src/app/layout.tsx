@@ -6,6 +6,8 @@ import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
 import { siteConfig } from "@/lib/site-config";
 
+import "@/styles/tokens.css";
+import "@/styles/surfaces.css";
 import "./globals.css";
 
 /** Cross-platform fallback for the shared header and footer's Apple system font stack. */

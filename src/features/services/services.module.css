@@ -83,7 +83,7 @@
 }
 
 .page :global(.faq details) {
-  border-radius: 1rem;
+  border-radius: var(--r);
   background: var(--paper);
   margin-bottom: 0.6875rem;
   overflow: hidden;
@@ -207,17 +207,26 @@
 .page :global(.card[data-tone="sand"]) {
   --f: var(--fill-sand);
 }
+/* Each practice uses its pathway colour for the number and its cards, so
+   the colour means the same thing here as on the homepage pathway cards. */
 .page :global(#career) {
-  --sc: #0071e3;
+  --sc: var(--path-career);
+  --path-tint: var(--berry-wash);
 }
 .page :global(#training) {
-  --sc: #0b7a56;
+  --sc: var(--path-learn);
+  --path-tint: var(--green-wash);
 }
 .page :global(#governance) {
-  --sc: #6d5bd0;
+  --sc: var(--path-govern);
+  --path-tint: var(--blue-wash);
 }
 .page :global(#crisis) {
-  --sc: #b4770b;
+  --sc: var(--path-risk);
+  --path-tint: var(--coral-wash);
+}
+.page :global(.svc-sec .card[data-tone]) {
+  --f: var(--path-tint);
 }
 /* Content is readable before hydration and if JavaScript is disabled. */
 .page:not([data-enhanced]) :global(.rv) {
