@@ -21,6 +21,13 @@ client component. Effects have cleanup and respect reduced motion. Content remai
 visible without JavaScript. FAQs use native details/summary, and their structured data
 comes from the same answers. Fonts load through `next/font` (self-hosted Inter). Reference homepage fragment destinations are preserved.
 
+`FAQSection` renders the shared BIT-26 `Accordion`, using its optional part classes
+to preserve the Services layout and reveal effects. The six records supply both
+visible answers and JSON-LD. Stable disclosure IDs (`services-faq-1` through
+`services-faq-6`) support direct URL fragments without changing the default
+behavior of other Accordion instances. Integration tests check server-rendered
+copy/schema agreement, independent disclosures and escaped text.
+
 Run `pnpm dev` and open `/services`. Compare the inner content at equal viewport,
 zoom and font availability after animations settle. Header and footer differences
 from the demo are intentional and belong to a separate change.

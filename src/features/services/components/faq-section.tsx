@@ -1,3 +1,5 @@
+import { Accordion } from "@/components/ui/accordion";
+
 import type { FAQContent } from "../services.types";
 export function FAQSection({ content }: { content: FAQContent }) {
   const structuredData = {
@@ -22,12 +24,16 @@ export function FAQSection({ content }: { content: FAQContent }) {
             {content.title}
           </h2>
         </div>
-        {content.items.map(({ id, question, answer }) => (
-          <details key={id} className="rv">
-            <summary>{question}</summary>
-            <p>{answer}</p>
-          </details>
-        ))}
+        <Accordion
+          className="services-faq"
+          classNames={{ item: "rv", content: "faq-answer", icon: "faq-icon" }}
+          items={content.items.map(({ id, question, answer }) => ({
+            id,
+            anchorId: id,
+            title: question,
+            content: <p>{answer}</p>,
+          }))}
+        />
       </div>
       <script
         type="application/ld+json"
