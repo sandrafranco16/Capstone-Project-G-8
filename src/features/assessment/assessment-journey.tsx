@@ -8,6 +8,7 @@ import { scoreAssessment } from "./scoring";
 import { PathwaySelection } from "./pathway-selection";
 import { AssessmentQuestion } from "./assessment-question";
 import { AssessmentResult } from "./assessment-result";
+import { useResetConfirmation } from "./use-reset-confirmation";
 import styles from "./assessment-journey.module.css";
 
 export function AssessmentJourney({
@@ -32,6 +33,11 @@ export function AssessmentJourney({
     dispatch(action);
   }
 
+  const { requestAction, confirmation } = useResetConfirmation(
+    Object.keys(state.answers).length > 0,
+    act,
+  );
+
   const pathway = state.pathway ? assessmentPathways[state.pathway] : null;
   const result =
     state.pathway && state.complete
@@ -50,11 +56,11 @@ export function AssessmentJourney({
         confirmation.
       </p>
       {!pathway ? (
-        <PathwaySelection headingRef={heading} onAction={act} />
+        <PathwaySelection headingRef={heading} onAction={requestAction} />
       ) : result && recommendations ? (
         <AssessmentResult
           headingRef={heading}
-          onAction={act}
+          onAction={requestAction}
           pathway={pathway}
           result={result}
           recommendations={recommendations}
@@ -63,7 +69,7 @@ export function AssessmentJourney({
       ) : question ? (
         <AssessmentQuestion
           headingRef={heading}
-          onAction={act}
+          onAction={requestAction}
           pathway={pathway}
           question={question}
           step={state.step}
@@ -74,6 +80,7 @@ export function AssessmentJourney({
         Your answers and result stay in this page’s memory. They are not saved
         or sent. Reloading starts a new assessment.
       </p>
+      {confirmation}
     </div>
   );
 }
