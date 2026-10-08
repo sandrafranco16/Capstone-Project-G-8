@@ -71,8 +71,9 @@ export function AssessmentJourney({
         />
       ) : null}
       <p className={styles.privacy}>
-        Your answers and result stay in this page’s memory. They are not saved
-        or sent. Reloading starts a new assessment.
+        Your answers stay in this page’s memory and are not saved or sent. You
+        can choose to copy a result summary to your device’s clipboard.
+        Reloading starts a new assessment.
       </p>
     </div>
   );
