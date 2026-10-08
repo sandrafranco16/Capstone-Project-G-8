@@ -545,6 +545,12 @@
   position: relative;
   padding: 0 0 18px 66px;
 }
+/* Milestones outside the selected compliance-clock filter. The prototype had
+   this rule (demo/resources.html: .ev.hide) but it was missed in the port, so
+   the filter changed the count without hiding anything. */
+.page .ev.hide {
+  display: none;
+}
 .page .tl::before {
   content: "";
   position: absolute;
