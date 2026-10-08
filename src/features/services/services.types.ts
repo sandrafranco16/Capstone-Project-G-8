@@ -25,6 +25,8 @@ export type ServicePractice = {
   title: string;
   description: string;
   enquiry: ServiceAction;
+  /** Opens /booking with this practice's Cal.com appointment type selected. */
+  booking: ServiceAction;
   offers: readonly ServiceOffer[];
 };
 

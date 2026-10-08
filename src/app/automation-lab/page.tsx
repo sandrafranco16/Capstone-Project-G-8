@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, Bot, ShieldCheck, Sparkles, Workflow } from "lucide-react";
 
+import { bookingHref } from "@/features/booking/links";
+
 import styles from "./automation-lab.module.css";
 
 export const metadata: Metadata = {
@@ -57,7 +59,10 @@ export default function AutomationLabPage() {
           </p>
 
           <div className={styles.actions}>
-            <Link className={styles.primaryAction} href="/booking">
+            <Link
+              className={styles.primaryAction}
+              href={bookingHref("training-discussion")}
+            >
               Book a session
               <ArrowRight size={18} aria-hidden="true" />
             </Link>

@@ -33,6 +33,11 @@
   padding: 5rem 0;
   border-top: 0.0625rem solid var(--line);
 }
+.page :global(.svc-actions) {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.625rem;
+}
 .page :global(.svc-grid2) {
   display: grid;
   grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
@@ -159,7 +164,7 @@
   margin-top: 1rem;
   margin-bottom: 0;
 }
-.page :global(.svc-grid2 .btn) {
+.page :global(.svc-grid2 .svc-actions) {
   margin-top: 1.625rem;
 }
 .page :global(.faq .wrap) {

@@ -129,4 +129,14 @@ describe("assessment answer review", () => {
       screen.queryByRole("button", { name: "Save and view result" }),
     ).toBeNull();
   });
+
+  it("offers a booking link for the pathway's appointment type on the result", () => {
+    render(<AssessmentJourney initialPathway="career" />);
+    completeCareer();
+
+    const link = screen.getByRole("link", {
+      name: "Book a career coaching session",
+    });
+    expect(link.getAttribute("href")).toBe("/booking?type=career-coaching");
+  });
 });

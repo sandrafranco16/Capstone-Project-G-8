@@ -1,3 +1,5 @@
+import { bookingHref } from "@/features/booking/links";
+
 import type {
   ServicePractice,
   ServicesHeroContent,
@@ -23,6 +25,11 @@ export const servicePractices = [
     enquiry: {
       label: "Enquire about this",
       href: "/contact",
+    },
+    booking: {
+      label: "Book a coaching session",
+      href: bookingHref("career-coaching"),
+      variant: "ghost",
     },
     offers: [
       {
@@ -61,6 +68,11 @@ export const servicePractices = [
       label: "Enquire about this",
       href: "/contact",
     },
+    booking: {
+      label: "Book a training discussion",
+      href: bookingHref("training-discussion"),
+      variant: "ghost",
+    },
     offers: [
       {
         title: "Copilot, Claude, ChatGPT & Gemini",
@@ -98,6 +110,11 @@ export const servicePractices = [
       label: "Enquire about this",
       href: "/contact",
     },
+    booking: {
+      label: "Book an executive consultation",
+      href: bookingHref("executive-consultation"),
+      variant: "ghost",
+    },
     offers: [
       {
         title: "Mastering AI Governance",
@@ -133,6 +150,11 @@ export const servicePractices = [
     enquiry: {
       label: "Enquire about this",
       href: "/contact",
+    },
+    booking: {
+      label: "Book a workshop enquiry",
+      href: bookingHref("workshop-enquiry"),
+      variant: "ghost",
     },
     offers: [
       {
