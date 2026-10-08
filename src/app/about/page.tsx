@@ -7,6 +7,7 @@ import { AboutStory } from "@/features/about/components/about-story";
 import { CredibilityBand } from "@/features/about/components/credibility-band";
 import { LeadershipSection } from "@/features/about/components/leadership-section";
 import { ValuesSection } from "@/features/about/components/values-section";
+import { socialImage } from "@/features/seo/social-image";
 
 const description =
   "BITDOT Consulting Services brings world-class AI, data and governance expertise within everyone's reach. Meet co-founders Hemna Goyal and Vaibhav Agrawal GAICD.";
@@ -20,6 +21,7 @@ export const metadata: Metadata = {
     url: "/about",
     title: "About BITDOT — Our Mission and Leadership",
     description,
+    images: [socialImage],
   },
 };
 
