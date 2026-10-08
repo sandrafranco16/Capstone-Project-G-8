@@ -16,17 +16,15 @@ public/
 ├── images/              Static site images
 └── uploads/             CMS-managed media
 tests/                   Future unit, integration and end-to-end tests
-demo/                    Approved static pages used by the high-fidelity migration layer
+demo/                    Approved static prototype, kept as the design reference
 ```
 
-## Demo migration boundary
+## Demo prototype
 
-The homepage, Services, About and Legal routes currently use
-`src/components/legacy/legacy-demo-page.tsx`. At build time it reads the approved local
-HTML, preserves the page CSS and content, rewrites `.html` links to Next.js routes, and
-loads the demo interactions through a client-only runtime. This keeps the approved
-visual result stable while the team progressively moves reusable sections and new MVP
-logic into typed React components. Remote scripts are not executed by this layer.
+Every route now renders typed React components. The homepage was the last page
+on the prototype loader and moved to React in #51, so `src/components/legacy/`
+was removed. `demo/` stays in the repository as the client-approved design
+reference and is not read at build or run time.
 
 ## MVP module boundaries
 
