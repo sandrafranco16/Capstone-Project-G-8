@@ -30,6 +30,25 @@ legal), which already used the same variable names.
   `20px` goes back to plain rounded cards in one line.
 - `--r-pill` for buttons, chips and tags. Icons sit in circles.
 
+## Contrast (WCAG 2.1 AA)
+
+An axe scan of every page passes the AA contrast criterion except one
+known case:
+
+| Element                                                   | Colours                    | Ratio               | Status                      |
+| --------------------------------------------------------- | -------------------------- | ------------------- | --------------------------- |
+| Coral CTA buttons (`.btn-coral`, booking, 404, resources) | white on `--coral` #f0552b | 3.5:1 (needs 4.5:1) | Open, waiting on the client |
+
+Both fixes change the brand's main button, so they need Vibs's sign-off
+before either goes in:
+
+- dark text (`--ink`) on the same coral, 4.8:1
+- white text on `--coral-deep` #b83812, 5.8:1
+
+`--coral-deep` and `--ink-3` were darkened just enough to pass on canvas,
+paper, mist and coral-wash. Check new text colours against those
+backgrounds before adding them.
+
 ## Adding a new section
 
 Use the tokens instead of hex values, for example
