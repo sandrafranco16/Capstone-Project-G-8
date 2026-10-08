@@ -99,7 +99,9 @@ import { CardRail } from "@/components/ui/card-rail";
   overflow and disable at the respective edge. ResizeObserver updates boundaries
   when list/card geometry changes; listeners and observers clean up on unmount.
 - Focus the list and use Left/Right, Home/End. Keyboard events originating from
-  links or inputs inside cards are left alone. Scrolling honours reduced motion.
+  links or inputs inside cards are left alone. Combinations with Alt, Control,
+  Meta or Shift retain their browser/document behavior, including Control+End
+  and Alt+Left. Scrolling honours reduced motion.
 - This is a left-to-right list for the English site; no autoplay or looping.
 - The client boundary is limited to CardRail. Server components may pass card
   markup as children. Empty lists render nothing; a single fitting card has no
