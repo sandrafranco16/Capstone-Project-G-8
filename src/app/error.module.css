@@ -1,0 +1,139 @@
+.page {
+  display: grid;
+  place-items: center;
+  min-height: 65vh;
+  padding: clamp(3rem, 6vw, 6rem) 1rem;
+  background: var(--canvas);
+  color: var(--ink);
+  overflow-wrap: anywhere;
+}
+
+.panel {
+  width: min(100%, 48rem);
+  padding: clamp(1.5rem, 5vw, 3.5rem);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  background: var(--paper);
+  box-shadow: var(--sh);
+}
+
+.icon {
+  display: grid;
+  place-items: center;
+  width: 3.75rem;
+  height: 3.75rem;
+  margin-bottom: 1.5rem;
+  border-radius: 50%;
+  background: var(--coral-wash);
+  color: var(--coral-deep);
+}
+
+.icon svg {
+  width: 2rem;
+  height: 2rem;
+}
+
+.eyebrow {
+  margin: 0 0 0.75rem;
+  color: var(--coral-deep);
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.panel h1 {
+  margin: 0;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  line-height: 1.08;
+  letter-spacing: -0.04em;
+}
+
+.description {
+  margin: 1.25rem 0 0;
+  max-width: 48ch;
+  color: var(--ink-2);
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.75rem;
+}
+
+.retry,
+.home {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  min-height: 3rem;
+  padding: 0.75rem 1.25rem;
+  border: 1px solid transparent;
+  border-radius: var(--r-pill);
+  font: inherit;
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background-color 180ms ease,
+    border-color 180ms ease;
+}
+
+.retry {
+  background: var(--coral-deep);
+  color: var(--paper);
+}
+
+.retry:hover {
+  background: var(--forest);
+}
+
+.retry svg {
+  width: 1.1rem;
+  height: 1.1rem;
+}
+
+.home {
+  border-color: var(--line-2);
+  background: var(--paper);
+  color: var(--ink);
+}
+
+.home:hover {
+  border-color: var(--ink-2);
+  background: var(--mist);
+}
+
+.help {
+  margin: 1.75rem 0 0;
+  color: var(--ink-2);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.help a {
+  color: var(--blue-deep);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.panel :is(a, button, h1):focus-visible {
+  outline: 3px solid var(--blue-deep);
+  outline-offset: 4px;
+}
+
+@media (max-width: 360px) {
+  .actions {
+    flex-direction: column;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .retry,
+  .home {
+    transition: none;
+  }
+}
