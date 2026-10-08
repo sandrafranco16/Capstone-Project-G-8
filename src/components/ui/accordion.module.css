@@ -3,6 +3,7 @@
   gap: 11px;
 }
 .item {
+  scroll-margin-top: 6rem;
   border-radius: var(--r);
   background: #fff;
   color: var(--ink);

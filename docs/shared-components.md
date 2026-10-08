@@ -21,14 +21,26 @@ import { Accordion } from "@/components/ui/accordion";
 ```
 
 - `items`: readonly array of `{ id: string, title: string, content: ReactNode,
-defaultOpen?: boolean }`. IDs must be unique within each array; they are React
-  keys, so multiple instances may reuse the same data.
+defaultOpen?: boolean, anchorId?: string }`. `id` is a React key and must be unique
+  within each array; multiple instances may reuse the same keys. `anchorId` is an
+  optional DOM ID on the disclosure for URL fragments and must be unique across
+  the page. Omitting it preserves the original instance-safe behavior.
 - `className`: optional wrapper class. An empty array renders nothing.
+- `classNames`: optional `item`, `content` and `icon` classes for page-specific
+  styling and enhancements. They are added alongside the shared CSS Module
+  classes, so existing callers retain the default appearance. Service FAQs use
+  these hooks to keep their spacing and per-item reveal animations.
 - Native `details`/`summary` works without JavaScript. Enter or Space toggles a
   focused summary. Multiple answers may remain open. `defaultOpen` specifies the
   initial state; this is not a controlled accordion API.
 - Add a heading on the containing page. Keep interactive content inside the
   answer, rather than inside the summary.
+
+Services now use this component for all six FAQs. Their existing content IDs are
+also their DOM IDs: for example `/services#services-faq-3` locates the third
+question, whose native summary opens its answer. Anchored items have a scroll
+margin for the sticky site header. The visible FAQ and its JSON-LD use the same
+question/answer records. No question copy or client-side accordion script is added.
 
 ## CTA
 
