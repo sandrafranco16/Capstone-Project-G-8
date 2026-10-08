@@ -30,7 +30,7 @@ export default function NotFound() {
             <nav className={styles.suggestions} aria-label="Other places to go">
               <span>Or try one of these:</span>
               <Link href="/assessment">Assessment</Link>
-              <Link href="/blog">Resources</Link>
+              <Link href="/resources">Resources</Link>
               <Link href="/about">About</Link>
             </nav>
           </div>
