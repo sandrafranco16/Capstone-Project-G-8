@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Homepage "AI tools" and "Resources" preview copy (BIT-32).
  *
  * Source: the client-reviewed prototype, `demo/index.html#tools` and

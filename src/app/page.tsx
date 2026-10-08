@@ -1,4 +1,4 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 
 import { GovernanceSection } from "@/features/home/governance-section";
 import { HomepagePathwaysSection } from "@/features/home/homepage-pathways-section";
