@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { Container } from "@/components/ui/container";
-import { AssessmentJourney } from "@/features/assessment/assessment-journey";
+import { AssessmentNavigation } from "@/features/assessment/assessment-navigation";
 import { isPathwayId } from "@/features/assessment/pathways";
 
 import styles from "./assessment-page.module.css";
@@ -63,10 +63,7 @@ export default async function AssessmentPage({
             </p>
           </noscript>
 
-          <AssessmentJourney
-            key={initialPathway ?? "choose"}
-            initialPathway={initialPathway}
-          />
+          <AssessmentNavigation initialPathway={initialPathway} />
         </Container>
       </section>
     </div>
