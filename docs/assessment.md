@@ -263,6 +263,24 @@ props. The reducer handles every action in a single switch with a compile-time
 exhaustive default. The homepage adapter runs five small, ordered helper steps,
 retaining the same boundary guards and output.
 
+### Editing an answer from the result
+
+Expand **Review your answers** and use **Edit answer** beside a question to
+return directly to it. The selected option and all other answers are preserved.
+After changing the answer, **Save and view result** recalculates the result
+without requiring the later questions to be answered again. The final question
+retains its **See my result** action. Focus moves to the question heading when
+editing and to the result heading when saving. The progress bar counts valid
+answers rather than the current question index, so reviewing question one does
+not show an empty assessment.
+
+Editing is only available after completion. Returning to a result still requires
+all five answers to pass the existing scoring validation. Retaking or changing
+pathway clears the answers as before. The questions, score bands, recommendation
+content and in-memory privacy behavior are unchanged. Reducer tests cover editing
+every question in every pathway, and DOM interaction tests cover direct editing,
+focus, score/level recalculation, preserved answers, retaking and unanswered gating.
+
 Review refactor validation: all 50 tests, lint, TypeScript and production build
 passed. A comparison against the prior PR head confirmed unchanged question and
 recommendation data, byte-identical homepage transformation, and identical server

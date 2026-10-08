@@ -82,4 +82,74 @@ describe("assessment journey", () => {
       initialJourney(null),
     );
   });
+
+  it.each(pathwayIds)(
+    "edits any completed %s answer without discarding the others",
+    (pathway) => {
+      const questions = assessmentPathways[pathway].questions;
+      let completed = initialJourney(pathway);
+      for (const question of questions) {
+        completed = journeyReducer(completed, {
+          type: "answer",
+          value: question.options[3].value,
+        });
+        completed = journeyReducer(completed, { type: "next" });
+      }
+
+      questions.forEach((question, step) => {
+        let edited = journeyReducer(completed, {
+          type: "edit",
+          questionId: question.id,
+        });
+        expect(edited.step).toBe(step);
+        expect(edited.complete).toBe(false);
+        expect(edited.answers).toBe(completed.answers);
+        edited = journeyReducer(edited, {
+          type: "answer",
+          value: question.options[0].value,
+        });
+        edited = journeyReducer(edited, { type: "finish" });
+        expect(edited.complete).toBe(true);
+        expect(scoreAssessment(pathway, edited.answers)?.score).toBe(12);
+        expect(edited.answers).toEqual({
+          ...completed.answers,
+          [question.id]: question.options[0].value,
+        });
+        expect(completed.answers[question.id]).toBe(question.options[3].value);
+      });
+    },
+  );
+
+  it("cannot use finish to bypass missing or invalid answers", () => {
+    const state = initialJourney("career");
+    expect(journeyReducer(state, { type: "finish" })).toBe(state);
+    const questions = assessmentPathways.career.questions;
+    const answers = Object.fromEntries(
+      questions.map((question) => [question.id, question.options[0].value]),
+    );
+    for (const invalidAnswers of [
+      { ...answers, [questions[0].id]: "unknown" },
+      { ...answers, "risk-data": "unknown" },
+    ]) {
+      const invalid = { ...state, answers: invalidAnswers };
+      expect(journeyReducer(invalid, { type: "finish" })).toBe(invalid);
+    }
+  });
+
+  it("ignores answer editing before completion and for unknown questions", () => {
+    const state = initialJourney("career");
+    expect(
+      journeyReducer(state, {
+        type: "edit",
+        questionId: assessmentPathways.career.questions[0].id,
+      }),
+    ).toBe(state);
+    const complete = { ...state, complete: true };
+    expect(
+      journeyReducer(complete, { type: "edit", questionId: "risk-data" }),
+    ).toBe(complete);
+    expect(journeyReducer(initialJourney(null), { type: "finish" })).toEqual(
+      initialJourney(null),
+    );
+  });
 });

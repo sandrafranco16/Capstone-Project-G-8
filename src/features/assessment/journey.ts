@@ -10,6 +10,8 @@ export type JourneyState = {
 export type JourneyAction =
   | { type: "pathway"; pathway: PathwayId | null }
   | { type: "answer"; value: string }
+  | { type: "edit"; questionId: string }
+  | { type: "finish" }
   | { type: "next" }
   | { type: "back" }
   | { type: "restart" };
@@ -27,6 +29,22 @@ export function journeyReducer(
       return initialJourney(action.pathway);
     case "restart":
       return initialJourney(state.pathway);
+    case "edit": {
+      if (!state.pathway || !state.complete) return state;
+      const step = assessmentPathways[state.pathway].questions.findIndex(
+        (question) => question.id === action.questionId,
+      );
+      return step === -1 ? state : { ...state, step, complete: false };
+    }
+    case "finish": {
+      if (!state.pathway || state.complete) return state;
+      if (!scoreAssessment(state.pathway, state.answers)) return state;
+      return {
+        ...state,
+        step: assessmentPathways[state.pathway].questions.length - 1,
+        complete: true,
+      };
+    }
     case "answer": {
       if (!state.pathway || state.complete) return state;
       const question = assessmentPathways[state.pathway].questions[state.step];
