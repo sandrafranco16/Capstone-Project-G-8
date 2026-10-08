@@ -16,6 +16,7 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "check:headers": "node scripts/check-security-headers.mjs",
+    "check:recovery": "node scripts/check-recovery-routes.mjs",
     "prepare": "husky"
   },
   "dependencies": {
