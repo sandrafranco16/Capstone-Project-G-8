@@ -91,3 +91,33 @@ Synthetic localhost configuration and mock email were used; no live services wer
 The test server was stopped after verification. Client acceptance, real CMS publishing,
 calendar bookings, email delivery and account transfer remain pending; do not infer
 them from these local checks.
+
+## 5. Main integration and conflict-resolution checks — 8 October 2026
+
+Verified a clean archive of **`c55beb6`**, integrating main **`fa84259`** into
+`docs/client-handover`. The two conflicts were resolved by retaining main's blank
+environment-variable template and documenting its required CMS configuration.
+Contact and navigation instructions were also aligned with the newly merged code.
+Runtime: Node 24.19.0, pnpm 11.19.0. No dependency or application-logic changes
+were introduced by the conflict resolution.
+
+The archive excluded `.env.local`, uncommitted `next-env.d.ts` and `tmp/`.
+Only synthetic localhost configuration and mock email were used.
+
+| Check                                       | Actual result                                                                   |
+| ------------------------------------------- | ------------------------------------------------------------------------------- |
+| Frozen-lockfile install                     | Passed; lockfile unchanged                                                      |
+| `pnpm lint` / `pnpm typecheck`              | Passed                                                                          |
+| `pnpm test`                                 | **33 files, 263 tests passed**                                                  |
+| `pnpm build`                                | Passed; 32 static pages generated                                               |
+| `pnpm format:check`                         | Passed                                                                          |
+| Local documentation links                   | 69 relative file links across 17 changed Markdown documents; no missing targets |
+| Production HTTP checks, port 3130           | Home, Contact, Booking, blog index and both remaining articles: 200             |
+| Removed test articles and sitemap           | Three deleted article routes: 404; sitemap: 200, without their slugs            |
+| Production Contact without Turnstile secret | Valid synthetic enquiry returned 503 with an `errors` array; no email sent      |
+| Missing `CMS_REPOSITORY`                    | `/api/cms/config` and `/api/cms/auth?provider=github` returned 503              |
+| Missing production `CMS_OAUTH_BASE_URL`     | The same two endpoints returned 503                                             |
+
+Test servers were stopped after verification. These checks do not establish real
+CMS publishing, booking, inbox delivery, client acceptance or successful production
+account transfer. Repeat the relevant checks on the final release.
