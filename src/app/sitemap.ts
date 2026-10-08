@@ -1,12 +1,13 @@
 import type { MetadataRoute } from "next";
 
 import { listBlogArticles } from "@/features/blog/repository";
-import { pathways } from "@/features/pathways/content";
-import { services } from "@/features/services/content";
 import { siteConfig } from "@/lib/site-config";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const articles = await listBlogArticles();
+  // /pathways/[slug] and /services/[slug] redirect to /assessment and
+  // /services (see features/seo/detail-page-redirects.ts), so only the
+  // destination pages are listed here.
   const staticRoutes = [
     "",
     "/about",
@@ -19,8 +20,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   ];
   const routes = [
     ...staticRoutes,
-    ...pathways.map((pathway) => `/pathways/${pathway.slug}`),
-    ...services.map((service) => `/services/${service.slug}`),
     ...articles.map((article) => `/blog/${article.slug}`),
   ];
 
