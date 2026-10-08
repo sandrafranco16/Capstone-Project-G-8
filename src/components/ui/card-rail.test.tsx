@@ -149,4 +149,28 @@ describe("CardRail", () => {
     unmount();
     expect(disconnect).toHaveBeenCalled();
   });
+
+  it.each([
+    ["Home", "ctrlKey"],
+    ["End", "ctrlKey"],
+    ["ArrowLeft", "altKey"],
+    ["ArrowRight", "altKey"],
+    ["ArrowLeft", "metaKey"],
+    ["ArrowRight", "metaKey"],
+    ["Home", "shiftKey"],
+    ["End", "shiftKey"],
+  ])("leaves %s with %s available to the browser", (key, modifier) => {
+    render(
+      <CardRail title="Shortcuts">
+        <div>First</div>
+        <div>Second</div>
+      </CardRail>,
+    );
+    const rail = screen.getByRole("list", { name: "Shortcuts" });
+    geometry(rail);
+    const allowed = fireEvent.keyDown(rail, { key, [modifier]: true });
+    expect(allowed).toBe(true);
+    expect(rail.scrollBy).not.toHaveBeenCalled();
+    expect(rail.scrollTo).not.toHaveBeenCalled();
+  });
 });
