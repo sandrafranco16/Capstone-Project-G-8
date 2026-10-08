@@ -1,7 +1,7 @@
 .panel {
   padding: clamp(24px, 5vw, 48px);
-  border-radius: 26px;
-  background: #0e2e29;
+  border-radius: var(--r-lg);
+  background: var(--forest);
   color: #fff;
 }
 .title {
@@ -11,7 +11,7 @@
 }
 .description {
   max-width: 65ch;
-  color: #e0e9e5;
+  color: var(--fill-slate);
   overflow-wrap: anywhere;
 }
 .actions {
@@ -28,7 +28,7 @@
   max-width: 100%;
   padding: 12px 22px;
   border: 2px solid transparent;
-  border-radius: 999px;
+  border-radius: var(--r-pill);
   font: inherit;
   font-weight: 650;
   line-height: 1.4;
@@ -39,22 +39,22 @@
   transition: background-color 0.2s;
 }
 .primary {
-  background: #f0552b;
-  color: #12201c;
+  background: var(--coral);
+  color: var(--ink);
 }
 .primary:hover {
-  background: #ff7955;
+  background: var(--coral);
 }
 .secondary {
   background: #fff;
-  border-color: #60766c;
-  color: #12201c;
+  border-color: var(--ink-3);
+  color: var(--ink);
 }
 .secondary:hover {
-  background: #e6f0ea;
+  background: var(--green-wash);
 }
 .action:focus-visible {
-  outline: 3px solid #0b7a56;
+  outline: 3px solid var(--green);
   outline-offset: 3px;
 }
 .panel .action:focus-visible {

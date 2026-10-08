@@ -5,7 +5,7 @@
   overflow: hidden;
   margin: 0;
   padding: 0;
-  background: #0e2e29;
+  background: var(--forest);
   color: rgba(255, 255, 255, 0.72);
   font-family:
     -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text",
@@ -22,7 +22,7 @@
   left: 0;
   right: 0;
   height: 0.1875rem;
-  background: linear-gradient(100deg, #f0552b 0%, #f59e0b 100%);
+  background: linear-gradient(100deg, var(--coral) 0%, var(--coral) 100%);
 }
 /* :where keeps this reset below the component classes that follow. */
 .footer :where(div, nav, h2, p, ul, li, a, span, svg) {
@@ -95,7 +95,7 @@
   transition: color 0.18s;
 }
 .column a:hover {
-  color: #ff9e7a;
+  color: var(--coral-light);
 }
 
 .legal {
@@ -128,7 +128,7 @@
   outline: none;
 }
 .footer a:focus-visible {
-  outline: 0.125rem solid #ff9e7a;
+  outline: 0.125rem solid var(--coral-light);
   outline-offset: 0.25rem;
   border-radius: 0.25rem;
 }

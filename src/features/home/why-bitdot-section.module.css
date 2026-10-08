@@ -1,6 +1,6 @@
 .section {
   padding: 0 0 5.5rem;
-  background: #f5f2ea;
+  background: var(--mist);
   color: #fff;
   font-family:
     -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Inter",
@@ -26,8 +26,8 @@
   position: relative;
   overflow: hidden;
   padding: 3.5rem;
-  border-radius: 1.75rem;
-  background: #0e2e29;
+  border-radius: var(--r-lg);
+  background: var(--forest);
   box-shadow:
     0 0.0625rem 0.125rem rgb(18 32 28 / 8%),
     0 0.5rem 1.5rem rgb(18 32 28 / 10%);
@@ -52,7 +52,7 @@
   align-items: center;
   gap: 0.5rem;
   margin-bottom: 1rem;
-  color: #9ee6d2;
+  color: var(--green-wash);
   font-size: 0.83rem;
   font-weight: 620;
 }
@@ -62,7 +62,7 @@
   width: 0.4375rem;
   height: 0.4375rem;
   border-radius: 50%;
-  background: #ff9e7a;
+  background: var(--coral-light);
   flex: none;
 }
 
@@ -82,7 +82,7 @@
   z-index: 1;
   max-width: 60ch;
   margin-top: 0.875rem;
-  color: #ced8d5;
+  color: var(--line);
   font-size: 1.08rem;
   letter-spacing: -0.006em;
 }
@@ -95,7 +95,7 @@
   gap: 1px;
   margin-top: 2.5rem;
   overflow: hidden;
-  border-radius: 1.25rem;
+  border-radius: var(--r);
   background: rgb(255 255 255 / 12%);
 }
 
@@ -112,18 +112,18 @@
   margin-bottom: 1rem;
   border-radius: 0.85rem;
   background: rgb(255 255 255 / 8%);
-  color: #ff9e7a;
+  color: var(--coral-light);
 }
 .item:nth-child(2) .icon {
-  color: #7fc0ff;
+  color: var(--blue-bright);
 }
 
 .item:nth-child(3) .icon {
-  color: #9ee6d2;
+  color: var(--green-wash);
 }
 
 .item:nth-child(4) .icon {
-  color: #d8ccff;
+  color: var(--blue-wash);
 }
 .itemTitle {
   color: #fff;
@@ -135,7 +135,7 @@
 
 .itemText {
   margin-top: 0.55rem;
-  color: #ced8d5;
+  color: var(--line);
   font-size: 0.94rem;
 }
 
@@ -150,7 +150,7 @@
 
   .band {
     padding: 2.25rem 1.5rem;
-    border-radius: 1.4rem;
+    border-radius: var(--r);
   }
 
   .grid {
