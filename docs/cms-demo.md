@@ -5,7 +5,12 @@ Decap edits Markdown in `src/content/blog` and media in `public/uploads`.
 ## Local development
 
 Follow the [root README](../README.md) to install Node 24.x, pnpm and local demo
-configuration. Open two terminals in the repository root:
+configuration. Copy `.env.example` to `.env.local` and explicitly set
+`CMS_REPOSITORY=owner/repository`; there is no default repository, even locally.
+The example file contains keys only, so configure localhost and mock email as
+shown in README. Never commit `.env.local` or secrets.
+
+Open two terminals in the repository root:
 
 ```bash
 pnpm dev
@@ -21,6 +26,17 @@ copy; use Git diff to inspect them.
 
 Decap's local backend does not support the editorial workflow. Local publication
 writes directly to disk, not GitHub PRs. Never expose this proxy publicly.
+
+## Configuration requirements
+
+- `CMS_REPOSITORY` is required in every environment.
+- `CMS_OAUTH_BASE_URL` is required in production, including preview deployments;
+  use a stable HTTPS origin matching the OAuth App callback.
+- Missing required configuration makes CMS configuration/authentication endpoints
+  return 503 rather than silently using a fallback repository or request origin.
+- Local development may use the request origin (`http://localhost:3000`).
+- `CMS_BRANCH` defaults to `main` if omitted; explicitly choose the intended
+  existing branch when isolating CMS tests.
 
 ## Online CMS
 

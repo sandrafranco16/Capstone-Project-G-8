@@ -14,10 +14,21 @@ function escapeHtml(text: string): string {
     .replace(/'/g, "&#39;");
 }
 
+/** Label/value rows for the summary; optional fields are left out when blank. */
+function detailRows(input: LeadEmailInput): [string, string][] {
+  const rows: [string, string | undefined][] = [
+    ["Name", input.name],
+    ["Email", input.email],
+    ["Phone", input.phone],
+    ["Organisation", input.organisation],
+    ["Enquiry type", input.enquiryType],
+  ];
+  return rows.filter((row): row is [string, string] => Boolean(row[1]));
+}
+
 function buildPlainTextBody(input: LeadEmailInput): string {
   return [
-    `Name: ${input.name}`,
-    `Email: ${input.email}`,
+    ...detailRows(input).map(([label, value]) => `${label}: ${value}`),
     "",
     "Message:",
     input.message,
@@ -26,8 +37,10 @@ function buildPlainTextBody(input: LeadEmailInput): string {
 
 function buildHtmlBody(input: LeadEmailInput): string {
   return [
-    "<p><strong>Name:</strong> " + escapeHtml(input.name) + "</p>",
-    "<p><strong>Email:</strong> " + escapeHtml(input.email) + "</p>",
+    ...detailRows(input).map(
+      ([label, value]) =>
+        "<p><strong>" + label + ":</strong> " + escapeHtml(value) + "</p>",
+    ),
     "<p><strong>Message:</strong></p>",
     "<p>" + escapeHtml(input.message).replace(/\n/g, "<br>") + "</p>",
   ].join("\n");

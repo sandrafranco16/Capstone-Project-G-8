@@ -27,7 +27,7 @@ not update an already-built browser bundle.
 | -------------------------------- | ------------------------------------------------------------------------------- |
 | `NEXT_PUBLIC_SITE_URL`           | Non-empty canonical HTTPS origin; local demo uses `http://localhost:3000`       |
 | `NEXT_PUBLIC_CALCOM_URL`         | Client's Cal.com profile URL, e.g. `https://cal.com/<username>`                 |
-| `CMS_REPOSITORY`                 | Explicit current `owner/repository`; do not rely on the old owner fallback      |
+| `CMS_REPOSITORY`                 | Required in every environment: explicit current `owner/repository`; no fallback |
 | `CMS_BRANCH`                     | Existing content target branch, normally `main`; never a deleted feature branch |
 | `CMS_OAUTH_BASE_URL`             | Stable HTTPS **origin only**, no `/admin`, query or fragment                    |
 | `CMS_GITHUB_CLIENT_ID`           | OAuth App Client ID; required for online CMS                                    |
@@ -43,6 +43,10 @@ not update an already-built browser bundle.
 | `NEXT_PUBLIC_CLARITY_ID`         | Optional Clarity ID; same integration limitation                                |
 
 Anything named `NEXT_PUBLIC_*` is visible to visitors; never place a secret there.
+CMS configuration/authentication routes return 503 when required repository
+configuration is missing, or when the production OAuth origin is missing. Development
+may use the localhost request origin; production and preview must use the configured
+stable origin. `CMS_BRANCH` defaults to `main` when omitted.
 The only production API paths required here are `/api/contact`, `/api/cms/config`,
 `/api/cms/auth` and `/api/cms/callback`. No application database, object-storage account,
 SMTP server or Cal.com API key is required for this MVP.

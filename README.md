@@ -24,7 +24,8 @@ pnpm install --frozen-lockfile
 cp .env.example .env.local
 ```
 
-Edit `.env.local` so these values are set explicitly:
+The example file contains keys only. Edit `.env.local` so these values are set
+explicitly; `CMS_REPOSITORY` is required even in local development:
 
 ```dotenv
 NEXT_PUBLIC_SITE_URL=http://localhost:3000

@@ -1,6 +1,17 @@
+import {
+  CONTACT_LIMITS,
+  type EnquiryType,
+  isEnquiryType,
+  isValidEmail,
+  isValidPhone,
+} from "./contact-fields";
+
 export type ContactPayload = {
   name: string;
   email: string;
+  phone: string;
+  organisation: string;
+  enquiryType: EnquiryType;
   message: string;
   consent: boolean;
 };
@@ -19,24 +30,43 @@ export function validateContactPayload(
   }
 
   const input = value as Record<string, unknown>;
-  const name = typeof input.name === "string" ? input.name.trim() : "";
-  const email = typeof input.email === "string" ? input.email.trim() : "";
-  const message = typeof input.message === "string" ? input.message.trim() : "";
+  const text = (key: string) =>
+    typeof input[key] === "string" ? (input[key] as string).trim() : "";
+  const name = text("name");
+  const email = text("email");
+  const phone = text("phone");
+  const organisation = text("organisation");
+  const enquiryType = text("enquiryType");
+  const message = text("message");
   const consent = input.consent === true;
   const errors: string[] = [];
+  const limits = CONTACT_LIMITS;
 
-  if (name.length < 2 || name.length > 100) errors.push("Name is invalid.");
-  if (!/^\S+@\S+\.\S+$/.test(email) || email.length > 254) {
-    errors.push("Email is invalid.");
+  if (name.length < limits.name.min || name.length > limits.name.max) {
+    errors.push("Name is invalid.");
   }
-  if (message.length < 10 || message.length > 5000) {
+  if (!isValidEmail(email)) errors.push("Email is invalid.");
+  if (phone && !isValidPhone(phone)) errors.push("Phone is invalid.");
+  if (organisation.length > limits.organisation.max) {
+    errors.push("Organisation is invalid.");
+  }
+  if (!isEnquiryType(enquiryType)) errors.push("Enquiry type is invalid.");
+  if (
+    message.length < limits.message.min ||
+    message.length > limits.message.max
+  ) {
     errors.push("Message is invalid.");
   }
   if (!consent) errors.push("Consent is required.");
 
-  return errors.length > 0
-    ? { success: false, errors }
-    : { success: true, data: { name, email, message, consent } };
+  if (errors.length > 0 || !isEnquiryType(enquiryType)) {
+    return { success: false, errors };
+  }
+
+  return {
+    success: true,
+    data: { name, email, phone, organisation, enquiryType, message, consent },
+  };
 }
 
 /**

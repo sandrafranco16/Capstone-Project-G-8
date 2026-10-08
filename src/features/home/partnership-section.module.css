@@ -1,0 +1,144 @@
+.section {
+  padding: 5.5rem 0;
+  background: #f5f2ea;
+  color: #12201c;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Inter",
+    "Helvetica Neue", Arial, sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.56;
+  letter-spacing: -0.011em;
+}
+
+.section p,
+.section h2,
+.section h3 {
+  margin: 0;
+}
+
+.inner {
+  max-width: 75rem;
+  margin: 0 auto;
+  padding: 0 1.75rem;
+}
+
+.headingBlock {
+  max-width: 47.5rem;
+  margin-bottom: 2.75rem;
+}
+
+.label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  color: #0b7a56;
+  font-size: 0.83rem;
+  font-weight: 620;
+}
+
+.label::before {
+  content: "";
+  width: 0.4375rem;
+  height: 0.4375rem;
+  border-radius: 50%;
+  background: #0ea47a;
+  flex: none;
+}
+
+.heading {
+  max-width: 22ch;
+  color: #12201c;
+  font-size: clamp(2.1rem, 4.6vw, 3.5rem);
+  font-weight: 730;
+  letter-spacing: -0.044em;
+  line-height: 1.02;
+}
+
+.lead {
+  max-width: 62ch;
+  margin-top: 0.875rem;
+  color: #4d5d56;
+  font-size: 1.08rem;
+  letter-spacing: -0.006em;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+.card {
+  min-width: 0;
+  padding: 2rem;
+  border: 1px solid rgb(18 32 28 / 8%);
+  border-radius: 1.5rem;
+  background: #fff;
+  box-shadow:
+    0 0.0625rem 0.125rem rgb(18 32 28 / 4%),
+    0 0.25rem 0.875rem rgb(18 32 28 / 5%);
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.card:hover {
+  transform: translateY(-0.2rem);
+  box-shadow:
+    0 0.125rem 0.25rem rgb(18 32 28 / 5%),
+    0 0.65rem 1.5rem rgb(18 32 28 / 8%);
+}
+
+.icon {
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  margin-bottom: 1.1rem;
+  border-radius: 0.85rem;
+  background: #e8f5ef;
+  color: #0b7a56;
+}
+
+.cardTitle {
+  color: #12201c;
+  font-size: 1.15rem;
+  font-weight: 680;
+  letter-spacing: -0.024em;
+  line-height: 1.25;
+}
+
+.cardText {
+  margin-top: 0.6rem;
+  color: #4d5d56;
+  font-size: 0.95rem;
+}
+
+@media (max-width: 65rem) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 47.5rem) {
+  .section {
+    padding: 4rem 0;
+  }
+
+  .inner {
+    padding: 0 1.25rem;
+  }
+
+  .headingBlock {
+    margin-bottom: 2rem;
+  }
+
+  .grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .card {
+    padding: 1.5rem;
+  }
+}

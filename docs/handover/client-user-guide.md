@@ -55,7 +55,8 @@ The website does not manage bookings, take payments or send booking reminders it
 
 ## 4. Receive and reply to enquiries
 
-Visitors enter name, email and message, consent to a response, complete spam
+Visitors enter name, email, enquiry topic and message, optionally provide phone
+and organisation, consent to a response, complete spam
 verification and select **Send Enquiry**. With live email configured, the enquiry
 goes to the agreed BITDOT inbox. Use **Reply** in the received email; Reply-To is the
 visitor's address. Review the address and message before replying.
