@@ -1,3 +1,6 @@
+import { existsSync } from "node:fs";
+import { join } from "node:path";
+
 import { describe, expect, it, vi } from "vitest";
 
 import nextConfig from "../../../next.config";
@@ -58,5 +61,14 @@ describe("sitemap", () => {
     expect(urls).toContain("/blog/sample-article");
     expect(urls.some((url) => url.startsWith("/pathways/"))).toBe(false);
     expect(urls.some((url) => url.startsWith("/services/"))).toBe(false);
+  });
+
+  it("only lists static routes that have a page, including /automation-lab", async () => {
+    const { staticSitemapRoutes } = await import("@/app/sitemap");
+
+    expect(staticSitemapRoutes).toContain("/automation-lab");
+    for (const route of staticSitemapRoutes) {
+      expect(existsSync(join("src/app", route, "page.tsx"))).toBe(true);
+    }
   });
 });
