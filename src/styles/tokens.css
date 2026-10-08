@@ -1,0 +1,126 @@
+/*
+ * BITDOT design tokens: the one place colours, shapes and shadows are set.
+ *
+ * Every page reads these: the React feature modules, globals.css and the
+ * prototype-backed pages (home, about, legal), whose demo stylesheet uses the
+ * same variable names. `html:root` is used instead of `:root` so these values
+ * win over the prototype's own `:root` block regardless of load order.
+ *
+ * Colour rules
+ * - Four pathway colours, each with one meaning everywhere:
+ *   career = berry, learn = green, govern = indigo, risk = coral.
+ * - Cards sit on a light tint of one of those four (plus a neutral), instead
+ *   of the eight unrelated pastels the prototype started with. Sand is gone,
+ *   as the client asked.
+ * - Coral stays the single call-to-action colour. Forest, maroon and navy are
+ *   the dark jewel bands. The base stays warm and light.
+ *
+ * Shape rules
+ * - Cards and panels share one signature shape: rounded on three corners with
+ *   a tighter bottom-left corner, a nod to the BITDOT dot sitting on its ring.
+ *   Set --r-cut to the same value as --r to go back to plain rounded cards.
+ * - Buttons, chips and tags are pills. Icons sit in circles.
+ */
+
+html:root {
+  /* Neutrals */
+  --canvas: #fcfaf5;
+  --paper: #ffffff;
+  --mist: #f4f1ea;
+  --mist-2: #ece7db;
+  --line: #e6e0d3;
+  --line-2: #d8cfbb;
+  --ink: #12201c;
+  --ink-2: #4b5a52;
+  --ink-3: #7c8a81;
+
+  /* Pathway and accent colours (text-safe on white and on their tint) */
+  --coral: #f0552b;
+  --coral-deep: #c63f19;
+  --coral-light: #ff9e7a;
+  --coral-wash: #fde9e1;
+
+  --berry: #b3264f;
+  --berry-wash: #f8e4ea;
+
+  --green: #0b7a56;
+  --green-bright: #12a378;
+  --green-wash: #e0f1e9;
+
+  --blue: #3b4cca;
+  --blue-deep: #2d3ba6;
+  --blue-bright: #5b6cf0;
+  --blue-wash: #e9ebfb;
+
+  /* Older names kept as aliases so nothing breaks */
+  --plum: var(--blue);
+  --plum-wash: var(--blue-wash);
+  --amber: var(--coral);
+  --amber-wash: var(--coral-wash);
+
+  --path-career: var(--berry);
+  --path-learn: var(--green);
+  --path-govern: var(--blue);
+  --path-risk: var(--coral-deep);
+
+  /* Card fills: the prototype's eight pastels collapse into four tints */
+  --fill-rose: var(--berry-wash);
+  --fill-blush: var(--coral-wash);
+  --fill-sand: var(--coral-wash);
+  --fill-sage: var(--green-wash);
+  --fill-mint: var(--green-wash);
+  --fill-sky: var(--blue-wash);
+  --fill-lilac: var(--blue-wash);
+  --fill-slate: #eef0f2;
+
+  /* Dark jewel bands and bold cards */
+  --forest: #0e2e29;
+  --forest-2: #153f38;
+  --forest-3: #1c4f46;
+  --maroon: #5c1a2e;
+  --maroon-2: #742038;
+  --navy: #16233e;
+  --navy-2: #1e304f;
+  --bold-coral: var(--coral);
+  --bold-plum: var(--blue);
+  --bold-green: var(--green);
+  --bold-maroon: var(--maroon);
+  --bold-navy: var(--navy);
+  --bold-forest: var(--forest);
+
+  --grad: linear-gradient(
+    100deg,
+    var(--blue) 0%,
+    var(--berry) 55%,
+    var(--coral) 100%
+  );
+  --grad-warm: linear-gradient(
+    100deg,
+    var(--coral) 0%,
+    var(--coral-light) 100%
+  );
+
+  /* Shapes */
+  --r-cut: 6px;
+  --r-xs: 8px;
+  --r-sm: 12px;
+  --r: 20px 20px 20px var(--r-cut);
+  --r-lg: 28px 28px 28px var(--r-cut);
+  --r-pill: 999px;
+
+  /* Shadows, tinted with the ink colour */
+  --sh: 0 1px 2px rgb(18 32 28 / 5%), 0 4px 14px rgb(18 32 28 / 6%);
+  --sh-2: 0 3px 6px rgb(18 32 28 / 5%), 0 16px 36px rgb(18 32 28 / 11%);
+  --sh-3: 0 6px 12px rgb(18 32 28 / 6%), 0 28px 64px rgb(18 32 28 / 16%);
+
+  /* Names used by globals.css and the early Next.js pages */
+  --surface: var(--paper);
+  --ink-soft: var(--ink-2);
+  --slate: var(--ink-2);
+  --azure: var(--blue);
+  --violet: var(--berry);
+  --teal: var(--green);
+  --gradient: var(--grad);
+  --radius: var(--r);
+  --shadow: var(--sh-2);
+}

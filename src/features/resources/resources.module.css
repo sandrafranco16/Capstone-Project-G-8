@@ -12,76 +12,22 @@
 .page {
   /* base canvas — warm, not stark white. White is reserved for cards
      that need to pop against a tint, not for whole sections by default. */
-  --canvas: #fcfaf5;
-  --paper: #ffffff;
-  --mist: #f3f0e8;
-  --mist-2: #ece7db;
-  --line: #e6e0d3;
-  --line-2: #d8cfbb;
-
-  --ink: #12201c;
-  --ink-2: #4b5a52;
-  --ink-3: #7c8a81;
 
   /* blues — accent, not a wash */
-  --blue: #0071e3;
-  --blue-deep: #0057b8;
-  --blue-bright: #2e96ff;
-  --blue-wash: #eaf3ff;
 
   /* the hot accent — edX-orange territory */
-  --coral: #f0552b;
-  --coral-deep: #d53f17;
-  --coral-wash: #fde7de;
-
-  --amber: #f59e0b;
-  --amber-wash: #fdf1dd;
-  --green: #0ea47a;
-  --green-wash: #e3f5ed;
-  --plum: #6d5bd0;
-  --plum-wash: #ece7fb;
 
   /* the dark family — forest, not navy. Used for banners and bands. */
-  --forest: #0e2e29;
-  --forest-2: #153f38;
-  --forest-3: #1c4f46;
-  --maroon: #5c1a2e;
-  --maroon-2: #742038;
-  --navy: #16233e;
-  --navy-2: #1e304f;
-
-  --grad: linear-gradient(100deg, #0057b8 0%, #0071e3 45%, #2e96ff 100%);
-  --grad-warm: linear-gradient(100deg, #f0552b 0%, #f59e0b 100%);
 
   /* card fills — saturated pastels, cards sit ON colour as the default */
-  --fill-sky: #dbeafd;
-  --fill-sand: #f7e7c9;
-  --fill-sage: #daeee1;
-  --fill-lilac: #e6dff9;
-  --fill-blush: #fbded2;
-  --fill-mint: #d3f0e8;
-  --fill-slate: #e3e8f0;
-  --fill-rose: #f7dce3;
 
   /* bold fills — the real saturated colour, white text on top.
      Used sparingly for cards that need to carry real weight
      (leadership, key CTAs) rather than sit in a pastel wash. */
-  --bold-coral: #f0552b;
-  --bold-plum: #6d5bd0;
-  --bold-green: #0b7a56;
-  --bold-maroon: #5c1a2e;
-  --bold-navy: #16233e;
-  --bold-forest: #0e2e29;
 
   --sans:
     -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Inter",
     "Helvetica Neue", Arial, sans-serif;
-
-  --r: 18px;
-  --r-lg: 26px;
-  --sh: 0 1px 2px rgba(18, 32, 28, 0.05), 0 4px 14px rgba(18, 32, 28, 0.06);
-  --sh-2: 0 3px 6px rgba(18, 32, 28, 0.05), 0 16px 36px rgba(18, 32, 28, 0.11);
-  --sh-3: 0 6px 12px rgba(18, 32, 28, 0.06), 0 28px 64px rgba(18, 32, 28, 0.16);
 }
 
 .page * {
@@ -118,7 +64,7 @@
   border-radius: 8px;
 }
 .page ::selection {
-  background: #fbd2c2;
+  background: var(--coral-wash);
   color: var(--ink);
 }
 
@@ -216,10 +162,10 @@
   background: var(--plum);
 }
 .page .label.on-dark {
-  color: #ff9e7a;
+  color: var(--coral-light);
 }
 .page .label.on-dark::before {
-  background: #ff9e7a;
+  background: var(--coral-light);
 }
 .page .sec-head {
   margin-bottom: 44px;
@@ -238,7 +184,7 @@
   font-weight: 640;
   letter-spacing: -0.01em;
   padding: 14px 26px;
-  border-radius: 999px;
+  border-radius: var(--r-pill);
   border: 1px solid transparent;
   cursor: pointer;
   transition:
@@ -528,14 +474,14 @@
   color: var(--ink-2);
   background: var(--paper);
   padding: 10px 19px;
-  border-radius: 999px;
+  border-radius: var(--r-pill);
   box-shadow: var(--sh);
 }
 .page .stamp i {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: #0b7a56;
+  background: var(--green);
   flex: none;
 }
 .page .jump {
@@ -548,7 +494,7 @@
   font-size: 0.88rem;
   font-weight: 580;
   padding: 10px 19px;
-  border-radius: 999px;
+  border-radius: var(--r-pill);
   background: var(--paper);
   color: var(--ink-2);
   box-shadow: var(--sh);
@@ -569,7 +515,7 @@
   font-size: 0.86rem;
   font-weight: 580;
   padding: 9px 18px;
-  border-radius: 999px;
+  border-radius: var(--r-pill);
   border: 1px solid var(--line-2);
   background: var(--paper);
   color: var(--ink-2);
@@ -609,9 +555,9 @@
   border-radius: 2px;
   background: linear-gradient(
     180deg,
-    #0057b8,
-    #2e96ff 45%,
-    #f0552b 78%,
+    var(--blue-deep),
+    var(--blue-bright) 45%,
+    var(--coral) 78%,
     rgba(240, 85, 43, 0.15)
   );
 }
@@ -637,25 +583,25 @@
   font-size: 0.74rem;
   font-weight: 580;
   padding: 4px 11px;
-  border-radius: 999px;
+  border-radius: var(--r-pill);
   color: var(--ink-2);
   background: var(--mist);
   white-space: nowrap;
 }
 .page .tag.au {
-  color: #0057b8;
+  color: var(--blue-deep);
   background: var(--fill-sky);
 }
 .page .tag.eu {
-  color: #5a48b8;
+  color: var(--blue-deep);
   background: var(--fill-lilac);
 }
 .page .tag.live {
-  color: #0b7a56;
+  color: var(--green);
   background: var(--fill-mint);
 }
 .page .tag.next {
-  color: #93630a;
+  color: var(--coral-deep);
   background: var(--fill-sand);
 }
 .page .today {
@@ -685,7 +631,7 @@
   min-height: 2.5rem;
   padding: 0.55rem 1rem;
   border: 1px solid var(--line);
-  border-radius: 999px;
+  border-radius: var(--r-pill);
   background: var(--paper);
   color: var(--ink);
   box-shadow: var(--sh);

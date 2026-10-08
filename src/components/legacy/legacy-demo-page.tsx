@@ -36,7 +36,12 @@ function rewriteDemoLinks(markup: string) {
 }
 
 function loadDemo(file: DemoFile) {
-  const original = readFileSync(join(process.cwd(), "demo", file), "utf8");
+  // Windows checkouts can store the prototype with CRLF line endings; the
+  // homepage adapters match LF-only snippets, so normalise first.
+  const original = readFileSync(
+    join(process.cwd(), "demo", file),
+    "utf8",
+  ).replace(/\r\n/g, "\n");
   const source =
     file === "index.html"
       ? prepareHomepageShell(prepareHomepageAssessment(original))
