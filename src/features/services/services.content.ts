@@ -22,7 +22,7 @@ export const servicePractices = [
       "Coaching for students, graduates and professionals moving into AI roles, including engineers planning their next step.",
     enquiry: {
       label: "Enquire about this",
-      href: "/#contact",
+      href: "/contact",
     },
     offers: [
       {
@@ -59,7 +59,7 @@ export const servicePractices = [
       "Practical sessions that demystify the tools, run on your real workflows rather than a demo dataset.",
     enquiry: {
       label: "Enquire about this",
-      href: "/#contact",
+      href: "/contact",
     },
     offers: [
       {
@@ -96,7 +96,7 @@ export const servicePractices = [
       "Our flagship board program plus the advisory that follows it: frameworks, policy design and accountability that survives an audit.",
     enquiry: {
       label: "Enquire about this",
-      href: "/#contact",
+      href: "/contact",
     },
     offers: [
       {
@@ -132,7 +132,7 @@ export const servicePractices = [
       "Rehearse the incident before it rehearses you, and know which obligations already apply to you today.",
     enquiry: {
       label: "Enquire about this",
-      href: "/#contact",
+      href: "/contact",
     },
     offers: [
       {
@@ -218,7 +218,7 @@ export const servicesCTA = {
     },
     {
       label: "Book a session",
-      href: "/#contact",
+      href: "/booking",
       variant: "on-dark",
     },
   ],
