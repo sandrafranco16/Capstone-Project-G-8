@@ -1,10 +1,9 @@
 /*
  * BITDOT design tokens: the one place colours, shapes and shadows are set.
  *
- * Every page reads these: the React feature modules, globals.css and the
- * prototype-backed pages (home, about, legal), whose demo stylesheet uses the
- * same variable names. `html:root` is used instead of `:root` so these values
- * win over the prototype's own `:root` block regardless of load order.
+ * Every page reads these: the React feature modules and globals.css.
+ * `html:root` gives these values a higher specificity than a plain `:root`
+ * block, so a module can't accidentally override a token for the whole page.
  *
  * Colour rules
  * - Four pathway colours, each with one meaning everywhere:

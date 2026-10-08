@@ -1,71 +1,19 @@
 /*
- * Surface rules shared by every page, including the prototype-backed pages
- * (home, about, legal) whose markup comes from demo/*.html.
+ * Shape rules for the global `card` and `btn` classes, which several feature
+ * modules (Services, booking, legal) still use alongside their CSS modules.
  *
- * Tinted fills are kept for things that belong to a pathway (pathway cards,
- * services offers, stats). General content grids sit on white cards with a
- * hairline, so the tints keep their meaning instead of decorating everything.
- * The `html` prefix lets these win over the prototype's inline stylesheet.
+ * The prototype-only rules that used to live here (white content cards, the
+ * flagship panel, swipe-rail gutters) were removed with the legacy homepage
+ * loader, because no rendered page uses those classes any more.
  */
 
-/* General content cards: white, hairline, coloured icon only */
-html .card.fill.svc,
-html .card.fill.tool,
-html .card.fill.res {
-  background: var(--paper);
-  border: 1px solid var(--line);
-}
-
-html .card.fill.svc:hover,
-html .card.fill.tool:hover,
-html .card.fill.res:hover {
-  border-color: var(--line-2);
-}
-
-/* Icon discs become circles that pick up the card's accent */
-html .card .disc {
-  border-radius: 50%;
-  background: var(--mist);
-}
-
-/* Flagship programme: white "what you will gain" next to the forest panel */
-html .flag-l {
-  background: var(--paper);
-}
-
-/* Signature shape on cards and panels */
-html .card,
-html .fig,
-html .band,
-html .flag,
-html .quiz,
-html .contact {
+/* Signature shape on cards */
+html .card {
   border-radius: var(--r);
 }
 
-html .band,
-html .flag,
-html .quiz,
-html .contact {
-  border-radius: var(--r-lg);
-}
-
-/* Buttons, chips and tags are pills everywhere */
+/* Buttons and tags are pills everywhere */
 html .btn,
-html .chip,
-html .tag,
-html .pill {
+html .tag {
   border-radius: var(--r-pill);
-}
-
-/*
- * Prototype fix: swipe rails bleed out by 28px, but on phones the page
- * gutter is 22px, so the homepage scrolled sideways by 6px. Match the
- * bleed to the gutter.
- */
-@media (max-width: 760px) {
-  html .rail {
-    margin-inline: -22px;
-    padding-inline: 22px;
-  }
 }

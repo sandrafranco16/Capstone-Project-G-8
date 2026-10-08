@@ -27,8 +27,6 @@ A page that defines its own `openGraph` block loses the inherited image
 
 ## Known gaps
 
-- The homepage still renders the legacy prototype, which embeds its own
-  copy of the organisation JSON-LD. It goes away when the homepage is ported.
 - Analytics (Google Analytics, Microsoft Clarity) from the project plan is
   not added: it needs the client's account IDs and a decision on consent,
   given the requirement not to store personal data.

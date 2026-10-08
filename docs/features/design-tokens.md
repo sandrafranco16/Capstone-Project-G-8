@@ -2,8 +2,7 @@
 
 All colours, card shapes and shadows are set once in
 `src/styles/tokens.css` and read by every page: the React feature
-modules, `globals.css`, and the prototype-backed pages (home, about,
-legal), which already used the same variable names.
+modules and `globals.css`.
 
 ## Colour rules
 
@@ -16,7 +15,7 @@ legal), which already used the same variable names.
 
 - Tints are only for things that belong to a pathway. General content
   grids (partnership services, tools, resources) sit on white cards
-  with a hairline (`src/styles/surfaces.css`).
+  with a hairline.
 - Coral is the only call-to-action colour (buttons, booking).
 - Forest, maroon and navy stay as the dark bands. The base is warm and
   light, as agreed with the client.

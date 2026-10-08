@@ -48,7 +48,6 @@ allows unconfigured Turnstile, while `pnpm start` enforces deployed behaviour.
 Record the actual SHA and results rather than copying this version's test count.
 
 Detailed test locations: `src/features/**/*.test.ts`,
-`src/components/legacy/prepare-homepage-assessment.test.ts`,
 `src/app/api/contact/route.test.ts`, and `src/lib/cn.test.ts`.
 Unit tests cover content/configuration, assessment logic, blog/YouTube parsing,
 booking URLs, OAuth, contact validation, spam policy and email-provider responses.

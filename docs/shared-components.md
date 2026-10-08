@@ -68,9 +68,8 @@ colours follow `demo/`. Coral buttons use dark text for readable contrast.
 Mobile wrapping, focus indicators and reduced-motion preferences are included.
 No global CSS or demo HTML changes are required.
 
-The homepage, Services overview and About still render through `LegacyDemoPage`.
-Import these components when migrating those pages to React; adding React files
-alone does not replace content inside the legacy HTML.
+All pages, including the homepage, now render React components directly, so
+these components can be imported anywhere without touching `demo/`.
 
 ## Card Rail (PR 2)
 
