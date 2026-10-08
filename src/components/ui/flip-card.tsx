@@ -113,8 +113,13 @@ export function FlipCard({
   }
 
   function onCardClick(event: MouseEvent<HTMLDivElement>) {
-    // Links, buttons and text selection inside the card keep their own behaviour.
-    if ((event.target as Element).closest("a, button")) return;
+    // Nested controls (including label descendants) keep their own behaviour.
+    if (
+      (event.target as Element).closest(
+        'a, button, input, select, textarea, label, summary, [contenteditable]:not([contenteditable="false"]), [tabindex]:not([tabindex="-1"])',
+      )
+    )
+      return;
     if (window.getSelection()?.toString()) return;
     toggle(false);
   }
