@@ -541,6 +541,10 @@
   margin-top: 34px;
   padding-left: 2px;
 }
+.page .ev {
+  position: relative;
+  padding: 0 0 18px 66px;
+}
 .page .tl::before {
   content: "";
   position: absolute;
@@ -602,28 +606,37 @@
 }
 .page .today {
   position: relative;
-  padding: 0 0 24px 66px;
+  display: flex;
+  align-items: center;
+  min-height: 2.75rem;
+  padding: 0 0 1.75rem 3.75rem;
 }
+
 .page .today::before {
   content: "";
   position: absolute;
-  left: 6px;
-  top: -2px;
-  width: 30px;
-  height: 30px;
+  left: 0.875rem;
+  top: 0.8rem;
+  width: 0.875rem;
+  height: 0.875rem;
+  border: 0.25rem solid var(--canvas);
   border-radius: 50%;
-  border: 2px dashed var(--line-2);
+  background: var(--coral);
+  box-shadow: 0 0 0 0.125rem rgb(240 85 43 / 20%);
 }
+
 .page .today span {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--ink);
-  background: var(--fill-blush);
-  padding: 8px 17px;
+  min-height: 2.5rem;
+  padding: 0.55rem 1rem;
+  border: 1px solid var(--line);
   border-radius: var(--r-pill);
+  background: var(--paper);
+  color: var(--ink);
+  box-shadow: var(--sh);
+  font-size: 0.84rem;
+  font-weight: 620;
 }
 
 .page .fw-grid {
@@ -786,6 +799,9 @@
 @media (max-width: 760px) {
   .page .fw-grid,
   .page .read,
+  .page .ev {
+    padding-left: 54px;
+  }
   .page .qs {
     grid-template-columns: 1fr;
   }
