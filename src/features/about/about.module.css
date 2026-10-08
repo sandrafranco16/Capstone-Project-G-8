@@ -1,16 +1,7 @@
 /* About page (BIT-39). Tokens follow the approved prototype:
    warm canvas, coral accent, jewel-tone dark bands. */
 .page {
-  --canvas: #fcfaf5;
-  --paper: #ffffff;
-  --ink: #12201c;
-  --ink-2: #4d5d56;
-  --coral: #f0552b;
-  --coral-text: #b63716;
-  --coral-light: #ff9e7a;
-  --forest: #0e2e29;
-  --navy: #16233e;
-  --line: rgb(18 32 28 / 12%);
+  --coral-text: var(--coral-deep);
 
   background: var(--canvas);
   color: var(--ink);
@@ -154,7 +145,7 @@
 /* ---------- Credibility band ---------- */
 .band {
   padding: clamp(2rem, 5vw, 3.5rem);
-  border-radius: 1.75rem;
+  border-radius: var(--r-lg);
   background: var(--forest);
   color: #fff;
 }
@@ -246,10 +237,10 @@
   flex-direction: column;
   height: 100%;
   overflow: hidden;
-  border-radius: 1.75rem;
+  border-radius: var(--r-lg);
   background:
     radial-gradient(120% 70% at 85% 0%, rgb(46 150 255 / 16%), transparent 60%),
-    linear-gradient(170deg, #1b2b4b 0%, var(--navy) 42%, #0f1a2f 100%);
+    linear-gradient(170deg, var(--navy-2) 0%, var(--navy) 42%, var(--ink) 100%);
   color: #fff;
   box-shadow: 0 30px 60px -30px rgb(15 26 47 / 55%);
 }
@@ -266,8 +257,8 @@
   position: relative;
   aspect-ratio: 4 / 5;
   overflow: hidden;
-  border-radius: 1.1rem;
-  background: #0f1a2f;
+  border-radius: var(--r);
+  background: var(--ink);
 }
 
 .founderPhoto img {
@@ -307,7 +298,7 @@
 .highlights li {
   padding: 0.3rem 0.75rem;
   border: 1px solid rgb(255 255 255 / 26%);
-  border-radius: 999px;
+  border-radius: var(--r-pill);
   color: rgb(255 255 255 / 90%);
   font-size: 0.8rem;
   font-weight: 600;

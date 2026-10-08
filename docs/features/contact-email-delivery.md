@@ -1,5 +1,9 @@
 # Contact Enquiry Email — Implementation & Integration Guide
 
+Client operations: [user guide](../handover/client-user-guide.md). Canonical account/DNS setup:
+[platform guide](../handover/platform-account-setup.md). Live results must be recorded in
+[acceptance and handover](../handover/acceptance-and-handover.md).
+
 ## Table of Contents
 
 - [Feature Overview](#feature-overview)
@@ -22,7 +26,7 @@ The `/contact` page provides an enquiry form that sends an email to BITDOT's des
 
 **What this feature does:**
 
-- Accepts name, email, message, and consent from the user.
+- Accepts name, email, enquiry topic, message and consent; phone and organisation are optional.
 - Validates input on both client and server side.
 - Blocks spam via honeypot and Turnstile.
 - Sends the enquiry email to a configured inbox using Resend.
@@ -31,7 +35,7 @@ The `/contact` page provides an enquiry form that sends an email to BITDOT's des
 **What this feature does NOT do:**
 
 - Does not send a confirmation email to the user.
-- Does not store any user data on the server.
+- Does not persist leads in an application database; Resend and mailbox providers may store messages.
 - Does not handle booking (Cal.com handles that separately).
 - Does not send assessment results via email.
 
@@ -45,7 +49,7 @@ Browser                          Server
 ContactForm                      POST /api/contact
   ├─ client-side validation        ├─ parse JSON body
   ├─ honeypot hidden field         ├─ check honeypot → silent 202 if triggered
-  ├─ Turnstile widget              ├─ validate payload (name, email, message, consent)
+  ├─ Turnstile widget              ├─ validate payload (including enquiry type and consent)
   └─ POST /api/contact             ├─ enforce deployed configuration and verify token
                                    ├─ resolve email provider (mock / resend)
                                    ├─ send email via provider
@@ -79,24 +83,25 @@ The provider is selected by the `CONTACT_EMAIL_PROVIDER` environment variable.
 | `features/email/server/mock-provider.ts`          | Mock provider for local development                                        |
 | `features/email/server/email-errors.ts`           | `EmailNotConfiguredError`, `EmailDeliveryError`                            |
 
-### UI Layer (`src/components/`, `src/app/`)
+### UI Layer (`src/features/contact/`, `src/app/`)
 
-| File                                      | Purpose                                                                   |
-| :---------------------------------------- | :------------------------------------------------------------------------ |
-| `components/contact/contact-form.tsx`     | Client component: form fields, validation, submit handling, success state |
-| `components/contact/turnstile-widget.tsx` | Explicit Turnstile rendering, token callbacks, reset and cleanup          |
-| `app/contact/page.tsx`                    | Server component: renders the contact page and form                       |
-| `app/api/contact/route.ts`                | API route: validates, checks spam, delivers email                         |
-| `app/globals.css`                         | Contact form CSS classes (`.contact-form`, `.contact-form__field`, etc.)  |
+| File                                               | Purpose                                                                   |
+| :------------------------------------------------- | :------------------------------------------------------------------------ |
+| `features/contact/components/contact-form.tsx`     | Client component: form fields, validation, submit handling, success state |
+| `features/contact/components/turnstile-widget.tsx` | Explicit Turnstile rendering, token callbacks, reset and cleanup          |
+| `app/contact/page.tsx`                             | Server component: renders the contact page and form                       |
+| `app/api/contact/route.ts`                         | API route: validates, checks spam, delivers email                         |
+| `features/contact/contact.module.css`              | Contact page and form styles                                              |
+| `features/contact/contact-fields.ts`               | Shared enquiry types, field limits and email/phone rules                  |
 
 ### Tests
 
 | File                                            | Coverage                                                         |
 | :---------------------------------------------- | :--------------------------------------------------------------- |
-| `features/contact/validation.test.ts`           | 12 tests — payload validation edge cases                         |
-| `features/contact/spam.test.ts`                 | 13 tests — honeypot, policy and Turnstile verification           |
+| `features/contact/validation.test.ts`           | Payload validation, enquiry types and optional-field rules       |
+| `features/contact/spam.test.ts`                 | Honeypot, policy and Turnstile verification                      |
 | `app/api/contact/route.test.ts`                 | Error response format, unavailable service and delivery failures |
-| `features/email/server/resend-provider.test.ts` | 8 tests — API call, security, escaping                           |
+| `features/email/server/resend-provider.test.ts` | API call, optional fields, security and escaping                 |
 
 ---
 
@@ -104,22 +109,18 @@ The provider is selected by the `CONTACT_EMAIL_PROVIDER` environment variable.
 
 ```
 1. User visits /contact
-2. Fills in Name, Email, Message
+2. Fills in Name, Email, Enquiry topic and Message; Phone and Organisation are optional
 3. Checks "I consent to BITDOT using my details to respond to this enquiry"
 4. Completes the Turnstile challenge in deployed environments
 5. Clicks "Send Enquiry"
 6. Button changes to "Sending..."
 7. On success → "Thank you for your enquiry" confirmation
-   On error  → Error messages displayed above the form
+   On error  → Field errors appear beside inputs; API failures appear in the form
 ```
 
-From the Assessment page:
-
-```
-1. User completes the AI Readiness Assessment
-2. Clicks "Talk it through with us" or "A no-obligation discovery call"
-3. Redirected to /contact (not #contact anchor)
-```
+The agreed business direction is Assessment → Contact enquiry, with no separate
+assessment email. The inspected result component currently links to services, not
+directly to Contact. Frontend integration and its acceptance test remain necessary.
 
 ---
 
@@ -127,15 +128,15 @@ From the Assessment page:
 
 ### Customizing the Form
 
-The contact form component is at `src/components/contact/contact-form.tsx`. It is a `"use client"` component that manages its own state.
+The contact form component is at `src/features/contact/components/contact-form.tsx`. It is a `"use client"` component that manages its own state.
 
 **To add new fields:**
 
 1. Add the `<input>` or `<select>` inside the `<form>` in `contact-form.tsx`.
-2. Read the value in `handleSubmit` via `FormData`.
+2. Add the field to the form's values/state and submit payload.
 3. Include it in the JSON body sent to `/api/contact`.
 4. Update `ContactPayload` type in `features/contact/validation.ts`.
-5. Update `validateContactPayload()` to validate the new field.
+5. Update shared rules in `contact-fields.ts`, client validation and `validateContactPayload()`.
 6. Update the email body builders in `resend-provider.ts`.
 
 **To change the consent wording:**
@@ -148,41 +149,10 @@ I consent to BITDOT using my details to respond to this enquiry.
 
 ### Styling
 
-All contact form styles are in `src/app/globals.css` under the `/* ── Contact form */` section. The project uses plain CSS with CSS custom properties — **not Tailwind**.
-
-Key CSS classes:
-
-| Class                    | Element                                       |
-| :----------------------- | :-------------------------------------------- |
-| `.contact-form`          | Form container (flex column, max-width 36rem) |
-| `.contact-form__field`   | Each field wrapper (label + input)            |
-| `.contact-form__consent` | Consent checkbox row                          |
-| `.contact-form__errors`  | Error message container (red background)      |
-| `.contact-success`       | Success confirmation card                     |
-
-Available CSS variables from the design system:
-
-| Variable    | Usage                |
-| :---------- | :------------------- |
-| `--ink`     | Primary text color   |
-| `--slate`   | Secondary text color |
-| `--azure`   | Accent / focus color |
-| `--line`    | Border color         |
-| `--surface` | Input background     |
-| `--mist`    | Section background   |
-| `--radius`  | Border radius        |
-
-To override styles, edit the corresponding classes in `globals.css`. No inline styles are used in the components.
-
-### Integrating with Other Pages
-
-To link any CTA button to the contact form:
-
-```tsx
-<a href="/contact">Get in touch</a>
-```
-
-To pre-fill the form in the future (not currently implemented but the API route is ready), you could add query parameter support similar to the booking page.
+Contact layout and controls use `src/features/contact/contact.module.css`; the page
+also uses the shared Services theme. Keep field rules in `contact-fields.ts` rather
+than duplicating them in the component or API. See the [Contact module guide](../../src/features/contact/README.md)
+for the current UI structure and accessibility behaviour.
 
 ---
 
@@ -191,7 +161,7 @@ To pre-fill the form in the future (not currently implemented but the API route 
 ### Step 1: Create a Resend Account
 
 1. Go to [https://resend.com/signup](https://resend.com/signup)
-2. Sign up with your email (free tier: 100 emails/day, 3000/month)
+2. Sign up with a client-controlled email and check current plan quotas in the dashboard
 3. Verify your email address
 
 ### Step 2: Get an API Key
@@ -205,17 +175,14 @@ To pre-fill the form in the future (not currently implemented but the API route 
 
 ### Step 3: Configure a Sending Domain (Production Only)
 
-For production use, you need a verified sending domain so emails don't land in spam.
+For production use, verify a sending domain. Verification is required but does not guarantee inbox placement.
 
 1. Go to [https://resend.com/domains](https://resend.com/domains)
 2. Click **"Add Domain"**
-3. Enter the subdomain: `notifications.bitdot.com.au`
-4. Resend will show DNS records to add:
-   - **SPF** — TXT record
-   - **DKIM** — CNAME records (usually 3)
-   - **DMARC** — TXT record (optional but recommended)
-5. Add these records in the domain's DNS provider (e.g., Cloudflare, Route53)
-6. Click **"Verify"** in Resend — it may take a few minutes to propagate
+3. Enter the client-approved sending domain/subdomain; `notifications.bitdot.com.au` is an example, not a confirmed setting.
+4. Copy the exact record types, names and values displayed by Resend for sending verification; do not assume a fixed DKIM record count/type.
+5. Ask the DNS administrator to add them without replacing existing business-mail MX records. Review DMARC separately.
+6. Verify in Resend after DNS propagation, then test actual inbox delivery. See the [canonical setup guide](../handover/platform-account-setup.md#5-resend-email-account-and-dns).
 
 > **Note:** For testing, you can skip this step and use Resend's test domain `onboarding@resend.dev`. This only delivers to the Resend account owner's own email address.
 
@@ -245,7 +212,7 @@ Each enquiry email is sent with:
 - **To:** `CONTACT_EMAIL_TO` (fixed)
 - **Reply-To:** The user's email (so you can reply directly)
 - **Subject:** `New website enquiry`
-- **Body:** Contains the user's name, email, and message (HTML-escaped)
+- **Body:** Contains name, email, enquiry type, message and any supplied phone/organisation; HTML values are escaped.
 
 ---
 
@@ -346,14 +313,14 @@ CI=true pnpm build          # Production build
 2. Run `pnpm dev`
 3. Open `http://localhost:3000/contact`
 
-| Test          | Steps                                      | Expected                                 |
-| :------------ | :----------------------------------------- | :--------------------------------------- |
-| Valid submit  | Fill all fields, check consent, submit     | "Thank you" confirmation                 |
-| Empty fields  | Submit without filling anything            | Client-side error list                   |
-| Bad email     | Enter `abc` as email                       | "Please enter a valid email address"     |
-| Short message | Enter 2-character message                  | "Message must be at least 10 characters" |
-| No consent    | Fill everything, don't check consent       | "You must consent to being contacted"    |
-| Submit again  | Click "Send another message" after success | Form reappears                           |
+| Test          | Steps                                      | Expected                         |
+| :------------ | :----------------------------------------- | :------------------------------- |
+| Valid submit  | Fill all fields, check consent, submit     | "Thank you" confirmation         |
+| Empty fields  | Submit without filling anything            | Client-side error list           |
+| Bad email     | Enter `abc` as email                       | Field-level invalid email error  |
+| Short message | Enter 2-character message                  | Field-level message length error |
+| No consent    | Fill everything, don't check consent       | Field-level consent error        |
+| Submit again  | Click "Send another message" after success | Form reappears                   |
 
 ### Manual Testing — Turnstile Lifecycle
 
@@ -388,28 +355,27 @@ Use Cloudflare test keys in `.env.local`, then restart `pnpm dev`.
 # Success
 curl -s -X POST http://localhost:3000/api/contact \
   -H "Content-Type: application/json" \
-  -d '{"name":"Jane","email":"jane@test.com","message":"Tell me about AI governance services.","consent":true}'
+  -d '{"name":"Jane","email":"jane@test.com","enquiryType":"AI strategy","message":"Tell me about AI governance services.","consent":true}'
 # → 202 {"accepted":true}
 
 # Missing consent
 curl -s -X POST http://localhost:3000/api/contact \
   -H "Content-Type: application/json" \
-  -d '{"name":"Jane","email":"jane@test.com","message":"Tell me about services.","consent":false}'
+  -d '{"name":"Jane","email":"jane@test.com","enquiryType":"AI strategy","message":"Tell me about services.","consent":false}'
 # → 400 {"errors":["Consent is required."]}
 
 # Honeypot triggered (bot)
 curl -s -X POST http://localhost:3000/api/contact \
   -H "Content-Type: application/json" \
-  -d '{"name":"Bot","email":"bot@spam.com","message":"Buy my stuff please now.","consent":true,"website":"http://spam.com"}'
+  -d '{"name":"Bot","email":"bot@spam.com","enquiryType":"Something else","message":"Buy my stuff please now.","consent":true,"website":"http://spam.com"}'
 # → 202 {"accepted":true}  (silently accepted, no email sent)
 ```
 
 ### Assessment Link Testing
 
-1. Open `http://localhost:3000` (homepage)
-2. Scroll to the Assessment section, pick a pathway, complete the quiz
-3. On the result screen, click **"Talk it through with us"** or **"A no-obligation discovery call"**
-4. Verify it navigates to `/contact` (not `/#contact`)
+1. Complete a pathway on `/assessment`.
+2. Verify the agreed result-to-Contact path after frontend integration; do not assume an old static-demo button exists in the current result component.
+3. Open `/contact` directly for isolated form tests and record site-wide navigation separately.
 
 ---
 

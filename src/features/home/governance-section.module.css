@@ -1,7 +1,7 @@
 .section {
   padding: 5.5rem 0;
-  background: #fcfaf5;
-  color: #12201c;
+  background: var(--canvas);
+  color: var(--ink);
   font-family:
     -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Inter",
     "Helvetica Neue", Arial, sans-serif;
@@ -32,7 +32,7 @@
   gap: 0.5rem;
   font-size: 0.83rem;
   font-weight: 620;
-  color: #b63716;
+  color: var(--coral-deep);
   margin-bottom: 1rem;
 }
 .label::before {
@@ -40,12 +40,12 @@
   width: 0.4375rem;
   height: 0.4375rem;
   border-radius: 50%;
-  background: #f0552b;
+  background: var(--coral);
   flex: none;
 }
 .section .title {
   max-width: 22ch;
-  color: #12201c;
+  color: var(--ink);
   font-size: clamp(2.1rem, 4.6vw, 3.5rem);
   font-weight: 730;
   letter-spacing: -0.044em;
@@ -53,7 +53,7 @@
 }
 .section .lead {
   margin-top: 0.875rem;
-  color: #4d5d56;
+  color: var(--ink-2);
   font-size: 1.08rem;
   max-width: 62ch;
   letter-spacing: -0.006em;
@@ -61,7 +61,7 @@
 .card {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  border-radius: 1.625rem;
+  border-radius: var(--r-lg);
   overflow: hidden;
   box-shadow:
     0 0.0625rem 0.125rem rgb(18 32 28 / 5%),
@@ -73,16 +73,16 @@
   min-width: 0;
 }
 .gainsPanel {
-  background: #f7e7c9;
+  background: var(--coral-wash);
 }
 .deliveryPanel {
-  background: #0e2e29;
+  background: var(--forest);
   color: #fff;
 }
 .section .badge {
   display: inline-flex;
   padding: 0.4375rem 0.9375rem;
-  border-radius: 62.4375rem;
+  border-radius: var(--r-pill);
   background: rgb(18 32 28 / 8%);
   font-size: 0.79rem;
   font-weight: 640;
@@ -121,7 +121,7 @@
   height: 1.875rem;
   border-radius: 0.5625rem;
   background: rgb(255 255 255 / 70%);
-  color: #b63716;
+  color: var(--coral-deep);
   font-size: 0.79rem;
   font-weight: 700;
 }
@@ -136,7 +136,7 @@
 .steps p {
   margin-top: 0.1875rem;
   font-size: 0.9rem;
-  color: #4d5d56;
+  color: var(--ink-2);
 }
 .section .steps {
   list-style: none;
@@ -168,18 +168,18 @@
   width: 1rem;
   height: 1rem;
   border-radius: 50%;
-  background: #0e2e29;
-  border: 0.1875rem solid #ff9e7a;
+  background: var(--forest);
+  border: 0.1875rem solid var(--coral-light);
 }
 .steps p {
-  color: #ced8d5;
+  color: var(--line);
 }
 .section .audience {
   margin-top: 1.5rem;
   padding: 1.125rem 1.25rem;
   border-radius: 0.875rem;
   background: rgb(255 255 255 / 9%);
-  color: #e0e9e5;
+  color: var(--fill-slate);
   font-size: 0.9rem;
 }
 .audience strong {

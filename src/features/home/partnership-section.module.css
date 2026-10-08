@@ -1,7 +1,7 @@
 .section {
   padding: 5.5rem 0;
-  background: #f5f2ea;
-  color: #12201c;
+  background: var(--mist);
+  color: var(--ink);
   font-family:
     -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Inter",
     "Helvetica Neue", Arial, sans-serif;
@@ -32,7 +32,7 @@
   align-items: center;
   gap: 0.5rem;
   margin-bottom: 1rem;
-  color: #0b7a56;
+  color: var(--green);
   font-size: 0.83rem;
   font-weight: 620;
 }
@@ -42,13 +42,13 @@
   width: 0.4375rem;
   height: 0.4375rem;
   border-radius: 50%;
-  background: #0ea47a;
+  background: var(--green-bright);
   flex: none;
 }
 
 .heading {
   max-width: 22ch;
-  color: #12201c;
+  color: var(--ink);
   font-size: clamp(2.1rem, 4.6vw, 3.5rem);
   font-weight: 730;
   letter-spacing: -0.044em;
@@ -58,7 +58,7 @@
 .lead {
   max-width: 62ch;
   margin-top: 0.875rem;
-  color: #4d5d56;
+  color: var(--ink-2);
   font-size: 1.08rem;
   letter-spacing: -0.006em;
 }
@@ -73,7 +73,7 @@
   min-width: 0;
   padding: 2rem;
   border: 1px solid rgb(18 32 28 / 8%);
-  border-radius: 1.5rem;
+  border-radius: var(--r-lg);
   background: #fff;
   box-shadow:
     0 0.0625rem 0.125rem rgb(18 32 28 / 4%),
@@ -97,12 +97,12 @@
   height: 2.5rem;
   margin-bottom: 1.1rem;
   border-radius: 0.85rem;
-  background: #e8f5ef;
-  color: #0b7a56;
+  background: var(--green-wash);
+  color: var(--green);
 }
 
 .cardTitle {
-  color: #12201c;
+  color: var(--ink);
   font-size: 1.15rem;
   font-weight: 680;
   letter-spacing: -0.024em;
@@ -111,7 +111,7 @@
 
 .cardText {
   margin-top: 0.6rem;
-  color: #4d5d56;
+  color: var(--ink-2);
   font-size: 0.95rem;
 }
 

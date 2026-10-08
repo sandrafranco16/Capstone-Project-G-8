@@ -40,3 +40,10 @@ jobs:
 
       - name: Build
         run: pnpm build
+
+      # Checks the headers the built app really sends, not just the config.
+      - name: Check security headers
+        run: |
+          pnpm start -p 3000 &
+          for i in $(seq 1 30); do curl -sf -o /dev/null http://localhost:3000/ && break; sleep 1; done
+          node scripts/check-security-headers.mjs http://localhost:3000

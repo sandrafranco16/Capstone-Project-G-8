@@ -17,7 +17,7 @@ export type NavItem = {
 export const primaryNavigation: readonly NavItem[] = [
   { href: "/services", label: "Services" },
   { href: "/assessment", label: "Assessment" },
-  { href: "/#lab", label: "Automation Lab", tag: "Soon" },
+  { href: "/automation-lab", label: "Automation Lab", tag: "Soon" },
   { href: "/resources", label: "Resources" },
   { href: "/about", label: "About" },
 ];
@@ -55,7 +55,7 @@ export const footerColumns: readonly FooterColumn[] = [
     title: "Explore",
     links: [
       { href: "/#flagship", label: "Mastering AI Governance" },
-      { href: "/#lab", label: "Automation Lab" },
+      { href: "/automation-lab", label: "Automation Lab" },
       { href: "/blog", label: "Insights" },
       { href: "/resources", label: "Resource hub" },
       { href: "/about", label: "About us" },
