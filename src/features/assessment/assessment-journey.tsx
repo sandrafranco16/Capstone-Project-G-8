@@ -12,8 +12,12 @@ import styles from "./assessment-journey.module.css";
 
 export function AssessmentJourney({
   initialPathway = null,
+  onPathwayChange,
+  focusOnStart = false,
 }: {
   initialPathway?: PathwayId | null;
+  onPathwayChange?: (pathway: PathwayId | null) => void;
+  focusOnStart?: boolean;
 }) {
   const [state, dispatch] = useReducer(
     journeyReducer,
@@ -21,7 +25,7 @@ export function AssessmentJourney({
     initialJourney,
   );
   const heading = useRef<HTMLHeadingElement>(null);
-  const interacted = useRef(false);
+  const interacted = useRef(focusOnStart);
 
   useEffect(() => {
     if (interacted.current) heading.current?.focus();
@@ -29,6 +33,10 @@ export function AssessmentJourney({
 
   function act(action: Parameters<typeof journeyReducer>[1]) {
     interacted.current = true;
+    if (action.type === "pathway" && onPathwayChange) {
+      onPathwayChange(action.pathway);
+      return;
+    }
     dispatch(action);
   }
 
