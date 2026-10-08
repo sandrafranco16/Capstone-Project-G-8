@@ -272,6 +272,41 @@
   margin-top: 1.5rem;
 }
 
+.copyResult {
+  margin-block: 1.5rem;
+}
+
+.copyStatus {
+  margin: 0.75rem 0 0;
+  color: var(--ink-2);
+  font-size: 0.9rem;
+}
+
+.manualCopy {
+  display: grid;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  font-weight: 650;
+}
+
+.manualCopy textarea {
+  width: 100%;
+  min-width: 0;
+  resize: vertical;
+  padding: 1rem;
+  border: 1px solid var(--line-2);
+  border-radius: 0.5rem;
+  background: var(--paper);
+  color: var(--ink);
+  font: inherit;
+  font-weight: 400;
+}
+
+.manualCopy textarea:focus-visible {
+  outline: 3px solid var(--blue-deep);
+  outline-offset: 4px;
+}
+
 .review summary {
   cursor: pointer;
   padding-block: 0.4rem;

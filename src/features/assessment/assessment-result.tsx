@@ -9,6 +9,8 @@ import type { AssessmentPathway } from "./types";
 import type { AssessmentAnswers, AssessmentResult as Result } from "./scoring";
 import type { getRecommendations } from "./recommendations";
 import type { AssessmentViewProps } from "./view-types";
+import { siteConfig } from "@/lib/site-config";
+import { CopyResult } from "./copy-result";
 import styles from "./assessment-journey.module.css";
 
 export function AssessmentResult({
@@ -24,6 +26,21 @@ export function AssessmentResult({
   recommendations: ReturnType<typeof getRecommendations>;
   answers: AssessmentAnswers;
 }) {
+  const summary = [
+    "BITDOT AI readiness assessment",
+    "Preview — questions and scoring are awaiting client confirmation.",
+    `${pathway.label}: AI ${assessmentLevels[result.level]}`,
+    `Your score: ${result.score} / ${result.maximumScore}`,
+    recommendations.message,
+    "A reflection on your answers, not a certification or compliance assessment.",
+    `Your next step: ${recommendations.nextStep}`,
+    "Relevant BITDOT services:",
+    ...recommendations.services.map(
+      (service) =>
+        `${service.label}: ${new URL(service.href, siteConfig.url).href}`,
+    ),
+  ].join("\n\n");
+
   return (
     <section aria-labelledby="assessment-result-title" className={styles.panel}>
       <p className={styles.eyebrow}>{pathway.label} · Your result</p>
@@ -56,6 +73,7 @@ export function AssessmentResult({
           <span aria-hidden="true"> →</span>
         </a>
       </p>
+      <CopyResult summary={summary} />
       <details className={styles.review}>
         <summary>Review your answers</summary>
         <p>Select a question to edit. Your other answers will be kept.</p>
