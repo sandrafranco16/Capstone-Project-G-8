@@ -38,7 +38,7 @@ const delivery = [
 
 /** Homepage flagship program; the stable anchor is also used by navigation and assessment results. */
 export function GovernanceSection({
-  enquiryHref = "/#contact",
+  enquiryHref = "/contact",
 }: {
   enquiryHref?: string;
 }) {

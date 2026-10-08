@@ -1,3 +1,9 @@
+import {
+  bookingHref,
+  pathwayAppointmentTypes,
+  pathwayBookingLabels,
+} from "@/features/booking/links";
+
 import { assessmentLevels } from "./config";
 import type { AssessmentPathway } from "./types";
 import type { AssessmentAnswers, AssessmentResult as Result } from "./scoring";
@@ -44,6 +50,12 @@ export function AssessmentResult({
           </li>
         ))}
       </ul>
+      <p className={styles.bookingCta}>
+        <a href={bookingHref(pathwayAppointmentTypes[pathway.id])}>
+          {pathwayBookingLabels[pathway.id]}
+          <span aria-hidden="true"> →</span>
+        </a>
+      </p>
       <details className={styles.review}>
         <summary>Review your answers</summary>
         <p>Select a question to edit. Your other answers will be kept.</p>

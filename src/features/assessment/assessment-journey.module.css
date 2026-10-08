@@ -241,6 +241,31 @@
   text-underline-offset: 0.2em;
 }
 
+.bookingCta {
+  margin-top: 1.25rem;
+}
+
+.bookingCta a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  padding: 0.75rem 1.25rem;
+  border-radius: var(--r-pill);
+  background: var(--coral-deep);
+  color: #fff;
+  font-weight: 650;
+  text-decoration: none;
+}
+
+.bookingCta a:hover {
+  background: var(--ink);
+}
+
+.bookingCta a:focus-visible {
+  outline: 3px solid var(--blue);
+  outline-offset: 3px;
+}
+
 .review {
   border-block: 1px solid var(--line-2);
   padding-block: 1rem;

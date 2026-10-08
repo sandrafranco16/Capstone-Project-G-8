@@ -2,6 +2,8 @@
 
 import { memo, type CSSProperties } from "react";
 
+import { bookingHref } from "@/features/booking/links";
+
 import { resourceClassNames as rc } from "./resource-class-names";
 import Link from "next/link";
 import Image from "next/image";
@@ -728,7 +730,10 @@ export const ResourcesMain = memo(function ResourcesMain() {
                 }
               </p>
               <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
-                <Link className={rc("btn btn-coral btn-lg")} href="/booking">
+                <Link
+                  className={rc("btn btn-coral btn-lg")}
+                  href={bookingHref("executive-consultation")}
+                >
                   <span>{"Book a session"}</span>
                 </Link>
                 <Link

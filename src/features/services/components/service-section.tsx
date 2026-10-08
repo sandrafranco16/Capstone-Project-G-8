@@ -28,12 +28,20 @@ export function ServiceSection({
             title={practice.title}
             description={practice.description}
           />
-          <ServiceLink
-            href={practice.enquiry.href}
-            aria-label={`${practice.enquiry.label}: ${practice.title}`}
-          >
-            <span>{practice.enquiry.label}</span>
-          </ServiceLink>
+          <div className="svc-actions">
+            <ServiceLink
+              href={practice.enquiry.href}
+              aria-label={`${practice.enquiry.label}: ${practice.title}`}
+            >
+              <span>{practice.enquiry.label}</span>
+            </ServiceLink>
+            <ServiceLink
+              href={practice.booking.href}
+              variant={practice.booking.variant}
+            >
+              <span>{practice.booking.label}</span>
+            </ServiceLink>
+          </div>
         </div>
         <ServicesGrid offers={practice.offers} />
       </div>
