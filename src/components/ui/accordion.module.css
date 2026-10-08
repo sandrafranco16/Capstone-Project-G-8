@@ -3,9 +3,9 @@
   gap: 11px;
 }
 .item {
-  border-radius: 16px;
+  border-radius: var(--r);
   background: #fff;
-  color: #12201c;
+  color: var(--ink);
   box-shadow:
     0 1px 2px rgb(18 32 28 / 5%),
     0 4px 14px rgb(18 32 28 / 6%);
@@ -21,7 +21,7 @@
   align-items: center;
   gap: 16px;
   padding: 19px 24px;
-  border-radius: 16px;
+  border-radius: var(--r);
   cursor: pointer;
   list-style: none;
   font-weight: 600;
@@ -31,12 +31,12 @@
   display: none;
 }
 .trigger:focus-visible {
-  outline: 3px solid #0b7a56;
+  outline: 3px solid var(--green);
   outline-offset: 3px;
 }
 .icon {
   flex-shrink: 0;
-  color: #b93717;
+  color: var(--coral-deep);
   font-size: 1.3rem;
   line-height: 1;
   transition: transform 0.2s;
@@ -46,7 +46,7 @@
 }
 .content {
   padding: 0 24px 21px;
-  color: #40534c;
+  color: var(--ink-2);
   font-size: 0.94rem;
   overflow-wrap: anywhere;
 }

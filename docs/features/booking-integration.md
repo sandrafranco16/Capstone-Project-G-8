@@ -2,7 +2,9 @@
 
 ## 1. Overview & Architectural Decision
 
-This module integrates external and embedded consultation booking using [Cal.com](https://cal.com). It allows users to browse 5 appointment types, book directly inline via a sandboxed iframe or externally in a new tab, and automatically pre-fills user details from assessment and contact flows.
+This module integrates external and embedded consultation booking using [Cal.com](https://cal.com). Users can browse five appointment types and open a sandboxed iframe or an external page. It supports optional URL prefill parameters; Assessment and Contact do not automatically collect or pass those details.
+
+For client setup and operations, see the [Cal.com guide](../handover/calcom-client-guide.md) and [handover pack](../handover/README.md).
 
 ### Transition from Microsoft Bookings to Cal.com
 
@@ -10,7 +12,7 @@ The project initially planned to use **Microsoft Bookings**. Following client re
 
 ### Key Advantages
 
-- **Zero PII Persistence**: User booking details are processed directly by Cal.com. The platform stores no personal booking data, ensuring privacy compliance without an application database.
+- **No Application Booking Database**: Cal.com processes booking details. Third-party data handling and personal information in optional URL parameters still require privacy review; this design does not itself establish compliance.
 - **Automated Scheduling**: Calendar synchronization (Google, Outlook, Apple), timezone conversions, and conflict handling are managed natively by Cal.com.
 - **Decoupled Architecture**: Provider logic is isolated in `src/features/booking`. If scheduling tools change, site pages remain unaffected.
 
@@ -33,7 +35,7 @@ The platform defines 5 distinct appointment categories aligned with customer pat
 
 ### Data Pre-fill Flow
 
-When users complete an assessment or pathway step, the site directs them to:
+The route supports URLs such as the following synthetic developer example. Automatic navigation from Assessment/Contact must be implemented and verified separately:
 
 ```text
 /booking?type=career-coaching&name=Jane+Doe&email=jane@example.com&notes=Assessment+Tier:+Practitioner
@@ -99,7 +101,7 @@ import Link from "next/link";
   Book Career Coaching
 </Link>
 
-// 2. From AI Readiness Assessment completion
+// 2. Optional future prefill example; not the current Assessment flow.
 <Link href={`/booking?type=${type}&name=${encodeURIComponent(name)}&email=${encodeURIComponent(email)}&notes=${encodeURIComponent(tier)}`}>
   Book Recommended Consultation
 </Link>
