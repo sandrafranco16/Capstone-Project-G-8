@@ -1,5 +1,9 @@
 # Decap CMS & Blog Integration
 
+For the final client workflow and account setup, use the
+[handover pack](../handover/README.md). This implementation reference is not proof
+of live account configuration or acceptance.
+
 ## 1. Overview & Architectural Decision
 
 This module integrates [Decap CMS](https://decapcms.org/) as a Git-based headless Content Management System for creating, editing, and publishing blog articles on the BITDOT platform.
@@ -11,8 +15,8 @@ Instead of running a database-backed CMS server (such as WordPress or Strapi), t
 ### Key Advantages
 
 - **Zero Database Overhead**: Content is stored directly as Markdown files in `src/content/blog` and static images in `public/uploads`. No database management, migrations, or database hosting costs are required.
-- **Security & Zero PII**: Content management requires no public database ports or third-party cloud data stores. Raw HTML rendering is disabled to prevent stored XSS.
-- **Auditability & Version Control**: Every article draft, revision, and publication is tracked through Git commits and GitHub Pull Requests.
+- **Content Security**: No application CMS database is required. Raw HTML rendering is disabled to reduce injection risk. GitHub still stores content/account activity; do not publish personal or confidential information unintentionally.
+- **Auditability & Version Control**: Online editorial changes are tracked in GitHub. Local CMS changes remain in the working copy until committed.
 - **Static Generation & CDN Speed**: Published articles are pre-rendered at build time by Next.js using `generateStaticParams()`, ensuring fast load times and strong SEO performance.
 
 > [!NOTE]
@@ -30,19 +34,20 @@ sequenceDiagram
     actor Author as Content Author
     participant CMS as Decap CMS (/admin)
     participant GH as GitHub Repository
-    participant Vercel as Vercel Hosting
+    participant Host as Configured Hosting Provider
     actor Visitor as Public Visitor
 
     Author->>CMS: 1. Sign in with GitHub account (requires Write access)
     CMS->>GH: Authenticate via OAuth & verify repository permissions
     Author->>CMS: 2. Write article & click "Save"
-    CMS->>GH: 3. Create draft branch & open Pull Request (Draft)
+    CMS->>GH: 3. Create content branch & Pull Request
     Note over Author,GH: Article enters "In Review" -> "Ready to Publish"
     Author->>CMS: 4. Click "Publish"
-    CMS->>GH: 5. Merge Pull Request into main branch
-    GH->>Vercel: 6. Trigger automated build webhook
-    Vercel->>Vercel: 7. Re-generate static pages with new Markdown
-    Visitor->>Vercel: 8. Read live article on /blog and /blog/[slug]
+    CMS->>GH: 5. Request merge into configured target branch
+    Note over CMS,GH: Merge requires the agreed review/bypass permissions
+    GH->>Host: 6. Trigger configured Git deployment
+    Host->>Host: 7. Build content, subject to hosting permissions
+    Visitor->>Host: 8. Read article after successful deployment
 ```
 
 ### Step 1: Login & Access Permission
@@ -50,7 +55,7 @@ sequenceDiagram
 - **Who can log in?**
   Authors access the CMS by navigating to `/admin` in any web browser and clicking **Login with GitHub**.
 - **Permission requirement**:
-  The user's GitHub account **must have Collaborator (Write) access** to the project repository. If an unauthorized user attempts to sign in, GitHub denies access and Decap CMS will not open.
+  The account needs write access to edit the repository. OAuth may authenticate an account without that permission; subsequent repository operations will then be denied. Successful login is not publishing authorisation.
 - **Under the hood**:
   The application uses GitHub OAuth with PKCE security (`/api/cms/auth` and `/api/cms/callback`). Once verified, Decap securely receives an authorization token to interact with the repository on the author's behalf.
 
@@ -62,7 +67,7 @@ sequenceDiagram
   - **Title**: The headline of the article.
   - **Summary (Excerpt)**: A 1–2 sentence summary displayed on card previews and search engines.
   - **Category**: A required selection from 5 agreed topics (`Career Development`, `AI and Automation`, `AI Governance`, `Executive and Board`, `AI Risk`).
-  - **Publish Date**: The date and time of publication.
+  - **Publish Date**: Article date metadata, not a scheduler that withholds future-dated articles.
   - **YouTube URL** _(Optional)_: An optional video link that automatically embeds a responsive video player.
   - **Body**: The full article text using a rich-text or Markdown editor, with support for uploading images (saved automatically to `public/uploads/`).
 
@@ -74,7 +79,7 @@ sequenceDiagram
   - **Under the hood**:
     1. Decap CMS compiles the form into a Markdown file with YAML front matter (`src/content/blog/YYYY-MM-DD-slug.md`).
     2. Decap calls the GitHub API to create a new Git branch (e.g., `cms/blog/YYYY-MM-DD-slug`).
-    3. Decap opens a **Draft Pull Request (PR)** on GitHub targeting the main branch.
+    3. Decap opens a content **Pull Request (PR)** targeting the configured branch. CMS draft state should not be confused with GitHub's draft-PR flag.
     4. In the CMS dashboard, the article appears under the **Workflow** tab in the **Drafts** column.
 
 ### Step 4: Editorial Review Process ("In Review" → "Ready")
@@ -84,18 +89,18 @@ sequenceDiagram
   - In the CMS **Workflow** tab, the article card can be dragged across three stages:
     1. **Drafts**: Work in progress.
     2. **In Review**: Ready for team review.
-    3. **Ready to Publish**: Approved and waiting to go live.
+    3. **Ready to Publish**: CMS workflow state; GitHub review/merge permissions still apply.
   - Every update made in the CMS automatically pushes a new commit to the draft branch on GitHub.
 
 ### Step 5: What Happens When Clicking "Publish" (Going Live)
 
 - When an authorized user clicks **Publish**:
   - **Under the hood**:
-    1. Decap CMS calls GitHub to **merge the Pull Request** into the main branch.
+    1. Decap requests a merge into the configured branch; GitHub enforces its applicable rules.
     2. Decap automatically closes and deletes the temporary draft branch.
-    3. GitHub sends a webhook notification to **Vercel**.
-    4. Vercel automatically runs `next build`, reads all Markdown files in `src/content/blog/`, and pre-renders static HTML pages for `/blog` and `/blog/[slug]`.
-    5. Within 1–2 minutes, the article goes live and is immediately visible to the public.
+    3. The configured Git integration triggers the hosting provider's deployment.
+    4. A permitted successful `next build` reads `src/content/blog/` and rebuilds public article pages.
+    5. After a successful deployment, verify the article on the public site. Timing depends on build and hosting status; branch rules or deployment permissions may block publication.
 
 ### Step 6: Local Development Alternative (For Developers)
 

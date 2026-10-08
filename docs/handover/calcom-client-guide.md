@@ -1,130 +1,98 @@
-# Cal.com Client Operations & Configuration Guide
+# Cal.com Client Configuration and Operations
 
-This guide explains how to set up, customize, and operate Cal.com for the BITDOT Marketing & Training Platform. It is written for platform administrators and requires no coding knowledge.
+The website opens Cal.com inline or externally. Cal.com manages booking availability,
+attendee details and its notifications; the website does not run a scheduling backend.
+Record the final profile and account owner in the [handover index](README.md).
 
----
+## 1. Create the client-owned account
 
-## 1. Quick Overview
+Sign up at [Cal.com](https://cal.com/signup) using a client-controlled email/login.
+Verify the address and choose an available username. The public profile is
+`https://cal.com/<username>`; `bitdot` is an example, not a guaranteed username.
 
-The BITDOT website uses [Cal.com](https://cal.com) to provide online consultation scheduling. When visitors book a consultation on the website, Cal.com manages:
+The Individual plan is the proposed starting point for one organiser. Multiple
+organisers, shared scheduling, custom reminders or workflow features need a separate
+plan/feature check. Do not assume a reminder option is included simply because basic
+booking works. Check [current Cal.com plans](https://cal.com/pricing) and the actual
+account before enabling paid features; record the chosen plan and billing owner.
 
-- Real-time availability checks against your personal or work calendar.
-- Timezone conversions for international and interstate clients.
-- Automated email invitations, calendar invites, and reminder notifications.
-- Meeting links (e.g., Google Meet, Zoom, Microsoft Teams, or Cal Video).
+## 2. Connect the calendar
 
----
+1. Open the dashboard's calendar settings and connect the client's chosen calendar.
+2. Authorise the provider using the client's account, not a student account.
+3. Select all calendars to check for conflicts and the calendar that receives bookings.
+4. Verify an existing busy appointment is unavailable on the public booking page.
 
-## 2. Step-by-Step Account Setup
+Workplace accounts may require administrator approval. Record any restriction before
+promising automated meeting links. Cal.com's [scheduling FAQ](https://cal.com/scheduling/frequently-asked-questions)
+explains event, calendar and availability settings.
 
-### Step 1: Create Your Cal.com Account
+## 3. Configure the five event types
 
-1. Go to [https://cal.com/signup](https://cal.com/signup) and create an account using your organization email.
-2. Choose your organization username during onboarding (e.g., `bitdot`).
-3. Your public booking profile URL will become:
-   ```text
-   https://cal.com/bitdot
-   ```
+In **Event Types**, create/edit and save each entry. Make it available for booking.
+These slugs match `src/features/booking/config.ts`:
 
----
+| Title                  | Exact URL slug           | Current website duration |
+| ---------------------- | ------------------------ | ------------------------ |
+| Career Coaching        | `career-coaching`        | 45 minutes               |
+| Discovery Call         | `discovery-call`         | 30 minutes               |
+| Executive Consultation | `executive-consultation` | 60 minutes               |
+| Training Discussion    | `training-discussion`    | 45 minutes               |
+| Workshop Enquiry       | `workshop-enquiry`       | 45 minutes               |
 
-### Step 2: Connect Your Calendar (Prevent Double-Booking)
+Confirm durations and descriptions with the client; if they change, update website
+card text too. Do not change slugs without updating the website mapping. Event settings
+should not request payments or unnecessary sensitive details for this MVP.
 
-Connecting your existing calendar ensures Cal.com automatically blocks times when you are busy.
+Choose a supported meeting location for each event. Cal Video is an option; other
+conferencing tools may require installing an app and a suitable provider account.
+Test the generated invitation/link rather than assuming a connected calendar also
+enables video conferencing.
+[Cal.com location instructions](https://cal.com/help/event-types/how-to-add-location).
 
-1. In the Cal.com dashboard, navigate to **Settings → Calendars**.
-2. Click **Add Calendar** and choose your provider:
-   - **Google Calendar**
-   - **Microsoft Outlook / Office 365**
-   - **Apple Calendar**
-3. Grant permission for Cal.com to access your calendar.
-4. Set:
-   - **Check for conflicts**: Select all calendars where you have personal or business appointments.
-   - **Add to calendar**: Select the primary calendar where new client bookings should be inserted.
+## 4. Set availability
 
----
+Open **Availability** and set the actual working hours, time zone and date overrides.
+Attach the correct schedule to each event. Agree buffers, minimum notice and booking
+window with the client; these are business choices, not fixed project requirements.
+Check the time shown for a test attendee in another Australian time zone.
 
-### Step 3: Create the 5 Required Appointment Types
+## 5. Connect the website
 
-> [!IMPORTANT]
-> The website links directly to specific URLs. You **must** create these 5 event types and ensure their **URL Slugs** match the table below exactly.
+The deployment administrator sets:
 
-In your Cal.com dashboard, navigate to **Event Types** and click **New**:
+```dotenv
+NEXT_PUBLIC_CALCOM_URL=https://cal.com/<actual-client-username>
+```
 
-| Event Title                | URL Slug _(Must match exactly)_ | Duration | Description for Clients                                                        |
-| :------------------------- | :------------------------------ | :------: | :----------------------------------------------------------------------------- |
-| **Career Coaching**        | `career-coaching`               |  45 min  | 1-on-1 career guidance for AI practitioners, transitioners, and graduates.     |
-| **Discovery Call**         | `discovery-call`                |  30 min  | Initial introductory call to explore alignment and advisory services.          |
-| **Executive Consultation** | `executive-consultation`        |  60 min  | Strategic advice for executives and boards on AI governance frameworks.        |
-| **Training Discussion**    | `training-discussion`           |  45 min  | Customized discussion to tailor corporate AI and automation training programs. |
-| **Workshop Enquiry**       | `workshop-enquiry`              |  45 min  | Planning and scheduling hands-on AI risk and governance workshops.             |
+Save it in the correct hosting environment and redeploy. Test `/booking` and every
+event card. This updates components using that setting; old static buttons are not
+automatically rewired. Final navigation is checked separately.
 
-For each event:
+No Cal.com API key, webhook, custom database or paid booking SDK is used by this
+integration. Optional URL prefill is supported by code but is not an automatic
+Assessment/Contact data transfer. Avoid placing real names/emails in shared URLs.
 
-1. Click **New Event Type**.
-2. Enter the **Title**, **Slug**, and **Duration**.
-3. Toggle the event to **Active** so it accepts bookings.
+## 6. Daily use
 
----
+Use **Bookings** to review upcoming appointments and available reschedule/cancel
+actions. Use **Availability** for leave and schedule changes. Keep calendar and
+conferencing authorisation current. Check your account's notification settings.
 
-### Step 4: Configure Meeting Locations (Video / Call)
+Before handover, book with a consenting test attendee and confirm the actual organiser
+and attendee emails, calendar entry, time zone and meeting link. Reschedule and cancel,
+then confirm both notification and calendar updates. If reminders are required, test
+the specific reminder feature on the chosen plan. Clean up the test appointment.
 
-You can choose how consultations are conducted for each appointment type.
+## 7. Troubleshooting
 
-1. Go to **Event Types**, select an event, and open the **Location** settings.
-2. Select your preferred meeting tool from the dropdown:
-   - **Cal Video** _(Default)_: Built-in browser video meeting. Requires no external accounts or paid licenses.
-   - **Google Meet**: Automatically generates a Google Meet link attached to the Google Calendar invitation.
-   - **Zoom**: Go to **Settings → Apps**, install the Zoom app, and select Zoom as the location.
-   - **Microsoft Teams**: Go to **Settings → Apps**, install the Microsoft Teams app, and select Teams as the location.
-   - **Phone Call**: Requires the client to enter their phone number during booking.
-   - **Attendee Choice**: Allows the client to pick between video or phone call.
-3. Click **Save**.
+| Problem                            | Check                                                                                |
+| ---------------------------------- | ------------------------------------------------------------------------------------ |
+| No available slots                 | Event visibility, assigned schedule, time zone, notice/window and calendar conflicts |
+| Wrong event / 404                  | Username and exact event slug                                                        |
+| Missing invitation or meeting link | Calendar/conferencing authorisation, location, notifications and email spam folder   |
+| Embedded page fails                | Use **Open directly on Cal.com**                                                     |
+| Changed account URL not reflected  | Correct hosting environment and successful redeployment                              |
 
----
-
-### Step 5: Set Availability & Working Hours
-
-Control when clients are allowed to book appointments:
-
-1. In the dashboard, navigate to **Availability**.
-2. Set your default weekly working hours (e.g., Monday to Friday, 9:00 AM – 5:00 PM).
-3. Ensure your **Timezone** is set correctly (e.g., `Australia/Perth` or `Australia/Sydney`).
-4. In each Event Type under **Advanced Settings**:
-   - **Buffer Time**: Add 10–15 minutes before or after meetings to prevent back-to-back fatigue.
-   - **Minimum Notice**: Require at least 24 hours advance notice to avoid surprise same-day bookings.
-   - **Booking Window**: Limit how far into the future clients can book (e.g., up to 30 or 60 days).
-
----
-
-### Step 6: Connect Cal.com to the Live Website (Zero-Code Switch)
-
-Once your Cal.com account and 5 event types are configured, connect them to the live website without writing any code:
-
-1. Log into your **Vercel Dashboard** (or ask your deployment administrator).
-2. Open the project and navigate to **Settings → Environment Variables**.
-3. Locate or add the variable:
-   - **Key**: `NEXT_PUBLIC_CALCOM_URL`
-   - **Value**: `https://cal.com/bitdot` _(replace with your actual organization username)_
-4. Click **Save** and trigger a **Redeploy**.
-5. All buttons and interactive scheduling widgets across the entire website will immediately point to your live Cal.com account.
-
----
-
-## 3. Daily Operations & Troubleshooting
-
-### Viewing and Managing Bookings
-
-- **Upcoming Meetings**: View all confirmed bookings under the **Bookings** tab in your Cal.com dashboard.
-- **Rescheduling & Cancellations**:
-  - Both you and the client receive an email confirmation containing secure "Reschedule" and "Cancel" buttons.
-  - If a meeting is canceled or moved, your connected calendar updates automatically and frees the time slot.
-
-### Verification Checklist before Handover
-
-- [ ] Logged into Cal.com and verified email address.
-- [ ] Primary Google / Outlook calendar is connected and conflict check is enabled.
-- [ ] All 5 event types are created with exact matching slugs (`career-coaching`, `discovery-call`, `executive-consultation`, `training-discussion`, `workshop-enquiry`).
-- [ ] Meeting location (Cal Video, Google Meet, Zoom, or Teams) is chosen for each event.
-- [ ] `NEXT_PUBLIC_CALCOM_URL` is configured in production environment variables.
-- [ ] Completed a test booking on the website to confirm calendar invitation and email delivery.
+Record actual outcomes in the [acceptance record](acceptance-and-handover.md).
+No checkbox in this guide constitutes a completed test or client acceptance.
