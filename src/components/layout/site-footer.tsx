@@ -24,10 +24,15 @@ export function SiteFooter() {
     <footer className={styles.footer}>
       <div className={styles.top}>
         <div className={styles.brandColumn}>
-          <Link className={styles.brand} href="/" aria-label="BITDOT home">
-            <span className={styles.wordmark}>bitd</span>
+          <Link className={styles.brand} href="/">
+            <span className="visually-hidden">BITDOT home</span>
+            <span className={styles.wordmark} aria-hidden="true">
+              bitd
+            </span>
             <BrandMark onDark className={styles.mark} />
-            <span className={styles.wordmark}>t</span>
+            <span className={styles.wordmark} aria-hidden="true">
+              t
+            </span>
           </Link>
           <p>{footerTagline}</p>
         </div>

@@ -64,11 +64,11 @@ function DirectorCard({ director }: { director: Director }) {
         className={cn(styles.card, styles[director.theme])}
         showBack={{
           text: "View profile",
-          label: `Show ${director.name}'s profile`,
+          label: `View profile: ${director.name}`,
         }}
         showFront={{
           text: "Back",
-          label: `Show ${director.name}'s photo`,
+          label: `Back to ${director.name}'s photo`,
         }}
         front={
           <div className={styles.front}>
