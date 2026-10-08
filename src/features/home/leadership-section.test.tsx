@@ -27,10 +27,10 @@ describe("LeadershipSection", () => {
 
   it("labels each card's flip controls with the director's name", () => {
     for (const director of directors) {
+      expect(html).toContain(`aria-label="View profile: ${director.name}"`);
       expect(html).toContain(
-        `aria-label="Show ${director.name}&#x27;s profile"`,
+        `aria-label="Back to ${director.name}&#x27;s photo"`,
       );
-      expect(html).toContain(`aria-label="Show ${director.name}&#x27;s photo"`);
     }
   });
 

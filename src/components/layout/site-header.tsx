@@ -106,13 +106,17 @@ export function SiteHeader() {
           <Link
             className={styles.brand}
             href="/"
-            aria-label="BITDOT home"
             aria-current={pathname === "/" ? "page" : undefined}
             onClick={() => closeMenu()}
           >
-            <span className={styles.wordmark}>bitd</span>
+            <span className="visually-hidden">BITDOT home</span>
+            <span className={styles.wordmark} aria-hidden="true">
+              bitd
+            </span>
             <BrandMark className={styles.mark} />
-            <span className={styles.wordmark}>t</span>
+            <span className={styles.wordmark} aria-hidden="true">
+              t
+            </span>
           </Link>
 
           <nav className={styles.desktopNav} aria-label="Primary navigation">

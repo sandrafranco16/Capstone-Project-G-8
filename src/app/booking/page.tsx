@@ -6,7 +6,7 @@ import { bookingConfig } from "@/features/booking/config";
 import type { CalBookingOptions } from "@/features/booking/types";
 
 export const metadata: Metadata = {
-  title: "Book a Consultation | BITDOT",
+  title: "Book a Consultation",
   description:
     "Schedule a 1-on-1 consultation with BITDOT AI governance, career coaching, executive advisory, and technical training experts.",
 };

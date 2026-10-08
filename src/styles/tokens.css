@@ -32,11 +32,11 @@ html:root {
   --line-2: #d8cfbb;
   --ink: #12201c;
   --ink-2: #4b5a52;
-  --ink-3: #7c8a81;
+  --ink-3: #5f6d65; /* ≥ 4.5:1 on canvas, paper and mist */
 
   /* Pathway and accent colours (text-safe on white and on their tint) */
   --coral: #f0552b;
-  --coral-deep: #c63f19;
+  --coral-deep: #b83812; /* ≥ 4.5:1 on coral-wash and canvas */
   --coral-light: #ff9e7a;
   --coral-wash: #fde9e1;
 
