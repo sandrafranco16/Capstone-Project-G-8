@@ -46,11 +46,21 @@ export function AssessmentResult({
       </ul>
       <details className={styles.review}>
         <summary>Review your answers</summary>
+        <p>Select a question to edit. Your other answers will be kept.</p>
         <ol>
           {pathway.questions.map((q) => (
             <li key={q.id}>
               <strong>{q.prompt}</strong>
               <p>{q.options.find((o) => o.value === answers[q.id])?.label}</p>
+              <div className={styles.actions}>
+                <button
+                  type="button"
+                  aria-label={`Edit answer: ${q.prompt}`}
+                  onClick={() => onAction({ type: "edit", questionId: q.id })}
+                >
+                  Edit answer
+                </button>
+              </div>
             </li>
           ))}
         </ol>

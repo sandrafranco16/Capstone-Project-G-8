@@ -2,7 +2,7 @@ import type {
   AssessmentPathway,
   AssessmentQuestion as Question,
 } from "./types";
-import type { AssessmentAnswers } from "./scoring";
+import { scoreAssessment, type AssessmentAnswers } from "./scoring";
 import type { AssessmentViewProps } from "./view-types";
 import styles from "./assessment-journey.module.css";
 
@@ -19,12 +19,17 @@ export function AssessmentQuestion({
   step: number;
   answers: AssessmentAnswers;
 }) {
+  const canShowResult = scoreAssessment(pathway.id, answers) !== null;
+  const answeredCount = pathway.questions.filter((item) =>
+    item.options.some((option) => option.value === answers[item.id]),
+  ).length;
+
   return (
     <form
       className={styles.panel}
       onSubmit={(event) => {
         event.preventDefault();
-        onAction({ type: "next" });
+        onAction({ type: canShowResult ? "finish" : "next" });
       }}
     >
       <p className={styles.eyebrow}>{pathway.label}</p>
@@ -33,8 +38,8 @@ export function AssessmentQuestion({
       </p>
       <progress
         className={styles.progress}
-        aria-label="Questions completed"
-        value={step}
+        aria-label="Questions answered"
+        value={answeredCount}
         max={pathway.questions.length}
       />
       <h2 id="assessment-question" ref={headingRef} tabIndex={-1}>
@@ -70,9 +75,11 @@ export function AssessmentQuestion({
           type="submit"
           disabled={!answers[question.id]}
         >
-          {step === pathway.questions.length - 1
-            ? "See my result"
-            : "Next question"}
+          {canShowResult && step < pathway.questions.length - 1
+            ? "Save and view result"
+            : step === pathway.questions.length - 1
+              ? "See my result"
+              : "Next question"}
         </button>
         <button
           type="button"
