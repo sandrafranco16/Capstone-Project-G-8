@@ -1,3 +1,4 @@
+import { detailPageRedirects } from "./src/features/seo/detail-page-redirects";
 import type { NextConfig } from "next";
 
 import {
@@ -6,6 +7,9 @@ import {
 } from "./src/lib/security-headers";
 
 const nextConfig: NextConfig = {
+  async redirects() {
+    return detailPageRedirects;
+  },
   agentRules: false,
   poweredByHeader: false,
   async headers() {
