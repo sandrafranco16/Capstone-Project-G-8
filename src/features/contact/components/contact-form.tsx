@@ -84,9 +84,19 @@ function Field({
   );
 }
 
-export function ContactForm() {
+export function ContactForm({
+  initialEnquiryType = "",
+  initialMessage = "",
+}: {
+  initialEnquiryType?: ContactFormValues["enquiryType"];
+  initialMessage?: string;
+}) {
   const [state, setState] = useState<FormState>("idle");
-  const [values, setValues] = useState<ContactFormValues>(EMPTY_VALUES);
+  const [values, setValues] = useState<ContactFormValues>(() => ({
+    ...EMPTY_VALUES,
+    enquiryType: initialEnquiryType,
+    message: initialMessage.slice(0, CONTACT_LIMITS.message.max),
+  }));
   const [shown, setShown] = useState<ReadonlySet<ContactField>>(new Set());
   const [serverError, setServerError] = useState("");
   const [website, setWebsite] = useState("");
