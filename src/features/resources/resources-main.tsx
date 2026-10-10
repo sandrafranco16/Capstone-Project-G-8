@@ -453,7 +453,18 @@ export const ResourcesMain = memo(function ResourcesMain() {
                   "Psychological and psychosocial safety decide whether adoption succeeds. How to steady a team while the ground moves under it."
                 }
               </p>
-              <span className={rc("src note")}>{"Ask us for the article"}</span>
+              <Link
+                className={rc("src note")}
+                href={{
+                  pathname: "/contact",
+                  query: {
+                    article:
+                      "The real hurdle with AI isn't the software, it is us",
+                  },
+                }}
+              >
+                {"Ask us for the article"}
+              </Link>
             </article>
             <article
               className={rc("card fill rd rv")}
@@ -478,7 +489,18 @@ export const ResourcesMain = memo(function ResourcesMain() {
                   "Smaller organisations carry the same AI risks as large enterprises on a fraction of the resources. A practical route through."
                 }
               </p>
-              <span className={rc("src note")}>{"Ask us for the article"}</span>
+              <Link
+                className={rc("src note")}
+                href={{
+                  pathname: "/contact",
+                  query: {
+                    article:
+                      "The imperative of AI governance for NFPs and SMBs",
+                  },
+                }}
+              >
+                {"Ask us for the article"}
+              </Link>
             </article>
             <article
               className={rc("card fill rd rv")}
@@ -503,7 +525,17 @@ export const ResourcesMain = memo(function ResourcesMain() {
                   "What one of the country's largest agencies taught us about turning an information framework into organisational excellence."
                 }
               </p>
-              <span className={rc("src note")}>{"Ask us for the article"}</span>
+              <Link
+                className={rc("src note")}
+                href={{
+                  pathname: "/contact",
+                  query: {
+                    article: "Beyond data governance",
+                  },
+                }}
+              >
+                {"Ask us for the article"}
+              </Link>
             </article>
             <article
               className={rc("card fill rd rv")}
@@ -528,7 +560,18 @@ export const ResourcesMain = memo(function ResourcesMain() {
                   "Data doesn't make decisions, people do. On setting honest expectations between business users and the models informing them."
                 }
               </p>
-              <span className={rc("src note")}>{"Ask us for the article"}</span>
+              <Link
+                className={rc("src note")}
+                href={{
+                  pathname: "/contact",
+                  query: {
+                    article:
+                      "Data literacy in the times of AI and data science",
+                  },
+                }}
+              >
+                {"Ask us for the article"}
+              </Link>
             </article>
           </div>
           <div className={rc("sec-head rv")} style={{ margin: "56px 0 36px" }}>
