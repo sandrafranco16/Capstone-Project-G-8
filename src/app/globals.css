@@ -69,7 +69,7 @@ h3 {
 }
 
 .container {
-  width: min(72rem, calc(100% - 2.5rem));
+  width: min(71.5rem, calc(100% - 2.5rem));
   margin-inline: auto;
 }
 

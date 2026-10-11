@@ -7,7 +7,7 @@ type ServicesHeroProps = {
 };
 export function ServicesHero({ content, practices }: ServicesHeroProps) {
   return (
-    <section className="p-hero">
+    <section className="p-hero hero-band hero-band--maroon">
       <span className="blob hero-blob-blue" aria-hidden="true" />
       <span className="blob hero-blob-coral" aria-hidden="true" />
       <div className="wrap">

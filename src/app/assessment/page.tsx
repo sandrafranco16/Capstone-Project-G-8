@@ -24,7 +24,7 @@ export default async function AssessmentPage({
 
   return (
     <div className={styles.page}>
-      <header className={styles.hero}>
+      <header className={`${styles.hero} hero-band hero-band--teal`}>
         <Container className={styles.heroInner}>
           <p className={styles.eyebrow}>AI Readiness Assessment</p>
 

@@ -26,7 +26,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
 
   return (
     <>
-      <header className="page-header">
+      <header className="page-header hero-band hero-band--maroon">
         <Container>
           <p className="eyebrow">BITDOT service</p>
           <h1>{service.title}</h1>

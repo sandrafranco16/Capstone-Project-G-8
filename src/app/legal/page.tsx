@@ -44,7 +44,7 @@ function LegalSection({
 export default function LegalPage() {
   return (
     <>
-      <header className="page-header">
+      <header className="page-header hero-band hero-band--charcoal">
         <Container className={styles.header}>
           <p className="eyebrow">Legal</p>
           <h1>Privacy, terms &amp; accessibility.</h1>

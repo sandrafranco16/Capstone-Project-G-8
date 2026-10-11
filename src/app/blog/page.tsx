@@ -20,7 +20,7 @@ export default async function BlogPage() {
 
   return (
     <>
-      <header className="page-header">
+      <header className="page-header hero-band hero-band--charcoal">
         <Container>
           <p className="eyebrow">Insights</p>
           <h1>Practical articles on AI capability, governance and risk.</h1>

@@ -180,18 +180,20 @@
   box-shadow: 0 0.75rem 1.75rem rgba(14, 46, 41, 0.28);
 }
 .btnGhost {
-  border-color: var(--hd-line-2);
-  background: var(--hd-paper);
-  color: var(--hd-ink);
+  border-color: var(--coral);
+  background: var(--coral);
+  color: #fff;
 }
 .btnGhost:hover {
-  border-color: var(--hd-ink);
+  border-color: var(--coral-deep);
+  background: var(--coral-deep);
   box-shadow:
     0 0.0625rem 0.125rem rgba(18, 32, 28, 0.05),
     0 0.25rem 0.875rem rgba(18, 32, 28, 0.06);
 }
 .btnGhost[aria-current="page"] {
-  border-color: var(--hd-ink);
+  border-color: var(--coral-deep);
+  background: var(--coral-deep);
 }
 
 /* Keyboard focus only; no ring on mouse click. */

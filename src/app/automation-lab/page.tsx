@@ -36,7 +36,7 @@ const features = [
 export default function AutomationLabPage() {
   return (
     <div className={styles.page}>
-      <section className={styles.hero}>
+      <section className={`${styles.hero} hero-band hero-band--navy`}>
         <div className={styles.glowOne} aria-hidden="true" />
         <div className={styles.glowTwo} aria-hidden="true" />
 
@@ -71,7 +71,11 @@ export default function AutomationLabPage() {
               Explore our services
             </Link>
           </div>
+        </div>
+      </section>
 
+      <section className={styles.body}>
+        <div className={styles.inner}>
           <div className={styles.features}>
             {features.map(({ icon: Icon, title, description }) => (
               <article className={styles.feature} key={title}>

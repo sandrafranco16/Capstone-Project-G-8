@@ -29,54 +29,60 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
   const embedUrl = getYouTubeEmbedUrl(article.youtubeUrl);
 
   return (
-    <article className="section">
-      <Container className="prose">
-        <Link className="back-link" href="/blog">
-          ← All insights
-        </Link>
-        <p className="eyebrow">{article.category}</p>
-        <h1>{article.title}</h1>
-        <p className="lead">{article.excerpt}</p>
-        <time className="article-date" dateTime={article.publishedAt}>
-          {new Intl.DateTimeFormat("en-AU", {
-            dateStyle: "long",
-            timeZone: "UTC",
-          }).format(new Date(article.publishedAt))}
-        </time>
-        {embedUrl ? (
-          <div className="video-embed">
-            <iframe
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-              loading="lazy"
-              referrerPolicy="strict-origin-when-cross-origin"
-              src={embedUrl}
-              title={`Video for ${article.title}`}
-            />
+    <article>
+      <header className="page-header hero-band hero-band--charcoal">
+        <Container className="prose">
+          <Link className="back-link" href="/blog">
+            ← All insights
+          </Link>
+          <p className="eyebrow">{article.category}</p>
+          <h1>{article.title}</h1>
+          <p className="lead">{article.excerpt}</p>
+          <time className="article-date" dateTime={article.publishedAt}>
+            {new Intl.DateTimeFormat("en-AU", {
+              dateStyle: "long",
+              timeZone: "UTC",
+            }).format(new Date(article.publishedAt))}
+          </time>
+        </Container>
+      </header>
+      <div className="section">
+        <Container className="prose">
+          {embedUrl ? (
+            <div className="video-embed">
+              <iframe
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="strict-origin-when-cross-origin"
+                src={embedUrl}
+                title={`Video for ${article.title}`}
+              />
+            </div>
+          ) : null}
+          <div className="article-body">
+            <ReactMarkdown
+              components={{
+                a: ({ children, href }) => {
+                  const external = href?.startsWith("http");
+                  return (
+                    <a
+                      href={href}
+                      rel={external ? "noopener noreferrer" : undefined}
+                      target={external ? "_blank" : undefined}
+                    >
+                      {children}
+                    </a>
+                  );
+                },
+              }}
+              remarkPlugins={[remarkGfm]}
+            >
+              {article.body}
+            </ReactMarkdown>
           </div>
-        ) : null}
-        <div className="article-body">
-          <ReactMarkdown
-            components={{
-              a: ({ children, href }) => {
-                const external = href?.startsWith("http");
-                return (
-                  <a
-                    href={href}
-                    rel={external ? "noopener noreferrer" : undefined}
-                    target={external ? "_blank" : undefined}
-                  >
-                    {children}
-                  </a>
-                );
-              },
-            }}
-            remarkPlugins={[remarkGfm]}
-          >
-            {article.body}
-          </ReactMarkdown>
-        </div>
-      </Container>
+        </Container>
+      </div>
     </article>
   );
 }

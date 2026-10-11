@@ -10,14 +10,17 @@
 .hero {
   position: relative;
   overflow: hidden;
-  min-height: calc(100vh - 4.375rem);
   padding: 6.5rem 0 5rem;
+}
+
+.body {
+  padding: 4rem 0 5rem;
 }
 
 .inner {
   position: relative;
   z-index: 2;
-  width: min(72rem, calc(100% - 3.5rem));
+  width: min(71.5rem, calc(100% - 3.5rem));
   margin: 0 auto;
 }
 
@@ -115,9 +118,9 @@
 }
 
 .primaryAction {
-  background: #12201c;
+  background: #f0552b;
   color: #fff;
-  box-shadow: 0 0.3rem 1rem rgb(18 32 28 / 12%);
+  box-shadow: 0 0.3rem 1rem rgb(0 0 0 / 25%);
 }
 
 .primaryAction:hover {
@@ -140,7 +143,6 @@
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1.1rem;
-  margin-top: 4.5rem;
 }
 
 .feature {
