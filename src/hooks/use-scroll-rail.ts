@@ -58,6 +58,9 @@ export function useScrollRail(children: ReactNode) {
   function onKeyDown(event: KeyboardEvent<HTMLUListElement>) {
     // Leave keyboard events from links, inputs and other card controls alone.
     if (event.target !== event.currentTarget) return;
+    // Modified keys belong to browser, document and assistive-technology shortcuts.
+    if (event.altKey || event.ctrlKey || event.metaKey || event.shiftKey)
+      return;
     if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
       event.preventDefault();
       move(event.key === "ArrowLeft" ? -1 : 1);
