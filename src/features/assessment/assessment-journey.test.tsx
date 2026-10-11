@@ -6,12 +6,48 @@ import {
   screen,
   within,
 } from "@testing-library/react";
-import { afterEach, describe, expect, it } from "vitest";
+import { afterEach, beforeEach, describe, expect, it } from "vitest";
 
 import { AssessmentJourney } from "./assessment-journey";
 import { assessmentPathways } from "./pathways";
 
-afterEach(cleanup);
+const originalShowModal = Object.getOwnPropertyDescriptor(
+  HTMLDialogElement.prototype,
+  "showModal",
+);
+const originalClose = Object.getOwnPropertyDescriptor(
+  HTMLDialogElement.prototype,
+  "close",
+);
+
+beforeEach(() => {
+  Object.defineProperty(HTMLDialogElement.prototype, "showModal", {
+    configurable: true,
+    value(this: HTMLDialogElement) {
+      this.open = true;
+    },
+  });
+  Object.defineProperty(HTMLDialogElement.prototype, "close", {
+    configurable: true,
+    value(this: HTMLDialogElement) {
+      this.open = false;
+    },
+  });
+});
+
+afterEach(() => {
+  cleanup();
+  if (originalShowModal)
+    Object.defineProperty(
+      HTMLDialogElement.prototype,
+      "showModal",
+      originalShowModal,
+    );
+  else Reflect.deleteProperty(HTMLDialogElement.prototype, "showModal");
+  if (originalClose)
+    Object.defineProperty(HTMLDialogElement.prototype, "close", originalClose);
+  else Reflect.deleteProperty(HTMLDialogElement.prototype, "close");
+});
 
 function completeCareer() {
   const { questions } = assessmentPathways.career;
@@ -82,6 +118,9 @@ describe("assessment answer review", () => {
     fireEvent.click(
       screen.getByRole("button", { name: "Retake this pathway" }),
     );
+    fireEvent.click(
+      screen.getByRole("button", { name: "Restart and clear answers" }),
+    );
     expect(
       screen
         .getAllByRole("radio")
@@ -138,5 +177,101 @@ describe("assessment answer review", () => {
       name: "Book a career coaching session",
     });
     expect(link.getAttribute("href")).toBe("/booking?type=career-coaching");
+  });
+});
+
+describe("assessment reset confirmation", () => {
+  it("changes pathway immediately when there are no answers to lose", () => {
+    render(<AssessmentJourney initialPathway="career" />);
+    fireEvent.click(screen.getByRole("button", { name: "Change pathway" }));
+    expect(screen.queryByRole("dialog")).toBeNull();
+    expect(screen.getByRole("heading", { name: "Choose your pathway" })).toBe(
+      document.activeElement,
+    );
+  });
+
+  it("keeps the selected answer, question and focus when the visitor cancels", () => {
+    render(<AssessmentJourney initialPathway="career" />);
+    const question = assessmentPathways.career.questions[0];
+    const radio = screen.getByRole("radio", {
+      name: question.options[2].label,
+    }) as HTMLInputElement;
+    fireEvent.click(radio);
+    const trigger = screen.getByRole("button", { name: "Change pathway" });
+    trigger.focus();
+    fireEvent.click(trigger);
+    const dialog = screen.getByRole("dialog", { name: "Clear your answers?" });
+    expect(document.activeElement).toBe(
+      within(dialog).getByRole("button", { name: "Keep my answers" }),
+    );
+    expect(dialog.getAttribute("aria-describedby")).toBeTruthy();
+    fireEvent.click(
+      within(dialog).getByRole("button", { name: "Keep my answers" }),
+    );
+    expect(screen.queryByRole("dialog")).toBeNull();
+    expect(radio.checked).toBe(true);
+    expect(screen.getByRole("heading", { name: question.prompt })).toBeTruthy();
+    expect(screen.getByRole("progressbar").getAttribute("value")).toBe("1");
+    expect(document.activeElement).toBe(trigger);
+  });
+
+  it("treats native Escape cancellation as keeping the answers", () => {
+    render(<AssessmentJourney initialPathway="career" />);
+    const radio = screen.getByRole("radio", {
+      name: assessmentPathways.career.questions[0].options[1].label,
+    }) as HTMLInputElement;
+    fireEvent.click(radio);
+    const trigger = screen.getByRole("button", { name: "Change pathway" });
+    trigger.focus();
+    fireEvent.click(trigger);
+    fireEvent(
+      screen.getByRole("dialog"),
+      new Event("cancel", { cancelable: true }),
+    );
+    expect(screen.queryByRole("dialog")).toBeNull();
+    expect(radio.checked).toBe(true);
+    expect(document.activeElement).toBe(trigger);
+  });
+
+  it("clears the answers only after pathway-change confirmation", () => {
+    render(<AssessmentJourney initialPathway="career" />);
+    fireEvent.click(
+      screen.getByRole("radio", {
+        name: assessmentPathways.career.questions[0].options[1].label,
+      }),
+    );
+    fireEvent.click(screen.getByRole("button", { name: "Change pathway" }));
+    fireEvent.click(
+      screen.getByRole("button", { name: "Change pathway and clear answers" }),
+    );
+    expect(screen.queryByRole("dialog")).toBeNull();
+    expect(screen.getByRole("heading", { name: "Choose your pathway" })).toBe(
+      document.activeElement,
+    );
+    fireEvent.click(
+      screen.getByRole("button", { name: /Launch My AI Career/ }),
+    );
+    expect(screen.getByRole("progressbar").getAttribute("value")).toBe("0");
+    expect(
+      screen
+        .getAllByRole("radio")
+        .every((radio) => !(radio as HTMLInputElement).checked),
+    ).toBe(true);
+  });
+
+  it("retains the completed result when a retake is cancelled", () => {
+    render(<AssessmentJourney initialPathway="career" />);
+    completeCareer();
+    const trigger = screen.getByRole("button", { name: "Retake this pathway" });
+    trigger.focus();
+    fireEvent.click(trigger);
+    fireEvent.click(screen.getByRole("button", { name: "Keep my answers" }));
+    expect(screen.getByText("Your score: 12 / 15")).toBeTruthy();
+    expect(screen.getByRole("heading", { name: "AI Leader" })).toBeTruthy();
+    expect(document.activeElement).toBe(trigger);
+    fireEvent.click(screen.getByText("Review your answers"));
+    expect(
+      screen.getByText(assessmentPathways.career.questions[0].options[3].label),
+    ).toBeTruthy();
   });
 });
