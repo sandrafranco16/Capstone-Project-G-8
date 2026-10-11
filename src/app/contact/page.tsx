@@ -27,14 +27,26 @@ export const metadata: Metadata = {
   alternates: { canonical: "/contact" },
 };
 
-export default function ContactPage() {
+export default async function ContactPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ article?: string | string[] }>;
+}) {
+  const params = await searchParams;
+  const article = typeof params.article === "string" ? params.article : "";
+  const initialMessage = article
+    ? `I’m interested in the article: ${article}`
+    : "";
   return (
     <div className={cn(styles.page, inter.variable)}>
       <ContactHero content={contactHero} />
       <section className="section contact-sec">
         <div className="wrap contact-grid">
           <SpotlightCard className="form-card">
-            <ContactForm />
+            <ContactForm
+              initialEnquiryType={article ? "Something else" : ""}
+              initialMessage={initialMessage}
+            />
           </SpotlightCard>
           <ContactDetails content={contactDetails} />
         </div>
