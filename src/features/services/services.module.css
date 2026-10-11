@@ -87,6 +87,10 @@
   color: var(--ink-2);
 }
 
+.page :global(.faq .services-faq) {
+  gap: 0;
+}
+
 .page :global(.faq details) {
   border-radius: var(--r);
   background: var(--paper);
@@ -110,25 +114,34 @@
   gap: 1rem;
   align-items: center;
 }
-.page :global(.faq summary::-webkit-details-marker) {
-  display: none;
-}
-.page :global(.faq summary::after) {
-  content: "+";
+.page :global(.faq .faq-icon) {
   font-size: 1.3rem;
   color: var(--coral);
   font-weight: 400;
   line-height: 1;
   transition: transform 0.25s;
 }
-.page :global(.faq details[open] summary::after) {
-  transform: rotate(45deg);
+.page :global(.faq .faq-answer) {
+  padding: 0;
+}
+.page :global(.faq summary:focus-visible) {
+  outline: 0.125rem solid var(--blue);
+  outline-offset: 0.1875rem;
+  border-radius: 0.5rem;
 }
 .page :global(.faq p) {
+  margin-bottom: 1em;
   padding: 0 1.5rem 1.3125rem;
   font-size: 0.94rem;
   color: var(--ink-2);
   max-width: 76ch;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page :global(.faq .faq-icon),
+  .page :global(.faq details) {
+    transition: none;
+  }
 }
 
 @media (max-width: 56.25rem) {
