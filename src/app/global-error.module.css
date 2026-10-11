@@ -1,0 +1,96 @@
+.document {
+  margin: 0;
+  background: var(--canvas, #fcfaf5);
+  color: var(--ink, #12201c);
+  font-family: system-ui, sans-serif;
+  line-height: 1.6;
+}
+
+.main {
+  display: grid;
+  min-height: 100svh;
+  box-sizing: border-box;
+  place-items: center;
+  padding: clamp(1.25rem, 5vw, 4rem);
+}
+
+.panel {
+  width: 100%;
+  max-width: 42rem;
+  box-sizing: border-box;
+  padding: clamp(1.25rem, 5vw, 3rem);
+  border: 1px solid var(--line, #e6e0d3);
+  border-radius: var(--r, 20px 20px 20px 6px);
+  background: var(--paper, #fff);
+  overflow-wrap: anywhere;
+}
+
+.brand {
+  color: inherit;
+  font-size: 1.25rem;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.eyebrow {
+  margin-top: 2rem;
+  color: var(--ink-2, #4b5a52);
+  font-size: 0.85rem;
+  font-weight: 650;
+}
+
+.panel h1 {
+  font-size: clamp(1.75rem, 5vw, 2.75rem);
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.75rem;
+}
+
+.actions :is(button, a) {
+  display: inline-flex;
+  min-height: 2.75rem;
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: center;
+  padding: 0.65rem 1rem;
+  border: 1px solid var(--line-2, #d8cfbb);
+  border-radius: var(--r-pill, 999px);
+  background: var(--paper, #fff);
+  color: inherit;
+  font: inherit;
+  font-weight: 650;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.actions button {
+  border-color: var(--ink, #12201c);
+  background: var(--ink, #12201c);
+  color: #fff;
+}
+
+.help {
+  margin-top: 1.5rem;
+  color: var(--ink-2, #4b5a52);
+}
+
+.help a {
+  color: var(--blue-deep, #2d3ba6);
+}
+
+.panel :is(a, button, h1):focus-visible {
+  outline: 3px solid var(--blue-deep, #2d3ba6);
+  outline-offset: 4px;
+}
+
+@media (max-width: 480px) {
+  .actions > * {
+    width: 100%;
+  }
+}
