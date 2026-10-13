@@ -180,16 +180,34 @@
     radial-gradient(ellipse at 72% 45%, #0b4a32, #06301f 62%, #031c12 100%);
 }
 
-/* About's ring mark: a quiet watermark on the dark band. */
+/* About's ring mark competes with the long mission heading on the dark band;
+   the rays already carry the texture, so it is hidden here. */
 .hero-band--emerald img[aria-hidden="true"] {
-  opacity: 0.16;
-  filter: grayscale(1) brightness(2.2);
+  display: none;
 }
 
 @media (max-width: 47.5rem) {
   .hero-band {
     --hero-ray-origin: 85% 30%;
   }
+}
+
+/* In-page jump links and section chips sitting on the dark band. */
+.hero-band.hero-band.hero-band :is([class*="jump"], [class*="navigation"]) a,
+.hero-band.hero-band.hero-band [class*="stamp"] {
+  border: 1px solid rgb(255 255 255 / 24%);
+  background: rgb(255 255 255 / 10%);
+  color: #fff;
+  box-shadow: none;
+  backdrop-filter: blur(6px);
+}
+
+.hero-band.hero-band.hero-band
+  :is([class*="jump"], [class*="navigation"])
+  a:hover {
+  border-color: rgb(255 255 255 / 45%);
+  background: rgb(255 255 255 / 18%);
+  color: #fff;
 }
 
 /* Article date sits a step below the lead. */

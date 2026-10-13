@@ -8,6 +8,7 @@ import { resourceClassNames as rc } from "./resource-class-names";
 import Link from "next/link";
 import Image from "next/image";
 
+import { FieldNotes } from "./field-notes";
 import { ResourceTimeline } from "./resource-timeline";
 import { cn } from "@/lib/cn";
 
@@ -48,7 +49,7 @@ export const ResourcesMain = memo(function ResourcesMain() {
       <section className={rc("section bg-mist")} id="clock">
         <div className={rc("wrap")}>
           <div className={rc("sec-head rv")}>
-            <p className={rc("label c-blue")}>{"The compliance clock"}</p>
+            <p className={rc("label")}>{"The compliance clock"}</p>
             <h2 className={rc("display big")}>
               {"What has commenced, and what is coming."}
             </h2>
@@ -64,7 +65,7 @@ export const ResourcesMain = memo(function ResourcesMain() {
       <section className={rc("section")} id="frameworks">
         <div className={rc("wrap")}>
           <div className={rc("sec-head rv")}>
-            <p className={rc("label c-plum")}>{"Frameworks & standards"}</p>
+            <p className={rc("label")}>{"Frameworks & standards"}</p>
             <h2 className={rc("display big")}>
               {"Six documents worth knowing by name."}
             </h2>
@@ -77,6 +78,7 @@ export const ResourcesMain = memo(function ResourcesMain() {
           <div className={rc("fw-grid")}>
             <a
               className={rc("card fill fw rv")}
+              data-card-tone="sky"
               style={{ "--f": "var(--fill-lilac)" } as CustomStyle}
               href="https://www.ai.gov.au/staying-safe-and-responsible/essential-ai-practices"
               target="_blank"
@@ -112,6 +114,7 @@ export const ResourcesMain = memo(function ResourcesMain() {
             </a>
             <a
               className={rc("card fill fw rv")}
+              data-card-tone="cobalt"
               style={
                 {
                   "--f": "var(--fill-mint)",
@@ -152,6 +155,7 @@ export const ResourcesMain = memo(function ResourcesMain() {
             </a>
             <a
               className={rc("card fill fw rv")}
+              data-card-tone="butter"
               style={
                 {
                   "--f": "var(--fill-blush)",
@@ -192,6 +196,7 @@ export const ResourcesMain = memo(function ResourcesMain() {
             </a>
             <a
               className={rc("card fill fw rv")}
+              data-card-tone="lavender"
               style={{ "--f": "var(--fill-sand)" } as CustomStyle}
               href="https://www.nist.gov/itl/ai-risk-management-framework"
               target="_blank"
@@ -227,6 +232,7 @@ export const ResourcesMain = memo(function ResourcesMain() {
             </a>
             <a
               className={rc("card fill fw rv")}
+              data-card-tone="mint"
               style={
                 {
                   "--f": "var(--fill-rose)",
@@ -267,6 +273,7 @@ export const ResourcesMain = memo(function ResourcesMain() {
             </a>
             <a
               className={rc("card fill fw rv")}
+              data-card-tone="peach"
               style={
                 {
                   "--f": "var(--fill-sky)",
@@ -328,6 +335,7 @@ export const ResourcesMain = memo(function ResourcesMain() {
             <div className={rc("qs")} style={{ marginTop: "32px" }}>
               <div
                 className={rc("card fill qq rv")}
+                data-card-tone="mint"
                 style={{ "--f": "var(--fill-mint)" } as CustomStyle}
               >
                 <b>{"Where is AI already being used here?"}</b>
@@ -339,6 +347,7 @@ export const ResourcesMain = memo(function ResourcesMain() {
               </div>
               <div
                 className={rc("card fill qq rv")}
+                data-card-tone="peach"
                 style={
                   {
                     "--f": "var(--fill-blush)",
@@ -355,6 +364,7 @@ export const ResourcesMain = memo(function ResourcesMain() {
               </div>
               <div
                 className={rc("card fill qq rv")}
+                data-card-tone="lavender"
                 style={
                   {
                     "--f": "var(--fill-sand)",
@@ -371,6 +381,7 @@ export const ResourcesMain = memo(function ResourcesMain() {
               </div>
               <div
                 className={rc("card fill qq rv")}
+                data-card-tone="rose"
                 style={
                   {
                     "--f": "var(--fill-lilac)",
@@ -387,6 +398,7 @@ export const ResourcesMain = memo(function ResourcesMain() {
               </div>
               <div
                 className={rc("card fill qq rv")}
+                data-card-tone="sky"
                 style={
                   {
                     "--f": "var(--fill-rose)",
@@ -403,6 +415,7 @@ export const ResourcesMain = memo(function ResourcesMain() {
               </div>
               <div
                 className={rc("card fill qq rv")}
+                data-card-tone="butter"
                 style={
                   {
                     "--f": "var(--fill-sky)",
@@ -424,159 +437,15 @@ export const ResourcesMain = memo(function ResourcesMain() {
       <section className={rc("section")} id="reading">
         <div className={rc("wrap")}>
           <div className={rc("sec-head rv")}>
-            <p className={rc("label c-green")}>{"Reading list"}</p>
+            <p className={rc("label")}>{"Reading list"}</p>
             <h2 className={rc("display big")}>
               {"Written by us, and worth reading anyway."}
             </h2>
             <p className={rc("lead")}>{"Field notes from our own practice."}</p>
           </div>
-          <div className={rc("read")}>
-            <article
-              className={rc("card fill rd rv")}
-              style={
-                {
-                  "--f": "var(--fill-lilac)",
-                  transitionDelay: "0.00s",
-                } as CustomStyle
-              }
-            >
-              <span
-                className={rc("accent")}
-                style={{ background: "#6D5BD0" }}
-              ></span>
-              <span className={rc("meta")}>
-                <i style={{ background: "#6D5BD0" }}></i>
-                {"BITDOT · Change leadership"}
-              </span>
-              <h3>{"The real hurdle with AI isn't the software, it is us"}</h3>
-              <p>
-                {
-                  "Psychological and psychosocial safety decide whether adoption succeeds. How to steady a team while the ground moves under it."
-                }
-              </p>
-              <Link
-                className={rc("src note")}
-                href={{
-                  pathname: "/contact",
-                  query: {
-                    article:
-                      "The real hurdle with AI isn't the software, it is us",
-                  },
-                }}
-              >
-                {"Ask us for the article"}
-              </Link>
-            </article>
-            <article
-              className={rc("card fill rd rv")}
-              style={
-                {
-                  "--f": "var(--fill-blush)",
-                  transitionDelay: "0.05s",
-                } as CustomStyle
-              }
-            >
-              <span
-                className={rc("accent")}
-                style={{ background: "#D53F17" }}
-              ></span>
-              <span className={rc("meta")}>
-                <i style={{ background: "#D53F17" }}></i>
-                {"BITDOT · AI governance"}
-              </span>
-              <h3>{"The imperative of AI governance for NFPs and SMBs"}</h3>
-              <p>
-                {
-                  "Smaller organisations carry the same AI risks as large enterprises on a fraction of the resources. A practical route through."
-                }
-              </p>
-              <Link
-                className={rc("src note")}
-                href={{
-                  pathname: "/contact",
-                  query: {
-                    article:
-                      "The imperative of AI governance for NFPs and SMBs",
-                  },
-                }}
-              >
-                {"Ask us for the article"}
-              </Link>
-            </article>
-            <article
-              className={rc("card fill rd rv")}
-              style={
-                {
-                  "--f": "var(--fill-sky)",
-                  transitionDelay: "0.10s",
-                } as CustomStyle
-              }
-            >
-              <span
-                className={rc("accent")}
-                style={{ background: "#0057B8" }}
-              ></span>
-              <span className={rc("meta")}>
-                <i style={{ background: "#0057B8" }}></i>
-                {"BITDOT · Data governance"}
-              </span>
-              <h3>{"Beyond data governance"}</h3>
-              <p>
-                {
-                  "What one of the country's largest agencies taught us about turning an information framework into organisational excellence."
-                }
-              </p>
-              <Link
-                className={rc("src note")}
-                href={{
-                  pathname: "/contact",
-                  query: {
-                    article: "Beyond data governance",
-                  },
-                }}
-              >
-                {"Ask us for the article"}
-              </Link>
-            </article>
-            <article
-              className={rc("card fill rd rv")}
-              style={
-                {
-                  "--f": "var(--fill-mint)",
-                  transitionDelay: "0.15s",
-                } as CustomStyle
-              }
-            >
-              <span
-                className={rc("accent")}
-                style={{ background: "#0B7A56" }}
-              ></span>
-              <span className={rc("meta")}>
-                <i style={{ background: "#0B7A56" }}></i>
-                {"BITDOT · Data literacy"}
-              </span>
-              <h3>{"Data literacy in the times of AI and data science"}</h3>
-              <p>
-                {
-                  "Data doesn't make decisions, people do. On setting honest expectations between business users and the models informing them."
-                }
-              </p>
-              <Link
-                className={rc("src note")}
-                href={{
-                  pathname: "/contact",
-                  query: {
-                    article:
-                      "Data literacy in the times of AI and data science",
-                  },
-                }}
-              >
-                {"Ask us for the article"}
-              </Link>
-            </article>
-          </div>
+          <FieldNotes />
           <div className={rc("sec-head rv")} style={{ margin: "56px 0 36px" }}>
-            <p className={rc("label c-blue")}>{"Primary sources"}</p>
+            <p className={rc("label")}>{"Primary sources"}</p>
             <h2 className={rc("display big")}>
               {"Straight from the people who write the rules."}
             </h2>
@@ -584,6 +453,7 @@ export const ResourcesMain = memo(function ResourcesMain() {
           <div className={rc("read")}>
             <a
               className={rc("card fill rd rv")}
+              data-card-tone="butter"
               style={
                 {
                   "--f": "var(--fill-sand)",
@@ -626,6 +496,7 @@ export const ResourcesMain = memo(function ResourcesMain() {
             </a>
             <a
               className={rc("card fill rd rv")}
+              data-card-tone="ink"
               style={
                 {
                   "--f": "var(--fill-mint)",
@@ -668,6 +539,7 @@ export const ResourcesMain = memo(function ResourcesMain() {
             </a>
             <a
               className={rc("card fill rd rv")}
+              data-card-tone="sky"
               style={
                 {
                   "--f": "var(--fill-lilac)",
@@ -710,6 +582,7 @@ export const ResourcesMain = memo(function ResourcesMain() {
             </a>
             <a
               className={rc("card fill rd rv")}
+              data-card-tone="mint"
               style={
                 {
                   "--f": "var(--fill-sand)",

@@ -118,7 +118,7 @@
 }
 
 .primaryAction {
-  background: #f0552b;
+  background: var(--cta);
   color: #fff;
   box-shadow: 0 0.3rem 1rem rgb(0 0 0 / 25%);
 }

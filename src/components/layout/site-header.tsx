@@ -20,6 +20,7 @@ export function SiteHeader() {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [hidden, setHidden] = useState(false);
   const progress = useRef<HTMLDivElement>(null);
   const menuButton = useRef<HTMLButtonElement>(null);
   const menuPanel = useRef<HTMLElement>(null);
@@ -35,9 +36,14 @@ export function SiteHeader() {
     }
   };
 
-  // Scroll progress bar and the header's scrolled shadow.
+  // Scroll progress bar, the scrolled state, and Adobe-style auto-hide:
+  // the bar slides away while scrolling down and glides back on scroll up.
   useEffect(() => {
-    const handleScroll = () => {
+    let lastY = window.scrollY;
+    let frame = 0;
+
+    const update = () => {
+      frame = 0;
       const { scrollTop, scrollHeight, clientHeight } =
         document.documentElement;
       const max = scrollHeight - clientHeight;
@@ -45,12 +51,29 @@ export function SiteHeader() {
         progress.current.style.transform = `scaleX(${max > 0 ? scrollTop / max : 0})`;
       }
       setScrolled(scrollTop > 8);
+
+      const delta = scrollTop - lastY;
+      if (Math.abs(delta) > 6) {
+        setHidden(delta > 0 && scrollTop > 160);
+        lastY = scrollTop;
+      }
+      if (scrollTop < 160) setHidden(false);
     };
 
-    handleScroll();
+    const handleScroll = () => {
+      if (!frame) frame = window.requestAnimationFrame(update);
+    };
+
+    update();
     window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      if (frame) window.cancelAnimationFrame(frame);
+    };
   }, []);
+
+  // Keyboard users tabbing into the header always get it back.
+  const reveal = () => setHidden(false);
 
   // Mobile menu: focus the first link, trap Tab inside, close on Escape.
   useEffect(() => {
@@ -101,7 +124,14 @@ export function SiteHeader() {
   return (
     <>
       <div ref={progress} className={styles.progress} aria-hidden="true" />
-      <header className={cn(styles.header, scrolled && styles.scrolled)}>
+      <header
+        className={cn(
+          styles.header,
+          scrolled && styles.scrolled,
+          hidden && !menuOpen && styles.hidden,
+        )}
+        onFocusCapture={reveal}
+      >
         <div className={styles.nav}>
           <Link
             className={styles.brand}

@@ -1,9 +1,13 @@
 import type { Metadata } from "next";
+import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 
 import { Container } from "@/components/ui/container";
 import { listBlogArticles } from "@/features/blog/repository";
+import { cn } from "@/lib/cn";
 import { formatShortDate } from "@/lib/dates";
+
+const meshCycle = ["mesh-ember", "mesh-lagoon", "mesh-orchid", "mesh-dusk"];
 
 export const metadata: Metadata = { title: "Insights" };
 
@@ -24,8 +28,17 @@ export default async function BlogPage() {
             <p className="notice">No articles have been published yet.</p>
           ) : (
             <div className="card-grid blog-grid">
-              {articles.map((article) => (
-                <article className="card blog-card" key={article.slug}>
+              {articles.map((article, index) => (
+                <article
+                  className={cn(
+                    "card blog-card mesh-card",
+                    meshCycle[index % meshCycle.length],
+                  )}
+                  key={article.slug}
+                >
+                  <span className="mesh-arrow" aria-hidden="true">
+                    <ArrowUpRight size={18} strokeWidth={2.2} />
+                  </span>
                   <p className="card__meta">{article.category}</p>
                   <h2>{article.title}</h2>
                   <p>{article.excerpt}</p>

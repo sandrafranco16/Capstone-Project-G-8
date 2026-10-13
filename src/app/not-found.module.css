@@ -90,7 +90,7 @@
 }
 
 .primaryAction {
-  background: var(--error-coral);
+  background: var(--cta);
   color: #fff;
 }
 

@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import { assessmentPathways, pathwayIds } from "@/features/assessment/pathways";
+import { pathwayTones } from "@/lib/card-tones";
 
 import styles from "./homepage-pathways-section.module.css";
 import { cn } from "@/lib/cn";
@@ -40,6 +41,7 @@ export function HomepagePathwaysSection() {
                 key={id}
                 href={`/assessment?path=${id}`}
                 className={cn(styles.card, styles[id])}
+                data-card-tone={pathwayTones[id]}
               >
                 <span className={styles.audience}>{pathway.audience}</span>
 

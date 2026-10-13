@@ -3,6 +3,7 @@ import Link from "next/link";
 import { resourcesSection } from "./tools-resources.content";
 
 import styles from "./tools-resources.module.css";
+import { pageCardTones, toneAt } from "@/lib/card-tones";
 
 /** Homepage resources preview; keeps the prototype's #resources anchor. */
 export function ResourcesPreview() {
@@ -22,9 +23,13 @@ export function ResourcesPreview() {
         </div>
 
         <ul className={styles.rail} aria-label="Resource highlights">
-          {resourcesSection.items.map((item) => (
+          {resourcesSection.items.map((item, index) => (
             <li key={item.id}>
-              <Link href={item.href} className={styles.resource}>
+              <Link
+                href={item.href}
+                className={styles.resource}
+                data-card-tone={toneAt(pageCardTones.homeResources, index)}
+              >
                 <span className={styles.kicker}>{item.kicker}</span>
                 <h3>{item.title}</h3>
                 <p>{item.description}</p>

@@ -9,6 +9,7 @@ import {
 
 import { partnershipContent } from "./partnership-why.content";
 import styles from "./partnership-section.module.css";
+import { pageCardTones, toneAt } from "@/lib/card-tones";
 
 const serviceIcons = [
   CirclePlus,
@@ -34,7 +35,11 @@ export function PartnershipSection() {
             const Icon = serviceIcons[index];
 
             return (
-              <article className={styles.card} key={service.title}>
+              <article
+                className={styles.card}
+                key={service.title}
+                data-card-tone={toneAt(pageCardTones.homePartnership, index)}
+              >
                 <span className={styles.icon} aria-hidden="true">
                   <Icon size={21} strokeWidth={2.1} />
                 </span>

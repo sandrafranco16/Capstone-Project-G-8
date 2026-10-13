@@ -1,3 +1,5 @@
+import { pathwayTones } from "@/lib/card-tones";
+
 import { assessmentPathways, pathwayIds } from "./pathways";
 import type { AssessmentViewProps } from "./view-types";
 import styles from "./assessment-journey.module.css";
@@ -23,6 +25,7 @@ export function PathwaySelection({
               key={id}
               type="button"
               className={styles.path}
+              data-card-tone={pathwayTones[id]}
               onClick={() => onAction({ type: "pathway", pathway: id })}
             >
               <span className={styles.audience}>{path.audience}</span>

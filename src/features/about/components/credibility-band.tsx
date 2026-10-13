@@ -1,4 +1,5 @@
 import { aboutCredibility } from "../content";
+import { FibreWave } from "./fibre-wave";
 
 import styles from "../about.module.css";
 
@@ -16,6 +17,7 @@ export function CredibilityBand() {
             {aboutCredibility.title}
           </h2>
           <p className={styles.lead}>{aboutCredibility.lead}</p>
+          <FibreWave className={styles.wave} />
           <ul className={styles.specs}>
             {aboutCredibility.items.map((item) => (
               <li key={item.title} className={styles.spec}>

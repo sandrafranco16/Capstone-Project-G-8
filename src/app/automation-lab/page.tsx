@@ -5,6 +5,7 @@ import { ArrowRight, Bot, ShieldCheck, Sparkles, Workflow } from "lucide-react";
 import { bookingHref } from "@/features/booking/links";
 
 import styles from "./automation-lab.module.css";
+import { pageCardTones, toneAt } from "@/lib/card-tones";
 import { cn } from "@/lib/cn";
 
 export const metadata: Metadata = {
@@ -78,8 +79,12 @@ export default function AutomationLabPage() {
       <section className={styles.body}>
         <div className={styles.inner}>
           <div className={styles.features}>
-            {features.map(({ icon: Icon, title, description }) => (
-              <article className={styles.feature} key={title}>
+            {features.map(({ icon: Icon, title, description }, index) => (
+              <article
+                className={styles.feature}
+                key={title}
+                data-card-tone={toneAt(pageCardTones.automationLab, index)}
+              >
                 <span className={styles.icon} aria-hidden="true">
                   <Icon size={22} strokeWidth={2} />
                 </span>

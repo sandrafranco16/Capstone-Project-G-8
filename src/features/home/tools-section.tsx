@@ -32,7 +32,7 @@ export function ToolsSection() {
         >
           {tools.map((tool) => (
             <li key={tool.id}>
-              <div className={styles.tool}>
+              <div className={styles.tool} data-tool={tool.id}>
                 <span className={styles.logo}>
                   <Image
                     src={tool.logo.src}

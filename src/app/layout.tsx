@@ -14,6 +14,8 @@ import "@/styles/tokens.css";
 import "@/styles/surfaces.css";
 import "./globals.css";
 import "@/styles/hero-bands.css";
+import "@/styles/card-tones.css";
+import "@/styles/polish.css";
 
 /** Cross-platform fallback for the shared header and footer's Apple system font stack. */
 const inter = Inter({

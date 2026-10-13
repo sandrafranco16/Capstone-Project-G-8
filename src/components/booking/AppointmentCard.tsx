@@ -38,7 +38,7 @@ export function AppointmentCard({
             )}
         </div>
 
-        <h3 className="appt-card__title">{appointment.title}</h3>
+        <h2 className="appt-card__title">{appointment.title}</h2>
 
         <p className="appt-card__desc">{appointment.description}</p>
 

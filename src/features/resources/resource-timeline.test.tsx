@@ -5,6 +5,7 @@ import { join } from "node:path";
 import { cleanup, fireEvent, render, screen } from "@testing-library/react";
 import { afterEach, describe, expect, it } from "vitest";
 
+import { FieldNotes } from "./field-notes";
 import { ResourceTimeline } from "./resource-timeline";
 import { milestones } from "./timeline-data";
 
@@ -71,6 +72,21 @@ describe("compliance clock filters", () => {
       "utf8",
     );
     // Without this rule the count changes but every milestone stays on screen.
-    expect(css).toMatch(/\.ev\.hide\s*\{[^}]*display:\s*none/);
+    expect(css).toMatch(/\.ms\.hide\s*\{[^}]*display:\s*none/);
+  });
+});
+
+describe("field notes carousel", () => {
+  const openTitle = () =>
+    document.querySelector('article[data-pos="0"] h3')?.textContent;
+
+  it("steps between articles with the arrow buttons", () => {
+    render(<FieldNotes />);
+    const first = openTitle();
+    fireEvent.click(screen.getByRole("button", { name: "Next article" }));
+    const second = openTitle();
+    expect(second).not.toBe(first);
+    fireEvent.click(screen.getByRole("button", { name: "Previous article" }));
+    expect(openTitle()).toBe(first);
   });
 });
