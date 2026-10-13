@@ -1,0 +1,23 @@
+# Weekly dependency update PRs. Minor and patch bumps are grouped into one
+# PR so the team reviews a single change; security fixes still open at once.
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+      timezone: Australia/Perth
+    open-pull-requests-limit: 5
+    groups:
+      minor-and-patch:
+        update-types: [minor, patch]
+    labels: [dependencies]
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+      timezone: Australia/Perth
+    labels: [dependencies]
