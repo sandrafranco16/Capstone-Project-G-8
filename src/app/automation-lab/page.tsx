@@ -5,6 +5,7 @@ import { ArrowRight, Bot, ShieldCheck, Sparkles, Workflow } from "lucide-react";
 import { bookingHref } from "@/features/booking/links";
 
 import styles from "./automation-lab.module.css";
+import { cn } from "@/lib/cn";
 
 export const metadata: Metadata = {
   title: "Automation Lab",
@@ -36,7 +37,7 @@ const features = [
 export default function AutomationLabPage() {
   return (
     <div className={styles.page}>
-      <section className={`${styles.hero} hero-band hero-band--navy`}>
+      <section className={cn(styles.hero, "hero-band hero-band--navy")}>
         <div className={styles.glowOne} aria-hidden="true" />
         <div className={styles.glowTwo} aria-hidden="true" />
 

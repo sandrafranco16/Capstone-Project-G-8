@@ -9,13 +9,14 @@ import Link from "next/link";
 import Image from "next/image";
 
 import { ResourceTimeline } from "./resource-timeline";
+import { cn } from "@/lib/cn";
 
 type CustomStyle = CSSProperties & Record<`--${string}`, string>;
 
 export const ResourcesMain = memo(function ResourcesMain() {
   return (
     <>
-      <section className={`${rc("p-hero")} hero-band hero-band--charcoal`}>
+      <section className={cn(rc("p-hero"), "hero-band hero-band--charcoal")}>
         <span className={rc("blob blob-blue")} aria-hidden="true"></span>
         <span className={rc("blob blob-green")} aria-hidden="true"></span>
         <div className={rc("wrap")}>

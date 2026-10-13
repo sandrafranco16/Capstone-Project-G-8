@@ -1,17 +1,12 @@
+import { SITE_TIMEZONE, todayIn } from "@/lib/dates";
+
 import type { ResourceMilestone } from "./timeline-data";
 
 export type TimelineFilter = "all" | "au" | "eu" | "live" | "next";
 
+/** Today in Perth as `YYYY-MM-DD`; milestones compare against this. */
 export function getPerthDate(now = new Date()) {
-  const parts = new Intl.DateTimeFormat("en-AU", {
-    timeZone: "Australia/Perth",
-    year: "numeric",
-    month: "2-digit",
-    day: "2-digit",
-  }).formatToParts(now);
-  const part = (type: Intl.DateTimeFormatPartTypes) =>
-    parts.find((item) => item.type === type)?.value ?? "";
-  return `${part("year")}-${part("month")}-${part("day")}`;
+  return todayIn(SITE_TIMEZONE, now);
 }
 
 export function filterMilestones(

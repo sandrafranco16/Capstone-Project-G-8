@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 
 import { trackClientEvent } from "@/features/analytics/client";
+import { formatLongDate } from "@/lib/dates";
 
 import { resourceClassNames as rc } from "./resource-class-names";
 import {
@@ -35,14 +36,7 @@ export function ResourceTimeline() {
   const shown = filterMilestones(milestones, filter, today ?? "");
   const nextIndex =
     today === null ? -1 : findNextMilestoneIndex(milestones, today);
-  const formattedToday = today
-    ? new Intl.DateTimeFormat("en-AU", {
-        day: "numeric",
-        month: "long",
-        year: "numeric",
-        timeZone: "UTC",
-      }).format(new Date(`${today}T00:00:00Z`))
-    : "";
+  const formattedToday = today ? formatLongDate(today) : "";
 
   useEffect(() => {
     trackClientEvent("resources_filtered", {

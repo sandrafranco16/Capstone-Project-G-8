@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import ReactMarkdown from "react-markdown";
@@ -7,6 +8,7 @@ import remarkGfm from "remark-gfm";
 import { Container } from "@/components/ui/container";
 import { getBlogArticle, listBlogArticles } from "@/features/blog/repository";
 import { getYouTubeEmbedUrl } from "@/features/blog/youtube";
+import { formatLongDate } from "@/lib/dates";
 
 type ArticlePageProps = { params: Promise<{ slug: string }> };
 
@@ -33,16 +35,14 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
       <header className="page-header hero-band hero-band--charcoal">
         <Container className="prose">
           <Link className="back-link" href="/blog">
-            ← All insights
+            <ArrowLeft size={16} strokeWidth={2.2} aria-hidden="true" /> All
+            insights
           </Link>
           <p className="eyebrow">{article.category}</p>
           <h1>{article.title}</h1>
           <p className="lead">{article.excerpt}</p>
           <time className="article-date" dateTime={article.publishedAt}>
-            {new Intl.DateTimeFormat("en-AU", {
-              dateStyle: "long",
-              timeZone: "UTC",
-            }).format(new Date(article.publishedAt))}
+            {formatLongDate(article.publishedAt)}
           </time>
         </Container>
       </header>

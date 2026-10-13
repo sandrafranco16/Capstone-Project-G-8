@@ -6,6 +6,7 @@ import { AssessmentNavigation } from "@/features/assessment/assessment-navigatio
 import { isPathwayId } from "@/features/assessment/pathways";
 
 import styles from "./assessment-page.module.css";
+import { cn } from "@/lib/cn";
 
 export const metadata: Metadata = {
   title: "AI Readiness Assessment",
@@ -24,7 +25,7 @@ export default async function AssessmentPage({
 
   return (
     <div className={styles.page}>
-      <header className={`${styles.hero} hero-band hero-band--teal`}>
+      <header className={cn(styles.hero, "hero-band hero-band--teal")}>
         <Container className={styles.heroInner}>
           <p className={styles.eyebrow}>AI Readiness Assessment</p>
 

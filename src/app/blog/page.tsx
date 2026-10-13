@@ -3,17 +3,9 @@ import Link from "next/link";
 
 import { Container } from "@/components/ui/container";
 import { listBlogArticles } from "@/features/blog/repository";
+import { formatShortDate } from "@/lib/dates";
 
 export const metadata: Metadata = { title: "Insights" };
-
-function formatPublishedDate(value: string) {
-  return new Intl.DateTimeFormat("en-AU", {
-    day: "numeric",
-    month: "short",
-    year: "numeric",
-    timeZone: "UTC",
-  }).format(new Date(value));
-}
 
 export default async function BlogPage() {
   const articles = await listBlogArticles();
@@ -39,7 +31,7 @@ export default async function BlogPage() {
                   <p>{article.excerpt}</p>
                   <div className="blog-card__footer">
                     <time dateTime={article.publishedAt}>
-                      {formatPublishedDate(article.publishedAt)}
+                      {formatShortDate(article.publishedAt)}
                     </time>
                     <Link href={`/blog/${article.slug}`}>Read article →</Link>
                   </div>

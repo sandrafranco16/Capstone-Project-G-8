@@ -3,6 +3,7 @@ import Link from "next/link";
 import { assessmentPathways, pathwayIds } from "@/features/assessment/pathways";
 
 import styles from "./homepage-pathways-section.module.css";
+import { cn } from "@/lib/cn";
 
 export function HomepagePathwaysSection() {
   return (
@@ -11,7 +12,7 @@ export function HomepagePathwaysSection() {
       className={styles.section}
       aria-labelledby="pathways-heading"
     >
-      <div className={`${styles.hero} hero-band hero-band--teal`}>
+      <div className={cn(styles.hero, "hero-band hero-band--teal")}>
         <div className={styles.inner}>
           <div className={styles.headingBlock}>
             <p className={styles.eyebrow}>Start where you are</p>
@@ -38,7 +39,7 @@ export function HomepagePathwaysSection() {
               <Link
                 key={id}
                 href={`/assessment?path=${id}`}
-                className={`${styles.card} ${styles[id]}`}
+                className={cn(styles.card, styles[id])}
               >
                 <span className={styles.audience}>{pathway.audience}</span>
 
