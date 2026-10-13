@@ -5,6 +5,11 @@ import {
   deliverContactLead,
 } from "@/features/contact/server/deliver-contact-lead";
 import {
+  contactRateLimit,
+  getClientIp,
+  readJsonBody,
+} from "@/features/contact/server/request-guards";
+import {
   getTurnstilePolicy,
   isHoneypotTriggered,
   validateContactPayload,
@@ -12,16 +17,34 @@ import {
 } from "@/features/contact/validation";
 
 export async function POST(request: Request) {
-  let body: unknown;
-
-  try {
-    body = await request.json();
-  } catch {
+  // Requests without a client IP (local dev, tests) cannot be attributed,
+  // so they skip the per-IP limit; hosted traffic always carries one.
+  const clientIp = getClientIp(request);
+  const rate = clientIp
+    ? contactRateLimit(clientIp)
+    : { allowed: true, retryAfterSeconds: 0 };
+  if (!rate.allowed) {
     return NextResponse.json(
-      { errors: ["Invalid JSON body."] },
-      { status: 400 },
+      {
+        errors: [
+          "Too many enquiries from this connection. Please try again in a few minutes.",
+        ],
+      },
+      {
+        status: 429,
+        headers: { "Retry-After": String(rate.retryAfterSeconds) },
+      },
     );
   }
+
+  const parsed = await readJsonBody(request);
+  if (!parsed.ok) {
+    return NextResponse.json(
+      { errors: [parsed.error] },
+      { status: parsed.status },
+    );
+  }
+  const body = parsed.body;
 
   // Spam check: honeypot
   if (isHoneypotTriggered(body)) {
@@ -62,7 +85,9 @@ export async function POST(request: Request) {
       );
     }
 
-    const isValid = await verifyTurnstileToken(turnstileToken);
+    const isValid = await verifyTurnstileToken(turnstileToken, {
+      remoteIp: clientIp,
+    });
     if (!isValid) {
       return NextResponse.json(
         { errors: ["Verification failed. Please try again."] },
