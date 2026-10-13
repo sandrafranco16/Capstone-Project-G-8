@@ -146,10 +146,6 @@
   --quote-accent: var(--blue-deep);
   --quote-tint: var(--blue-wash);
 }
-.lilac {
-  --quote-accent: var(--berry);
-  --quote-tint: var(--berry-wash);
-}
 .mark {
   display: grid;
   place-items: center;

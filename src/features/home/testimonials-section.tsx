@@ -12,7 +12,6 @@ const meshByTheme = {
   blush: "mesh-ember",
   mint: "mesh-orchid",
   sky: "mesh-lagoon",
-  lilac: "mesh-dusk",
 } as const;
 
 type TestimonialsSectionProps = {
