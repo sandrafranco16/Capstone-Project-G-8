@@ -8,6 +8,13 @@ import {
 import { TestimonialsRail } from "./testimonials-rail";
 import styles from "./testimonials-section.module.css";
 
+const meshByTheme = {
+  blush: "mesh-ember",
+  mint: "mesh-orchid",
+  sky: "mesh-lagoon",
+  lilac: "mesh-dusk",
+} as const;
+
 type TestimonialsSectionProps = {
   testimonials?: readonly Testimonial[];
 };
@@ -38,7 +45,14 @@ export function TestimonialsSection({
         >
           {testimonials.map((testimonial) => (
             <li key={testimonial.id}>
-              <figure className={cn(styles.quote, styles[testimonial.theme])}>
+              <figure
+                className={cn(
+                  styles.quote,
+                  styles[testimonial.theme],
+                  "mesh-card",
+                  meshByTheme[testimonial.theme],
+                )}
+              >
                 <span className={styles.mark} aria-hidden="true">
                   <QuoteIcon />
                 </span>

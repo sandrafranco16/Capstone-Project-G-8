@@ -3,6 +3,7 @@ import type { ServicePractice } from "../services.types";
 import { SectionHeading } from "./section-heading";
 import { ServicesGrid } from "./services-grid";
 import { ServiceLink } from "./service-link";
+import { servicePracticeTones } from "@/lib/card-tones";
 
 type ServiceSectionProps = {
   practice: ServicePractice;
@@ -43,7 +44,10 @@ export function ServiceSection({
             </ServiceLink>
           </div>
         </div>
-        <ServicesGrid offers={practice.offers} />
+        <ServicesGrid
+          offers={practice.offers}
+          tones={servicePracticeTones[practice.id]}
+        />
       </div>
     </section>
   );

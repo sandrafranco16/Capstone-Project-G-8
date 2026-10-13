@@ -36,6 +36,10 @@ html:root {
   /* Pathway and accent colours (text-safe on white and on their tint) */
   --coral: #f0552b;
   --coral-deep: #b83812; /* ≥ 4.5:1 on coral-wash and canvas */
+  /* Filled buttons: white label on --cta passes WCAG AA (4.7:1). Brand
+     --coral stays for accents, headline words and decoration. */
+  --cta: #cf4316;
+  --cta-hover: #b83812;
   --coral-light: #ff9e7a;
   --coral-wash: #fde9e1;
 

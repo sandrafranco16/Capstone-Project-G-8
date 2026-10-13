@@ -5,6 +5,8 @@ import { ArrowRight, Bot, ShieldCheck, Sparkles, Workflow } from "lucide-react";
 import { bookingHref } from "@/features/booking/links";
 
 import styles from "./automation-lab.module.css";
+import { pageCardTones, toneAt } from "@/lib/card-tones";
+import { cn } from "@/lib/cn";
 
 export const metadata: Metadata = {
   title: "Automation Lab",
@@ -36,7 +38,7 @@ const features = [
 export default function AutomationLabPage() {
   return (
     <div className={styles.page}>
-      <section className={styles.hero}>
+      <section className={cn(styles.hero, "hero-band hero-band--navy")}>
         <div className={styles.glowOne} aria-hidden="true" />
         <div className={styles.glowTwo} aria-hidden="true" />
 
@@ -71,10 +73,18 @@ export default function AutomationLabPage() {
               Explore our services
             </Link>
           </div>
+        </div>
+      </section>
 
+      <section className={styles.body}>
+        <div className={styles.inner}>
           <div className={styles.features}>
-            {features.map(({ icon: Icon, title, description }) => (
-              <article className={styles.feature} key={title}>
+            {features.map(({ icon: Icon, title, description }, index) => (
+              <article
+                className={styles.feature}
+                key={title}
+                data-card-tone={toneAt(pageCardTones.automationLab, index)}
+              >
                 <span className={styles.icon} aria-hidden="true">
                   <Icon size={22} strokeWidth={2} />
                 </span>

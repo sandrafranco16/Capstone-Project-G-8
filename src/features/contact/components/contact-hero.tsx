@@ -19,7 +19,7 @@ export function ContactHero({ content }: { content: ContactHeroContent }) {
   const titleWords = content.title.split(" ").length;
 
   return (
-    <section className="p-hero">
+    <section className="p-hero hero-band hero-band--emerald">
       <span className="blob hero-blob-blue" aria-hidden="true" />
       <span className="blob hero-blob-coral" aria-hidden="true" />
       <div className="wrap">

@@ -11,7 +11,7 @@ export type Director = {
   theme: DirectorTheme;
 };
 
-export type TestimonialTheme = "blush" | "mint";
+export type TestimonialTheme = "blush" | "mint" | "sky" | "lilac";
 
 export type Testimonial = {
   id: string;
@@ -77,6 +77,24 @@ export const directors: readonly Director[] = [
 ];
 
 export const testimonials: readonly Testimonial[] = [
+  {
+    // Source: Jeff McLean's public LinkedIn post (docs/testimonial-sources.md).
+    id: "jeff-mclean",
+    quote:
+      "As the Chair of Buddy Up Australia I jumped at the opportunity when Megan recommended we conduct workshops for the Board to be conducted by Vaibhav (Vibs) Agrawal GAICD an absolute legend in all things AI.",
+    author: "Jeff McLean",
+    role: "Chair, Buddy Up Australia",
+    theme: "sky",
+  },
+  {
+    // Source: letter to Vaibhav Agrawal; BITDOT approved publishing it (docs/testimonial-sources.md).
+    id: "alan-jones",
+    quote:
+      "Your expertise and thoughtful perspective highlighted both the challenges and opportunities ahead, sparking meaningful discussions within our team.",
+    author: "Alan Jones",
+    role: "Principal",
+    theme: "lilac",
+  },
   {
     id: "sarah-m",
     quote:

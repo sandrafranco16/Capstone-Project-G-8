@@ -19,7 +19,7 @@ export function FAQSection({ content }: { content: FAQContent }) {
     >
       <div className="wrap">
         <div className="sec-head rv">
-          <p className="label c-blue">{content.eyebrow}</p>
+          <p className="label">{content.eyebrow}</p>
           <h2 id="services-faq-heading" className="display big">
             {content.title}
           </h2>

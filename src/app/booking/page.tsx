@@ -31,7 +31,7 @@ export default async function BookingPage({ searchParams }: BookingPageProps) {
 
   return (
     <>
-      <header className="page-header booking-header">
+      <header className="page-header booking-header hero-band hero-band--maroon">
         <Container>
           <p className="eyebrow">{bookingConfig.provider}</p>
           <h1>Book the right conversation.</h1>

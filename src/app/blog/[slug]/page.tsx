@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import ReactMarkdown from "react-markdown";
@@ -7,6 +8,7 @@ import remarkGfm from "remark-gfm";
 import { Container } from "@/components/ui/container";
 import { getBlogArticle, listBlogArticles } from "@/features/blog/repository";
 import { getYouTubeEmbedUrl } from "@/features/blog/youtube";
+import { formatLongDate } from "@/lib/dates";
 
 type ArticlePageProps = { params: Promise<{ slug: string }> };
 
@@ -29,54 +31,58 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
   const embedUrl = getYouTubeEmbedUrl(article.youtubeUrl);
 
   return (
-    <article className="section">
-      <Container className="prose">
-        <Link className="back-link" href="/blog">
-          ← All insights
-        </Link>
-        <p className="eyebrow">{article.category}</p>
-        <h1>{article.title}</h1>
-        <p className="lead">{article.excerpt}</p>
-        <time className="article-date" dateTime={article.publishedAt}>
-          {new Intl.DateTimeFormat("en-AU", {
-            dateStyle: "long",
-            timeZone: "UTC",
-          }).format(new Date(article.publishedAt))}
-        </time>
-        {embedUrl ? (
-          <div className="video-embed">
-            <iframe
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-              loading="lazy"
-              referrerPolicy="strict-origin-when-cross-origin"
-              src={embedUrl}
-              title={`Video for ${article.title}`}
-            />
+    <article>
+      <header className="page-header hero-band hero-band--charcoal">
+        <Container className="prose">
+          <Link className="back-link" href="/blog">
+            <ArrowLeft size={16} strokeWidth={2.2} aria-hidden="true" /> All
+            insights
+          </Link>
+          <p className="eyebrow">{article.category}</p>
+          <h1>{article.title}</h1>
+          <p className="lead">{article.excerpt}</p>
+          <time className="article-date" dateTime={article.publishedAt}>
+            {formatLongDate(article.publishedAt)}
+          </time>
+        </Container>
+      </header>
+      <div className="section">
+        <Container className="prose">
+          {embedUrl ? (
+            <div className="video-embed">
+              <iframe
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="strict-origin-when-cross-origin"
+                src={embedUrl}
+                title={`Video for ${article.title}`}
+              />
+            </div>
+          ) : null}
+          <div className="article-body">
+            <ReactMarkdown
+              components={{
+                a: ({ children, href }) => {
+                  const external = href?.startsWith("http");
+                  return (
+                    <a
+                      href={href}
+                      rel={external ? "noopener noreferrer" : undefined}
+                      target={external ? "_blank" : undefined}
+                    >
+                      {children}
+                    </a>
+                  );
+                },
+              }}
+              remarkPlugins={[remarkGfm]}
+            >
+              {article.body}
+            </ReactMarkdown>
           </div>
-        ) : null}
-        <div className="article-body">
-          <ReactMarkdown
-            components={{
-              a: ({ children, href }) => {
-                const external = href?.startsWith("http");
-                return (
-                  <a
-                    href={href}
-                    rel={external ? "noopener noreferrer" : undefined}
-                    target={external ? "_blank" : undefined}
-                  >
-                    {children}
-                  </a>
-                );
-              },
-            }}
-            remarkPlugins={[remarkGfm]}
-          >
-            {article.body}
-          </ReactMarkdown>
-        </div>
-      </Container>
+        </Container>
+      </div>
     </article>
   );
 }
