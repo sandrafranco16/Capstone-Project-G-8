@@ -27,11 +27,21 @@ const EMBED_ORIGINS = [
 ];
 
 /**
- * Content-Security-Policy without script-src: Next.js inline bootstrap
- * scripts would need 'unsafe-inline' or per-request nonces (which force every
- * page to render dynamically). Everything else is locked down, so even if a
- * script did get injected it could not send data to, frame or load assets
- * from origins we have not approved.
+ * Content-Security-Policy.
+ *
+ * Known limitation: there is no script-src. Next.js inline bootstrap scripts
+ * would need 'unsafe-inline' or per-request nonces (which force every page to
+ * render dynamically), so this policy does NOT stop an injected script from
+ * running. React's escaping and the absence of raw HTML rendering are what
+ * prevent injection; the CSP is a second layer that narrows what an injected
+ * script could do:
+ * - fetch/XHR/WebSocket only to us and Turnstile (connect-src)
+ * - images and media only from our own origin (img-src, media-src), so they
+ *   cannot be used to leak data to another server
+ * - iframes only from the booking, video and Turnstile origins (frame-src)
+ * - forms only post back to us (form-action)
+ * It does not cover every channel (for example a script could still navigate
+ * the page elsewhere), so treat it as defence in depth, not containment.
  */
 const contentSecurityPolicy = [
   "base-uri 'self'",
@@ -43,10 +53,11 @@ const contentSecurityPolicy = [
   `connect-src 'self' ${TURNSTILE}${isDevelopment ? " ws: wss:" : ""}`,
   // Only the booking calendar, video embeds and the Turnstile challenge.
   `frame-src ${EMBED_ORIGINS.join(" ")}`,
-  // CMS articles may reference images on other HTTPS hosts.
-  "img-src 'self' data: blob: https:",
+  // Images are uploaded through the CMS into /uploads, so nothing external is
+  // needed. An image linked from another site in an article will not load.
+  "img-src 'self' data: blob:",
   "font-src 'self' data:",
-  "media-src 'self' https:",
+  "media-src 'self'",
   "manifest-src 'self'",
   "worker-src 'self' blob:",
   ...(isDevelopment ? [] : ["upgrade-insecure-requests"]),

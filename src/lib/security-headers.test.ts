@@ -30,7 +30,11 @@ describe("security headers", () => {
     expect(csp).toContain("frame-src https://challenges.cloudflare.com");
     expect(csp).toContain("https://cal.com");
     expect(csp).toContain("https://www.youtube-nocookie.com");
-    expect(csp).toContain("img-src 'self' data: blob: https:");
+    // No wildcard https: sources, so images and media cannot be used to send
+    // data to an unapproved server.
+    expect(csp).toContain("img-src 'self' data: blob:;");
+    expect(csp).toMatch(/media-src 'self'(;|$)/);
+    expect(csp).not.toMatch(/(^|[ ;])https:(;| |$)/);
     expect(csp).toContain("font-src 'self' data:");
     // Scripts are deliberately left to the browser default (see the module
     // comment), so no default-src that would silently block them.
