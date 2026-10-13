@@ -4,6 +4,11 @@ For a technical maintainer. Use [account setup](platform-account-setup.md) first
 record the final host, URL, release SHA and owner in the [index](README.md).
 The application needs a Next.js runtime with server endpoints; it is not static-only.
 
+> **Hosting status (13 Oct 2026):** Vercel is the final host once BITDOT approves the
+> Pro plan (client meeting 16 Oct 2026). Until then, the submitted build is deployed to
+> Netlify for facilitator and client review only. Netlify needs the same environment
+> variables below; it is not the production site and should not be given the final domain.
+
 ## Deployment procedure
 
 1. Use Node 24.x and pnpm 11.19.0. Install from `pnpm-lock.yaml` with
