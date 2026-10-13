@@ -771,7 +771,31 @@
   gap: 7px;
 }
 .page .rd .src.note {
-  color: var(--ink-3);
+  width: fit-content;
+  color: var(--coral-deep);
+  font-weight: 650;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(213, 63, 23, 0.28);
+  padding-bottom: 2px;
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.page .rd .src.note::after {
+  content: "→";
+  margin-left: 5px;
+  transition: transform 0.2s ease;
+}
+
+.page .rd .src.note:hover {
+  color: var(--coral);
+  border-color: var(--coral);
+}
+
+.page .rd .src.note:hover::after {
+  transform: translateX(3px);
 }
 .page .rd:hover .src svg {
   transform: translateX(3px);

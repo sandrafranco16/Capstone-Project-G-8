@@ -11,6 +11,21 @@ import { ENQUIRY_TYPES } from "./contact-fields";
 
 describe("ContactForm", () => {
   const html = renderToStaticMarkup(<ContactForm />);
+  it("supports prefilled enquiry context", () => {
+    const prefilled = renderToStaticMarkup(
+      <ContactForm
+        initialEnquiryType="Something else"
+        initialMessage="I’m interested in the article: Beyond data governance"
+      />,
+    );
+
+    expect(prefilled).toMatch(
+      /<input[^>]*name="enquiryType"[^>]*checked=""[^>]*value="Something else"/,
+    );
+    expect(prefilled).toContain(
+      "I’m interested in the article: Beyond data governance",
+    );
+  });
 
   it.each([
     ["name", "text"],
