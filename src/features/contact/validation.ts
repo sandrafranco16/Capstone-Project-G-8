@@ -97,13 +97,41 @@ export function getTurnstilePolicy({
   return hasSecret ? "enabled" : "disabled";
 }
 
+type TurnstileOptions = {
+  /** Visitor IP, forwarded so Cloudflare can score the token against it. */
+  remoteIp?: string;
+  /**
+   * Hostnames a token may come from. Read from TURNSTILE_ALLOWED_HOSTNAMES
+   * (comma separated) when not passed; empty means "accept any", so preview
+   * deploys keep working until the production domain is set.
+   */
+  allowedHostnames?: string[];
+};
+
+function allowedHostnamesFromEnv() {
+  return (process.env.TURNSTILE_ALLOWED_HOSTNAMES ?? "")
+    .split(",")
+    .map((host) => host.trim().toLowerCase())
+    .filter(Boolean);
+}
+
 /**
  * Verify a Cloudflare Turnstile token server-side.
- * Returns true if the token is valid, false otherwise.
+ * Returns true only when Cloudflare confirms the token and, if configured,
+ * it was issued on one of our hostnames. Fails closed on errors and timeouts.
  */
-export async function verifyTurnstileToken(token: string): Promise<boolean> {
+export async function verifyTurnstileToken(
+  token: string,
+  {
+    remoteIp,
+    allowedHostnames = allowedHostnamesFromEnv(),
+  }: TurnstileOptions = {},
+): Promise<boolean> {
   const secret = process.env.TURNSTILE_SECRET_KEY?.trim();
   if (!secret) return false;
+
+  const body = new URLSearchParams({ secret, response: token });
+  if (remoteIp) body.set("remoteip", remoteIp);
 
   try {
     const response = await fetch(
@@ -111,11 +139,17 @@ export async function verifyTurnstileToken(token: string): Promise<boolean> {
       {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams({ secret, response: token }),
+        body,
+        signal: AbortSignal.timeout(8_000),
       },
     );
-    const data = (await response.json()) as { success: boolean };
-    return data.success === true;
+    const data = (await response.json()) as {
+      success: boolean;
+      hostname?: string;
+    };
+    if (data.success !== true) return false;
+    if (allowedHostnames.length === 0) return true;
+    return allowedHostnames.includes((data.hostname ?? "").toLowerCase());
   } catch {
     return false;
   }

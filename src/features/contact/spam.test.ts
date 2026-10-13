@@ -1,4 +1,4 @@
-import { describe, expect, it, vi } from "vitest";
+import { afterEach, describe, expect, it, vi } from "vitest";
 import {
   getTurnstilePolicy,
   isHoneypotTriggered,
@@ -98,5 +98,59 @@ describe("verifyTurnstileToken", () => {
 
     vi.unstubAllGlobals();
     delete process.env.TURNSTILE_SECRET_KEY;
+  });
+});
+
+describe("verifyTurnstileToken hardening", () => {
+  afterEach(() => {
+    vi.unstubAllGlobals();
+    delete process.env.TURNSTILE_SECRET_KEY;
+  });
+
+  it("forwards the visitor IP to Cloudflare", async () => {
+    process.env.TURNSTILE_SECRET_KEY = "test-secret";
+    const mockFetch = vi.fn().mockResolvedValue({
+      json: () => Promise.resolve({ success: true }),
+    });
+    vi.stubGlobal("fetch", mockFetch);
+
+    await verifyTurnstileToken("token", { remoteIp: "203.0.113.5" });
+
+    const body = mockFetch.mock.calls[0][1].body as URLSearchParams;
+    expect(body.get("remoteip")).toBe("203.0.113.5");
+  });
+
+  it("rejects tokens issued on another hostname when hostnames are configured", async () => {
+    process.env.TURNSTILE_SECRET_KEY = "test-secret";
+    vi.stubGlobal(
+      "fetch",
+      vi.fn().mockResolvedValue({
+        json: () =>
+          Promise.resolve({ success: true, hostname: "evil.example" }),
+      }),
+    );
+
+    expect(
+      await verifyTurnstileToken("token", {
+        allowedHostnames: ["www.bitdot.com.au"],
+      }),
+    ).toBe(false);
+  });
+
+  it("accepts tokens from an allowed hostname", async () => {
+    process.env.TURNSTILE_SECRET_KEY = "test-secret";
+    vi.stubGlobal(
+      "fetch",
+      vi.fn().mockResolvedValue({
+        json: () =>
+          Promise.resolve({ success: true, hostname: "www.bitdot.com.au" }),
+      }),
+    );
+
+    expect(
+      await verifyTurnstileToken("token", {
+        allowedHostnames: ["www.bitdot.com.au"],
+      }),
+    ).toBe(true);
   });
 });

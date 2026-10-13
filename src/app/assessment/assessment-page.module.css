@@ -72,11 +72,10 @@
   padding: 0.65rem 0.9rem;
   border: 1px solid #e6e0d3;
   border-radius: 999px;
-  background: rgb(255 255 255 / 75%);
-  color: #4b5a52;
+  background: #fff;
+  color: #12201c;
   font-size: 0.84rem;
   font-weight: 600;
-  backdrop-filter: blur(0.5rem);
 }
 
 .step strong {

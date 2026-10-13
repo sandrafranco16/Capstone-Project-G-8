@@ -8,7 +8,10 @@ import styles from "../about.module.css";
 
 export function AboutHero() {
   return (
-    <section className={styles.hero} aria-labelledby="about-heading">
+    <section
+      className={cn(styles.hero, "hero-band hero-band--emerald")}
+      aria-labelledby="about-heading"
+    >
       <Image
         src={aboutHero.mark}
         alt=""

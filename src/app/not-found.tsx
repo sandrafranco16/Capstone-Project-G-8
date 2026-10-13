@@ -74,7 +74,7 @@ export default function NotFound() {
           </div>
         </div>
 
-        <aside className={styles.helpCard} aria-label="Finding help">
+        <section className={styles.helpCard} aria-label="Finding help">
           <div className={styles.helpIcon} aria-hidden="true">
             <Compass />
           </div>
@@ -88,7 +88,7 @@ export default function NotFound() {
           <Link className={styles.contactLink} href="/contact">
             Contact us <ArrowRight aria-hidden="true" />
           </Link>
-        </aside>
+        </section>
       </div>
     </section>
   );

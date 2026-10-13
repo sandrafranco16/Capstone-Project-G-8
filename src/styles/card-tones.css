@@ -1,0 +1,164 @@
+/*
+ * Card tones (see src/lib/card-tones.ts).
+ *
+ * Light tints carry a dark text colour of the same hue, which reads richer
+ * than plain black. Bold fills carry white text. Every pair meets WCAG AA.
+ *
+ * The attribute is repeated to outrank the per-page module card styles
+ * without !important.
+ */
+
+[data-card-tone="sky"] {
+  --tone-bg: #d8e6ff;
+  --tone-ink: #0b2a66;
+  --tone-muted: #344c7c;
+}
+[data-card-tone="butter"] {
+  --tone-bg: #fde7a3;
+  --tone-ink: #3b2a00;
+  --tone-muted: #5e4a12;
+}
+[data-card-tone="mint"] {
+  --tone-bg: #cdf1de;
+  --tone-ink: #06372a;
+  --tone-muted: #2b5a4b;
+}
+[data-card-tone="rose"] {
+  --tone-bg: #ffd9e6;
+  --tone-ink: #5a0f2e;
+  --tone-muted: #7a3550;
+}
+[data-card-tone="peach"] {
+  --tone-bg: #ffdecb;
+  --tone-ink: #5a1e05;
+  --tone-muted: #7a3e22;
+}
+[data-card-tone="lavender"] {
+  --tone-bg: #e6dfff;
+  --tone-ink: #2a1660;
+  --tone-muted: #4d4183;
+}
+
+[data-card-tone="violet"],
+[data-card-tone="cobalt"],
+[data-card-tone="teal"],
+[data-card-tone="raspberry"],
+[data-card-tone="ember"],
+[data-card-tone="emerald"],
+[data-card-tone="ink"] {
+  --tone-ink: #fff;
+  --tone-muted: rgb(255 255 255 / 86%);
+}
+[data-card-tone="violet"] {
+  --tone-bg: #7a3fa8;
+}
+[data-card-tone="cobalt"] {
+  --tone-bg: #1f4fd6;
+}
+[data-card-tone="teal"] {
+  --tone-bg: #0c6b5d;
+}
+[data-card-tone="raspberry"] {
+  --tone-bg: #a61f52;
+}
+[data-card-tone="ember"] {
+  --tone-bg: #b23709;
+}
+[data-card-tone="emerald"] {
+  --tone-bg: #0b5a3d;
+}
+[data-card-tone="ink"] {
+  --tone-bg: #14171f;
+}
+
+[data-card-tone][data-card-tone][data-card-tone][data-card-tone] {
+  border-color: transparent;
+  background: var(--tone-bg);
+  color: var(--tone-ink);
+}
+
+[data-card-tone][data-card-tone][data-card-tone][data-card-tone]
+  :is(h2, h3, h4, strong) {
+  color: var(--tone-ink);
+}
+
+[data-card-tone][data-card-tone][data-card-tone][data-card-tone] p {
+  color: var(--tone-muted);
+}
+
+[data-card-tone][data-card-tone][data-card-tone][data-card-tone]
+  :is(a:not([class*="btn"]), [class*="go"], [class*="start"], [class*="src"]) {
+  color: var(--tone-ink);
+}
+
+/* Icon tiles and pills sitting on a bold card. */
+:is(
+    [data-card-tone="violet"],
+    [data-card-tone="cobalt"],
+    [data-card-tone="teal"],
+    [data-card-tone="raspberry"],
+    [data-card-tone="ember"],
+    [data-card-tone="emerald"],
+    [data-card-tone="ink"]
+  )[data-card-tone][data-card-tone]
+  [class*="icon"] {
+  border-color: rgb(255 255 255 / 22%);
+  background: rgb(255 255 255 / 14%);
+  color: #fff;
+}
+
+/* Icon tiles on light cards pick up the card's own ink. */
+[data-card-tone][data-card-tone][data-card-tone] [class*="icon"] {
+  color: var(--tone-ink);
+}
+
+/* Labels, kickers and action text inside any toned card. */
+[data-card-tone][data-card-tone][data-card-tone][data-card-tone]
+  :is(
+    [class*="action"],
+    [class*="itle"],
+    [class*="go"],
+    [class*="start"],
+    [class*="who"],
+    [class*="kicker"],
+    [class*="meta"]
+  ) {
+  color: var(--tone-ink);
+}
+
+[data-card-tone][data-card-tone][data-card-tone][data-card-tone]
+  :is([class*="who"], [class*="kicker"], [class*="meta"])
+  i {
+  background: currentColor;
+}
+
+/* Hairlines inside toned cards follow the card's ink. */
+[data-card-tone][data-card-tone][data-card-tone][data-card-tone] * {
+  border-color: color-mix(in srgb, var(--tone-ink) 18%, transparent);
+}
+
+[data-card-tone][data-card-tone][data-card-tone][data-card-tone]
+  [class*="who"]::before {
+  background: currentColor;
+}
+
+/* Toned cards carry their own colour, so drop legacy accent stripes. */
+[data-card-tone] > [class*="accent"] {
+  display: none;
+}
+
+/* Audience pills on bold cards: glass pill with white text. */
+:is(
+    [data-card-tone="violet"],
+    [data-card-tone="cobalt"],
+    [data-card-tone="teal"],
+    [data-card-tone="raspberry"],
+    [data-card-tone="ember"],
+    [data-card-tone="emerald"],
+    [data-card-tone="ink"]
+  )[data-card-tone][data-card-tone]
+  [class*="audience"] {
+  border-color: rgb(255 255 255 / 28%);
+  background: rgb(255 255 255 / 14%);
+  color: #fff;
+}

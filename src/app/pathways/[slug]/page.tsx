@@ -31,7 +31,7 @@ export default async function PathwayPage({ params }: PathwayPageProps) {
 
   return (
     <>
-      <header className="page-header">
+      <header className="page-header hero-band hero-band--teal">
         <Container>
           <p className="eyebrow">{pathway.audience}</p>
           <h1>{pathway.title}</h1>

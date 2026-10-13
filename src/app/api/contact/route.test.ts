@@ -88,3 +88,59 @@ describe("contact API error responses", () => {
     expect(deliverContactLead).not.toHaveBeenCalled();
   });
 });
+
+describe("contact API request guards", () => {
+  beforeEach(() => {
+    vi.stubEnv("NODE_ENV", "development");
+    vi.stubEnv("TURNSTILE_SECRET_KEY", "");
+    vi.mocked(deliverContactLead).mockReset();
+    vi.mocked(deliverContactLead).mockResolvedValue(undefined);
+  });
+
+  afterEach(() => {
+    vi.unstubAllEnvs();
+  });
+
+  it("rejects non-JSON requests without sending", async () => {
+    const response = await POST(
+      new Request("http://localhost:3000/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "text/plain" },
+        body: "hello",
+      }),
+    );
+    expect(response.status).toBe(415);
+    expect(deliverContactLead).not.toHaveBeenCalled();
+  });
+
+  it("rejects oversized bodies without sending", async () => {
+    const response = await POST(
+      contactRequest(
+        JSON.stringify({ ...validPayload, message: "x".repeat(20_000) }),
+      ),
+    );
+    expect(response.status).toBe(413);
+    expect(deliverContactLead).not.toHaveBeenCalled();
+  });
+
+  it("rate limits repeated enquiries from one IP", async () => {
+    const fromIp = () =>
+      new Request("http://localhost:3000/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "x-forwarded-for": "198.51.100.77",
+        },
+        body: JSON.stringify(validPayload),
+      });
+
+    const statuses: number[] = [];
+    for (let attempt = 0; attempt < 6; attempt += 1) {
+      statuses.push((await POST(fromIp())).status);
+    }
+
+    expect(statuses.slice(0, 5)).toEqual([202, 202, 202, 202, 202]);
+    expect(statuses[5]).toBe(429);
+    expect(deliverContactLead).toHaveBeenCalledTimes(5);
+  });
+});

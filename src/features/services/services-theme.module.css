@@ -197,11 +197,11 @@
   box-shadow: 0 0.75rem 1.75rem rgba(14, 46, 41, 0.28);
 }
 .page :global(.btn-coral) {
-  background: var(--coral);
+  background: var(--cta);
   color: #fff;
 }
 .page :global(.btn-coral:hover) {
-  background: var(--coral-deep);
+  background: var(--cta-hover);
   box-shadow: 0 0.75rem 1.875rem rgba(240, 85, 43, 0.38);
 }
 .page :global(.btn-ghost) {

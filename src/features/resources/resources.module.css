@@ -132,7 +132,7 @@
   gap: 8px;
   font-size: 0.83rem;
   font-weight: 620;
-  color: var(--coral);
+  color: var(--coral-deep);
   margin-bottom: 16px;
 }
 .page .label::before {
@@ -197,7 +197,7 @@
   transform: translateY(-2px);
 }
 .page .btn-coral {
-  background: var(--coral);
+  background: var(--cta);
   color: #fff;
 }
 .page .btn-coral:hover {
@@ -526,8 +526,8 @@
   color: var(--ink);
 }
 .page .filter button.act {
-  background: var(--coral);
-  border-color: var(--coral);
+  background: var(--cta);
+  border-color: var(--cta);
   color: #fff;
 }
 .page .f-count {
@@ -536,55 +536,220 @@
   margin: 16px 0 0;
 }
 
-.page .tl {
-  position: relative;
-  margin-top: 34px;
-  padding-left: 2px;
+/* ── Compliance clock: stacked card carousel (Stripe "What's happening") ──
+   One open card with its details below, followed by narrowing slivers of the
+   next milestones. Position comes from data-pos on each .ev. */
+.page .clock-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px 24px;
+  flex-wrap: wrap;
 }
+.page .stack-nav {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.page .stack-count {
+  min-width: 4.5ch;
+  margin-right: 6px;
+  color: var(--ink-3);
+  font-size: 0.86rem;
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  text-align: right;
+}
+.page .stack-arrow {
+  display: inline-grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border: 1px solid var(--line-2);
+  border-radius: 12px;
+  background: var(--paper);
+  color: var(--ink);
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    border-color 0.2s,
+    color 0.2s;
+}
+.page .stack-arrow:hover:not(:disabled) {
+  border-color: var(--ink);
+}
+.page .stack-arrow:disabled {
+  color: var(--ink-3);
+  opacity: 0.45;
+  cursor: default;
+}
+.page .stack-arrow:focus-visible {
+  outline: 3px solid var(--blue-deep);
+  outline-offset: 3px;
+}
+
+.page .stack {
+  --stack-h: clamp(300px, 34vw, 430px);
+  --stack-gap: 16px;
+
+  display: flex;
+  align-items: flex-start;
+  margin-top: 28px;
+  overflow: hidden;
+  touch-action: pan-y;
+  container-type: inline-size;
+}
+
 .page .ev {
   position: relative;
-  padding: 0 0 18px 66px;
+  flex: 0 0 0px;
+  min-width: 0;
+  margin-right: 0;
+  opacity: 0;
+  transition:
+    flex 0.55s cubic-bezier(0.2, 0.7, 0.2, 1),
+    margin 0.55s cubic-bezier(0.2, 0.7, 0.2, 1),
+    opacity 0.35s ease;
 }
+.page .ev[data-pos="0"] {
+  flex: 1 1 0px;
+  opacity: 1;
+}
+.page .ev[data-pos="1"],
+.page .ev[data-pos="2"],
+.page .ev[data-pos="3"],
+.page .ev[data-pos="4"],
+.page .ev[data-pos="5"] {
+  margin-left: var(--stack-gap);
+  opacity: 1;
+}
+.page .ev[data-pos="1"] {
+  flex-basis: 184px;
+}
+.page .ev[data-pos="2"] {
+  flex-basis: 92px;
+}
+.page .ev[data-pos="3"] {
+  flex-basis: 44px;
+}
+.page .ev[data-pos="4"],
+.page .ev[data-pos="5"] {
+  flex-basis: 12px;
+}
+
 /* Milestones outside the selected compliance-clock filter. The prototype had
    this rule (demo/resources.html: .ev.hide) but it was missed in the port, so
    the filter changed the count without hiding anything. */
 .page .ev.hide {
   display: none;
 }
-.page .tl::before {
+
+/* The coloured card. AU: teal into coral; EU: navy into violet. */
+.page .ev-panel {
+  position: relative;
+  isolation: isolate;
+  height: var(--stack-h);
+  overflow: hidden;
+  border-radius: 14px;
+  color: #fff;
+}
+.page .ev-panel.au {
+  background:
+    radial-gradient(
+      ellipse at 100% 100%,
+      rgb(240 85 43 / 85%),
+      transparent 55%
+    ),
+    linear-gradient(140deg, #00262b 0%, #0b4a46 45%, #127566 100%);
+}
+.page .ev-panel.eu {
+  background:
+    radial-gradient(ellipse at 100% 0%, rgb(224 71 158 / 75%), transparent 55%),
+    linear-gradient(140deg, #071a3f 0%, #2a2a8f 55%, #6d4ce0 100%);
+}
+.page .ev-panel.art {
+  background:
+    radial-gradient(ellipse at 100% 100%, var(--art-b), transparent 60%),
+    linear-gradient(
+      140deg,
+      color-mix(in srgb, var(--art-a) 70%, #0b1430),
+      var(--art-a)
+    );
+}
+.page .stack-bar {
+  justify-content: flex-end;
+  margin-top: -64px;
+}
+/* Fine sweeping lines, echoing the hero bands. */
+.page .ev-panel::after {
   content: "";
   position: absolute;
-  left: 20px;
-  top: 12px;
-  bottom: 12px;
-  width: 2px;
-  border-radius: 2px;
-  background: linear-gradient(
-    180deg,
-    var(--blue-deep),
-    var(--blue-bright) 45%,
-    var(--coral) 78%,
-    rgba(240, 85, 43, 0.15)
+  inset: -30%;
+  z-index: -1;
+  background: repeating-conic-gradient(
+    from 200deg at 85% 115%,
+    rgb(255 255 255 / 9%) 0deg 0.6deg,
+    transparent 0.6deg 4deg
   );
+  mask-image: radial-gradient(circle at 85% 115%, #000, transparent 70%);
 }
-.page .ev-card {
-  padding: 24px 26px;
-  background: var(--paper);
-  border-radius: var(--r);
+.page .ev[data-pos="0"] .ev-panel {
+  box-shadow: 0 18px 40px rgb(18 32 28 / 16%);
 }
+
 .page .ev-top {
+  position: absolute;
+  top: 24px;
+  left: 28px;
+  right: 28px;
   display: flex;
   align-items: center;
-  gap: 11px;
+  gap: 8px;
   flex-wrap: wrap;
-  margin-bottom: 11px;
 }
 .page .ev-date {
-  font-size: 0.9rem;
+  position: absolute;
+  left: 28px;
+  right: 28px;
+  bottom: 24px;
+  color: #fff;
+  font-size: clamp(2.6rem, 6vw, 4.5rem);
   font-weight: 640;
-  letter-spacing: -0.018em;
-  color: var(--ink);
+  letter-spacing: -0.045em;
+  line-height: 0.95;
 }
+/* Rotated date on the wider slivers. */
+.page .ev-spine {
+  position: absolute;
+  left: 50%;
+  bottom: 24px;
+  display: none;
+  color: rgb(255 255 255 / 88%);
+  font-size: 0.95rem;
+  font-weight: 650;
+  white-space: nowrap;
+  writing-mode: vertical-rl;
+  transform: translateX(-50%) rotate(180deg);
+}
+.page .ev[data-pos="1"] .ev-spine,
+.page .ev[data-pos="2"] .ev-spine {
+  display: block;
+}
+.page .ev:not([data-pos="0"]) .ev-top,
+.page .ev:not([data-pos="0"]) .ev-date {
+  visibility: hidden;
+}
+.page .ev-open {
+  position: absolute;
+  inset: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+.page .ev-open:hover {
+  background: rgb(255 255 255 / 8%);
+}
+
 .page .tag {
   font-size: 0.74rem;
   font-weight: 580;
@@ -610,39 +775,119 @@
   color: var(--coral-deep);
   background: var(--fill-sand);
 }
-.page .today {
-  position: relative;
-  display: flex;
-  align-items: center;
-  min-height: 2.75rem;
-  padding: 0 0 1.75rem 3.75rem;
+.page .tag.on-dark {
+  border: 1px solid rgb(255 255 255 / 30%);
+  background: rgb(255 255 255 / 12%);
+  color: #fff;
+  backdrop-filter: blur(6px);
+}
+.page .tag.next-up {
+  background: var(--cta);
+  color: #fff;
+  font-weight: 680;
 }
 
-.page .today::before {
-  content: "";
-  position: absolute;
-  left: 0.875rem;
-  top: 0.8rem;
-  width: 0.875rem;
-  height: 0.875rem;
-  border: 0.25rem solid var(--canvas);
-  border-radius: 50%;
-  background: var(--coral);
-  box-shadow: 0 0 0 0.125rem rgb(240 85 43 / 20%);
+/* Details under the open card, like the copy under Stripe's feature card. */
+/* Spans the whole carousel (not just the open card), like Stripe. */
+.page .ev-body {
+  display: none;
+  width: 100cqw;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 16px 32px;
+  align-items: start;
+  padding: 26px 4px 0;
 }
-
-.page .today span {
+.page .ev[data-pos="0"] .ev-body {
+  display: grid;
+  animation: ev-body-in 0.45s ease both;
+}
+.page .ev-copy h3 {
+  margin: 0 0 8px;
+  color: var(--ink);
+  font-size: clamp(1.25rem, 2vw, 1.55rem);
+  font-weight: 680;
+  letter-spacing: -0.025em;
+  line-height: 1.25;
+}
+.page .ev-copy p {
+  max-width: 62ch;
+  margin: 0;
+  color: var(--ink-3);
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+.page .ev-cta {
   display: inline-flex;
   align-items: center;
-  min-height: 2.5rem;
-  padding: 0.55rem 1rem;
-  border: 1px solid var(--line);
-  border-radius: var(--r-pill);
+  gap: 8px;
+  padding: 12px 18px;
+  border: 1px solid var(--line-2);
+  border-radius: 10px;
   background: var(--paper);
-  color: var(--ink);
-  box-shadow: var(--sh);
-  font-size: 0.84rem;
+  color: var(--blue-deep);
+  font-size: 0.95rem;
   font-weight: 620;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: border-color 0.2s;
+}
+.page .ev-cta:hover {
+  border-color: var(--blue-deep);
+}
+
+@keyframes ev-body-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page .ev,
+  .page .ev[data-pos="0"] .ev-body {
+    transition: none;
+    animation: none;
+  }
+}
+
+@media (max-width: 760px) {
+  .page .stack {
+    --stack-h: 300px;
+    --stack-gap: 8px;
+  }
+  /* Slivers are too narrow to tap on phones; arrows and swipe take over. */
+  .page .ev-open {
+    display: none;
+  }
+  .page .ev[data-pos="1"] {
+    flex-basis: 40px;
+  }
+  .page .ev[data-pos="2"] {
+    flex-basis: 16px;
+  }
+  .page .ev[data-pos="3"],
+  .page .ev[data-pos="4"],
+  .page .ev[data-pos="5"] {
+    flex-basis: 0px;
+    margin-left: 0;
+    opacity: 0;
+  }
+  .page .ev[data-pos="1"] .ev-spine,
+  .page .ev[data-pos="2"] .ev-spine {
+    display: none;
+  }
+  .page .ev-top,
+  .page .ev-date {
+    left: 20px;
+    right: 20px;
+  }
+  .page .ev-body {
+    grid-template-columns: 1fr;
+    padding-top: 20px;
+  }
+  .page .ev-cta {
+    justify-self: start;
+  }
 }
 
 .page .fw-grid {
@@ -828,20 +1073,183 @@
 }
 @media (max-width: 760px) {
   .page .fw-grid,
-  .page .read,
-  .page .ev {
-    padding-left: 54px;
+  .page .read {
+    grid-template-columns: 1fr;
+  }
+  .page .promo {
+    grid-template-columns: 1fr;
+  }
+  .page .promo-media {
+    display: none;
+  }
+  .page .promo-copy {
+    padding: 36px 26px;
   }
   .page .qs {
     grid-template-columns: 1fr;
   }
-  .page .today {
-    padding-left: 54px;
-  }
-  .page .ev-card {
-    padding: 20px;
-  }
   .page .p-hero {
     padding: 56px 0 48px;
+  }
+}
+
+/* ── Compliance clock: editorial list (Stripe blog style) ─────────── */
+.page .ms-list {
+  margin-top: 28px;
+  border-top: 1px solid var(--line-2);
+}
+.page .ms {
+  display: grid;
+  grid-template-columns: 200px minmax(0, 1fr) 220px;
+  gap: 20px 48px;
+  align-items: start;
+  padding: 36px 0;
+  border-bottom: 1px solid var(--line-2);
+}
+/* Milestones outside the selected filter. */
+.page .ms.hide {
+  display: none;
+}
+.page .ms-date {
+  display: block;
+  color: var(--ink);
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+}
+.page .ms-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 12px;
+}
+.page .ms-main h3 {
+  margin: 0 0 10px;
+  color: var(--ink);
+  font-size: clamp(1.3rem, 2vw, 1.6rem);
+  font-weight: 680;
+  letter-spacing: -0.03em;
+  line-height: 1.22;
+}
+.page .ms-main p {
+  max-width: 62ch;
+  margin: 0;
+  color: var(--ink-3);
+  font-size: 1.02rem;
+  line-height: 1.62;
+}
+.page .ms-src {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 16px;
+  color: var(--blue-deep);
+  font-size: 0.95rem;
+  font-weight: 650;
+  text-decoration: none;
+}
+.page .ms-src svg {
+  transition: transform 0.2s;
+}
+.page .ms-src:hover svg {
+  transform: translateX(3px);
+}
+.page .ms-art {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  border-radius: 12px;
+  transition: transform 0.35s ease;
+}
+.page .ms-art.au {
+  background:
+    radial-gradient(
+      ellipse at 100% 100%,
+      rgb(240 85 43 / 90%),
+      transparent 60%
+    ),
+    linear-gradient(140deg, #00262b, #127566);
+}
+.page .ms-art.eu {
+  background:
+    radial-gradient(ellipse at 100% 0%, rgb(224 71 158 / 80%), transparent 60%),
+    linear-gradient(140deg, #071a3f, #6d4ce0);
+}
+.page .ms-art::after {
+  content: "";
+  position: absolute;
+  inset: -30%;
+  z-index: -1;
+  background: repeating-conic-gradient(
+    from 200deg at 90% 120%,
+    rgb(255 255 255 / 12%) 0deg 0.6deg,
+    transparent 0.6deg 4deg
+  );
+  mask-image: radial-gradient(circle at 90% 120%, #000, transparent 75%);
+}
+.page .ms-art span {
+  position: absolute;
+  left: 18px;
+  bottom: 12px;
+  color: #fff;
+  font-size: 2.4rem;
+  font-weight: 650;
+  letter-spacing: -0.04em;
+}
+.page .ms:hover .ms-art {
+  transform: translateY(-3px);
+}
+.page .ms.live .ms-art {
+  filter: saturate(0.75);
+}
+.page .today {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 22px 0 0;
+  color: var(--coral-deep);
+  font-size: 0.86rem;
+  font-weight: 680;
+}
+.page .today::after {
+  content: "";
+  flex: 1;
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--coral), transparent);
+}
+@media (max-width: 1040px) {
+  .page .ms {
+    grid-template-columns: minmax(0, 1fr) 180px;
+  }
+  .page .ms-meta {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+  }
+  .page .ms-tags {
+    margin: 0;
+  }
+}
+@media (max-width: 760px) {
+  .page .ms {
+    grid-template-columns: 1fr;
+    gap: 14px;
+    padding: 28px 0;
+  }
+  .page .ms-art {
+    display: none;
+  }
+  .page .stack-bar {
+    margin-top: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .page .ms-art {
+    transition: none;
   }
 }
