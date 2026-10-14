@@ -14,8 +14,11 @@ Prepared: 7 October 2026. Status: **review draft; live acceptance and ownership 
 | Team and client: test and accept delivery                               | [Acceptance and handover](acceptance-and-handover.md)                                  |
 | Marker: run and check the project                                       | [Repository README](../../README.md) and [verification record](verification-record.md) |
 
-Also read [known issues](known-issues.md) and [AI use and review](ai-use-and-review.md).
+Also read [AI use and review](ai-use-and-review.md).
 The [delivery summary](delivery-summary.md) maps planned scope to implementation and release checks.
+Track actionable defects in [GitHub Issues](https://github.com/sandrafranco16/Capstone-Project-G-8/issues)
+or the team's Jira board; record acceptance outcomes and client-agreed limitations in
+the [acceptance record](acceptance-and-handover.md).
 
 ## Release details — complete before delivery
 
@@ -24,11 +27,17 @@ The [delivery summary](delivery-summary.md) maps planned scope to implementation
 | Current repository                             | [sandrafranco16/Capstone-Project-G-8](https://github.com/sandrafranco16/Capstone-Project-G-8) |
 | Intended production branch                     | `main`; confirm against hosting settings                                                      |
 | Final release commit / tag                     | Pending; record exact SHA and approved tag                                                    |
+| Client-review demo URL / SHA / deployment date | [Netlify review demo](https://bitdot-review.netlify.app); deployed SHA/date to be recorded    |
 | Final hosting provider / project URL           | Vercel retained; Pro proposed for commercial launch. Client-owned project URL pending         |
 | Public website / CMS                           | Pending; CMS is `<website origin>/admin/`                                                     |
 | Cal.com profile / event owner                  | Pending client-owned account confirmation                                                     |
 | Sending domain / From / receiving inbox        | Pending client approval and live email test                                                   |
 | Technical support contact and support end date | Pending agreement; no indefinite student maintenance is promised                              |
+
+Netlify is used only to let the client review the current demo. Vercel remains the
+final hosting plan. Production launch awaits BITDOT's selection between the two
+independently developed group versions and approval of recurring hosting costs.
+Record the deployed version for each environment and any functional differences.
 
 The guides describe configuration procedures, not proof of completed configuration.
 No passwords, recovery codes, API secrets or attendee details belong in this pack.

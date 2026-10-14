@@ -4,10 +4,17 @@ For a technical maintainer. Use [account setup](platform-account-setup.md) first
 record the final host, URL, release SHA and owner in the [index](README.md).
 The application needs a Next.js runtime with server endpoints; it is not static-only.
 
-> **Hosting status (13 Oct 2026):** Vercel is the final host once BITDOT approves the
-> Pro plan (client meeting 16 Oct 2026). Until then, the submitted build is deployed to
-> Netlify for facilitator and client review only. Netlify needs the same environment
-> variables below; it is not the production site and should not be given the final domain.
+## Client-review demo
+
+The [Netlify review demo](https://bitdot-review.netlify.app) is available for client
+and facilitator review. Vercel remains the intended production host. Production
+launch awaits BITDOT's selection between the two independently developed group
+versions and approval of recurring hosting costs, following the
+[joint client meeting arrangement](../meeting-minutes/20.08%20MoM.pdf).
+
+Netlify uses the environment variables below for enabled integrations. Record its
+deployed SHA in the [handover index](README.md). Production account access, domain/DNS
+configuration and acceptance results are recorded separately for the selected version.
 
 ## Deployment procedure
 

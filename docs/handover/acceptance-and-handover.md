@@ -7,38 +7,44 @@ personal details and calendar information from shared evidence.
 
 ## 1. Test context
 
-| Field                                        | Record                           |
-| -------------------------------------------- | -------------------------------- |
-| Date, tester and client representative       | Pending                          |
-| Website URL, provider and deployment URL     | Pending                          |
-| Exact release SHA/tag                        | Pending                          |
-| Device/browser and viewport                  | Pending                          |
-| Publishing account role and applicable rules | Pending; do not record passwords |
-| Booking profile/event owner and test inbox   | Pending; redact private details  |
+| Field                                        | Record                                                               |
+| -------------------------------------------- | -------------------------------------------------------------------- |
+| Date, tester and client representative       | Pending                                                              |
+| Website URL, provider and deployment URL     | [Netlify review demo](https://bitdot-review.netlify.app)             |
+| Environment and purpose                      | Netlify client-review demo; Vercel production awaits client decision |
+| Exact release SHA/tag                        | Pending                                                              |
+| Device/browser and viewport                  | Pending                                                              |
+| Publishing account role and applicable rules | Pending; do not record passwords                                     |
+| Booking profile/event owner and test inbox   | Pending; redact private details                                      |
+
+Record the Netlify client-review run and the final Vercel acceptance run separately,
+with the SHA and any unavailable integrations for each. A demo review can provide
+client feedback; production configuration and ownership transfer need their own evidence.
 
 ## 2. Acceptance tests
 
-All rows below are **Pending**, not a record of tests already completed.
+The reported README exercise is recorded below. Client acceptance tasks remain
+**Pending** until their results are recorded.
 
-| ID  | Task and expected outcome                                                                                                                          | Result / evidence / owner                              |
-| --- | -------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------ |
-| A01 | A new team member follows README: installs, starts site and local CMS without undocumented steps                                                   | Pending; team tester                                   |
-| A02 | From homepage/navigation, reach services, assessment, blog, booking and Contact; no placeholder or Microsoft Bookings path for Cal.com             | Pending; frontend                                      |
-| A03 | Complete each of four assessment pathways; next/back/restart work; results link to relevant services and the agreed contact path                   | Pending; frontend/client                               |
-| A04 | Client signs into `/admin/`, saves a draft, edits it, and publishes under the agreed review policy; article appears after deployment               | Pending; backend/client                                |
-| A05 | Same client account uploads media and publishes an article containing it; public image loads and other contributors still follow code review rules | Pending; backend/client                                |
-| A06 | Article YouTube link renders an approved playable video; invalid/non-embeddable links are handled understandably                                   | Pending; backend/client                                |
-| A07 | All five appointment cards reach their correct Cal.com event, with correct owner/duration; external fallback works                                 | Pending; backend/client                                |
-| A08 | With a consenting test attendee, book once; confirmation, calendar entry, time zone and meeting link are correct; a busy slot is unavailable       | Pending; backend/client                                |
-| A09 | Reschedule and cancel the test appointment; attendee/organiser notifications and calendar updates are correct                                      | Pending; client                                        |
-| A10 | Submit Contact with consent; enquiry reaches the agreed inbox; Reply uses the visitor address; no separate assessment email is sent                | Pending; backend/client                                |
-| A11 | Invalid fields/no consent show understandable errors; failed submission preserves inputs; retry and Send another message obtain fresh verification | Pending; backend/frontend                              |
-| A12 | Non-production production-build test: missing secret gives 503; missing/invalid token gives 400; no real email is sent                             | Pending; backend; never remove live keys for this test |
-| A13 | Keyboard, mobile menu, focus and readable error states work; agreed desktop/mobile browsers show no blocking layout defects                        | Pending; frontend/UI                                   |
-| A14 | Metadata, sitemap, canonical URL and social preview are checked; analytics and privacy behaviour meet the agreed scope                             | Pending; frontend/client                               |
-| A15 | Authorised content publication triggers a successful deployment; maintainer identifies and recovers a failed release in staging                    | Pending; backend/maintainer                            |
-| A16 | Client completes the user-guide exercise without the team performing the steps for them; unclear instructions are corrected                        | Pending; client/PM                                     |
-| A17 | Client approves service/bio/testimonial/legal content and all visible links; demo articles are removed or explicitly accepted                      | Pending; client/PM                                     |
+| ID  | Task and expected outcome                                                                                                                                            | Result / evidence / owner                                                                                                                                 |
+| --- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| A01 | A new team member follows README: installs, starts site and local CMS without undocumented steps                                                                     | Website setup/run completed by Lizhou Xiong; [team confirmation](verification-record.md#6-readme-setup-exercise). Local CMS exercise still to be recorded |
+| A02 | From homepage/navigation, reach services, assessment, blog, booking and Contact; no placeholder or Microsoft Bookings path for Cal.com                               | Pending; frontend                                                                                                                                         |
+| A03 | Complete each of four assessment pathways; next/back/restart work; results link to relevant services and Book a consultation; client confirms the intended next step | Pending; frontend/client                                                                                                                                  |
+| A04 | Client signs into `/admin/`, saves a draft, edits it, and publishes under the agreed review policy; article appears after deployment                                 | Pending; backend/client                                                                                                                                   |
+| A05 | Same client account uploads media and publishes an article containing it; public image loads and other contributors still follow code review rules                   | Pending; backend/client                                                                                                                                   |
+| A06 | Article YouTube link renders an approved playable video; invalid/non-embeddable links are handled understandably                                                     | Pending; backend/client                                                                                                                                   |
+| A07 | All five appointment cards reach their correct Cal.com event, with correct owner/duration; external fallback works                                                   | Pending; backend/client                                                                                                                                   |
+| A08 | With a consenting test attendee, book once; confirmation, calendar entry, time zone and meeting link are correct; a busy slot is unavailable                         | Pending; backend/client                                                                                                                                   |
+| A09 | Reschedule and cancel the test appointment; attendee/organiser notifications and calendar updates are correct                                                        | Pending; client                                                                                                                                           |
+| A10 | Submit Contact with consent; enquiry reaches the agreed inbox; Reply uses the visitor address; no separate assessment email is sent                                  | Pending; backend/client                                                                                                                                   |
+| A11 | Invalid fields/no consent show understandable errors; failed submission preserves inputs; retry and Send another message obtain fresh verification                   | Pending; backend/frontend                                                                                                                                 |
+| A12 | Non-production production-build test: missing secret gives 503; missing/invalid token gives 400; no real email is sent                                               | Pending; backend; never remove live keys for this test                                                                                                    |
+| A13 | Keyboard, mobile menu, focus and readable error states work; agreed desktop/mobile browsers show no blocking layout defects                                          | Pending; frontend/UI                                                                                                                                      |
+| A14 | Metadata, sitemap, canonical URL and social preview are checked; analytics and privacy behaviour meet the agreed scope                                               | Pending; frontend/client. GA4/Clarity provider loading remains to be implemented or an agreed scope change recorded                                       |
+| A15 | Authorised content publication triggers a successful deployment; maintainer identifies and recovers a failed release in staging                                      | Pending; backend/maintainer                                                                                                                               |
+| A16 | Client completes the user-guide exercise without the team performing the steps for them; unclear instructions are corrected                                          | Pending; client/PM                                                                                                                                        |
+| A17 | Client approves service/bio/testimonial/legal content and all visible links; demo articles are removed or explicitly accepted                                        | Pending; client/PM. Confirm the remaining sample articles and outstanding approvals in [testimonial sources](../testimonial-sources.md)                   |
 
 For each run record: ID, actual actions, actual result, date, release SHA, screenshot/
 recording or build link, defects and retest result. Attach evidence under
