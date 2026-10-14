@@ -120,10 +120,3 @@ Only synthetic localhost configuration and mock email were used.
 Test servers were stopped after verification. These checks do not establish real
 CMS publishing, booking, inbox delivery, client acceptance or successful production
 account transfer. Repeat the relevant checks on the final release.
-
-## 6. README setup exercise
-
-- Tester: **Lizhou Xiong**.
-- Procedure: followed the repository README to set up and run the website locally.
-- Reported outcome: the website ran locally using the documented instructions.
-- Evidence source: team confirmation supplied by Junlong Huang.

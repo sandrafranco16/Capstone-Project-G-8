@@ -12,8 +12,9 @@ The assessment is self-reflection, not certification or a compliance assessment.
 Answers stay in browser memory and reset on reload; the website does not email an
 assessment report or save assessment answers in an application database.
 
-Open `/blog` for articles, `/booking` for consultations and `/contact` for enquiries.
-Report any navigation problem to the support contact in the [handover index](README.md).
+For now, use `/blog`, `/booking` and `/contact` directly if an older homepage
+button does not reach the feature. Final navigation integration remains a
+[release check](known-issues.md), not a task for the client.
 
 ## 2. Create or edit an article
 

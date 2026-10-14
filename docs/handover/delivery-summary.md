@@ -13,24 +13,24 @@ validates enquiries, verifies Turnstile and calls Resend. No application databas
 used. Assessment answers remain in browser memory. Third-party providers still process
 account, booking, enquiry and visitor data.
 
-| Planned deliverable                                    | Implemented scope / delivery check                                                                                                                                                                | Evidence                                                                      |
-| ------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
-| Homepage, four pathways, services, About and resources | Routes and content exist; final entry-point/design/content consistency needs browser/client testing                                                                                               | Source `src/app`, `src/features`; A02/A13/A17                                 |
-| Blog + CMS + article video                             | Markdown articles, GitHub OAuth/editorial workflow, media and YouTube support; client permissions and live publishing/upload still need testing                                                   | `src/features/blog`, `src/features/cms`; A04–A06                              |
-| Four-pathway readiness assessment                      | Question flow, scoring and recommendations exist; the result offers a pathway-specific booking CTA. Client confirmation of the intended next step is pending                                      | `src/features/assessment`; A03                                                |
-| Contact email                                          | `/contact` and `/api/contact`, validation, Turnstile, mock/Resend adapters; real account/DNS/inbox delivery must be evidenced                                                                     | `src/features/contact`, `src/features/email`; A10–A12                         |
-| Booking                                                | Five mapped Cal.com types, inline/external links and optional URL parameters; client calendar and complete site navigation still need verification                                                | `src/features/booking`; A07–A09                                               |
-| Testimonials                                           | Latest main includes leadership/testimonial work; confirm approved copy and presentation with client                                                                                              | [PR #33](https://github.com/sandrafranco16/Capstone-Project-G-8/pull/33); A17 |
-| SEO / analytics                                        | Metadata, sitemap, robots and social-preview changes are implemented. GA4/Clarity event helpers exist, but provider scripts are not loaded; complete integration or record an agreed scope change | [Acceptance record](acceptance-and-handover.md), A14                          |
-| Deployment and handover                                | Runtime/configuration guides and local baseline checks supplied; final hosting, ownership and client acceptance pending                                                                           | [Verification](verification-record.md), A15/A16 and transfer record           |
+| Planned deliverable                                    | Implemented scope / delivery check                                                                                                                 | Evidence                                                                      |
+| ------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| Homepage, four pathways, services, About and resources | Routes and content exist; final entry-point/design/content consistency needs browser/client testing                                                | Source `src/app`, `src/features`; A02/A13/A17                                 |
+| Blog + CMS + article video                             | Markdown articles, GitHub OAuth/editorial workflow, media and YouTube support; client permissions and live publishing/upload still need testing    | `src/features/blog`, `src/features/cms`; A04–A06                              |
+| Four-pathway readiness assessment                      | Question flow, scoring and recommendations exist; direct enquiry journey remains an integration gate                                               | `src/features/assessment`; A03                                                |
+| Contact email                                          | `/contact` and `/api/contact`, validation, Turnstile, mock/Resend adapters; real account/DNS/inbox delivery must be evidenced                      | `src/features/contact`, `src/features/email`; A10–A12                         |
+| Booking                                                | Five mapped Cal.com types, inline/external links and optional URL parameters; client calendar and complete site navigation still need verification | `src/features/booking`; A07–A09                                               |
+| Testimonials                                           | Latest main includes leadership/testimonial work; confirm approved copy and presentation with client                                               | [PR #33](https://github.com/sandrafranco16/Capstone-Project-G-8/pull/33); A17 |
+| SEO / analytics                                        | Metadata, sitemap and robots exist. GA4/Clarity provider loading is not evidenced; social-preview work remains an open PR                          | A14; [known issues](known-issues.md)                                          |
+| Deployment and handover                                | Runtime/configuration guides and local baseline checks supplied; final hosting, ownership and client acceptance pending                            | [Verification](verification-record.md), A15/A16 and transfer record           |
 
 ## Clarifications against the original plan
 
-- Assessment results currently offer a Cal.com booking CTA; Contact remains the
-  separate enquiry form. There is no separate assessment email/report. Record the
-  client's confirmation of this flow; the original plan describes assessment lead capture.
-- Cal.com is the booking integration. Verify the final site's booking entry points
-  through A02 and A07.
+- The intended current enquiry flow is assessment → Contact form → BITDOT inbox,
+  not a separate assessment email/report. Record the client's confirmation evidence;
+  the original plan still describes assessment lead capture.
+- Cal.com is the booking integration, not Microsoft Bookings; remaining static copy
+  must be corrected at the frontend entry points.
 - Vercel is retained. Approve the [commercial service budget](hosting-and-service-costs.md)
   and record the client-owned project, final URL and successful server-endpoint tests.
 - Optional booking prefill parameters are a capability, not proof of automatic
@@ -43,8 +43,7 @@ smoke checks. These do not prove browser usability, third-party configuration or
 client acceptance. Refer to the [verification record](verification-record.md) for
 conditions, including the local watcher workaround.
 
-Track actionable defects in [GitHub Issues](https://github.com/sandrafranco16/Capstone-Project-G-8/issues)
-or Jira. Use the [acceptance record](acceptance-and-handover.md) for actual customer
-results and agreed limitations, and summarise remaining items in Section 7 of the final report.
+Use the [known-issue register](known-issues.md) for remaining integration/configuration
+gates and [acceptance record](acceptance-and-handover.md) for actual customer results.
 LMS, accounts, certificates, payments, custom video hosting and CRM remain outside
 this MVP. Future work needs a new scope, data/security design and operating-cost review.

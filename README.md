@@ -12,10 +12,6 @@ database, learner accounts, payments or LMS.
 Record the final hosting provider, URL and account owners in the
 [handover index](docs/handover/README.md). An old preview link is not the final production site.
 
-Client-review demo: [BITDOT on Netlify](https://bitdot-review.netlify.app).
-Vercel remains the production hosting plan, subject to BITDOT selecting a group
-version and approving the recurring hosting costs.
-
 ## Run the local demonstration
 
 Install **Node.js 24.x** and **pnpm 11.19.0**, matching `package.json`.
@@ -98,6 +94,7 @@ Use `pnpm format:check` to check formatting; `pnpm format` rewrites eligible fil
 - [Deployment, maintenance and recovery](docs/handover/deployment-and-maintenance.md)
 - [Hosting and service costs](docs/handover/hosting-and-service-costs.md)
 - [Acceptance tests and account transfer record](docs/handover/acceptance-and-handover.md)
+- [Known issues and release gates](docs/handover/known-issues.md)
 - [AI use and review evidence](docs/handover/ai-use-and-review.md)
 - [Project plan](PROJECT_PLAN.md) and [architecture](docs/architecture/README.md)
 
@@ -105,14 +102,12 @@ Use `pnpm format:check` to check formatting; `pnpm format` rewrites eligible fil
 
 `src/app` contains routes and server endpoints; `src/components` contains shared UI;
 `src/features` contains domain logic; `src/content/blog` and `public/uploads` contain
-CMS content. `demo/` retains the static design reference.
+CMS content. `demo/` retains the static design reference. Some pages still use a
+compatibility layer: check known issues before claiming complete UI integration.
 
 Use feature branches and reviewed PRs for code changes. CMS publishing depends
 on GitHub rules and hosting permissions; there is no unconditional auto-publish
-guarantee. Tasks and evidence are tracked in Jira and
-[GitHub Issues](https://github.com/sandrafranco16/Capstone-Project-G-8/issues).
-Record final test results and client-agreed limitations in the
-[acceptance record](docs/handover/acceptance-and-handover.md).
+guarantee. Tasks and evidence are tracked in Jira and GitHub.
 
 | Member                 | Role                                    |
 | ---------------------- | --------------------------------------- |
