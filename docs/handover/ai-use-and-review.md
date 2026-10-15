@@ -1,17 +1,31 @@
 # GenAI Use and Review Evidence
 
-Prepared for team confirmation, 7 October 2026. This is an evidence-backed example
-and a completion template, not a declaration of every member's AI use.
+Prepared 7 October 2026 and updated **15 October 2026** to align with the final group
+report's individual AI-use declarations.
 
 ## Acknowledgement
 
-Junlong used an AI coding assistant to support backend implementation, documentation,
-planning and code review. AI also assisted preparation of this handover pack. Suggestions
-were checked against source code, requirements, peer feedback and official provider
-documentation; speculative account status and acceptance were left explicitly pending.
-Each member must add their own actual use/non-use and review evidence before submission.
+GenAI was used as an assistant for development and documentation where applicable; it
+was not treated as evidence of correctness or client approval. Outputs were checked
+against the repository, project requirements, peer review, provider documentation and
+executable tests before being retained. AI was not given authority to certify client
+acceptance or approve production account changes.
 
-## Worked example: Contact / Turnstile, PR #27
+## Individual declarations
+
+| Member and tool         | Purpose and work affected                                                                                                                | Evaluation and adaptation                                                                                                                                                                                                                                                                       |
+| ----------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Sandra / Claude         | Used Claude to assist with development and debugging of the Contact page, including form validation, accessibility and supporting tests. | Checked Claude's suggestions against the existing contact API, project requirements and client feedback, adapted the implementation where needed, and verified the final changes using lint, formatting, type checking, automated tests, production build and manual browser testing.           |
+| Karthikeya / ChatGPT    | Used ChatGPT to help debug the Resources page.                                                                                           | Checked AI suggestions against the existing shared layout, adapted the implementation where needed, and verified the final result using tests, lint, type checking and browser testing.                                                                                                         |
+| Lizhou Xiong / ChatGPT  | Used ChatGPT to assist with code review, investigate potential bugs and support functional testing of the website.                       | Checked AI suggestions against the existing code, adapted proposed changes where needed, and verified the affected functionality through testing before retaining the final result.                                                                                                             |
+| Junlong Huang / ChatGPT | Backend development, debugging and handover documentation.                                                                               | Checked AI suggestions against the code and project requirements, adapted them where needed, and verified the changes through testing and code review.                                                                                                                                          |
+| Shravan / Claude        | Used Claude to assist with front-end development, debugging, accessibility improvements and responsive design across the website.        | Reviewed Claude's suggestions against the existing codebase and design requirements, changed or rejected suggestions where necessary, and verified the retained changes using automated tests, lint, type checking, production builds, accessibility checks and desktop/mobile browser testing. |
+
+These entries record purpose, human review and verification. They do not imply that
+an AI-generated suggestion was accepted unchanged, nor that AI output is evidence of
+client approval or production readiness.
+
+## Worked evidence example: Contact / Turnstile, PR #27
 
 Evidence: [PR #27, reviews and commits](https://github.com/sandrafranco16/Capstone-Project-G-8/pull/27).
 
@@ -21,28 +35,25 @@ Evidence: [PR #27, reviews and commits](https://github.com/sandrafranco16/Capsto
 | Critical review    | A teammate tested the production-build API and raised configuration, formatting and inconsistent `error` versus `errors` response concerns                             |
 | Adaptation         | The revision aligned error responses with the form, retained fail-closed behaviour and resolved integration/formatting concerns                                        |
 | Verification       | Peer review recorded 503 without the secret, 400 without a token, visible error messages and a passing format check; the PR subsequently received approvals and merged |
-| Remaining boundary | The review does not prove client-owned keys were installed or that real email reached the client. Those require the live acceptance record                             |
-
-Junlong should confirm this account accurately represents his decisions and add the
-specific AI tool/model/session evidence available to him. Do not infer model names
-or fabricate prompts from GitHub commits.
+| Remaining boundary | The review does not prove client-owned keys were installed or that real email reached the client. Those require the live production/handover checks                    |
 
 ## Documentation review example
 
 The handover audit found that older AI-assisted/technical descriptions overstated
 automatic booking prefill, assessment contact buttons and instant publishing. These
 were corrected using the current source. Analytics configuration was also separated
-from unimplemented provider-script loading. This shows evaluation of outputs rather
-than accepting generated documentation as proof of functionality.
+from unimplemented provider-script loading. This demonstrates evaluation and correction
+of AI-assisted documentation rather than accepting generated text as proof of
+functionality.
 
-## Complete for each member
+## Evidence and verification principles
 
-| Member / work              | Tool and purpose                                                 | Human checks and changes                                                 | Evidence link                             |
-| -------------------------- | ---------------------------------------------------------------- | ------------------------------------------------------------------------ | ----------------------------------------- |
-| Junlong — backend/handover | AI coding assistant; confirm exact tool where available          | Source/provider checks, peer review, tests and documentation corrections | PR #27 and handover verification; confirm |
-| Other members              | Pending individual confirmation, including non-use if applicable | Pending                                                                  | Pending                                   |
+For AI-assisted work, the retained evidence should show the human decision and the
+resulting verification rather than relying on a prompt transcript alone. Appropriate
+evidence includes reviewed PRs, test results, lint/type-check/build output, browser or
+accessibility checks, and repository documentation that records changes and limitations.
+Do not infer model versions or fabricate prompts from GitHub commits.
 
-For each example, describe an actual suggestion, what you accepted/rejected/changed,
-why, and how the final result was verified. Redact credentials, private client data
-and copyrighted material from any prompt/session evidence. AI was not given authority
-to certify client acceptance or approve production account changes.
+Redact credentials, private client data and copyrighted material from any prompt/session
+evidence. Where no specific session transcript is retained, the declaration should stay
+limited to the purpose, human evaluation and verification that can actually be supported.
