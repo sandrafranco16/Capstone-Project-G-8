@@ -8,9 +8,15 @@ self-assessment, enquiries and consultation booking. It uses React, TypeScript,
 Decap CMS/GitHub, Cal.com, Resend and Cloudflare Turnstile. The MVP has no application
 database, learner accounts, payments or LMS.
 
-**Handover status:** documentation prepared for review, not signed-off delivery.
-Record the final hosting provider, URL and account owners in the
-[handover index](docs/handover/README.md). An old preview link is not the final production site.
+**Project acceptance status:** BITDOT client approval and sign-off were received on
+**15 October 2026**. The repository contains the client acceptance proof at
+[`docs/handover/client-signoff-2026-10-15.png`](docs/handover/client-signoff-2026-10-15.png).
+Operational handover items that require the final production environment — including
+production account transfer, live CMS publishing, booking, email delivery and final
+ownership checks — remain pending where applicable. See the
+[handover index](docs/handover/README.md) and
+[acceptance record](docs/handover/acceptance-and-handover.md) for the distinction
+between project acceptance and outstanding production checks.
 
 ## Run the local demonstration
 
@@ -117,5 +123,6 @@ guarantee. Tasks and evidence are tracked in Jira and GitHub.
 | Lizhou Xiong           | UI/UX Designer                          |
 | Junlong Huang          | Back-end Developer / Solution Architect |
 
-GenAI assisted development and documentation. The team must verify outputs, record
-review and test evidence, and complete the AI-use record before submission.
+GenAI assisted development and documentation. Individual use, human evaluation and
+verification are recorded in the [AI use and review evidence](docs/handover/ai-use-and-review.md)
+and summarised in the final group report.
