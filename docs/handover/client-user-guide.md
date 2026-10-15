@@ -80,8 +80,47 @@ inbox delivery, particularly in a demo using mock mode.
 
 ## 6. Short training exercise
 
-Use labelled test content and a consenting test email account. Publish an article
-with an image and video, manage a test appointment, then reply to a test enquiry.
-Remove test appointments/content using the agreed process. Record actual outcomes
-and feedback in the [acceptance record](acceptance-and-handover.md).
-Add final screenshots or a short recording there after the release interface is confirmed.
+### Prepare the practice environment
+
+For local practice, follow the [README](../../README.md), start the website and CMS
+proxy, and open `http://localhost:3000`. Local CMS publication changes the working
+copy; mock Contact submissions send no email.
+
+For an online session, the administrator provides the website URL, CMS access,
+an authorised Cal.com test event and a consenting test attendee/recipient.
+Agree where test articles may be published and who will remove them after practice.
+Use a licensed image and an approved embeddable YouTube link.
+
+### Guided walkthrough
+
+1. **Explore the visitor journey.** Open Services, complete one Assessment pathway,
+   review its recommendations, then open Blog, Booking and Contact. Expected result:
+   the learner can find each feature and explain how visitors request a consultation
+   or send an enquiry.
+2. **Create and revise an article.** Follow Section 2 to create an article titled
+   `Training exercise`, complete its fields, add an image and YouTube URL, and save
+   a draft. Reopen it, make one text correction, preview and publish through the
+   applicable local or online workflow. Expected result: the article, corrected text,
+   image and video appear on `/blog` after local publication or successful deployment.
+3. **Manage a test booking.** Use the authorised Cal.com event with the consenting
+   attendee. Check the event, date and time zone before booking. In the organiser
+   dashboard, review the appointment, reschedule it, then cancel it. Expected result:
+   the appointment and its changes are reflected in the dashboard/calendar and the
+   attendee receives the applicable notifications. Follow the
+   [Cal.com guide](calcom-client-guide.md) for setup and troubleshooting.
+4. **Send and handle an enquiry.** Submit a labelled test enquiry from Contact.
+   Try one invalid field first, correct it and submit again. Expected result: validation
+   identifies the invalid input, and the valid submission displays confirmation.
+   In live email mode, find the enquiry in the agreed inbox and use Reply to check
+   the visitor's address. In mock mode, practise the website submission only.
+5. **Finish and record the session.** Remove the practice article/media and any
+   remaining test appointment through the agreed process. Ask the learner to repeat
+   the article-editing steps without prompts and identify where to get help.
+
+### Training record
+
+Record the learner, website/release, environment, tasks completed, actual outcomes,
+questions and any instruction changes in the
+[acceptance record](acceptance-and-handover.md). Include a redacted screenshot or
+short recording when available. A task needing account access can be recorded for
+follow-up with its responsible person.
