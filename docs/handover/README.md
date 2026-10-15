@@ -31,19 +31,19 @@ The tested application release referenced by the final report is
 that SHA. The later `main` commit `a20077cb4867b07f10894d90aa2d0b41697f35da`
 adds the client acceptance proof and does not replace the tested-release evidence.
 
-| Item                                           | Value / status                                                                                                                |
-| ---------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
-| Current repository                             | [sandrafranco16/Capstone-Project-G-8](https://github.com/sandrafranco16/Capstone-Project-G-8)                                 |
-| Intended production branch                     | `main`; confirm against hosting settings                                                                                      |
-| Tested application release                     | `cc32b381d35d4791df0e5525380de33152b1cfac`                                                                                   |
-| Client acceptance evidence                     | [15 October 2026 sign-off](client-signoff-2026-10-15.png)                                                                    |
-| Current `main` after acceptance evidence       | `a20077cb4867b07f10894d90aa2d0b41697f35da`                                                                                   |
-| Review hosting                                 | Netlify review deployment recorded for the submission build                                                                   |
-| Intended production hosting                    | Vercel retained; final client-owned production project and recurring-cost approval remain operational handover items          |
-| Public website / CMS                           | Production ownership and final live checks pending; CMS route is `<website origin>/admin/`                                   |
-| Cal.com profile / event owner                  | Pending client-owned account confirmation and live booking verification                                                       |
-| Sending domain / From / receiving inbox        | Pending client approval/ownership confirmation and live email test                                                            |
-| Technical support contact and support end date | Pending agreement; no indefinite student maintenance is promised                                                             |
+| Item                                           | Value / status                                                                                                       |
+| ---------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| Current repository                             | [sandrafranco16/Capstone-Project-G-8](https://github.com/sandrafranco16/Capstone-Project-G-8)                        |
+| Intended production branch                     | `main`; confirm against hosting settings                                                                             |
+| Tested application release                     | `cc32b381d35d4791df0e5525380de33152b1cfac`                                                                           |
+| Client acceptance evidence                     | [15 October 2026 sign-off](client-signoff-2026-10-15.png)                                                            |
+| Current `main` after acceptance evidence       | `a20077cb4867b07f10894d90aa2d0b41697f35da`                                                                           |
+| Review hosting                                 | Netlify review deployment recorded for the submission build                                                          |
+| Intended production hosting                    | Vercel retained; final client-owned production project and recurring-cost approval remain operational handover items |
+| Public website / CMS                           | Production ownership and final live checks pending; CMS route is `<website origin>/admin/`                           |
+| Cal.com profile / event owner                  | Pending client-owned account confirmation and live booking verification                                              |
+| Sending domain / From / receiving inbox        | Pending client approval/ownership confirmation and live email test                                                   |
+| Technical support contact and support end date | Pending agreement; no indefinite student maintenance is promised                                                     |
 
 The guides describe configuration procedures, not proof of completed production
 configuration. No passwords, recovery codes, API secrets or attendee details belong
