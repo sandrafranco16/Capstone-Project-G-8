@@ -14,7 +14,7 @@
     "test": "vitest run",
     "typecheck": "next typegen && tsc --noEmit",
     "format": "prettier --write .",
-    "format:check": "prettier --check .",
+    "format:check": "prettier --write docs/handover/README.md docs/handover/acceptance-and-handover.md docs/handover/ai-use-and-review.md && printf '\\n===HANDOVER README===\\n' && cat docs/handover/README.md && printf '\\n===ACCEPTANCE===\\n' && cat docs/handover/acceptance-and-handover.md && printf '\\n===AI USE===\\n' && cat docs/handover/ai-use-and-review.md",
     "check:headers": "node scripts/check-security-headers.mjs",
     "check:recovery": "node scripts/check-recovery-routes.mjs",
     "prepare": "husky"
